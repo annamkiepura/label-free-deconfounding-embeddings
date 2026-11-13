@@ -1,0 +1,342 @@
+{
+ "source": "built by paper_assets/exhibits/tableA2_encoders.py from the saved runs",
+ "configurations": [
+  {
+   "short_name": "MiniLM",
+   "registry_key": "mini",
+   "model": "sentence-transformers/all-MiniLM-L6-v2",
+   "dimension": 384,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the cached snapshot used by the runs",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+   "revision_source": "recorded by every OOD run (protocol.encoder_model); for the ID and encoder-study runs, the inventory's cache snapshot (same hash)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ],
+    "id": [
+     "cap",
+     "scotus_oyez_lexis",
+     "scotus_oyez_lexis_wiki",
+     "semeval",
+     "swiltra"
+    ],
+    "ood_targets": [
+     "5 MTEB legal retrieval tasks",
+     "STSBenchmark"
+    ]
+   },
+   "ood_donor_maps": [
+    "cap",
+    "scotus_oyez_lexis",
+    "scotus_oyez_lexis_wiki"
+   ],
+   "merged_with_ood_targets": "OOD target prompts are empty, identical to the ID setting"
+  },
+  {
+   "short_name": "GIST-small",
+   "registry_key": "gist-small",
+   "model": "avsolatorio/GIST-small-Embedding-v0",
+   "dimension": 384,
+   "pooling": "cls_token",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision 75e62fd210b9, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "GIST-base",
+   "registry_key": "gist-base",
+   "model": "avsolatorio/GIST-Embedding-v0",
+   "dimension": 768,
+   "pooling": "cls_token",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision bf6b2e55e92f, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "GIST-large",
+   "registry_key": "gist-large",
+   "model": "avsolatorio/GIST-large-Embedding-v0",
+   "dimension": 1024,
+   "pooling": "cls_token",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision 7831200e2f78, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "E5-small",
+   "registry_key": "e5-small",
+   "model": "intfloat/multilingual-e5-small",
+   "dimension": 384,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the cached snapshot used by the runs",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "\"query: \" on every document",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+   "revision_source": "inventory: model-cache snapshot attributed to these runs; not saved in the ID or encoder-study result files",
+   "coverage": {
+    "id": [
+     "bills_tweets",
+     "cap",
+     "scotus_oyez_lexis",
+     "scotus_oyez_lexis_wiki",
+     "scotus_oyez_wiki",
+     "scotus_wiki_lexis",
+     "semeval",
+     "swiltra",
+     "swiltra_de_fr_it",
+     "swiltra_de_it",
+     "swiltra_fr_it"
+    ],
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": [
+    "cap",
+    "scotus_oyez_lexis",
+    "scotus_oyez_lexis_wiki",
+    "swiltra",
+    "swiltra_de_fr_it"
+   ]
+  },
+  {
+   "short_name": "E5-small",
+   "registry_key": "e5-small",
+   "model": "intfloat/multilingual-e5-small",
+   "dimension": 384,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the cached snapshot used by the runs",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "OOD targets",
+   "document_prompt": "none",
+   "query_prompt": "none",
+   "sts_prompt": "none",
+   "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+   "revision_source": "recorded by every OOD run (protocol.encoder_model)",
+   "coverage": {
+    "ood_targets": [
+     "5 MTEB legal retrieval tasks",
+     "STSBenchmark"
+    ]
+   },
+   "ood_donors": [
+    "cap",
+    "scotus_oyez_lexis",
+    "scotus_oyez_lexis_wiki",
+    "swiltra",
+    "swiltra_de_fr_it"
+   ]
+  },
+  {
+   "short_name": "E5-base",
+   "registry_key": "e5-base",
+   "model": "intfloat/multilingual-e5-base",
+   "dimension": 768,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "\"query: \" on every document",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision d12875059715, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "E5-large",
+   "registry_key": "e5-large",
+   "model": "intfloat/multilingual-e5-large",
+   "dimension": 1024,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "\"query: \" on every document",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision 3d7cfbdacd47, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "MPNet",
+   "registry_key": "mpnet",
+   "model": "sentence-transformers/all-mpnet-base-v2",
+   "dimension": 768,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision e8c3b32edf54, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "Nomic-v2",
+   "registry_key": "nomic-v2",
+   "model": "nomic-ai/nomic-embed-text-v2-moe",
+   "dimension": 768,
+   "pooling": "mean",
+   "normalization": "L2 (Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "prompt_name=\"passage\"",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision 1066b6599d09, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  },
+  {
+   "short_name": "MXB",
+   "registry_key": "mxb",
+   "model": "mixedbread-ai/mxbai-embed-large-v1",
+   "dimension": 1024,
+   "pooling": "cls_token",
+   "normalization": "none (no Normalize module)",
+   "pooling_normalization_source": "inventory: modules of the current Hub configuration (not run-attributed)",
+   "max_length": "not recorded",
+   "max_length_note": "max_seq_length is not set in code (model default); the value was not saved by any run",
+   "trust_remote_code": true,
+   "similarity": "cosine",
+   "configuration": "ID documents",
+   "document_prompt": "none",
+   "query_prompt": "same as document (symmetric: every query is a document)",
+   "revision": "not recorded",
+   "revision_source": "not recorded (inventory holds only the current Hub revision b33106f585b9, excluded)",
+   "coverage": {
+    "study": [
+     "cap",
+     "scotus_oyez_lexis",
+     "semeval",
+     "swiltra"
+    ]
+   },
+   "ood_donor_maps": []
+  }
+ ]
+}

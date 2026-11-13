@@ -1,0 +1,188 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis",
+ "label": "SCOTUS (Oyez/Lexis)",
+ "encoder": "mxb",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06898146825296356,
+     "nuisance_var_share": 0.039818941747279644,
+     "capture": {
+      "1": 0.15642217238507766,
+      "2": 0.6473735549254548,
+      "3": 0.7618576050550281,
+      "4": 0.7866158076626695,
+      "8": 0.944552038514908,
+      "16": 0.9550643675861227,
+      "32": 0.9847765807890614
+     },
+     "rank_90": 5,
+     "rank_99": 43,
+     "ari": {
+      "auto": 0.01253972997959181,
+      "count": 0.01253972997959181,
+      "generous": 0.056122113079190454
+     }
+    }
+   ],
+   "seconds": 6.7
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06775576900864361,
+     "nuisance_var_share": 0.039300170404812935,
+     "capture": {
+      "1": 0.15856203551153708,
+      "2": 0.6310572053869766,
+      "3": 0.7189772161195581,
+      "4": 0.8180913951838488,
+      "8": 0.9378613258063273,
+      "16": 0.9512493847767751,
+      "32": 0.9821006550072618
+     },
+     "rank_90": 7,
+     "rank_99": 46,
+     "ari": {
+      "auto": 0.013669084338262201,
+      "count": 0.013669084338262201,
+      "generous": 0.046999903897004425
+     }
+    }
+   ],
+   "seconds": 3.2
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.0699203014876711,
+     "nuisance_var_share": 0.03983876513541673,
+     "capture": {
+      "1": 0.14980483691714921,
+      "2": 0.620433981175817,
+      "3": 0.7198601539380501,
+      "4": 0.8512229349807533,
+      "8": 0.9444914786248751,
+      "16": 0.9550012119491886,
+      "32": 0.9839783986220236
+     },
+     "rank_90": 6,
+     "rank_99": 41,
+     "ari": {
+      "auto": 0.014140673135514805,
+      "count": 0.014140673135514805,
+      "generous": 0.04198221721278913
+     }
+    }
+   ],
+   "seconds": 3.1
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.06888584624975942,
+  "nuisance_var_share": 0.039652625762503106,
+  "rank_90": 6.0,
+  "rank_99": 43.333333333333336,
+  "capture": {
+   "1": 0.15492968160458798,
+   "2": 0.6329549138294162,
+   "3": 0.7335649917042121,
+   "4": 0.8186433792757571,
+   "8": 0.9423016143153702,
+   "16": 0.9537716547706955,
+   "32": 0.9836185448061157
+  },
+  "ari": {
+   "auto": 0.013449829151122939,
+   "count": 0.013449829151122939,
+   "generous": 0.048368078062994674
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 4101,
+  "n_pairs": 1017,
+  "n_unpaired": 2067,
+  "classes": [
+   "lexis",
+   "oyez"
+  ],
+  "class_counts": [
+   2034,
+   2067
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

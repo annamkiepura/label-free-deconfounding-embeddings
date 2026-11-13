@@ -1,0 +1,300 @@
+{
+ "experiment": "random_directions",
+ "corpus": "scotus_oyez_lexis_wiki",
+ "encoder": "e5-small",
+ "label": "SCOTUS (Oyez/Lexis/Wiki)",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "condition": "random_dirs_n32",
+ "definition": "LEACE on X R^T for N = 32 unit-norm Gaussian directions (Directions-LEACE operator); one independent draw per seed",
+ "per_seed": [
+  {
+   "seed": 0,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     3756
+    ],
+    "n_test_docs": [
+     3750
+    ],
+    "n_test_pairs": [
+     1584
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.891014041580733,
+     "mlp_auc": 0.9164581079419815,
+     "linear_auc_per_class": {
+      "lexis": 0.8942658742312212,
+      "oyez": 0.8907783191558579,
+      "wiki": 0.8879979313551198
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.5596590909090909,
+     "recall@10": 0.7780934343434344,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7488151658767772,
+      "lexis|wiki": 0.2574430823117338,
+      "oyez|wiki": 0.6986842105263158
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9344391785150079,
+      "lexis|wiki": 0.5306479859894921,
+      "oyez|wiki": 0.8894736842105263
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.891014041580733,
+     "mlp_auc": 0.9164581079419815,
+     "linear_auc_per_class": {
+      "lexis": 0.8942658742312212,
+      "oyez": 0.8907783191558579,
+      "wiki": 0.8879979313551198
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.5596590909090909,
+     "recall@10": 0.7780934343434344,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7488151658767772,
+      "lexis|wiki": 0.2574430823117338,
+      "oyez|wiki": 0.6986842105263158
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9344391785150079,
+      "lexis|wiki": 0.5306479859894921,
+      "oyez|wiki": 0.8894736842105263
+     }
+    }
+   }
+  },
+  {
+   "seed": 1,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     3762
+    ],
+    "n_test_docs": [
+     3744
+    ],
+    "n_test_pairs": [
+     1572
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.8853722790068217,
+     "mlp_auc": 0.9155891583786115,
+     "linear_auc_per_class": {
+      "lexis": 0.8687705274452927,
+      "oyez": 0.8524584876048513,
+      "wiki": 0.9348878219703206
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.5636132315521628,
+     "recall@10": 0.7783078880407125,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7563091482649842,
+      "lexis|wiki": 0.2836624775583483,
+      "oyez|wiki": 0.652230971128609
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9392744479495269,
+      "lexis|wiki": 0.5305206463195691,
+      "oyez|wiki": 0.8727034120734908
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.8853722790068217,
+     "mlp_auc": 0.9155891583786115,
+     "linear_auc_per_class": {
+      "lexis": 0.8687705274452927,
+      "oyez": 0.8524584876048513,
+      "wiki": 0.9348878219703206
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.5636132315521628,
+     "recall@10": 0.7783078880407125,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7563091482649842,
+      "lexis|wiki": 0.2836624775583483,
+      "oyez|wiki": 0.652230971128609
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9392744479495269,
+      "lexis|wiki": 0.5305206463195691,
+      "oyez|wiki": 0.8727034120734908
+     }
+    }
+   }
+  },
+  {
+   "seed": 2,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     3744
+    ],
+    "n_test_docs": [
+     3762
+    ],
+    "n_test_pairs": [
+     1608
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.8872031682583614,
+     "mlp_auc": 0.9163716870488905,
+     "linear_auc_per_class": {
+      "lexis": 0.8418048561370883,
+      "oyez": 0.8882166609387074,
+      "wiki": 0.9315879876992886
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.5631218905472637,
+     "recall@10": 0.777363184079602,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7605965463108321,
+      "lexis|wiki": 0.2799657534246575,
+      "oyez|wiki": 0.665374677002584
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9379905808477237,
+      "lexis|wiki": 0.535958904109589,
+      "oyez|wiki": 0.8772609819121447
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.8872031682583614,
+     "mlp_auc": 0.9163716870488905,
+     "linear_auc_per_class": {
+      "lexis": 0.8418048561370883,
+      "oyez": 0.8882166609387074,
+      "wiki": 0.9315879876992886
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.5631218905472637,
+     "recall@10": 0.777363184079602,
+     "recall@1_by_pair": {
+      "lexis|oyez": 0.7605965463108321,
+      "lexis|wiki": 0.2799657534246575,
+      "oyez|wiki": 0.665374677002584
+     },
+     "recall@10_by_pair": {
+      "lexis|oyez": 0.9379905808477237,
+      "lexis|wiki": 0.535958904109589,
+      "oyez|wiki": 0.8772609819121447
+     }
+    }
+   }
+  }
+ ],
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "nonlinear": [
+   "mlp"
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 7506,
+  "n_pairs": 3185,
+  "n_unpaired": 3035,
+  "classes": [
+   "lexis",
+   "oyez",
+   "wiki"
+  ],
+  "class_counts": [
+   3519,
+   2490,
+   1497
+  ],
+  "confounder": "source"
+ },
+ "design": {
+  "operator": "protocols._fit_leace(X_tr, X_tr @ R.T): LEACE, standardized concept columns, concept-erasure defaults",
+  "gaussian": "rows ~ N(0, I_d), unit norm, not orthogonalized, data-independent; rng default_rng([1000, seed, draw, 0]), shared by a seed's folds",
+  "random_sae": "uniform without replacement from latents with training firing rate in [0.02, 0.98]; rng default_rng([1000, seed, draw, 1, fold])",
+  "mi": "top-N of the MI ranking of the split's SAE (nested prefixes)",
+  "nesting": "budget-N sets are prefixes of one draw of max(budgets) directions",
+  "draw_mean": "<kind>_mean_n<N> averages the draws within a seed",
+  "nonlinear": "['mlp'] on the N = 32 arms"
+ },
+ "reference_check": {
+  "reference": "revised_results_2/raw/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+  "config_split_equal": true,
+  "config_audit_equal": true,
+  "seeds": {
+   "0": {
+    "in_reference": true,
+    "split_equal": true
+   },
+   "1": {
+    "in_reference": true,
+    "split_equal": true
+   },
+   "2": {
+    "in_reference": true,
+    "split_equal": true
+   }
+  },
+  "splits_match": true
+ },
+ "source": "focused_additions/raw/r1/r1_scotus_oyez_lexis_wiki_e5-small.json"
+}

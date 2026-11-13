@@ -1,0 +1,4183 @@
+{
+ "exhibit": "table_2_primary_id",
+ "kind": "table",
+ "title": "Primary in-distribution leakage and semantic utility",
+ "build_command": "python paper-artifacts/build.py table_2_primary_id",
+ "generated_utc": "2026-10-26T18:48:32+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "Primary in-distribution leakage and semantic utility. Cells are the mean $\\pm$ sample SD ($\\mathrm{ddof}{=}1$) across fitting seeds. Each seed's score is computed within that seed; SemEval's five outer folds are combined within each seed (fold AUCs averaged, held-out retrieval hits pooled), and nothing is pooled across seeds. Seeds: SemEval 5 seeds (0--4); SwiLTra 5 seeds (0--4); Fedlex 5 seeds (0--4); Bills--Tweets 5 seeds (0--4); SCOTUS 5 seeds (0--4); CAP 5 seeds (0--4); SCOTUS MiniLM 5 seeds (0--4). SCOTUS with E5-small uses the coverage experiment, and SemEval and CAP their primary runs, each extended from seeds 0--2 by seeds 3--4. Fedlex is a seeded sample of 2{,}784 German/French/Italian article triples of Swiss domestic federal law (SwiLTra's size), with outer splits by whole law. MiniLM results are shown only for three-source SCOTUS, not for the other corpora. AUCs are unflipped. $k$-means LEACE uses the training-silhouette $K$; only Metadata-LEACE uses nuisance labels. Bills--Tweets has no semantic-utility measure (---). Equal rounded values are not evidence of equivalence.",
+ "settings_and_seeds": {
+  "bills_tweets/e5-small": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]"
+  },
+  "cap/e5-small": {
+   "cohorts": [
+    "id5"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]"
+  },
+  "fedlex_domestic/e5-small": {
+   "cohorts": [
+    "fedlex"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]"
+  },
+  "scotus_oyez_lexis_wiki/e5-small": {
+   "cohorts": [
+    "coverage"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]"
+  },
+  "scotus_oyez_lexis_wiki/mini": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]"
+  },
+  "semeval/e5-small": {
+   "cohorts": [
+    "id5"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]"
+  },
+  "swiltra_de_fr_it/e5-small": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]"
+  }
+ },
+ "sources": {
+  "id/id_bills_tweets_e5-small.json": {
+   "sha256": "defab91a806f10fd756f254f2b20a77128b78b835a7104b6434242329cf4ac48",
+   "bytes": 23240,
+   "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+   "experiment": "revised_id",
+   "corpus": "bills_tweets",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Bills--Tweets"
+  },
+  "id/id_kmeans_bills_tweets_e5-small.json": {
+   "sha256": "408f188c1d8695db94941a0830c89fe510fa0ee0d43a8ed12a70d0eefb803bf7",
+   "bytes": 9774,
+   "run_id": "id/id_kmeans_bills_tweets_e5-small.json@408f188c1d86",
+   "experiment": "revised_id_kmeans",
+   "corpus": "bills_tweets",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Bills--Tweets"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "48886d90557d25211151a19b29dd0d517adce909be51e4bb424e2ff30fa135d7",
+   "bytes": 92731,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_kmeans_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "c6cbc49b5dfdf00f00ab0087612ba5ac3c7f83b4852cdb2f9bf3991f58b50061",
+   "bytes": 222705,
+   "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "id/id_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "8e072e36da63b5a5e9232ddaa33877039fac7cee28503c800261db288e506cf1",
+   "bytes": 355856,
+   "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9dfe0c6ffb1f3ea24b4c6dd5103cec559573deaa85dae1881469202df68a3ae3",
+   "bytes": 875976,
+   "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "45b57ae5e31f4a1500f58178873234c27c1cddbab7880b56870864e30db2f8f3",
+   "bytes": 299497,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "d42d80888548eed80eb8aec2d9abb70f29f696ba5f84a7b93359fed4a5541520",
+   "bytes": 61945,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json@d42d80888548",
+   "experiment": "kmeans_count",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_cap_e5-small.json": {
+   "sha256": "101138c626da814692beb9a39105fe379adcb025c428f5f6bb16c4c1ee505df1",
+   "bytes": 31893,
+   "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+   "experiment": "revised_id",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "CAP (bills/orders/news)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json": {
+   "sha256": "72ba8d1ef18e27c9c1d6619ef65e84560c511a75959b809b83050bf4c0c2b31b",
+   "bytes": 11764,
+   "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json@72ba8d1ef18e",
+   "experiment": "revised_id_kmeans",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "CAP (bills/orders/news)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json": {
+   "sha256": "bd9e01db4e672d9cdcc267e151c3d2a6611ab764bc362e41d17ccf59cecd0893",
+   "bytes": 43131,
+   "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json@bd9e01db4e67",
+   "experiment": "revised_id_kmeans",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SemEval",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json": {
+   "sha256": "bdb8b7475c8f107a11b3df9ce249aacdc3563fa488ccf555a2c3e83562ccc08c",
+   "bytes": 138135,
+   "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+   "experiment": "revised_id",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SemEval",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json": {
+   "sha256": "f8efb32e2cbc66c5ecab643071922fd6f505b8d8ba74a30d4bfaa3279e81af18",
+   "bytes": 174852,
+   "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+   "experiment": "fedlex_id",
+   "corpus": "fedlex_domestic",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Fedlex, domestic federal law (de/fr/it)"
+  }
+ },
+ "notes": [
+  "Outputs renamed from table2_primary_id to table_2_primary_id (the manuscript's file name)."
+ ],
+ "checks_passed": 277,
+ "checks": [
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id5:semeval/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus statistics equal the processed SemEval-2022 Task 8 (4 languages) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: corpus statistics equal the processed SemEval-2022 Task 8 (4 languages) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "semeval/e5-small (id5): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: split policy {'scheme': 'kfold', 'holdout': 0.2, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "semeval/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: split policy {'scheme': 'kfold', 'holdout': 0.2, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "semeval/e5-small (id5): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "semeval/e5-small (id5): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "semeval/e5-small (id5): each fit's K is the training-silhouette maximiser (K chosen: [2, 3, 4, 6])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_fold_within_seed",
+   "message": "semeval/e5-small (id5) seed 0: AUC is the mean of its 5 fold AUCs, not pooled",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_fold_within_seed",
+   "message": "semeval/e5-small (id5) seed 1: AUC is the mean of its 5 fold AUCs, not pooled",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_fold_within_seed",
+   "message": "semeval/e5-small (id5) seed 2: AUC is the mean of its 5 fold AUCs, not pooled",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_fold_within_seed",
+   "message": "semeval/e5-small (id5) seed 3: AUC is the mean of its 5 fold AUCs, not pooled",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_fold_within_seed",
+   "message": "semeval/e5-small (id5) seed 4: AUC is the mean of its 5 fold AUCs, not pooled",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id:swiltra_de_fr_it/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR/IT (3 languages) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR/IT (3 languages) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "swiltra_de_fr_it/e5-small (id): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "swiltra_de_fr_it/e5-small (id): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "swiltra_de_fr_it/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [3])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus statistics equal the processed Fedlex DE/FR/IT (3 languages; Swiss domestic federal law) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_cohort_manifest",
+   "message": "fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: computed on exactly the cohort of data/fedlex_domestic_n2784_manifest.csv.gz (2,784 tuples; fingerprint 1b7952b99dc5)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "fedlex_domestic/e5-small (fedlex): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "fedlex_domestic/e5-small (fedlex): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "fedlex_domestic/e5-small (fedlex): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "fedlex_domestic/e5-small (fedlex): each fit's K is the training-silhouette maximiser (K chosen: [3])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_bills_tweets_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_bills_tweets_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_bills_tweets_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_bills_tweets_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_bills_tweets_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id:bills_tweets/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_bills_tweets_e5-small.json: corpus/encoder fields are bills_tweets/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "bills_tweets/e5-small (id) id/id_bills_tweets_e5-small.json: corpus statistics equal the processed Bills--Tweets (2 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "bills_tweets/e5-small (id) id/id_kmeans_bills_tweets_e5-small.json: corpus statistics equal the processed Bills--Tweets (2 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "bills_tweets/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "bills_tweets/e5-small (id) id/id_bills_tweets_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "bills_tweets/e5-small (id) id/id_bills_tweets_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "bills_tweets/e5-small (id) id/id_bills_tweets_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "bills_tweets/e5-small (id) id/id_kmeans_bills_tweets_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "bills_tweets/e5-small (id) id/id_kmeans_bills_tweets_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "bills_tweets/e5-small (id) id/id_kmeans_bills_tweets_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "bills_tweets/e5-small (id): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "bills_tweets/e5-small (id): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "bills_tweets/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "coverage:scotus_oyez_lexis_wiki/e5-small main~kcount: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus statistics equal the processed SCOTUS Oyez/Lexis/Wikipedia (3 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_is_silhouette",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage): k-means arm equals the silhouette-K arm of results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "scotus_oyez_lexis_wiki/e5-small (coverage): each fit's K is the training-silhouette maximiser (K chosen: [3])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:cap/e5-small main~kmeans: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:cap/e5-small main~kmeans: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:cap/e5-small main~kmeans: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id5:cap/e5-small main~kmeans: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id5:cap/e5-small main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id5:cap/e5-small main~kmeans: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id5:cap/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus statistics equal the processed CAP bills/orders/newspapers (3 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: corpus statistics equal the processed CAP bills/orders/newspapers (3 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "cap/e5-small (id5): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_cap_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_cap_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_cap_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "cap/e5-small (id5) results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "cap/e5-small (id5): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "cap/e5-small (id5): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "cap/e5-small (id5): each fit's K is the training-silhouette maximiser (K chosen: [2])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: seeds field equals per-seed records",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: no duplicated seed",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: config.split identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: config.audit identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: config.selection identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: config.pseudo_groups identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: corpus statistics identical",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id:scotus_oyez_lexis_wiki/mini main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_scotus_oyez_lexis_wiki_mini.json: corpus statistics equal the processed SCOTUS Oyez/Lexis/Wikipedia (3 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_dataset_version",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus statistics equal the processed SCOTUS Oyez/Lexis/Wikipedia (3 sources) definition",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/mini (id): every method uses seeds (0, 1, 2, 3, 4)",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_scotus_oyez_lexis_wiki_mini.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_scotus_oyez_lexis_wiki_mini.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_scotus_oyez_lexis_wiki_mini.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_audit",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: audit protocol identical to every other column's",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_eval_def",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: R@10 and 21-topic purity definitions",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_same_split_policy",
+   "message": "scotus_oyez_lexis_wiki/mini (id) id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_config",
+   "message": "scotus_oyez_lexis_wiki/mini (id): SAE-LEACE recipe is MI top-32",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_sae_selected",
+   "message": "scotus_oyez_lexis_wiki/mini (id): every fit erased exactly 32 selected latents",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "t2_kmeans_silhouette",
+   "message": "scotus_oyez_lexis_wiki/mini (id): each fit's K is the training-silhouette maximiser (K chosen: [2, 3, 4, 5])",
+   "exhibit": "table2_primary_id"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "table_2_primary_id: every citation and reference resolves",
+   "exhibit": "table_2_primary_id"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "table_2_primary_id: the float fits the TACL text block",
+   "exhibit": "table_2_primary_id"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "table_2_primary_id: no overfull boxes in the TACL preview",
+   "exhibit": "table_2_primary_id"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "table_2_primary_id"
+  }
+ ],
+ "cells": [
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mean": 1.0,
+   "sd": 0.0,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9246758921163309,
+    0.9313228325009041,
+    0.9343555242142342,
+    0.922217005227882,
+    0.9217213731897989
+   ],
+   "mean": 0.9268585254498302,
+   "sd": 0.005675230380824738,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7470862990229973,
+    0.7733489441666603,
+    0.8663504600264252,
+    0.831701434316647,
+    0.7645389478663789
+   ],
+   "mean": 0.7966052170798218,
+   "sd": 0.05029256027141119,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json@bd9e01db4e67",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6359352910054981,
+    0.6461844697186464,
+    0.6667298228472354,
+    0.6757942262790906,
+    0.6206016623601786
+   ],
+   "mean": 0.6490490944421297,
+   "sd": 0.02245742940181353,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6854368271920959,
+    0.6916591592446681,
+    0.7146809565790919,
+    0.7199445893361206,
+    0.6830834884316012
+   ],
+   "mean": 0.6989610041567156,
+   "sd": 0.017144558600575874,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5969626168224299,
+    0.5969626168224299,
+    0.5969626168224299,
+    0.5969626168224299,
+    0.5969626168224299
+   ],
+   "mean": 0.5969626168224299,
+   "sd": 0.0,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "recall@10",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8107476635514018,
+    0.8107476635514018,
+    0.8060747663551402,
+    0.8142523364485982,
+    0.8119158878504673
+   ],
+   "mean": 0.8107476635514018,
+   "sd": 0.0029783992485939302,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "recall@10",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8352803738317757,
+    0.822429906542056,
+    0.7838785046728972,
+    0.8049065420560748,
+    0.8259345794392523
+   ],
+   "mean": 0.8144859813084112,
+   "sd": 0.020341868093157838,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json@bd9e01db4e67",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8773364485981309,
+    0.8773364485981309,
+    0.8761682242990654,
+    0.8773364485981309,
+    0.8773364485981309
+   ],
+   "mean": 0.8771028037383177,
+   "sd": 0.000522445789135496,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "recall@10",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8130841121495327,
+    0.8060747663551402,
+    0.8142523364485982,
+    0.8177570093457944,
+    0.8014018691588785
+   ],
+   "mean": 0.8105140186915888,
+   "sd": 0.006629093906126717,
+   "sd_ddof": 1,
+   "dataset_version": "semeval [SemEval-2022 Task 8 (4 languages); classes de/en/es/zh; 856 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9988603302627095,
+    0.9989618469829186,
+    0.9994518455782613,
+    0.9996532270586409,
+    0.9991290114765657
+   ],
+   "mean": 0.9992112522718191,
+   "sd": 0.0003336688681552231,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9067521992496299,
+    0.9030091846662037,
+    0.9038229146962721,
+    0.9118947911481357,
+    0.9046437864272026
+   ],
+   "mean": 0.9060245752374888,
+   "sd": 0.0035649452560808405,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5733021739523709,
+    0.5694268344658809,
+    0.5877271308691097,
+    0.5893617001493205,
+    0.5662598465163445
+   ],
+   "mean": 0.5772155371906054,
+   "sd": 0.010653970344432825,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5736214271773667,
+    0.568288787349534,
+    0.5877452535864496,
+    0.5891715566449136,
+    0.5667072442195606
+   ],
+   "mean": 0.5771068537955649,
+   "sd": 0.010686334484337427,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6031441309550578,
+    0.6099767143599601,
+    0.6252587738309413,
+    0.6257176748308513,
+    0.6095173478574936
+   ],
+   "mean": 0.6147229283668608,
+   "sd": 0.010192909972044249,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.491139846743295,
+    0.49149904214559387,
+    0.4873084291187739,
+    0.49580938697318006,
+    0.4964080459770115
+   ],
+   "mean": 0.4924329501915709,
+   "sd": 0.0037418821746366703,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8971503831417624,
+    0.899066091954023,
+    0.8922413793103449,
+    0.8991858237547893,
+    0.8971503831417624
+   ],
+   "mean": 0.8969588122605364,
+   "sd": 0.002816370907157633,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9692289272030651,
+    0.9722222222222222,
+    0.9651580459770115,
+    0.9682710727969349,
+    0.9711446360153256
+   ],
+   "mean": 0.9692049808429118,
+   "sd": 0.002743922703186044,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9692289272030651,
+    0.9721024904214559,
+    0.9651580459770115,
+    0.9682710727969349,
+    0.9711446360153256
+   ],
+   "mean": 0.9691810344827587,
+   "sd": 0.0027113371369191707,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9210967432950191,
+    0.9164272030651341,
+    0.9145114942528736,
+    0.9117576628352491,
+    0.9148706896551724
+   ],
+   "mean": 0.9157327586206897,
+   "sd": 0.0034384088156331092,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "mean": 1.0,
+   "sd": 0.0,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9088834256021151,
+    0.9082000581428054,
+    0.9095899839429057,
+    0.9050929564389257,
+    0.9215359861458993
+   ],
+   "mean": 0.9106604820545302,
+   "sd": 0.006317268246426741,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6390820601904925,
+    0.6291683847823468,
+    0.6499347191896541,
+    0.6339603653436675,
+    0.6699496581946467
+   ],
+   "mean": 0.6444190375401615,
+   "sd": 0.016222552942938815,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6379326418912662,
+    0.6289220236492218,
+    0.6495513728806614,
+    0.6341671779254673,
+    0.6698982798820139
+   ],
+   "mean": 0.6440942992457261,
+   "sd": 0.016296754087641266,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6706092312017379,
+    0.6593622960327091,
+    0.6825046588604274,
+    0.6540190100862706,
+    0.6935330237614777
+   ],
+   "mean": 0.6720056439885246,
+   "sd": 0.01627099112305414,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7717652717652718,
+    0.7857142857142857,
+    0.7865518066523092,
+    0.7811302681992337,
+    0.7967888809010304
+   ],
+   "mean": 0.7843901026464261,
+   "sd": 0.009085276586515619,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "recall@10",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9437229437229437,
+    0.9530988274706867,
+    0.9540559942569993,
+    0.9487547892720306,
+    0.9526719386532471
+   ],
+   "mean": 0.9504608986751814,
+   "sd": 0.004274427581298776,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "recall@10",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9787157287157288,
+    0.9831299353912419,
+    0.9845656855707107,
+    0.9803639846743295,
+    0.9799904145698538
+   ],
+   "mean": 0.981353149784373,
+   "sd": 0.0024118891995914406,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9787157287157288,
+    0.9831299353912419,
+    0.9845656855707107,
+    0.9803639846743295,
+    0.9799904145698538
+   ],
+   "mean": 0.981353149784373,
+   "sd": 0.0024118891995914406,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "recall@10",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9338624338624338,
+    0.9391002632208663,
+    0.9373055754965303,
+    0.9347461685823755,
+    0.9468008626887131
+   ],
+   "mean": 0.9383630607701837,
+   "sd": 0.005152567210493598,
+   "sd_ddof": 1,
+   "dataset_version": "fedlex_domestic [Fedlex DE/FR/IT (3 languages; Swiss domestic federal law); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "bills_tweets",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9999838052090546,
+    0.9999910750507099,
+    0.9999789046653144,
+    0.9999699814737438,
+    0.9999967578882462
+   ],
+   "mean": 0.9999841048574136,
+   "sd": 1.043173687754824e-05,
+   "sd_ddof": 1,
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]",
+   "sources": [
+    {
+     "file": "id/id_bills_tweets_e5-small.json",
+     "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "bills_tweets",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6823350920857643,
+    0.6656976394750229,
+    0.6673740418334102,
+    0.6996283997030249,
+    0.674763229369942
+   ],
+   "mean": 0.6779596804934329,
+   "sd": 0.013795908037793781,
+   "sd_ddof": 1,
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]",
+   "sources": [
+    {
+     "file": "id/id_bills_tweets_e5-small.json",
+     "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "bills_tweets",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6158470652283772,
+    0.6100556622553563,
+    0.5966355025808241,
+    0.626086404294334,
+    0.6096334227413858
+   ],
+   "mean": 0.6116516114200555,
+   "sd": 0.010701270274268163,
+   "sd_ddof": 1,
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_bills_tweets_e5-small.json",
+     "run_id": "id/id_kmeans_bills_tweets_e5-small.json@408f188c1d86",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "bills_tweets",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6141120914468992,
+    0.6073316729919588,
+    0.5921984313536781,
+    0.6224352553935792,
+    0.6103884615113071
+   ],
+   "mean": 0.6092931825394844,
+   "sd": 0.011104206813141523,
+   "sd_ddof": 1,
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]",
+   "sources": [
+    {
+     "file": "id/id_bills_tweets_e5-small.json",
+     "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "bills_tweets",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6581969592037091,
+    0.6404008834941647,
+    0.6529786460669654,
+    0.6699846263064778,
+    0.6412277681838783
+   ],
+   "mean": 0.652557776651039,
+   "sd": 0.012367616412777976,
+   "sd_ddof": 1,
+   "dataset_version": "bills_tweets [Bills--Tweets (2 sources); classes bill/tweet; 9,933 docs]",
+   "sources": [
+    {
+     "file": "id/id_bills_tweets_e5-small.json",
+     "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9986234499716463,
+    0.9990050556388557,
+    0.9988954640315134,
+    0.9987568688906865,
+    0.9992726895974592
+   ],
+   "mean": 0.9989107056260323,
+   "sd": 0.0002481673723577521,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.881712487867679,
+    0.8831515847304837,
+    0.8821189059922734,
+    0.8873607391579184,
+    0.8769133188379208
+   ],
+   "mean": 0.882251407317255,
+   "sd": 0.003732250347335954,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6563862411881182,
+    0.6594123946908853,
+    0.6637857552227796,
+    0.850853064343827,
+    0.6638550535454247
+   ],
+   "mean": 0.698858501798207,
+   "sd": 0.08502584059069536,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6199877594107469,
+    0.6147018512418166,
+    0.6174185485394724,
+    0.6083335387713119,
+    0.6148423735424399
+   ],
+   "mean": 0.6150568143011576,
+   "sd": 0.004337811249608759,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.72202216107084,
+    0.7341645922508607,
+    0.7289693186929067,
+    0.7356086530975554,
+    0.7127055922982258
+   ],
+   "mean": 0.7266940634820778,
+   "sd": 0.009459908728069006,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6316287878787878,
+    0.6281806615776081,
+    0.628731343283582,
+    0.6217310087173101,
+    0.6211372064276885
+   ],
+   "mean": 0.6262818015769953,
+   "sd": 0.004619869080607814,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.726010101010101,
+    0.7290076335877863,
+    0.7170398009950248,
+    0.7229140722291407,
+    0.7098269468479604
+   ],
+   "mean": 0.7209597109340027,
+   "sd": 0.007638703377523225,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8087121212121212,
+    0.8069338422391857,
+    0.8019278606965174,
+    0.7285180572851806,
+    0.7911001236093943
+   ],
+   "mean": 0.7874384010084798,
+   "sd": 0.033643732547874984,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8083964646464646,
+    0.8037531806615776,
+    0.8006840796019901,
+    0.7991905354919053,
+    0.7880098887515451
+   ],
+   "mean": 0.8000068298306966,
+   "sd": 0.007574178434769063,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7777777777777778,
+    0.7684478371501272,
+    0.7655472636815921,
+    0.7652552926525529,
+    0.7716316440049443
+   ],
+   "mean": 0.7697319630533989,
+   "sd": 0.005185199811539599,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9999489428610062,
+    0.9999272696493572,
+    0.9999677012872498,
+    0.9999059833057927,
+    0.999983882796211
+   ],
+   "mean": 0.9999467559799233,
+   "sd": 3.108060838456965e-05,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8848475056966159,
+    0.8819636987804735,
+    0.8936283664401865,
+    0.8961616436116795,
+    0.902564962048204
+   ],
+   "mean": 0.8918332353154318,
+   "sd": 0.008416289897025073,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8677854920749247,
+    0.8686163772367305,
+    0.8779332854253864,
+    0.8822559265802488,
+    0.896519053852742
+   ],
+   "mean": 0.8786220270340065,
+   "sd": 0.011742302560095416,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json@72ba8d1ef18e",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6359081694944922,
+    0.6299779708161586,
+    0.6713336907835421,
+    0.6631422517236936,
+    0.6882116578756412
+   ],
+   "mean": 0.6577147481387055,
+   "sd": 0.024443049041793157,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6999655047712132,
+    0.6853495722957365,
+    0.7271661320855056,
+    0.7111246457398679,
+    0.7401167027414747
+   ],
+   "mean": 0.7127445115267595,
+   "sd": 0.0216427220199578,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "topic_purity",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.22707423580786026,
+    0.24079850280723644,
+    0.2445414847161572,
+    0.2526512788521522,
+    0.24266999376169682
+   ],
+   "mean": 0.2415470991890206,
+   "sd": 0.009267607753489148,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "topic_purity",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.34123518402994385,
+    0.3125389893948846,
+    0.3137866500311915,
+    0.330630068621335,
+    0.2925764192139738
+   ],
+   "mean": 0.31815346225826574,
+   "sd": 0.018662851280912766,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "topic_purity",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.3206487835308796,
+    0.3125389893948846,
+    0.33499688084840923,
+    0.314410480349345,
+    0.3156581409856519
+   ],
+   "mean": 0.31965065502183404,
+   "sd": 0.009089530991168545,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json@72ba8d1ef18e",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "topic_purity",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.34435433562071116,
+    0.3655645664379289,
+    0.3636930754834685,
+    0.3399875233936369,
+    0.3456019962570181
+   ],
+   "mean": 0.3518402994385527,
+   "sd": 0.011877375399039172,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "topic_purity",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.27386150966936995,
+    0.30131004366812225,
+    0.23456019962570182,
+    0.22333125389893949,
+    0.2794759825327511
+   ],
+   "mean": 0.2625077978789769,
+   "sd": 0.032551152769492685,
+   "sd_ddof": 1,
+   "dataset_version": "cap [CAP bills/orders/newspapers (3 sources); classes bill/order/newspaper; 3,208 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9861713664701606,
+    0.9859849671506107,
+    0.9859187907098452,
+    0.9858721005199957,
+    0.9857745342367427
+   ],
+   "mean": 0.9859443518174711,
+   "sd": 0.00014823704728926076,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.985898325508592,
+    0.9860464725803698,
+    0.9856729712213628,
+    0.9856025996328419,
+    0.985233764245387
+   ],
+   "mean": 0.9856908266377108,
+   "sd": 0.0003108651913228032,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8665095988312188,
+    0.9685316647847678,
+    0.9698418005141916,
+    0.9613941244034464,
+    0.98410560813039
+   ],
+   "mean": 0.950076559332803,
+   "sd": 0.047436157108454044,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6177652247839638,
+    0.6133605737546544,
+    0.6051946661260607,
+    0.6095657269457828,
+    0.6067900198236716
+   ],
+   "mean": 0.6105352422868267,
+   "sd": 0.005092728881355973,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8355145154997243,
+    0.875772447704937,
+    0.8577307377828305,
+    0.8757767513011638,
+    0.856826723629173
+   ],
+   "mean": 0.8603242351835657,
+   "sd": 0.016672646243935003,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7051767676767676,
+    0.6930661577608143,
+    0.7030472636815921,
+    0.6930261519302615,
+    0.6925216316440049
+   ],
+   "mean": 0.6973675945386881,
+   "sd": 0.006206360957242017,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "raw",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_top1",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7029671717171717,
+    0.6908396946564885,
+    0.7033582089552238,
+    0.6945828144458281,
+    0.6906674907292955
+   ],
+   "mean": 0.6964830761008015,
+   "sd": 0.0062966405611413504,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "kmeans_auto",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7484217171717171,
+    0.7000636132315522,
+    0.7157960199004975,
+    0.7191780821917808,
+    0.6891223733003708
+   ],
+   "mean": 0.7145163611591837,
+   "sd": 0.022509325166749264,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7569444444444444,
+    0.7468193384223919,
+    0.75,
+    0.75,
+    0.7404202719406675
+   ],
+   "mean": 0.7488368109615008,
+   "sd": 0.005986402565556084,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_leace",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7228535353535354,
+    0.6975190839694656,
+    0.7139303482587065,
+    0.7079701120797012,
+    0.7166254635352287
+   ],
+   "mean": 0.7117797086393274,
+   "sd": 0.009599670193575497,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.recall@10"
+    }
+   ]
+  }
+ ],
+ "outputs": [
+  "data/table_2_primary_id_per_seed.csv",
+  "data/table_2_primary_id_summary.csv",
+  "reports/previews/table_2_primary_id.pdf",
+  "reports/previews/table_2_primary_id.png",
+  "tables/table_2_primary_id.include.tex",
+  "tables/table_2_primary_id.md",
+  "tables/table_2_primary_id.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1818
+ }
+}

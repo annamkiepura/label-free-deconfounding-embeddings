@@ -1,0 +1,190 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis_wiki",
+ "label": "SCOTUS (Oyez/Lexis/Wiki)",
+ "encoder": "gist-large",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06361557138368264,
+     "nuisance_var_share": 0.0447511437177696,
+     "capture": {
+      "1": 0.03924305534585377,
+      "2": 0.27252150469070696,
+      "3": 0.37290926902189003,
+      "4": 0.38206866644473736,
+      "8": 0.536460552963239,
+      "16": 0.813797752871891,
+      "32": 0.9662777162741362
+     },
+     "rank_90": 20,
+     "rank_99": 86,
+     "ari": {
+      "auto": 0.005175401129604053,
+      "count": 0.03527913499829821,
+      "generous": 0.021985734885253547
+     }
+    }
+   ],
+   "seconds": 3.1
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06371182285240541,
+     "nuisance_var_share": 0.04441033689429172,
+     "capture": {
+      "1": 0.034431253457023615,
+      "2": 0.2564418164233626,
+      "3": 0.37186683805867193,
+      "4": 0.38204967578776344,
+      "8": 0.615370206934935,
+      "16": 0.8143180883177726,
+      "32": 0.9672631987410889
+     },
+     "rank_90": 20,
+     "rank_99": 85,
+     "ari": {
+      "auto": 0.0035651514849321013,
+      "count": 0.031720284484274525,
+      "generous": 0.01680473352028162
+     }
+    }
+   ],
+   "seconds": 2.6
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06391864122255289,
+     "nuisance_var_share": 0.04509664010483941,
+     "capture": {
+      "1": 0.04562995378347041,
+      "2": 0.2510927079698391,
+      "3": 0.36456563044310897,
+      "4": 0.3794950792067692,
+      "8": 0.5125984289123262,
+      "16": 0.8041486805603935,
+      "32": 0.966034756470278
+     },
+     "rank_90": 20,
+     "rank_99": 86,
+     "ari": {
+      "auto": 0.005843308510040425,
+      "count": 0.035824542372134886,
+      "generous": 0.01712298190422433
+     }
+    }
+   ],
+   "seconds": 2.4
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.06374867848621364,
+  "nuisance_var_share": 0.04475270690563358,
+  "rank_90": 20.0,
+  "rank_99": 85.66666666666667,
+  "capture": {
+   "1": 0.0397680875287826,
+   "2": 0.2600186763613029,
+   "3": 0.369780579174557,
+   "4": 0.38120447381309003,
+   "8": 0.5548097296035001,
+   "16": 0.8107548405833525,
+   "32": 0.966525223828501
+  },
+  "ari": {
+   "auto": 0.004861287041525526,
+   "count": 0.03427465395156921,
+   "generous": 0.018637816769919834
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 7506,
+  "n_pairs": 3185,
+  "n_unpaired": 3035,
+  "classes": [
+   "lexis",
+   "oyez",
+   "wiki"
+  ],
+  "class_counts": [
+   3519,
+   2490,
+   1497
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

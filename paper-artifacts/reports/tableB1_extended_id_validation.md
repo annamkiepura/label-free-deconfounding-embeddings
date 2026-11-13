@@ -1,0 +1,496 @@
+# Table B1 (tableB1_extended_id): provenance and layout validation
+
+Build: `python -m paper_assets build tableB1_extended_id`. Reporting only: every value is a saved per-seed metric read through `lib/loaders.Cohort` (no refits, no estimates).
+
+## Cohorts
+
+- swiltra: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_swiltra_e5-small.json`, `id/id_kmeans_swiltra_e5-small.json`
+- swiltra_de_it: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_swiltra_de_it_e5-small.json`, `id/id_kmeans_swiltra_de_it_e5-small.json`
+- swiltra_fr_it: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_swiltra_fr_it_e5-small.json`, `id/id_kmeans_swiltra_fr_it_e5-small.json`
+- swiltra_de_fr_it: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_swiltra_de_fr_it_e5-small.json`, `id/id_kmeans_swiltra_de_fr_it_e5-small.json`
+- fedlex_domestic: cohort `fedlex`, seeds [0, 1, 2, 3, 4]; files `results/fedlex/raw/id/id_fedlex_domestic_e5-small.json`
+- scotus_oyez_lexis: cohort `coverage`, seeds [0, 1, 2, 3, 4]; files `results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json`, `results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json`
+- scotus_oyez_wiki: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_scotus_oyez_wiki_e5-small.json`, `id/id_kmeans_scotus_oyez_wiki_e5-small.json`
+- scotus_wiki_lexis: cohort `id`, seeds [0, 1, 2, 3, 4]; files `id/id_scotus_wiki_lexis_e5-small.json`, `id/id_kmeans_scotus_wiki_lexis_e5-small.json`
+- scotus_oyez_lexis_wiki: cohort `coverage`, seeds [0, 1, 2, 3, 4]; files `results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json`, `results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json`
+- semeval: cohort `id5`, seeds [0, 1, 2, 3, 4]; files `results/extensions/raw/five_seeds/id/id_semeval_e5-small.json`, `results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json`
+- cap: cohort `id5`, seeds [0, 1, 2, 3, 4]; files `results/extensions/raw/five_seeds/id/id_cap_e5-small.json`, `results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json`
+
+SCOTUS/E5-small: the coverage files (`alternatives/alternatives_*`) record linear AUC, MLP AUC, R@1 and R@10 for all five methods, so no metric was taken from another run. The k-means arm is checked equal to the silhouette-K arm of `alternatives/kmeans_count_*`.
+
+## Missing or not recorded
+
+None.
+
+## Agreement with main exhibits
+
+- Compared 12 overlapping cells (same setting, encoder, method, metric, cohort, seeds): 12 identical seed by seed (tolerance 1e-12), 0 mismatches.
+- Not compared, different cohort by design (fig1_rank_composition): swiltra uses `coverage` seeds [0, 1, 2, 3, 4]; swiltra_de_fr_it uses `coverage` seeds [0, 1, 2, 3, 4]
+- Not compared, different cohort by design (table3_mechanism_controls): scotus_oyez_lexis_wiki uses `table3x` seeds [0, 1, 2, 3, 4]; swiltra_de_fr_it uses `table3x` seeds [0, 1, 2, 3, 4]
+
+## Layout
+
+
+## Checks (455 passed)
+
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra/e5-small (id) id/id_swiltra_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR (binary subset) definition
+- swiltra/e5-small (id) id/id_kmeans_swiltra_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR (binary subset) definition
+- swiltra/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- swiltra/e5-small (id) id/id_swiltra_e5-small.json: audit protocol identical to every other column's
+- swiltra/e5-small (id) id/id_swiltra_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra/e5-small (id) id/id_swiltra_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra/e5-small (id) id/id_kmeans_swiltra_e5-small.json: audit protocol identical to every other column's
+- swiltra/e5-small (id) id/id_kmeans_swiltra_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra/e5-small (id) id/id_kmeans_swiltra_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra/e5-small (id): SAE-LEACE recipe is MI top-32
+- swiltra/e5-small (id): every fit erased exactly 32 selected latents
+- swiltra/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- swiltra: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- swiltra: every SCOTUS cell comes from the coverage run (['id/id_kmeans_swiltra_e5-small.json', 'id/id_swiltra_e5-small.json'])
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: every probe AUC used 5 audit folds (metric definitions)
+- id/id_swiltra_de_it_e5-small.json: seeds field equals per-seed records
+- id/id_swiltra_de_it_e5-small.json: no duplicated seed
+- id/id_swiltra_de_it_e5-small.json: AUCs saved without flip adjustment
+- id/id_swiltra_de_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_swiltra_de_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_swiltra_de_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: seeds field equals per-seed records
+- id/id_kmeans_swiltra_de_it_e5-small.json: no duplicated seed
+- id/id_kmeans_swiltra_de_it_e5-small.json: AUCs saved without flip adjustment
+- id/id_kmeans_swiltra_de_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_kmeans_swiltra_de_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_kmeans_swiltra_de_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id:swiltra_de_it/e5-small main~kmeans: config.split identical
+- id:swiltra_de_it/e5-small main~kmeans: config.audit identical
+- id:swiltra_de_it/e5-small main~kmeans: config.selection identical
+- id:swiltra_de_it/e5-small main~kmeans: config.pseudo_groups identical
+- id:swiltra_de_it/e5-small main~kmeans: SAE/eraser recipe identical
+- id:swiltra_de_it/e5-small main~kmeans: corpus statistics identical
+- id:swiltra_de_it/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- swiltra_de_it/e5-small (id) id/id_swiltra_de_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/IT (binary subset) definition
+- swiltra_de_it/e5-small (id) id/id_kmeans_swiltra_de_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/IT (binary subset) definition
+- swiltra_de_it/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- swiltra_de_it/e5-small (id) id/id_swiltra_de_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_de_it/e5-small (id) id/id_swiltra_de_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_de_it/e5-small (id) id/id_swiltra_de_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_de_it/e5-small (id) id/id_kmeans_swiltra_de_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_de_it/e5-small (id) id/id_kmeans_swiltra_de_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_de_it/e5-small (id) id/id_kmeans_swiltra_de_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_de_it/e5-small (id): SAE-LEACE recipe is MI top-32
+- swiltra_de_it/e5-small (id): every fit erased exactly 32 selected latents
+- swiltra_de_it/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- swiltra_de_it: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- swiltra_de_it: every SCOTUS cell comes from the coverage run (['id/id_kmeans_swiltra_de_it_e5-small.json', 'id/id_swiltra_de_it_e5-small.json'])
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_kmeans_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- id/id_swiltra_de_it_e5-small.json: corpus/encoder fields are swiltra_de_it/e5-small
+- swiltra_de_it: every probe AUC used 5 audit folds (metric definitions)
+- id/id_swiltra_fr_it_e5-small.json: seeds field equals per-seed records
+- id/id_swiltra_fr_it_e5-small.json: no duplicated seed
+- id/id_swiltra_fr_it_e5-small.json: AUCs saved without flip adjustment
+- id/id_swiltra_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_swiltra_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_swiltra_fr_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: seeds field equals per-seed records
+- id/id_kmeans_swiltra_fr_it_e5-small.json: no duplicated seed
+- id/id_kmeans_swiltra_fr_it_e5-small.json: AUCs saved without flip adjustment
+- id/id_kmeans_swiltra_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_kmeans_swiltra_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_kmeans_swiltra_fr_it_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id:swiltra_fr_it/e5-small main~kmeans: config.split identical
+- id:swiltra_fr_it/e5-small main~kmeans: config.audit identical
+- id:swiltra_fr_it/e5-small main~kmeans: config.selection identical
+- id:swiltra_fr_it/e5-small main~kmeans: config.pseudo_groups identical
+- id:swiltra_fr_it/e5-small main~kmeans: SAE/eraser recipe identical
+- id:swiltra_fr_it/e5-small main~kmeans: corpus statistics identical
+- id:swiltra_fr_it/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- swiltra_fr_it/e5-small (id) id/id_swiltra_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra FR/IT (binary subset) definition
+- swiltra_fr_it/e5-small (id) id/id_kmeans_swiltra_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra FR/IT (binary subset) definition
+- swiltra_fr_it/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- swiltra_fr_it/e5-small (id) id/id_swiltra_fr_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_fr_it/e5-small (id) id/id_swiltra_fr_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_fr_it/e5-small (id) id/id_swiltra_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_fr_it/e5-small (id) id/id_kmeans_swiltra_fr_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_fr_it/e5-small (id) id/id_kmeans_swiltra_fr_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_fr_it/e5-small (id) id/id_kmeans_swiltra_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_fr_it/e5-small (id): SAE-LEACE recipe is MI top-32
+- swiltra_fr_it/e5-small (id): every fit erased exactly 32 selected latents
+- swiltra_fr_it/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- swiltra_fr_it: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- swiltra_fr_it: every SCOTUS cell comes from the coverage run (['id/id_kmeans_swiltra_fr_it_e5-small.json', 'id/id_swiltra_fr_it_e5-small.json'])
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_kmeans_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- id/id_swiltra_fr_it_e5-small.json: corpus/encoder fields are swiltra_fr_it/e5-small
+- swiltra_fr_it: every probe AUC used 5 audit folds (metric definitions)
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR/IT (3 languages) definition
+- swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus statistics equal the processed SwiLTra DE/FR/IT (3 languages) definition
+- swiltra_de_fr_it/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_de_fr_it/e5-small (id) id/id_swiltra_de_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: audit protocol identical to every other column's
+- swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: R@10 and 21-topic purity definitions
+- swiltra_de_fr_it/e5-small (id) id/id_kmeans_swiltra_de_fr_it_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- swiltra_de_fr_it/e5-small (id): SAE-LEACE recipe is MI top-32
+- swiltra_de_fr_it/e5-small (id): every fit erased exactly 32 selected latents
+- swiltra_de_fr_it/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [3])
+- swiltra_de_fr_it: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- swiltra_de_fr_it: every SCOTUS cell comes from the coverage run (['id/id_kmeans_swiltra_de_fr_it_e5-small.json', 'id/id_swiltra_de_fr_it_e5-small.json'])
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: every probe AUC used 5 audit folds (metric definitions)
+- SwiLTra: one seed set across its 4 settings ([(0, 1, 2, 3, 4)])
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus statistics equal the processed Fedlex DE/FR/IT (3 languages; Swiss domestic federal law) definition
+- fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: computed on exactly the cohort of data/fedlex_domestic_n2784_manifest.csv.gz (2,784 tuples; fingerprint 1b7952b99dc5)
+- fedlex_domestic/e5-small (fedlex): every method uses seeds (0, 1, 2, 3, 4)
+- fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: audit protocol identical to every other column's
+- fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: R@10 and 21-topic purity definitions
+- fedlex_domestic/e5-small (fedlex) results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- fedlex_domestic/e5-small (fedlex): SAE-LEACE recipe is MI top-32
+- fedlex_domestic/e5-small (fedlex): every fit erased exactly 32 selected latents
+- fedlex_domestic/e5-small (fedlex): each fit's K is the training-silhouette maximiser (K chosen: [3])
+- fedlex_domestic: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- fedlex_domestic: every SCOTUS cell comes from the coverage run (['results/fedlex/raw/id/id_fedlex_domestic_e5-small.json'])
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- results/fedlex/raw/id/id_fedlex_domestic_e5-small.json: corpus/encoder fields are fedlex_domestic/e5-small
+- fedlex_domestic: every probe AUC used 5 audit folds (metric definitions)
+- Fedlex: one seed set across its 1 setting ([(0, 1, 2, 3, 4)])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus statistics equal the processed SCOTUS Oyez/Lexis (binary subset) definition
+- scotus_oyez_lexis/e5-small (coverage): every method uses seeds (0, 1, 2, 3, 4)
+- scotus_oyez_lexis/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: audit protocol identical to every other column's
+- scotus_oyez_lexis/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_oyez_lexis/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_oyez_lexis/e5-small (coverage): SAE-LEACE recipe is MI top-32
+- scotus_oyez_lexis/e5-small (coverage): every fit erased exactly 32 selected latents
+- scotus_oyez_lexis/e5-small (coverage): k-means arm equals the silhouette-K arm of results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json
+- scotus_oyez_lexis/e5-small (coverage): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- scotus_oyez_lexis: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: every probe AUC used 5 audit folds (metric definitions)
+- id/id_scotus_oyez_wiki_e5-small.json: seeds field equals per-seed records
+- id/id_scotus_oyez_wiki_e5-small.json: no duplicated seed
+- id/id_scotus_oyez_wiki_e5-small.json: AUCs saved without flip adjustment
+- id/id_scotus_oyez_wiki_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_scotus_oyez_wiki_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_scotus_oyez_wiki_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: seeds field equals per-seed records
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: no duplicated seed
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: AUCs saved without flip adjustment
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id:scotus_oyez_wiki/e5-small main~kmeans: config.split identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: config.audit identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: config.selection identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: config.pseudo_groups identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: SAE/eraser recipe identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: corpus statistics identical
+- id:scotus_oyez_wiki/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- scotus_oyez_wiki/e5-small (id) id/id_scotus_oyez_wiki_e5-small.json: corpus statistics equal the processed SCOTUS Oyez/Wikipedia (binary subset) definition
+- scotus_oyez_wiki/e5-small (id) id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus statistics equal the processed SCOTUS Oyez/Wikipedia (binary subset) definition
+- scotus_oyez_wiki/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- scotus_oyez_wiki/e5-small (id) id/id_scotus_oyez_wiki_e5-small.json: audit protocol identical to every other column's
+- scotus_oyez_wiki/e5-small (id) id/id_scotus_oyez_wiki_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_oyez_wiki/e5-small (id) id/id_scotus_oyez_wiki_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_oyez_wiki/e5-small (id) id/id_kmeans_scotus_oyez_wiki_e5-small.json: audit protocol identical to every other column's
+- scotus_oyez_wiki/e5-small (id) id/id_kmeans_scotus_oyez_wiki_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_oyez_wiki/e5-small (id) id/id_kmeans_scotus_oyez_wiki_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_oyez_wiki/e5-small (id): SAE-LEACE recipe is MI top-32
+- scotus_oyez_wiki/e5-small (id): every fit erased exactly 32 selected latents
+- scotus_oyez_wiki/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- scotus_oyez_wiki: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- scotus_oyez_wiki: every SCOTUS cell comes from the coverage run (['id/id_kmeans_scotus_oyez_wiki_e5-small.json', 'id/id_scotus_oyez_wiki_e5-small.json'])
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_kmeans_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- id/id_scotus_oyez_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_wiki/e5-small
+- scotus_oyez_wiki: every probe AUC used 5 audit folds (metric definitions)
+- id/id_scotus_wiki_lexis_e5-small.json: seeds field equals per-seed records
+- id/id_scotus_wiki_lexis_e5-small.json: no duplicated seed
+- id/id_scotus_wiki_lexis_e5-small.json: AUCs saved without flip adjustment
+- id/id_scotus_wiki_lexis_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_scotus_wiki_lexis_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_scotus_wiki_lexis_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: seeds field equals per-seed records
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: no duplicated seed
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: AUCs saved without flip adjustment
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id:scotus_wiki_lexis/e5-small main~kmeans: config.split identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: config.audit identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: config.selection identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: config.pseudo_groups identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: SAE/eraser recipe identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: corpus statistics identical
+- id:scotus_wiki_lexis/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- scotus_wiki_lexis/e5-small (id) id/id_scotus_wiki_lexis_e5-small.json: corpus statistics equal the processed SCOTUS Lexis/Wikipedia (binary subset) definition
+- scotus_wiki_lexis/e5-small (id) id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus statistics equal the processed SCOTUS Lexis/Wikipedia (binary subset) definition
+- scotus_wiki_lexis/e5-small (id): every method uses seeds (0, 1, 2, 3, 4)
+- scotus_wiki_lexis/e5-small (id) id/id_scotus_wiki_lexis_e5-small.json: audit protocol identical to every other column's
+- scotus_wiki_lexis/e5-small (id) id/id_scotus_wiki_lexis_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_wiki_lexis/e5-small (id) id/id_scotus_wiki_lexis_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_wiki_lexis/e5-small (id) id/id_kmeans_scotus_wiki_lexis_e5-small.json: audit protocol identical to every other column's
+- scotus_wiki_lexis/e5-small (id) id/id_kmeans_scotus_wiki_lexis_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_wiki_lexis/e5-small (id) id/id_kmeans_scotus_wiki_lexis_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_wiki_lexis/e5-small (id): SAE-LEACE recipe is MI top-32
+- scotus_wiki_lexis/e5-small (id): every fit erased exactly 32 selected latents
+- scotus_wiki_lexis/e5-small (id): each fit's K is the training-silhouette maximiser (K chosen: [2])
+- scotus_wiki_lexis: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- scotus_wiki_lexis: every SCOTUS cell comes from the coverage run (['id/id_kmeans_scotus_wiki_lexis_e5-small.json', 'id/id_scotus_wiki_lexis_e5-small.json'])
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_kmeans_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- id/id_scotus_wiki_lexis_e5-small.json: corpus/encoder fields are scotus_wiki_lexis/e5-small
+- scotus_wiki_lexis: every probe AUC used 5 audit folds (metric definitions)
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus statistics equal the processed SCOTUS Oyez/Lexis/Wikipedia (3 sources) definition
+- scotus_oyez_lexis_wiki/e5-small (coverage): every method uses seeds (0, 1, 2, 3, 4)
+- scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: audit protocol identical to every other column's
+- scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: R@10 and 21-topic purity definitions
+- scotus_oyez_lexis_wiki/e5-small (coverage) results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: split policy {'scheme': 'holdout', 'holdout': 0.5, 'folds': 5}
+- scotus_oyez_lexis_wiki/e5-small (coverage): SAE-LEACE recipe is MI top-32
+- scotus_oyez_lexis_wiki/e5-small (coverage): every fit erased exactly 32 selected latents
+- scotus_oyez_lexis_wiki/e5-small (coverage): k-means arm equals the silhouette-K arm of results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json
+- scotus_oyez_lexis_wiki/e5-small (coverage): each fit's K is the training-silhouette maximiser (K chosen: [3])
+- scotus_oyez_lexis_wiki: all 5 methods x 4 metrics use seeds [(0, 1, 2, 3, 4)]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: every probe AUC used 5 audit folds (metric definitions)
+- SCOTUS: one seed set across its 4 settings ([(0, 1, 2, 3, 4)])
+- results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small
+- results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small
+- results/extensions/raw/five_seeds/id/id_kmeans_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small
+- results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small
+- results/extensions/raw/five_seeds/id/id_semeval_e5-small.json: corpus/encoder fields are semeval/e5-small
+- semeval: all methods use seeds [(0, 1, 2, 3, 4)]
+- results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small
+- results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small
+- results/extensions/raw/five_seeds/id/id_kmeans_cap_e5-small.json: corpus/encoder fields are cap/e5-small
+- results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small
+- results/extensions/raw/five_seeds/id/id_cap_e5-small.json: corpus/encoder fields are cap/e5-small
+- cap: all methods use seeds [(0, 1, 2, 3, 4)]
+- SCOTUS Oyez-Lexis and Oyez-Lexis-Wikipedia: every cell comes from the five-seed coverage run (['results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json', 'results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json'])
+- tableB1_extended_id_block: \ref{app:extended-id-metrics} points to another exhibit or its text (shown as B in the preview; the manuscript resolves it)
+- tableB1_extended_id_block: \ref{tab:primary-id} points to another exhibit or its text (shown as 2 in the preview; the manuscript resolves it)
+- tableB1_extended_id_block: every citation and reference resolves
+- tableB1_extended_id_block: the float fits the TACL text block
+- tableB1_extended_id_block: no overfull boxes in the TACL preview
+- 12/12 overlapping cells (same setting, method, metric, cohort and seeds) equal the main exhibits' values seed by seed
+
+## Issues
+
+- **warning** `tacl_style_standin`: writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)
+- **warning** `b1_main_csv_absent`: not compared (CSV not built): ['table2_primary_id', 'fig3_pair_specific_retrieval', 'tab_composition']
+- **warning** `b1_no_preview`: preview not compiled; one-page fit not verified

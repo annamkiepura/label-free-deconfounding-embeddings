@@ -1,0 +1,15 @@
+{
+ "interval": "paired percentile bootstrap, conditional on the frozen maps",
+ "evaluator": "code/ood.py summarize",
+ "n_boot": 10000,
+ "level": 0.95,
+ "bootstrap_seed": 0,
+ "legal": "per query: seed-averaged transformed nDCG@10 minus Raw; queries resampled with one draw per distinct query-id set (AILACasedocs and AILAStatutes share one), reused for every method; task means averaged with equal weight on each resample",
+ "sts": "sentence pairs resampled (one draw, rng seed bootstrap_seed + 1, reused for every method and seed); Spearman recomputed per seed on each resample, averaged over seeds, minus the Raw resample Spearman",
+ "maps": "fitted on each donor's ID training split (revised.run_id), seeds 0-2, frozen; not refit",
+ "reproduction": {
+  "cache_file": "data/figB3_frozen_transfer_rank_reproduction.json",
+  "cache_key_sha256": "a5ef96e99a109b21ca4eedca0466fc66f073878379ae34235ff14802d9d9f4f5",
+  "cached": true
+ }
+}

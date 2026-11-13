@@ -1,0 +1,190 @@
+{
+ "experiment": "geometry",
+ "corpus": "swiltra_de_fr_it",
+ "label": "SwiLTra (de/fr/it)",
+ "encoder": "e5-base",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.0703120868182181,
+     "nuisance_var_share": 0.11117528484526032,
+     "capture": {
+      "1": 0.4979157965052553,
+      "2": 0.995652618522245,
+      "3": 0.9967809369177205,
+      "4": 0.9972870157530709,
+      "8": 0.9985027617927263,
+      "16": 0.9990244620096181,
+      "32": 0.9994015686296069
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.5688510341541937,
+      "count": 0.9971291902261792,
+      "generous": 0.4794096002744009
+     }
+    }
+   ],
+   "seconds": 4.1
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.07017696730554306,
+     "nuisance_var_share": 0.1108566409704627,
+     "capture": {
+      "1": 0.4980398317334383,
+      "2": 0.9960452741114671,
+      "3": 0.9969793667234832,
+      "4": 0.9971510910356071,
+      "8": 0.9983160198187255,
+      "16": 0.9989978039398629,
+      "32": 0.9993293052773553
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.5688510341541937,
+      "count": 0.9971291902261792,
+      "generous": 0.459614637339716
+     }
+    }
+   ],
+   "seconds": 4.1
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.0702186030816241,
+     "nuisance_var_share": 0.11087905742118391,
+     "capture": {
+      "1": 0.498051283848213,
+      "2": 0.9959961360472296,
+      "3": 0.9969822892125962,
+      "4": 0.9970247053569998,
+      "8": 0.998381478690292,
+      "16": 0.9990556388133476,
+      "32": 0.9993695023005584
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.5700802435761918,
+      "count": 0.9971276412280998,
+      "generous": 0.5174858242332859
+     }
+    }
+   ],
+   "seconds": 4.7
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.07023588573512841,
+  "nuisance_var_share": 0.11097032774563564,
+  "rank_90": 2.0,
+  "rank_99": 2.0,
+  "capture": {
+   "1": 0.4980023040289689,
+   "2": 0.9958980095603138,
+   "3": 0.9969141976179333,
+   "4": 0.997154270715226,
+   "8": 0.9984000867672479,
+   "16": 0.9990259682542763,
+   "32": 0.9993667920691736
+  },
+  "ari": {
+   "auto": 0.569260770628193,
+   "count": 0.997128673893486,
+   "generous": 0.4855033539491343
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 8352,
+  "n_pairs": 8352,
+  "n_unpaired": 0,
+  "classes": [
+   "de",
+   "fr",
+   "it"
+  ],
+  "class_counts": [
+   2784,
+   2784,
+   2784
+  ],
+  "confounder": "language"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

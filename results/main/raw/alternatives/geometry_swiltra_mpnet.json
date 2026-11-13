@@ -1,0 +1,188 @@
+{
+ "experiment": "geometry",
+ "corpus": "swiltra",
+ "label": "SwiLTra (de/fr)",
+ "encoder": "mpnet",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.11119589090289451,
+     "nuisance_var_share": 0.11024130698497221,
+     "capture": {
+      "1": 0.9893443835435975,
+      "2": 0.9903279284241556,
+      "3": 0.9908846004870093,
+      "4": 0.9956424950618934,
+      "8": 0.9978527174848159,
+      "16": 0.9985355304336814,
+      "32": 0.9994053765140838
+     },
+     "rank_90": 1,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.978556689963361,
+      "count": 0.978556689963361,
+      "generous": 0.33085623906583067
+     }
+    }
+   ],
+   "seconds": 4.7
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.11216666257680818,
+     "nuisance_var_share": 0.11130728782988145,
+     "capture": {
+      "1": 0.9905320878003758,
+      "2": 0.9915026390561176,
+      "3": 0.9923354762353834,
+      "4": 0.9964990017152827,
+      "8": 0.9979901315200879,
+      "16": 0.9986404467946227,
+      "32": 0.9993046064304001
+     },
+     "rank_90": 1,
+     "rank_99": 1,
+     "ari": {
+      "auto": 0.9814023749259697,
+      "count": 0.9814023749259697,
+      "generous": 0.2790829592472586
+     }
+    }
+   ],
+   "seconds": 3.0
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.11241587444376205,
+     "nuisance_var_share": 0.11137984788767923,
+     "capture": {
+      "1": 0.988512347388582,
+      "2": 0.9901141790844007,
+      "3": 0.9901890218895002,
+      "4": 0.9954587130424544,
+      "8": 0.9979499299129584,
+      "16": 0.9982360661167166,
+      "32": 0.9993808893013899
+     },
+     "rank_90": 1,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.9828267662166587,
+      "count": 0.9828267662166587,
+      "generous": 0.2695275241094616
+     }
+    }
+   ],
+   "seconds": 3.0
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.11192614264115491,
+  "nuisance_var_share": 0.11097614756751097,
+  "rank_90": 1.0,
+  "rank_99": 1.6666666666666667,
+  "capture": {
+   "1": 0.9894629395775185,
+   "2": 0.9906482488548912,
+   "3": 0.9911363662039644,
+   "4": 0.9958667366065436,
+   "8": 0.997930926305954,
+   "16": 0.9984706811150068,
+   "32": 0.9993636240819579
+  },
+  "ari": {
+   "auto": 0.9809286103686632,
+   "count": 0.9809286103686632,
+   "generous": 0.2931555741408503
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 5568,
+  "n_pairs": 2784,
+  "n_unpaired": 0,
+  "classes": [
+   "de",
+   "fr"
+  ],
+  "class_counts": [
+   2784,
+   2784
+  ],
+  "confounder": "language"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

@@ -1,0 +1,188 @@
+{
+ "experiment": "geometry",
+ "corpus": "swiltra",
+ "label": "SwiLTra (de/fr)",
+ "encoder": "nomic-v2",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.039480985740766986,
+     "nuisance_var_share": 0.038918918456380666,
+     "capture": {
+      "1": 0.9649260561732727,
+      "2": 0.9705048404545245,
+      "3": 0.985475536495244,
+      "4": 0.9902612252587769,
+      "8": 0.9961022854178031,
+      "16": 0.9968552601699633,
+      "32": 0.9981045068171404
+     },
+     "rank_90": 1,
+     "rank_99": 4,
+     "ari": {
+      "auto": 0.9814023750915708,
+      "count": 0.9814023750915708,
+      "generous": 0.25054089843601274
+     }
+    }
+   ],
+   "seconds": 3.0
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.03977477583316611,
+     "nuisance_var_share": 0.03926254193997201,
+     "capture": {
+      "1": 0.9713345525193814,
+      "2": 0.9760039426522384,
+      "3": 0.9852333540274728,
+      "4": 0.9885065929940611,
+      "8": 0.9956102657187218,
+      "16": 0.9970702003667926,
+      "32": 0.9979788653477915
+     },
+     "rank_90": 1,
+     "rank_99": 6,
+     "ari": {
+      "auto": 0.9885346568103522,
+      "count": 0.9885346568103522,
+      "generous": 0.26183268576340857
+     }
+    }
+   ],
+   "seconds": 5.2
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.03957760392047411,
+     "nuisance_var_share": 0.03904889955785695,
+     "capture": {
+      "1": 0.969891658042341,
+      "2": 0.9755316538316471,
+      "3": 0.9817772202763821,
+      "4": 0.989627271339188,
+      "8": 0.9957667225362377,
+      "16": 0.9968233645574303,
+      "32": 0.9977603389949592
+     },
+     "rank_90": 1,
+     "rank_99": 6,
+     "ari": {
+      "auto": 0.9842521900788036,
+      "count": 0.9842521900788036,
+      "generous": 0.25801918737480095
+     }
+    }
+   ],
+   "seconds": 3.0
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.039611121831469066,
+  "nuisance_var_share": 0.03907678665140321,
+  "rank_90": 1.0,
+  "rank_99": 5.333333333333333,
+  "capture": {
+   "1": 0.9687174222449983,
+   "2": 0.97401347897947,
+   "3": 0.9841620369330331,
+   "4": 0.9894650298640086,
+   "8": 0.9958264245575875,
+   "16": 0.9969162750313952,
+   "32": 0.9979479037199637
+  },
+  "ari": {
+   "auto": 0.9847297406602422,
+   "count": 0.9847297406602422,
+   "generous": 0.25679759052474077
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 5568,
+  "n_pairs": 2784,
+  "n_unpaired": 0,
+  "classes": [
+   "de",
+   "fr"
+  ],
+  "class_counts": [
+   2784,
+   2784
+  ],
+  "confounder": "language"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

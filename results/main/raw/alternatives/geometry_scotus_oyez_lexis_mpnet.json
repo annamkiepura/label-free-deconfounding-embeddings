@@ -1,0 +1,189 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis",
+ "label": "SCOTUS (Oyez/Lexis)",
+ "encoder": "mpnet",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 5,
+     "pc1_var_share": 0.07177713367813272,
+     "nuisance_var_share": 0.030644981874556425,
+     "capture": {
+      "1": 0.053210500514177306,
+      "2": 0.3637917014298114,
+      "3": 0.36450719571140716,
+      "4": 0.370212405804588,
+      "8": 0.8244540082531104,
+      "16": 0.909689140072799,
+      "32": 0.9734356041105886
+     },
+     "rank_90": 15,
+     "rank_99": 71,
+     "ari": {
+      "auto": 0.008348447510983245,
+      "count": 0.0028521292144072273,
+      "generous": 0.0062542377986049835
+     }
+    }
+   ],
+   "seconds": 2.6
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 4,
+     "pc1_var_share": 0.07101639457695544,
+     "nuisance_var_share": 0.029466163455262793,
+     "capture": {
+      "1": 0.03845247828781993,
+      "2": 0.33554613618368057,
+      "3": 0.3368307831724441,
+      "4": 0.33707714710730735,
+      "8": 0.8004697608726953,
+      "16": 0.9063324378478685,
+      "32": 0.9687400033810069
+     },
+     "rank_90": 16,
+     "rank_99": 72,
+     "ari": {
+      "auto": 0.009179870941253034,
+      "count": 0.002013131183235315,
+      "generous": 0.003709733548622014
+     }
+    }
+   ],
+   "seconds": 2.7
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 4,
+     "pc1_var_share": 0.07284719814472093,
+     "nuisance_var_share": 0.03030886393756723,
+     "capture": {
+      "1": 0.04241876542065101,
+      "2": 0.31833822681918755,
+      "3": 0.32093343219917403,
+      "4": 0.3240507365642507,
+      "8": 0.8454752516385216,
+      "16": 0.8877027195044855,
+      "32": 0.9706436269532243
+     },
+     "rank_90": 17,
+     "rank_99": 66,
+     "ari": {
+      "auto": 0.008827285761638872,
+      "count": 0.0010749093662441212,
+      "generous": 0.007027003218563707
+     }
+    }
+   ],
+   "seconds": 2.6
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.0718802421332697,
+  "nuisance_var_share": 0.030140003089128814,
+  "rank_90": 16.0,
+  "rank_99": 69.66666666666667,
+  "capture": {
+   "1": 0.044693914740882745,
+   "2": 0.33922535481089316,
+   "3": 0.3407571370276751,
+   "4": 0.3437800964920487,
+   "8": 0.8234663402547757,
+   "16": 0.9012414324750511,
+   "32": 0.9709397448149399
+  },
+  "ari": {
+   "auto": 0.00878520140462505,
+   "count": 0.001980056587962221,
+   "generous": 0.005663658188596901
+  },
+  "k_auto": [
+   4,
+   5
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 4101,
+  "n_pairs": 1017,
+  "n_unpaired": 2067,
+  "classes": [
+   "lexis",
+   "oyez"
+  ],
+  "class_counts": [
+   2034,
+   2067
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

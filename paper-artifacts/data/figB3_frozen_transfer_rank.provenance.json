@@ -1,0 +1,3039 @@
+{
+ "exhibit": "figB3_frozen_transfer_rank",
+ "kind": "figure",
+ "title": "Frozen transfer and erasure-rank sensitivity",
+ "build_command": "python paper-artifacts/build.py figB3_frozen_transfer_rank",
+ "generated_utc": "2026-10-26T18:48:35+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "Frozen transfer and erasure-rank sensitivity. Every map is fitted once on the donor's in-distribution training split (fitting seeds 0--4) and applied unchanged to the MTEB targets; nothing is refitted on a target. (A) Change from Raw in the equal-weight mean nDCG@10 over the five legal retrieval tasks (AILACasedocs, AILAStatutes, LegalBenchConsumerContractsQA, LegalBenchCorporateLobbying, LegalSummarization); (B) change in STSBenchmark cosine Spearman. Donors are the primary settings: CAP (three sources), three-source SCOTUS and three-language SwiLTra with E5-small, and CAP and three-source SCOTUS with MiniLM. Points are changes in the seed-averaged score; bars are paired 95\\% percentile bootstrap intervals (10{,}000 resamples, conditional on the frozen maps). The same resampled queries or sentence pairs serve every method and seed; the two AILA tasks share their 50 queries and are resampled jointly by query ID; STS Spearman is recomputed for each seed within every resample and then averaged over seeds. (C) Original-donor rank sweeps: legal macro change against the number $r$ of removed principal components, for the original donors CAP, binary SCOTUS Oyez--Lexis and binary SwiLTra DE--FR (not the three-class settings of A--B), at the evaluated ranks only, with the same paired bootstrap intervals. $k$-means LEACE uses the training-silhouette $K$; SAE-LEACE $N{=}32$; only Metadata-LEACE uses confounder labels. Displacement-matched PCA removes the fewest leading principal components whose displacement of the donor's training embeddings reaches that seed's SAE-LEACE map (ranks: E5-small CAP 20--21, SCOTUS 22, SwiLTra 22--23; MiniLM CAP 18--19, SCOTUS 20). An interval that includes zero does not show that a method is harmless or equivalent to Raw.",
+ "settings_and_seeds": {},
+ "sources": {
+  "ood/ood_e5-small_cap.json": {
+   "sha256": "ed5186373151868b72c4cb322b6709626d98395bf328c784fd40c6d6d84d1edf",
+   "bytes": 588393,
+   "run_id": "ood/ood_e5-small_cap.json@ed5186373151",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_scotus_oyez_lexis_wiki.json": {
+   "sha256": "a828cc98034b51b597873f2d909deb68507375b0bd0006d6e1a7d150d3a66abd",
+   "bytes": 588128,
+   "run_id": "ood/ood_e5-small_scotus_oyez_lexis_wiki.json@a828cc98034b",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_swiltra_de_fr_it.json": {
+   "sha256": "816e622be73c5058a96180c884bf7b86f7f5c82bbde0046c0904ef9df3d66a19",
+   "bytes": 588280,
+   "run_id": "ood/ood_e5-small_swiltra_de_fr_it.json@816e622be73c",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr/it)",
+   "fit_on": "train"
+  },
+  "ood/ood_mini_cap.json": {
+   "sha256": "edb3d5f966185502cbddedb55085ddaf8baa198a046cdad3cc193f49bfda0f38",
+   "bytes": 594257,
+   "run_id": "ood/ood_mini_cap.json@edb3d5f96618",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "ood/ood_mini_scotus_oyez_lexis_wiki.json": {
+   "sha256": "2fa727cbd1f70b0926546df3b2fd094a83dc553f62a678e01bad3b9627770901",
+   "bytes": 596062,
+   "run_id": "ood/ood_mini_scotus_oyez_lexis_wiki.json@2fa727cbd1f7",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json": {
+   "sha256": "1145b51c7f9f5ea05b3d8b90cdca3a389c48d2132d2da53e259fa8faaed3df59",
+   "bytes": 1209326,
+   "run_id": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json@1145b51c7f9f",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "metadata_leace",
+     "sae_leace"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    },
+    "matched_pca": "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_cap.json"
+   }
+  },
+  "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json": {
+   "sha256": "4f1b3c6494ac2093a0c4aed930998d35006d6d2ee76260a049c0f400f9e6856c",
+   "bytes": 1210849,
+   "run_id": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json@4f1b3c6494ac",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "metadata_leace",
+     "sae_leace"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    },
+    "matched_pca": "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_scotus_oyez_lexis_wiki.json"
+   }
+  },
+  "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json": {
+   "sha256": "bb542d266db3d0e495d62e8420483d0a0a0bb34d54322432415828b9c39aa122",
+   "bytes": 1210268,
+   "run_id": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json@bb542d266db3",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SwiLTra (de/fr/it)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "metadata_leace",
+     "sae_leace"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    },
+    "matched_pca": "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_swiltra_de_fr_it.json"
+   }
+  },
+  "paper-artifacts/derived/ood/ood_primary_mini_cap.json": {
+   "sha256": "4395bec85bf7f225b1a7baa28970e850c913d95630c1fb2eed70e363f528479c",
+   "bytes": 1223785,
+   "run_id": "paper-artifacts/derived/ood/ood_primary_mini_cap.json@4395bec85bf7",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "metadata_leace",
+     "sae_leace"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+     },
+     "seeds_3_4": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    },
+    "matched_pca": "results/extensions/raw/five_seeds/alternatives/ood_ranks_mini_cap.json"
+   }
+  },
+  "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json": {
+   "sha256": "6be43b7a1c127dbb81747f59b13b602d7cde1a92231f8ed6fc313cb18f0bf239",
+   "bytes": 1227126,
+   "run_id": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json@6be43b7a1c12",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "metadata_leace",
+     "sae_leace"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+     },
+     "seeds_3_4": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    },
+    "matched_pca": "results/extensions/raw/five_seeds/alternatives/ood_ranks_mini_scotus_oyez_lexis_wiki.json"
+   }
+  },
+  "paper-artifacts/derived/ood/ood_ranks_e5-small_cap.json": {
+   "sha256": "753f55e90dc488505d1c25d6124ff18cfbd686554a1a460f17f227bf6fae5332",
+   "bytes": 2059166,
+   "run_id": "paper-artifacts/derived/ood/ood_ranks_e5-small_cap.json@753f55e90dc4",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "pca_top2",
+     "pca_top3",
+     "pca_top4",
+     "pca_top8",
+     "pca_top16",
+     "pca_top32"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 1.1e-16)",
+    "sources": [
+     "results/main/raw/alternatives/ood_ranks_e5-small_cap.json",
+     "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_cap.json"
+    ]
+   }
+  },
+  "paper-artifacts/derived/ood/ood_ranks_e5-small_scotus_oyez_lexis.json": {
+   "sha256": "69ca7f4ff27acd5e8f732faa92fe629315f7d85c0abe8c2cbc825a5871bf372c",
+   "bytes": 2059596,
+   "run_id": "paper-artifacts/derived/ood/ood_ranks_e5-small_scotus_oyez_lexis.json@69ca7f4ff27a",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "pca_top2",
+     "pca_top3",
+     "pca_top4",
+     "pca_top8",
+     "pca_top16",
+     "pca_top32"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 1.1e-16)",
+    "sources": [
+     "results/main/raw/alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json",
+     "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json"
+    ]
+   }
+  },
+  "paper-artifacts/derived/ood/ood_ranks_e5-small_swiltra.json": {
+   "sha256": "0f1aa9bfea8beee51cd7a64ea864f6a74eb352468d1fd8c54ebc31fffe8140c6",
+   "bytes": 2059061,
+   "run_id": "paper-artifacts/derived/ood/ood_ranks_e5-small_swiltra.json@0f1aa9bfea8b",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "swiltra",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SwiLTra (de/fr)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "pca_top2",
+     "pca_top3",
+     "pca_top4",
+     "pca_top8",
+     "pca_top16",
+     "pca_top32"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 1.1e-16)",
+    "sources": [
+     "results/main/raw/alternatives/ood_ranks_e5-small_swiltra.json",
+     "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_swiltra.json"
+    ]
+   }
+  },
+  "paper-artifacts/derived/ood/ood_ranks_mini_cap.json": {
+   "sha256": "db1760f68057f0f225ed5eb56cac8fa87d9bf2a49082b79cafcebe02c0876da4",
+   "bytes": 2081780,
+   "run_id": "paper-artifacts/derived/ood/ood_ranks_mini_cap.json@db1760f68057",
+   "experiment": "ood_ranks",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "pca_top2",
+     "pca_top3",
+     "pca_top4",
+     "pca_top8",
+     "pca_top16",
+     "pca_top32"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 2.2e-16)",
+    "sources": [
+     "results/main/raw/alternatives/ood_ranks_mini_cap.json",
+     "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_mini_cap.json"
+    ]
+   }
+  },
+  "paper-artifacts/derived/ood/ood_ranks_mini_scotus_oyez_lexis.json": {
+   "sha256": "8b4a74e8e504bdb2e7b135b527905e8c61c26f4348b01fd1d1e1f5d36c62e31d",
+   "bytes": 2086130,
+   "run_id": "paper-artifacts/derived/ood/ood_ranks_mini_scotus_oyez_lexis.json@8b4a74e8e504",
+   "experiment": "ood_ranks",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "pca_top1",
+     "pca_top2",
+     "pca_top3",
+     "pca_top4",
+     "pca_top8",
+     "pca_top16",
+     "pca_top32"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 2.2e-16)",
+    "sources": [
+     "results/main/raw/alternatives/ood_ranks_mini_scotus_oyez_lexis.json",
+     "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_mini_scotus_oyez_lexis.json"
+    ]
+   }
+  },
+  "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json": {
+   "sha256": "ef652224ad3c6da9687389a3b2b980739580afd08ac264f76d9711375fa5f5c6",
+   "bytes": 93047,
+   "run_id": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json@ef652224ad3c",
+   "experiment": "ood_summary"
+  },
+  "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json": {
+   "sha256": "e4dc0909b2b30b37532ee1c34bdb9c803337e061596a043240a646e1ea5dd4d0",
+   "bytes": 123904,
+   "run_id": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json@e4dc0909b2b3",
+   "experiment": "ood_summary"
+  },
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json": {
+   "sha256": "853a359deb4d530cde8c84d6e86f86d25a2ae53b200ed7e48f9cde9a6d342746",
+   "bytes": 929606,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json@853a359deb4d",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "kmeans_auto",
+     "kmeans_count",
+     "kmeans_generous"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    }
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json": {
+   "sha256": "dd7753af982a4593505d13bb6f13b6b77d04e4298a320e07e5f426790801a9a7",
+   "bytes": 645610,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json@dd7753af982a",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "kmeans_auto",
+     "kmeans_count"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    }
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json": {
+   "sha256": "e775db630b23c1fabe16247904903c21a0b864a8a3c8992d34fbd9d752f20568",
+   "bytes": 646853,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json@e775db630b23",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SwiLTra (de/fr/it)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "kmeans_auto",
+     "kmeans_count"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+     },
+     "seeds_3_4": {
+      "model": "intfloat/multilingual-e5-small",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    }
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json": {
+   "sha256": "d79e7f6da967fb8879ac77796dadc63a43504019c04549e6d0d568d554e93995",
+   "bytes": 938781,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json@d79e7f6da967",
+   "experiment": "ood_kmeans",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "kmeans_auto",
+     "kmeans_count",
+     "kmeans_generous"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+     },
+     "seeds_3_4": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    }
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json": {
+   "sha256": "1ed652f18a26b3331dda8373b10ca52404c781e1793f3a2b2ba70b0807648c41",
+   "bytes": 655495,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json@1ed652f18a26",
+   "experiment": "ood_kmeans",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "transforms": [
+     "kmeans_auto",
+     "kmeans_count"
+    ],
+    "raw": "the published batch's (largest difference to the other batch: 0.0e+00)",
+    "encoder_model": {
+     "seeds_0_1_2": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+     },
+     "seeds_3_4": {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+     },
+     "note": "one batch saved no encoder commit; the batches' Raw scores agree, so they scored the same target embeddings"
+    }
+   }
+  },
+  "results/extensions/raw/transfer_matched/transfer_matched_five.json": {
+   "sha256": "1c6848327dc1e484f045a2aefa7dce5911f72ab7458fff77d099918beba55912",
+   "bytes": 64653,
+   "run_id": "results/extensions/raw/transfer_matched/transfer_matched_five.json@1c6848327dc1",
+   "seeds": {
+    "e5-small/cap": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "e5-small/scotus_oyez_lexis_wiki": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "e5-small/swiltra_de_fr_it": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "mini/cap": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "mini/scotus_oyez_lexis_wiki": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  }
+ },
+ "notes": [
+  "figure size 6.299 x 6.000 in (declared width = manuscript width)"
+ ],
+ "checks_passed": 434,
+ "checks": [
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/cap: donor has 3 classes (CAP)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/cap: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap pca_top1: legal-macro change recomputed from per-query records (+0.001799)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap pca_top1 legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap pca_top1 STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/cap pca_top1: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap kmeans_leace: legal-macro change recomputed from per-query records (+0.001748)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap kmeans_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap kmeans_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/cap kmeans_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap metadata_leace: legal-macro change recomputed from per-query records (+0.004017)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap metadata_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap metadata_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/cap metadata_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap sae_leace: legal-macro change recomputed from per-query records (-0.009341)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap sae_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap sae_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/cap sae_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_cap.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/cap pca_matched_var: legal-macro change recomputed from per-query records (-0.005701)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap pca_matched_var legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap pca_matched_var STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/cap pca_matched_var: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/scotus_oyez_lexis_wiki: donor has 3 classes (SCOTUS (3 sources))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/scotus_oyez_lexis_wiki: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki pca_top1: legal-macro change recomputed from per-query records (-0.000295)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_top1 legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_top1 STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_top1: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki kmeans_leace: legal-macro change recomputed from per-query records (+0.000567)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki kmeans_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki kmeans_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki kmeans_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki metadata_leace: legal-macro change recomputed from per-query records (-0.000125)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki metadata_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki metadata_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki metadata_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki sae_leace: legal-macro change recomputed from per-query records (-0.009445)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki sae_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki sae_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki sae_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/scotus_oyez_lexis_wiki pca_matched_var: legal-macro change recomputed from per-query records (-0.012017)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_matched_var legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_matched_var STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_matched_var: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/swiltra_de_fr_it: donor has 3 classes (SwiLTra (3 languages))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/swiltra_de_fr_it: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's ['eba6fc84ce', 'fbb2240430', '4933d049ff', 'b7ecf30998', '1ccaa91ee4']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it pca_top1: legal-macro change recomputed from per-query records (-0.000896)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it pca_top1 legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it pca_top1 STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_top1: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's ['eba6fc84ce', 'fbb2240430', '4933d049ff', 'b7ecf30998', '1ccaa91ee4']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it kmeans_leace: legal-macro change recomputed from per-query records (-0.000321)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it kmeans_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it kmeans_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/swiltra_de_fr_it kmeans_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's ['eba6fc84ce', 'fbb2240430', '4933d049ff', 'b7ecf30998', '1ccaa91ee4']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it metadata_leace: legal-macro change recomputed from per-query records (-0.000321)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it metadata_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it metadata_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/swiltra_de_fr_it metadata_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's ['eba6fc84ce', 'fbb2240430', '4933d049ff', 'b7ecf30998', '1ccaa91ee4']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it sae_leace: legal-macro change recomputed from per-query records (-0.007396)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it sae_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it sae_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/swiltra_de_fr_it sae_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json: donor split fingerprints equal the summary's ['eba6fc84ce', 'fbb2240430', '4933d049ff', 'b7ecf30998', '1ccaa91ee4']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILACasedocs: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json AILAStatutes: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_e5-small_swiltra_de_fr_it.json LegalSummarization: same query ids and raw scores as ood/ood_e5-small_swiltra_de_fr_it.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json e5-small/swiltra_de_fr_it pca_matched_var: legal-macro change recomputed from per-query records (-0.007769)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it pca_matched_var legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra_de_fr_it pca_matched_var STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_matched_var: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "mini/cap: donor has 3 classes (CAP)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "mini/cap: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILACasedocs: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILAStatutes: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalSummarization: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap pca_top1: legal-macro change recomputed from per-query records (-0.001519)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap pca_top1 legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap pca_top1 STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/cap pca_top1: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json AILACasedocs: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json AILAStatutes: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json LegalSummarization: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap kmeans_leace: legal-macro change recomputed from per-query records (-0.000377)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap kmeans_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap kmeans_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/cap kmeans_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILACasedocs: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILAStatutes: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalSummarization: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap metadata_leace: legal-macro change recomputed from per-query records (-0.002447)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap metadata_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap metadata_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/cap metadata_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILACasedocs: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILAStatutes: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalSummarization: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap sae_leace: legal-macro change recomputed from per-query records (-0.019458)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap sae_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap sae_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/cap sae_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json: donor split fingerprints equal the summary's ['9bb1882d89', '2ef8fc5b56', 'ef4e3dce59', 'df9bc9767e', '365bcd6f71']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILACasedocs: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json AILAStatutes: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_cap.json LegalSummarization: same query ids and raw scores as ood/ood_mini_cap.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/cap pca_matched_var: legal-macro change recomputed from per-query records (-0.017030)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap pca_matched_var legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap pca_matched_var STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/cap pca_matched_var: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "mini/scotus_oyez_lexis_wiki: donor has 3 classes (SCOTUS (3 sources))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "mini/scotus_oyez_lexis_wiki: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki pca_top1: legal-macro change recomputed from per-query records (-0.002996)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki pca_top1 legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki pca_top1 STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_top1: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json: seeds field equals per-seed records",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json: no duplicated seed",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki kmeans_leace: legal-macro change recomputed from per-query records (-0.001906)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki kmeans_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki kmeans_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/scotus_oyez_lexis_wiki kmeans_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki metadata_leace: legal-macro change recomputed from per-query records (+0.005131)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki metadata_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki metadata_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/scotus_oyez_lexis_wiki metadata_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki sae_leace: legal-macro change recomputed from per-query records (-0.017751)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki sae_leace legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki sae_leace STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/scotus_oyez_lexis_wiki sae_leace: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json: donor split fingerprints equal the summary's ['992a84d7c9', 'a884540068', 'ac2c2f3ca7', '0658791625', '24a5d3f8d1']",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILACasedocs: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json AILAStatutes: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchConsumerContractsQA: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalBenchCorporateLobbying: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_raw_identical",
+   "message": "paper-artifacts/derived/ood/ood_primary_mini_scotus_oyez_lexis_wiki.json LegalSummarization: same query ids and raw scores as ood/ood_mini_scotus_oyez_lexis_wiki.json",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "ood_delta_recomputed",
+   "message": "paper-artifacts/derived/ood/ood_summary_primary_five_seeds.json mini/scotus_oyez_lexis_wiki pca_matched_var: legal-macro change recomputed from per-query records (-0.016132)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki pca_matched_var legal_macro: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis_wiki pca_matched_var STSBenchmark: saved change and 95% interval reproduced from the per-query outputs with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_sts_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_matched_var: STS change = mean seed Spearman - Raw",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json e5-small/cap: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/cap: donor has 3 classes (CAP)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/cap: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_cap.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_cap.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_cap.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_evaluated_ranks",
+   "message": "e5-small/cap: plotted ranks [1, 2, 3, 4, 8, 16, 32] are exactly the evaluated ones (rank 1 from the plan run, the rest from the rank-sweep run)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-1 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-2 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-3 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-4 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-8 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-16 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/cap PCA-32 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json e5-small/scotus_oyez_lexis: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/scotus_oyez_lexis: donor has 2 classes (SCOTUS Oyez\u2013Lexis (binary))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/scotus_oyez_lexis: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_scotus_oyez_lexis.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_scotus_oyez_lexis.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_scotus_oyez_lexis.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_evaluated_ranks",
+   "message": "e5-small/scotus_oyez_lexis: plotted ranks [1, 2, 3, 4, 8, 16, 32] are exactly the evaluated ones (rank 1 from the plan run, the rest from the rank-sweep run)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-1 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-2 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-3 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-4 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-8 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-16 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/scotus_oyez_lexis PCA-32 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json e5-small/swiltra: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "e5-small/swiltra: donor has 2 classes (SwiLTra DE\u2013FR (binary))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "e5-small/swiltra: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_swiltra.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_swiltra.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_ranks_e5-small_swiltra.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_evaluated_ranks",
+   "message": "e5-small/swiltra: plotted ranks [1, 2, 3, 4, 8, 16, 32] are exactly the evaluated ones (rank 1 from the plan run, the rest from the rank-sweep run)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-1 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-2 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-3 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-4 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-8 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-16 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "e5-small/swiltra PCA-32 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json mini/cap: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "mini/cap: donor has 3 classes (CAP)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "mini/cap: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_cap.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_cap.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_cap.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_evaluated_ranks",
+   "message": "mini/cap: plotted ranks [1, 2, 3, 4, 8, 16, 32] are exactly the evaluated ones (rank 1 from the plan run, the rest from the rank-sweep run)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-1 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-2 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-3 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-4 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-8 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-16 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/cap PCA-32 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_bootstrap_spec",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json: paired bootstrap, 10000 resamples, level 0.95, seed 0",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_frozen_maps",
+   "message": "paper-artifacts/derived/ood/ood_summary_ranks_five_seeds.json mini/scotus_oyez_lexis: maps fitted on the donor's ID training split, seeds 0-4, then frozen",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_donor_version",
+   "message": "mini/scotus_oyez_lexis: donor has 2 classes (SCOTUS Oyez\u2013Lexis (binary))",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_targets",
+   "message": "mini/scotus_oyez_lexis: five legal retrieval tasks ['AILACasedocs', 'AILAStatutes', 'LegalBenchConsumerContractsQA', 'LegalBenchCorporateLobbying', 'LegalSummarization'] and STSBenchmark",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_aila_joint",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_scotus_oyez_lexis.json: AILACasedocs and AILAStatutes share the same 50 query ids in the same order, so the evaluator draws one joint resample for both",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_split_ids",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_scotus_oyez_lexis.json: donor split fingerprints equal the summary's",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_five_seed_merge",
+   "message": "paper-artifacts/derived/ood/ood_ranks_mini_scotus_oyez_lexis.json: seeds 0-2 and 3-4 merged",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_evaluated_ranks",
+   "message": "mini/scotus_oyez_lexis: plotted ranks [1, 2, 3, 4, 8, 16, 32] are exactly the evaluated ones (rank 1 from the plan run, the rest from the rank-sweep run)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-1 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-2 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-3 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-4 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-8 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-16 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_interval_reproduced",
+   "message": "mini/scotus_oyez_lexis PCA-32 legal macro: saved change and 95% interval reproduced with ood.summarize",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "figure_font_size",
+   "message": "figB3_frozen_transfer_rank: smallest font 6.8 pt >= 6.5 pt",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "figure_no_clipping",
+   "message": "figB3_frozen_transfer_rank: no text outside the canvas",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_seeds",
+   "message": "results/extensions/raw/transfer_matched/transfer_matched_five.json: every donor's maps are those of seeds 0-4",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap pca_top1 legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap pca_top1 STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap kmeans_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap kmeans_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap metadata_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap metadata_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap sae_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap sae_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap pca_matched_var legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/cap pca_matched_var STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_top1 legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_top1 STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki kmeans_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki kmeans_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki metadata_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki metadata_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki sae_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki sae_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_matched_var legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/scotus_oyez_lexis_wiki pca_matched_var STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_top1 legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_top1 STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it kmeans_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it kmeans_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it metadata_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it metadata_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it sae_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it sae_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_matched_var legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "e5-small/swiltra_de_fr_it pca_matched_var STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap pca_top1 legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap pca_top1 STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap kmeans_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap kmeans_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap metadata_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap metadata_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap sae_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap sae_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap pca_matched_var legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/cap pca_matched_var STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_top1 legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_top1 STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki kmeans_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki kmeans_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki metadata_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki metadata_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki sae_leace legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki sae_leace STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_matched_var legal_macro: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "transfer_delta",
+   "message": "mini/scotus_oyez_lexis_wiki pca_matched_var STSBenchmark: the change is the mean of the five fitted maps' changes",
+   "exhibit": "figB3_frozen_transfer_rank"
+  },
+  {
+   "code": "b3_matches_saved_transfer",
+   "message": "results/extensions/raw/transfer_matched/transfer_matched_five.json: its changes and bootstrap intervals for the five maps, donors and both targets equal the figure's (largest difference 0.0e+00)",
+   "exhibit": "figB3_frozen_transfer_rank"
+  }
+ ],
+ "issues": [],
+ "cells": [],
+ "outputs": [
+  "data/figB3_frozen_transfer_rank_interval_metadata.json",
+  "data/figB3_frozen_transfer_rank_panel_c.csv",
+  "data/figB3_frozen_transfer_rank_panels_ab.csv",
+  "data/figB3_frozen_transfer_rank_reproduction.json",
+  "data/figB3_frozen_transfer_rank_seed_signs.csv",
+  "figures/figB3_frozen_transfer_rank.include.tex",
+  "figures/figB3_frozen_transfer_rank.pdf",
+  "figures/figB3_frozen_transfer_rank.png",
+  "reports/figB3_frozen_transfer_rank_validation.md"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1820
+ }
+}

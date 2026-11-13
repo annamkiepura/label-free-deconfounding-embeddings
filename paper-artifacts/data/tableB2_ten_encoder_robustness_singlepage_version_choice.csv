@@ -1,0 +1,5 @@
+corpus,setting,label,mean_linear_auc_minus_raw,mean_utility_minus_raw,shown,utility_agrees
+SwiLTra,swiltra,SwiLTra DE--FR,-0.3495782958488852,0.2246408045977011,True,True
+SwiLTra,swiltra_de_fr_it,SwiLTra DE--FR--IT,-0.2195963763303033,0.1854446040868455,False,True
+SCOTUS,scotus_oyez_lexis,SCOTUS O--L,-0.1145824574238242,0.04025590551181102,True,True
+SCOTUS,scotus_oyez_lexis_wiki,SCOTUS O--L--W,-0.08644673431627038,0.04106315934911508,False,True

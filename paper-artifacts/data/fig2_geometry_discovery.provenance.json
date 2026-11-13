@@ -1,0 +1,3138 @@
+{
+ "exhibit": "fig2_geometry_discovery",
+ "kind": "figure",
+ "title": "Geometry and label-free erasure performance",
+ "build_command": "python paper-artifacts/build.py fig2_geometry_discovery",
+ "generated_utc": "2026-10-26T18:48:34+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "Geometry and label-free erasure. Rows are six settings (encoder $\\cdot$ corpus; the line separates SwiLTra from SCOTUS). \\textbf{A}~PCA accessibility: share of the supervised confounder subspace (the rank-$(C-1)$ span of the label cross-covariance, which Metadata-LEACE removes) captured by the leading $C-1$ principal components of the training embeddings. \\textbf{B}~Unsupervised discovery: adjusted Rand index between the silhouette-selected $k$-means groups and the confounder classes (post hoc), with the selected $K$ (a range where seeds differ). \\textbf{C}~Residual leakage: held-out linear AUC of each label-free eraser minus that of Metadata-LEACE, formed per seed (0 = the supervised reference). Points are seed means (SDs in the data files). A, B and C all use seeds 0--4: the geometry run and each setting's performance cohort, both extended from seeds 0--2 where they had only three. Leading PCs needed for 90\\% capture, by row: 1: 1; 2: 2; 3: 1; 4: 22\u201329; 5: 2\u20133; 6: 17\u201319.",
+ "settings_and_seeds": {
+  "scotus_oyez_lexis/e5-small": {
+   "cohorts": [
+    "coverage"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]"
+  },
+  "scotus_oyez_lexis/mini": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]"
+  },
+  "scotus_oyez_lexis_wiki/e5-small": {
+   "cohorts": [
+    "coverage"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]"
+  },
+  "scotus_oyez_lexis_wiki/mini": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]"
+  },
+  "swiltra/e5-small": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]"
+  },
+  "swiltra_de_fr_it/e5-small": {
+   "cohorts": [
+    "id"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]"
+  }
+ },
+ "sources": {
+  "id/id_kmeans_scotus_oyez_lexis_mini.json": {
+   "sha256": "6e05d893adbfd41faf9c8901abd5dc4fdac7ff5c5fec441dc21a26d2d33be28e",
+   "bytes": 34726,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_mini.json@6e05d893adbf",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "48886d90557d25211151a19b29dd0d517adce909be51e4bb424e2ff30fa135d7",
+   "bytes": 92731,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_kmeans_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "c6cbc49b5dfdf00f00ab0087612ba5ac3c7f83b4852cdb2f9bf3991f58b50061",
+   "bytes": 222705,
+   "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "id/id_kmeans_swiltra_e5-small.json": {
+   "sha256": "7dc74fb3dfcfb0642e009da9e86c4101f0fd6b8d0dfaf7cb95af54dd50b1b2b4",
+   "bytes": 80270,
+   "run_id": "id/id_kmeans_swiltra_e5-small.json@7dc74fb3dfcf",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "id/id_scotus_oyez_lexis_mini.json": {
+   "sha256": "22f8574e72e230ec6f98d5dd6301735d0dbf954938522747b02910c84862df95",
+   "bytes": 123730,
+   "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "8e072e36da63b5a5e9232ddaa33877039fac7cee28503c800261db288e506cf1",
+   "bytes": 355856,
+   "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9dfe0c6ffb1f3ea24b4c6dd5103cec559573deaa85dae1881469202df68a3ae3",
+   "bytes": 875976,
+   "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "id/id_swiltra_e5-small.json": {
+   "sha256": "539061857e6dce16930786f7c5338d00bcf70dfe0cbf7d1993b317f344a226b5",
+   "bytes": 305856,
+   "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+   "experiment": "revised_id",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "d0b81f52af183163d111da31955b5416fd8c7cb93d0458072e0c35da810eae29",
+   "bytes": 171471,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "45b57ae5e31f4a1500f58178873234c27c1cddbab7880b56870864e30db2f8f3",
+   "bytes": 299497,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "9f4129d0eb364c8c8a6bd7db6416574f2e92d72d626049a96e5f88727311fb80",
+   "bytes": 5306,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json@9f4129d0eb36",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json": {
+   "sha256": "2d728fe6e09344d0d1228fe878215700ffa5d02fd09c05580af4e273706417eb",
+   "bytes": 5386,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json@2d728fe6e093",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "e285de86701a96a4b26a8cf6086d9744a0ff096d19221f672f768aa00c76a298",
+   "bytes": 5344,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json@e285de86701a",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "372dc46522294f5185df4715b7bc19c6b9ca239c53a94f5a05ea8ced29436423",
+   "bytes": 5398,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json@372dc4652229",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "3b360085e23fe0cda9dfa4a0bc9674ba8aa969f48906b24e36096eb77e1a7185",
+   "bytes": 5315,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json@3b360085e23f",
+   "experiment": "geometry",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json": {
+   "sha256": "74506572ba0871b057d27bfadc73f75ab4e40c68ca4d00478f8fe58273609e58",
+   "bytes": 5271,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json@74506572ba08",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "0d0031030e83755b3434c5c97f150b45d68d36beef798553fd8a495981ab5259",
+   "bytes": 37053,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json@0d0031030e83",
+   "experiment": "kmeans_count",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "d42d80888548eed80eb8aec2d9abb70f29f696ba5f84a7b93359fed4a5541520",
+   "bytes": 61945,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json@d42d80888548",
+   "experiment": "kmeans_count",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  }
+ },
+ "notes": [
+  "composite plotting-area shares: A 27%, B 29%, C 44%; label column 1.78 in inside A"
+ ],
+ "checks_passed": 182,
+ "checks": [
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json: the geometry run of swiltra/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_e5-small.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "swiltra/e5-small: geometry run has C=2, nuisance subspace rank 1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "swiltra/e5-small: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "swiltra/e5-small: capture recorded at rank 1 and at C-1=1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_swiltra_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_swiltra_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_swiltra_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_swiltra_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_swiltra_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_swiltra_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_kmeans_swiltra_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_kmeans_swiltra_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_kmeans_swiltra_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_kmeans_swiltra_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_kmeans_swiltra_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_kmeans_swiltra_e5-small.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: config.split identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: config.audit identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: config.selection identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: config.pseudo_groups identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: corpus statistics identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id:swiltra/e5-small main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "swiltra/e5-small: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json: the geometry run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_swiltra_de_fr_it_e5-small.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "swiltra_de_fr_it/e5-small: geometry run has C=3, nuisance subspace rank 2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "swiltra_de_fr_it/e5-small: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "swiltra_de_fr_it/e5-small: capture recorded at rank 1 and at C-1=2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "swiltra_de_fr_it/e5-small: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json: the geometry run of scotus_oyez_lexis/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_e5-small.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "scotus_oyez_lexis/e5-small: geometry run has C=2, nuisance subspace rank 1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "scotus_oyez_lexis/e5-small: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "scotus_oyez_lexis/e5-small: capture recorded at rank 1 and at C-1=1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "scotus_oyez_lexis/e5-small: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json: the geometry run of scotus_oyez_lexis/mini, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_mini.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "scotus_oyez_lexis/mini: geometry run has C=2, nuisance subspace rank 1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "scotus_oyez_lexis/mini: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "scotus_oyez_lexis/mini: capture recorded at rank 1 and at C-1=1",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_scotus_oyez_lexis_mini.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_scotus_oyez_lexis_mini.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_scotus_oyez_lexis_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_scotus_oyez_lexis_mini.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_scotus_oyez_lexis_mini.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_scotus_oyez_lexis_mini.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "agg_matches_per_seed",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: saved aggregates equal per-seed values, mean and SD (ddof=1)",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "fold_combination",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: each seed's AUC/purity equals the mean of its saved fold values",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "hits_recall",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: each seed's R@10 equals the mean of its saved per-pair hits",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: config.split identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: config.audit identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: config.selection identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "config_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: config.pseudo_groups identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "recipe_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: SAE/eraser recipe identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "corpus_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: corpus statistics identical",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "split_compatible",
+   "message": "id:scotus_oyez_lexis/mini main~kmeans: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "scotus_oyez_lexis/mini: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json: the geometry run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "scotus_oyez_lexis_wiki/e5-small: geometry run has C=3, nuisance subspace rank 2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "scotus_oyez_lexis_wiki/e5-small: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "scotus_oyez_lexis_wiki/e5-small: capture recorded at rank 1 and at C-1=2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "scotus_oyez_lexis_wiki/e5-small: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_match",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json: seeds field equals per-seed records",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "seeds_unique",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json: no duplicated seed",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "auc_unflipped",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json: AUCs saved without flip adjustment",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json: the geometry run of scotus_oyez_lexis_wiki/mini, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "geometry_agg",
+   "message": "results/extensions/raw/five_seeds/alternatives/geometry_scotus_oyez_lexis_wiki_mini.json: saved geometry means equal the per-seed fold means",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_version",
+   "message": "scotus_oyez_lexis_wiki/mini: geometry run has C=3, nuisance subspace rank 2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_geometry_matches_runs",
+   "message": "scotus_oyez_lexis_wiki/mini: geometry uses the same corpus version and split policy",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_capture_rank",
+   "message": "scotus_oyez_lexis_wiki/mini: capture recorded at rank 1 and at C-1=2",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2_k_consistent",
+   "message": "scotus_oyez_lexis_wiki/mini: silhouette K identical in geometry and performance runs on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "standalone A: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "standalone A: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "standalone A: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "standalone A: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "standalone A: header ends 0.045 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_labels_inside",
+   "message": "standalone A: setting labels fully on the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "standalone B: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "standalone B: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "standalone B: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "standalone B: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "standalone B: header ends 0.170 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_labels_inside",
+   "message": "standalone B: setting labels fully on the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "standalone C: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "standalone C: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "standalone C: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "standalone C: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_key_clear",
+   "message": "standalone C: the method key overlaps no title or subtitle",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "standalone C: header ends 0.200 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_labels_inside",
+   "message": "standalone C: setting labels fully on the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "composite part A: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "composite part A: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "composite part A: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "composite part A: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_key_clear",
+   "message": "composite part A: the method key overlaps no title or subtitle",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "composite part A: header ends 0.045 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_labels_inside",
+   "message": "composite part A: setting labels fully on the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "composite part B: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "composite part B: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "composite part B: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "composite part B: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "composite part B: header ends 0.170 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_font",
+   "message": "composite part C: smallest text 7.5 pt >= 7.5 pt",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_clipping",
+   "message": "composite part C: no text outside the canvas",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_overlap",
+   "message": "composite part C: no two value annotations overlap",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_annot_marker",
+   "message": "composite part C: no annotation covers its marker",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_header_above_plot",
+   "message": "composite part C: header ends 0.200 in above the plot",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_composite_width",
+   "message": "composite width 6.30 in = manuscript text width 6.30 in",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "f2p_composite",
+   "message": "composite built from the three finished panel PDFs",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_mini.json: corpus/encoder fields are scotus_oyez_lexis/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  },
+  {
+   "code": "file_identity",
+   "message": "id/id_scotus_oyez_lexis_wiki_mini.json: corpus/encoder fields are scotus_oyez_lexis_wiki/mini",
+   "exhibit": "fig2_geometry_discovery"
+  }
+ ],
+ "issues": [],
+ "cells": [
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6018784847019554,
+    0.5863504954019367,
+    0.6053404272492041,
+    0.6127597602589623,
+    0.5917726963768697
+   ],
+   "mean": 0.5996203727977857,
+   "sd": 0.010584626427774073,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6333904772463133,
+    0.616710826409455,
+    0.6336668316723958,
+    0.6426245928514069,
+    0.631645515812309
+   ],
+   "mean": 0.631607648798376,
+   "sd": 0.009363606661549383,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.03151199254435788,
+    0.030360331007518226,
+    0.028326404423191676,
+    0.029864832592444657,
+    0.0398728194354393
+   ],
+   "mean": 0.03198727600059035,
+   "sd": 0.004554157067013793,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5995481905391342,
+    0.5874433630216981,
+    0.6055126748643217,
+    0.6135882404788016,
+    0.5925346330029073
+   ],
+   "mean": 0.5997254203813727,
+   "sd": 0.010347196021503908,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_e5-small.json@7dc74fb3dfcf",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.002330294162821156,
+    0.0010928676197613507,
+    0.00017224761511758224,
+    0.0008284802198392782,
+    0.0007619366260376292
+   ],
+   "mean": 0.00010504758358693689,
+   "sd": 0.0014023241140326797,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_e5-small.json@7dc74fb3dfcf",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6200897353620358,
+    0.6188235645846508,
+    0.6271987982845045,
+    0.6324325394755393,
+    0.6250701395029777
+   ],
+   "mean": 0.6247229554419417,
+   "sd": 0.005521719870663965,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra",
+   "encoder": "e5-small",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.018211250660080447,
+    0.03247306918271409,
+    0.021858371035300417,
+    0.019672779216577063,
+    0.03329744312610805
+   ],
+   "mean": 0.02510258264415601,
+   "sd": 0.007228034671915482,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra [SwiLTra DE/FR (binary subset); classes de/fr; 5,568 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_e5-small.json",
+     "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5736214271773667,
+    0.568288787349534,
+    0.5877452535864496,
+    0.5891715566449136,
+    0.5667072442195606
+   ],
+   "mean": 0.5771068537955649,
+   "sd": 0.010686334484337427,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9067521992496299,
+    0.9030091846662037,
+    0.9038229146962721,
+    0.9118947911481357,
+    0.9046437864272026
+   ],
+   "mean": 0.9060245752374888,
+   "sd": 0.0035649452560808405,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.33313077207226316,
+    0.3347203973166697,
+    0.3160776611098225,
+    0.32272323450322205,
+    0.3379365422076419
+   ],
+   "mean": 0.3289177214419238,
+   "sd": 0.00916513486931667,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5733021739523709,
+    0.5694268344658809,
+    0.5877271308691097,
+    0.5893617001493205,
+    0.5662598465163445
+   ],
+   "mean": 0.5772155371906054,
+   "sd": 0.010653970344432825,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.0003192532249958191,
+    0.0011380471163469075,
+    -1.8122717339918992e-05,
+    0.00019014350440693661,
+    -0.0004473977032161125
+   ],
+   "mean": 0.0001086833950403987,
+   "sd": 0.0006274275155153764,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6031441309550578,
+    0.6099767143599601,
+    0.6252587738309413,
+    0.6257176748308513,
+    0.6095173478574936
+   ],
+   "mean": 0.6147229283668608,
+   "sd": 0.010192909972044249,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.02952270377769106,
+    0.04168792701042612,
+    0.03751352024449173,
+    0.03654611818593767,
+    0.04281010363793292
+   ],
+   "mean": 0.0376160745712959,
+   "sd": 0.005249187915535408,
+   "sd_ddof": 1,
+   "dataset_version": "swiltra_de_fr_it [SwiLTra DE/FR/IT (3 languages); classes de/fr/it; 8,352 docs]",
+   "sources": [
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    },
+    {
+     "file": "id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6258922845771401,
+    0.6348995982238959,
+    0.6354115045402612,
+    0.6180324467048608,
+    0.5942692279181088
+   ],
+   "mean": 0.6217010123928534,
+   "sd": 0.01692415580658499,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.734922608493809,
+    0.7128801031357952,
+    0.7243154084031477,
+    0.6965413871436731,
+    0.7037866177913373
+   ],
+   "mean": 0.7144892249935524,
+   "sd": 0.015438077918179624,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.10903032391666889,
+    0.07798050491189934,
+    0.08890390386288649,
+    0.07850894043881229,
+    0.10951738987322857
+   ],
+   "mean": 0.09278821260069911,
+   "sd": 0.015667843079512356,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.684744491082211,
+    0.68155938342074,
+    0.6801164339915381,
+    0.6682466989470826,
+    0.6453563193292986
+   ],
+   "mean": 0.672004665354174,
+   "sd": 0.016152811246937484,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.05885220650507095,
+    0.046659785196844106,
+    0.04470492945127691,
+    0.05021425224222176,
+    0.05108709141118983
+   ],
+   "mean": 0.05030365296132071,
+   "sd": 0.005438819109204276,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7256186492368191,
+    0.705937935535156,
+    0.7176956613839971,
+    0.6767668528104843,
+    0.6794908996237515
+   ],
+   "mean": 0.7011019997180415,
+   "sd": 0.022130527606881865,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.09972636465967899,
+    0.07103833731126019,
+    0.08228415684373591,
+    0.05873440610562353,
+    0.08522167170564277
+   ],
+   "mean": 0.07940098732518827,
+   "sd": 0.015430128737953677,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6550696909793222,
+    0.6353634163016173,
+    0.6310547046239737,
+    0.5942086146469249,
+    0.5942933292991988
+   ],
+   "mean": 0.6219979511702073,
+   "sd": 0.026898855518045963,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9768692608011973,
+    0.9793048178761653,
+    0.9776632417974653,
+    0.9765113074077666,
+    0.9752625470825909
+   ],
+   "mean": 0.9771222349930371,
+   "sd": 0.001495996656463779,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.3217995698218751,
+    0.343941401574548,
+    0.3466085371734916,
+    0.3823026927608417,
+    0.3809692177833921
+   ],
+   "mean": 0.3551242838228297,
+   "sd": 0.026051573289571743,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9777743981270335,
+    0.9809518111003724,
+    0.9784342520027505,
+    0.977321348572131,
+    0.9761414452908797
+   ],
+   "mean": 0.9781246510186336,
+   "sd": 0.001788138960230091,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_mini.json@6e05d893adbf",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.32270470714771127,
+    0.34558839479875514,
+    0.34737954737877674,
+    0.3831127339252062,
+    0.3818481159916809
+   ],
+   "mean": 0.35612669984842604,
+   "sd": 0.02595397575199931,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_mini.json@6e05d893adbf",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8538674953340897,
+    0.8510041451430533,
+    0.8520118774023375,
+    0.8153850347677049,
+    0.832865555066148
+   ],
+   "mean": 0.8410268215426667,
+   "sd": 0.016652393532147366,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.19879780435476746,
+    0.21564072884143604,
+    0.2209571727783638,
+    0.22117642012077998,
+    0.23857222576694925
+   ],
+   "mean": 0.2190288703724593,
+   "sd": 0.014239457463435178,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis [SCOTUS Oyez/Lexis (binary subset); classes oyez/lexis; 4,101 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6199877594107469,
+    0.6147018512418166,
+    0.6174185485394724,
+    0.6083335387713119,
+    0.6148423735424399
+   ],
+   "mean": 0.6150568143011576,
+   "sd": 0.004337811249608759,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.881712487867679,
+    0.8831515847304837,
+    0.8821189059922734,
+    0.8873607391579184,
+    0.8769133188379208
+   ],
+   "mean": 0.882251407317255,
+   "sd": 0.003732250347335954,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.26172472845693207,
+    0.2684497334886671,
+    0.26470035745280096,
+    0.27902720038660644,
+    0.2620709452954809
+   ],
+   "mean": 0.2671945930160975,
+   "sd": 0.007141049819464775,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6563862411881182,
+    0.6594123946908853,
+    0.6637857552227796,
+    0.850853064343827,
+    0.6638550535454247
+   ],
+   "mean": 0.698858501798207,
+   "sd": 0.08502584059069536,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.03639848177737126,
+    0.04471054344906866,
+    0.04636720668330718,
+    0.2425195255725151,
+    0.049012680002984865
+   ],
+   "mean": 0.08380168749704942,
+   "sd": 0.08885120845414593,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.72202216107084,
+    0.7341645922508607,
+    0.7289693186929067,
+    0.7356086530975554,
+    0.7127055922982258
+   ],
+   "mean": 0.7266940634820778,
+   "sd": 0.009459908728069006,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.10203440166009314,
+    0.11946274100904408,
+    0.11155077015343429,
+    0.1272751143262435,
+    0.09786321875578596
+   ],
+   "mean": 0.11163724918092019,
+   "sd": 0.01212154303232806,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "sae_mi",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_mi.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6177652247839638,
+    0.6133605737546544,
+    0.6051946661260607,
+    0.6095657269457828,
+    0.6067900198236716
+   ],
+   "mean": 0.6105352422868267,
+   "sd": 0.005092728881355973,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_top1",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.985898325508592,
+    0.9860464725803698,
+    0.9856729712213628,
+    0.9856025996328419,
+    0.985233764245387
+   ],
+   "mean": 0.9856908266377108,
+   "sd": 0.0003108651913228032,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_top1-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.36813310072462824,
+    0.37268589882571546,
+    0.3804783050953021,
+    0.3760368726870591,
+    0.37844374442171536
+   ],
+   "mean": 0.37515558435088403,
+   "sd": 0.004881973084220257,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "pca_top1",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.pca_top1.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "kmeans_auto",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8665095988312188,
+    0.9685316647847678,
+    0.9698418005141916,
+    0.9613941244034464,
+    0.98410560813039
+   ],
+   "mean": 0.950076559332803,
+   "sd": 0.047436157108454044,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "kmeans_auto-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.24874437404725502,
+    0.35517109103011346,
+    0.3646471343881309,
+    0.3518283974576636,
+    0.3773155883067184
+   ],
+   "mean": 0.33954131704597623,
+   "sd": 0.051712050509163915,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+     "condition": "kmeans_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.kmeans_leace.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8355145154997243,
+    0.875772447704937,
+    0.8577307377828305,
+    0.8757767513011638,
+    0.856826723629173
+   ],
+   "mean": 0.8603242351835657,
+   "sd": 0.016672646243935003,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_leace-metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.21774929071576055,
+    0.26241187395028265,
+    0.25253607165676983,
+    0.266211024355381,
+    0.25003670380550136
+   ],
+   "mean": 0.2497889928967391,
+   "sd": 0.0191257062717594,
+   "sd_ddof": 1,
+   "dataset_version": "scotus_oyez_lexis_wiki [SCOTUS Oyez/Lexis/Wikipedia (3 sources); classes oyez/lexis/wiki; 7,506 docs]",
+   "sources": [
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "sae_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.sae_leace.linear_auc"
+    },
+    {
+     "file": "id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "metadata_leace",
+     "path": "per_seed[seed in [0, 1, 2, 3, 4]].metrics.metadata_leace.linear_auc"
+    }
+   ],
+   "kind": "difference"
+  }
+ ],
+ "outputs": [
+  "data/fig2_geometry_discovery_combined.csv",
+  "data/fig2a_pca_accessibility.csv",
+  "data/fig2b_cluster_alignment.csv",
+  "data/fig2c_residual_leakage.csv",
+  "figures/fig2_geometry_discovery.include.tex",
+  "figures/fig2_geometry_discovery.pdf",
+  "figures/fig2_geometry_discovery.png",
+  "figures/fig2_parts/fig2a_pca_accessibility_part.pdf",
+  "figures/fig2_parts/fig2b_cluster_alignment_part.pdf",
+  "figures/fig2_parts/fig2c_residual_leakage_part.pdf",
+  "figures/fig2a_pca_accessibility.include.tex",
+  "figures/fig2a_pca_accessibility.pdf",
+  "figures/fig2a_pca_accessibility.png",
+  "figures/fig2b_cluster_alignment.include.tex",
+  "figures/fig2b_cluster_alignment.pdf",
+  "figures/fig2b_cluster_alignment.png",
+  "figures/fig2c_residual_leakage.include.tex",
+  "figures/fig2c_residual_leakage.pdf",
+  "figures/fig2c_residual_leakage.png",
+  "reports/fig2_geometry_discovery_design_report.txt",
+  "reports/fig2_geometry_discovery_validation.md"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1818
+ }
+}

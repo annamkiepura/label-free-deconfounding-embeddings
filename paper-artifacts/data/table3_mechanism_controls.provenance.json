@@ -1,0 +1,4788 @@
+{
+ "exhibit": "table3_mechanism_controls",
+ "kind": "table",
+ "title": "Table 3: mechanism controls on seeds 0-4, with the latent-selector rows",
+ "build_command": "python paper-artifacts/build.py table3_mechanism_controls",
+ "generated_utc": "2026-10-26T18:48:37+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "\\textbf{Candidate directions, intervention operators, and erasure extent.}\nE5-small results on three-class SwiLTra and SCOTUS (mean $\\pm$ sample SD, seeds 0--4). AUCs are held-out macro one-vs-rest probe scores; R@10 measures paired retrieval. Random SAE selection (row A2) draws uniformly from the same latents that MI scores (training firing rate in $[0.02, 0.98]$; Appendix~\\ref{sec:appendix_A3}). Row A4 uses the smallest number of random non-SAE directions whose Directions-LEACE map reaches or exceeds row A1's normalized squared training displacement ($N$: SwiLTra 40--43; SCOTUS 40--41). The random rows average five draws per seed. Rows A5--A8 rank the same eligible latents without $k$-means: by the entropy of a latent's firing indicator, by Hartigan's dip statistic of the training coordinates along its decoder direction, and by its mean firing mutual information with the other eligible latents (all pairs; negatively correlated pairs only). The oracle (row A9) ranks by mutual information with the true classes: a post hoc reference, not a label-free method. Row B3 is row B2 with the training mean restored, and row B4 removes orthogonally the subspace that Directions-LEACE displaces, $\\mathrm{span}(\\Sigma D_S^{\\top})$, also with the mean restored. Displacement-matched PCA (row C1) removes the fewest principal directions whose training displacement reaches that of row A1 (Appendix~\\ref{sec:appendix_A4}; ranks: SwiLTra 22--23; SCOTUS 22); this matches displacement, not rank or total-variance reduction, and Table~\\ref{tab:erasure-extent} repeats the comparison on six settings. The SAEs of this table were fitted separately from those of Table~\\ref{tab:primary-id}, and those of the rows marked $\\dagger$ separately again (same recipe, seeds and splits throughout); row A1$^{\\dagger}$ is row A1 on the latter fits, the baseline for rows A5--A9. The reference rows are the runs of Table~\\ref{tab:primary-id}.",
+ "settings_and_seeds": {
+  "scotus_oyez_lexis_wiki/e5-small": {
+   "cohorts": [
+    "coverage",
+    "latent_selectors",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "swiltra_de_fr_it/e5-small": {
+   "cohorts": [
+    "id",
+    "latent_selectors",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  }
+ },
+ "sources": {
+  "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "45b57ae5e31f4a1500f58178873234c27c1cddbab7880b56870864e30db2f8f3",
+   "bytes": 299497,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "6d7e6eceab26177978a8b4ad39457fad35f4cb1648d236f74b8922604edfcab3",
+   "bytes": 2523620,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "b89724d1f15d502ffd6230cad102f2716d8f156fbd0cac0648982c1965af6173",
+   "bytes": 6125276,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9dfe0c6ffb1f3ea24b4c6dd5103cec559573deaa85dae1881469202df68a3ae3",
+   "bytes": 875976,
+   "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "493aaca25e5b87a894c9dc8431e26a5e9788cfa0a646942a2b4578964af61f5c",
+   "bytes": 894154,
+   "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+   "experiment": "latent_selectors",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "4bd57c6f1fed0545b5373f0242df68bcdb978523cfcb0072a5b8aef09dc0c6ba",
+   "bytes": 882468,
+   "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+   "experiment": "latent_selectors",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  }
+ },
+ "notes": [
+  "Decision 5 of 2026-10-07: the selector rows are merged as they are. Row A1 on the selector study's fits is printed as row A1 (dagger): swiltra_de_fr_it 0.6168 (row A1: 0.6157); scotus_oyez_lexis_wiki 0.7371 (row A1: 0.7266)",
+  "Reference rows: Table 2's runs are printed. Audited again in the Table 3 runs they differ per seed by at most swiltra_de_fr_it metadata_leace linear_auc: 0.0001; swiltra_de_fr_it metadata_leace mlp_auc: 0.0046; scotus_oyez_lexis_wiki metadata_leace linear_auc: 0.0008; scotus_oyez_lexis_wiki metadata_leace mlp_auc: 0.0015 (Raw: identical). The Metadata-LEACE map is refitted there, and the seeded MLP probe is sensitive to its float32 rounding."
+ ],
+ "checks_passed": 39,
+ "checks": [
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "swiltra_de_fr_it/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 2.4e-05), so splits and audit are the published ones",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "sel_identity",
+   "message": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json: the selector study of swiltra_de_fr_it/e5-small, seeds 0-4, five random draws, SAEs fitted on a CPU",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_selector_budget",
+   "message": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json: every selection rule was run and probed with the MLP at N = 32",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: raw linear_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.9992 and 0.9992)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: raw mlp_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.9991 and 0.9991)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: raw recall@10 of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.4924 and 0.4924)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: metadata_leace linear_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0001 in a seed (means 0.5771 and 0.5771)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: metadata_leace mlp_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0046 in a seed (means 0.9231 and 0.9246)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "swiltra_de_fr_it: metadata_leace recall@10 of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.9692 and 0.9692)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "swiltra_de_fr_it: raw linear_auc agrees between the Table 3 runs and the selector study (0.9992 and 0.9992)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "swiltra_de_fr_it: raw recall@10 agrees between the Table 3 runs and the selector study (0.4924 and 0.4924)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "swiltra_de_fr_it: metadata_leace linear_auc agrees between the Table 3 runs and the selector study (0.5771 and 0.5771)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "swiltra_de_fr_it: metadata_leace recall@10 agrees between the Table 3 runs and the selector study (0.9692 and 0.9692)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: the Table 3 run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "scotus_oyez_lexis_wiki/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 6.4e-05), so splits and audit are the published ones",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "sel_identity",
+   "message": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json: the selector study of scotus_oyez_lexis_wiki/e5-small, seeds 0-4, five random draws, SAEs fitted on a CPU",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_selector_budget",
+   "message": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json: every selection rule was run and probed with the MLP at N = 32",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: raw linear_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.9989 and 0.9989)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: raw mlp_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.9988 and 0.9988)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: raw recall@10 of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.6263 and 0.6263)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: metadata_leace linear_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0008 in a seed (means 0.6151 and 0.6148)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: metadata_leace mlp_auc of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0015 in a seed (means 0.8800 and 0.8794)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_reference_shared",
+   "message": "scotus_oyez_lexis_wiki: metadata_leace recall@10 of Table 2's run, printed here, and of the Table 3 run differ by at most 0.0000 in a seed (means 0.8000 and 0.8000)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "scotus_oyez_lexis_wiki: raw linear_auc agrees between the Table 3 runs and the selector study (0.9989 and 0.9989)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "scotus_oyez_lexis_wiki: raw recall@10 agrees between the Table 3 runs and the selector study (0.6263 and 0.6263)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "scotus_oyez_lexis_wiki: metadata_leace linear_auc agrees between the Table 3 runs and the selector study (0.6151 and 0.6149)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3_sae_free_agree",
+   "message": "scotus_oyez_lexis_wiki: metadata_leace recall@10 agrees between the Table 3 runs and the selector study (0.8000 and 0.8000)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "t3x_seeds",
+   "message": "every cell is a mean over seeds 0-4, as the caption states",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "latex_ref_other_exhibit",
+   "message": "table3_mechanism_controls: \\ref{tab:primary-id} points to another exhibit or its text (shown as 2 in the preview; the manuscript resolves it)",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "table3_mechanism_controls: every citation and reference resolves",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "table3_mechanism_controls: the float fits the TACL text block",
+   "exhibit": "table3_mechanism_controls"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "table3_mechanism_controls: no overfull boxes in the TACL preview",
+   "exhibit": "table3_mechanism_controls"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "table3_mechanism_controls"
+  }
+ ],
+ "cells": [
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6037093410265465,
+    0.6080796139718395,
+    0.622311250090409,
+    0.6296428687202626,
+    0.6149889819381357
+   ],
+   "mean": 0.6157464111494386,
+   "sd": 0.010493488200481672,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8300557065987568,
+    0.841800579499064,
+    0.8343923506136232,
+    0.8486163973704899,
+    0.836971185280702
+   ],
+   "mean": 0.8383672438725271,
+   "sd": 0.007135533421090731,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9170258620689655,
+    0.9185823754789272,
+    0.9098419540229885,
+    0.9140325670498084,
+    0.9119971264367817
+   ],
+   "mean": 0.9142959770114942,
+   "sd": 0.0035713409177620427,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6183240918531222,
+    0.626232992095402,
+    0.634784118201418,
+    0.6455525274418095,
+    0.6270459317817854
+   ],
+   "mean": 0.6303879322747074,
+   "sd": 0.010286643502499667,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.841753987468293,
+    0.834895918363585,
+    0.8411260703858444,
+    0.8533609362264463,
+    0.8384512770709354
+   ],
+   "mean": 0.8419176379030209,
+   "sd": 0.006944829728414114,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9123323754789272,
+    0.911661877394636,
+    0.9076149425287356,
+    0.9044300766283525,
+    0.909985632183908
+   ],
+   "mean": 0.9092049808429119,
+   "sd": 0.003230877840859031,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8351605526241472,
+    0.8013280198112588,
+    0.8051793500032545,
+    0.828484940376032,
+    0.826137916149287
+   ],
+   "mean": 0.8192581557927958,
+   "sd": 0.015042052968810482,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9180973553352472,
+    0.9079088923010538,
+    0.9042673646887145,
+    0.9213672421517435,
+    0.9127536302354742
+   ],
+   "mean": 0.9128788969424466,
+   "sd": 0.007038455761564366,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9253352490421456,
+    0.9248563218390805,
+    0.9213840996168583,
+    0.9187978927203065,
+    0.9241618773946361
+   ],
+   "mean": 0.9229070881226054,
+   "sd": 0.0027602062646087133,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7933074982517285,
+    0.7735091167122053,
+    0.7670923117155576,
+    0.7933457986287497,
+    0.7768166848369693
+   ],
+   "mean": 0.780814282029042,
+   "sd": 0.011945271583100095,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8969296377512895,
+    0.8909903252092286,
+    0.8869602122043417,
+    0.9026455940558794,
+    0.8867573405251201
+   ],
+   "mean": 0.8928566219491719,
+   "sd": 0.006853199579766224,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9146791187739464,
+    0.9135775862068964,
+    0.9105124521072797,
+    0.9056992337164751,
+    0.911374521072797
+   ],
+   "mean": 0.9111685823754788,
+   "sd": 0.0034825944960042462,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7816645674070546,
+    0.8267767394803427,
+    0.8216259696208199,
+    0.8124042532158967,
+    0.8173023697342842
+   ],
+   "mean": 0.8119547798916796,
+   "sd": 0.01774484511472722,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8888452495036223,
+    0.9129628943166843,
+    0.900489105744905,
+    0.9009047007004259,
+    0.9025469077476902
+   ],
+   "mean": 0.9011497716026655,
+   "sd": 0.00856445650454217,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9377394636015326,
+    0.9376197318007663,
+    0.9297174329501916,
+    0.9325909961685823,
+    0.9285201149425287
+   ],
+   "mean": 0.9332375478927204,
+   "sd": 0.004316659380624703,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9974426324798984,
+    0.9988644836534746,
+    0.9981668345251865,
+    0.9984703468908276,
+    0.9987660092505688
+   ],
+   "mean": 0.9983420613599913,
+   "sd": 0.0005720119749743597,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9979060087085309,
+    0.9988181414034012,
+    0.9984092112485428,
+    0.9989632859616295,
+    0.9987469922754013
+   ],
+   "mean": 0.998568727919501,
+   "sd": 0.00042258242865936106,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9165469348659003,
+    0.9000239463601533,
+    0.8696120689655172,
+    0.8872126436781609,
+    0.8967911877394636
+   ],
+   "mean": 0.894037356321839,
+   "sd": 0.017271908834162467,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9974426324798984,
+    0.9988644836534746,
+    0.9981668345251865,
+    0.9984703468908276,
+    0.9987660092505688
+   ],
+   "mean": 0.9983420613599913,
+   "sd": 0.0005720119749743597,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9979038521603879,
+    0.9988181414034012,
+    0.9984092112485428,
+    0.9989632859616295,
+    0.9987474235850298
+   ],
+   "mean": 0.9985683828717983,
+   "sd": 0.00042347373694201225,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9164272030651341,
+    0.9000239463601533,
+    0.8698515325670498,
+    0.8872126436781609,
+    0.8966714559386973
+   ],
+   "mean": 0.894037356321839,
+   "sd": 0.01714361216046027,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6037681897154763,
+    0.6080590006119161,
+    0.6222616525694095,
+    0.6296607738573237,
+    0.6149799429536424
+   ],
+   "mean": 0.6157459119415536,
+   "sd": 0.010478780965237047,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8279125931239522,
+    0.8370290071955072,
+    0.8377792500174366,
+    0.8454070640809315,
+    0.8407093937602312
+   ],
+   "mean": 0.8377674616356117,
+   "sd": 0.006416431591168083,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9172653256704981,
+    0.9185823754789272,
+    0.9096024904214559,
+    0.9136733716475096,
+    0.9121168582375478
+   ],
+   "mean": 0.9142480842911878,
+   "sd": 0.0036859119345877462,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5905120447846802,
+    0.5881585053151789,
+    0.6068579637443892,
+    0.6183389446238936,
+    0.5937896336250037
+   ],
+   "mean": 0.5995314184186291,
+   "sd": 0.012757954912483402,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8268232970001372,
+    0.8036401564155259,
+    0.8125146485113834,
+    0.8278368067677742,
+    0.8130490193487828
+   ],
+   "mean": 0.8167727856087206,
+   "sd": 0.010342744554291433,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8863745210727969,
+    0.8867337164750958,
+    0.8825431034482759,
+    0.8748802681992337,
+    0.881345785440613
+   ],
+   "mean": 0.882375478927203,
+   "sd": 0.004802424468931181,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9988603302627095,
+    0.9989618469829186,
+    0.9994518455782613,
+    0.9996532270586409,
+    0.9991290114765657
+   ],
+   "mean": 0.9992112522718191,
+   "sd": 0.0003336688681552231,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9987652461625981,
+    0.9989407035522662,
+    0.9991139611581055,
+    0.9995061504753032,
+    0.9990625843913852
+   ],
+   "mean": 0.9990777291479317,
+   "sd": 0.0002745489874090594,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.491139846743295,
+    0.49149904214559387,
+    0.4873084291187739,
+    0.49580938697318006,
+    0.4964080459770115
+   ],
+   "mean": 0.4924329501915709,
+   "sd": 0.0037418821746366703,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5735963927012042,
+    0.5682960578875318,
+    0.5878129290764359,
+    0.5892255282177006,
+    0.5667106977828735
+   ],
+   "mean": 0.5771283211331492,
+   "sd": 0.01071813340681039,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9275692298342294,
+    0.9233715044498936,
+    0.9224511700401443,
+    0.926400909237954,
+    0.9230469211674311
+   ],
+   "mean": 0.9245679469459305,
+   "sd": 0.002268985911901413,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9692289272030651,
+    0.9721024904214559,
+    0.9651580459770115,
+    0.9682710727969349,
+    0.9711446360153256
+   ],
+   "mean": 0.9691810344827587,
+   "sd": 0.0027113371369191707,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6050708095724426,
+    0.6079404892307045,
+    0.6310585249896712,
+    0.628472954819975,
+    0.6115306233040027
+   ],
+   "mean": 0.6168146803833593,
+   "sd": 0.0120767700717479,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8385867147904598,
+    0.8319451127690781,
+    0.8443838457546935,
+    0.8562356440858305,
+    0.8385436392311186
+   ],
+   "mean": 0.8419389913262361,
+   "sd": 0.009124354439385342,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9175047892720306,
+    0.9204980842911877,
+    0.9198994252873564,
+    0.9117576628352491,
+    0.922294061302682
+   ],
+   "mean": 0.9183908045977012,
+   "sd": 0.004084592078620691,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.603653898819855,
+    0.608863061301913,
+    0.6296957632795344,
+    0.6317965265826474,
+    0.6141754309181027
+   ],
+   "mean": 0.6176369361804104,
+   "sd": 0.012553859409130808,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8307367730379106,
+    0.8113358691234369,
+    0.8376140907553425,
+    0.8523915372488051,
+    0.8294043493426291
+   ],
+   "mean": 0.8322965239016249,
+   "sd": 0.014851200488799237,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9139128352490421,
+    0.915110153256705,
+    0.9103208812260536,
+    0.9026580459770115,
+    0.9182231800766284
+   ],
+   "mean": 0.9120450191570881,
+   "sd": 0.005961152854910721,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6078274714578686,
+    0.6135560588606079,
+    0.6297334538100848,
+    0.6275313349162961,
+    0.608110529265939
+   ],
+   "mean": 0.6173517696621593,
+   "sd": 0.010576505234908898,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.830919861235255,
+    0.8361437415038677,
+    0.8451360521017802,
+    0.855394196047012,
+    0.831674938364291
+   ],
+   "mean": 0.8398537578504411,
+   "sd": 0.010366769869502189,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9149904214559387,
+    0.9193007662835249,
+    0.9130747126436781,
+    0.9139128352490421,
+    0.9255268199233716
+   ],
+   "mean": 0.9173611111111111,
+   "sd": 0.005155701947314772,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6108441729664031,
+    0.6128061903877978,
+    0.6421944520824164,
+    0.6399897908272318,
+    0.6087251493652654
+   ],
+   "mean": 0.622911951125823,
+   "sd": 0.01667700861965796,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8319127945897262,
+    0.832846527507502,
+    0.8300822347312865,
+    0.8451903614481694,
+    0.8326998944570306
+   ],
+   "mean": 0.834546362546743,
+   "sd": 0.006050985736173109,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9149904214559387,
+    0.9139128352490421,
+    0.9153496168582376,
+    0.9091235632183908,
+    0.9187021072796935
+   ],
+   "mean": 0.9144157088122606,
+   "sd": 0.003458156209964141,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6031905094758989,
+    0.6154937192812792,
+    0.6327925726128407,
+    0.6362922975477723,
+    0.6100867653491173
+   ],
+   "mean": 0.6195711728533817,
+   "sd": 0.014398846904099519,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8395820586050705,
+    0.8341954302603616,
+    0.8394671288873671,
+    0.8495358129429544,
+    0.8352855903110873
+   ],
+   "mean": 0.8396132042013681,
+   "sd": 0.006053118798258786,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9158285440613027,
+    0.9179837164750958,
+    0.9184626436781609,
+    0.9093630268199234,
+    0.9230124521072797
+   ],
+   "mean": 0.9169300766283526,
+   "sd": 0.004973123438920857,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6050708095724426,
+    0.607936635220607,
+    0.6290029025020822,
+    0.6284712326677451,
+    0.6115310515273469
+   ],
+   "mean": 0.6164025262980448,
+   "sd": 0.011491665850162841,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.839433775278996,
+    0.8298427977076626,
+    0.8392466810291062,
+    0.854636635744533,
+    0.8398749731854249
+   ],
+   "mean": 0.8406069725891445,
+   "sd": 0.008894682643533278,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9175047892720306,
+    0.9204980842911877,
+    0.9202586206896551,
+    0.9117576628352491,
+    0.922294061302682
+   ],
+   "mean": 0.918462643678161,
+   "sd": 0.004120757396875714,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9988603302627095,
+    0.9989618469829186,
+    0.9994518455782613,
+    0.9996532270586409,
+    0.9991290114765657
+   ],
+   "mean": 0.9992112522718191,
+   "sd": 0.0003336688681552231,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "mlp_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9987652461625981,
+    0.9989407035522662,
+    0.9991139611581055,
+    0.9995061504753032,
+    0.9990625843913852
+   ],
+   "mean": 0.9990777291479317,
+   "sd": 0.0002745489874090594,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.491139846743295,
+    0.49149904214559387,
+    0.4873084291187739,
+    0.49580938697318006,
+    0.4964080459770115
+   ],
+   "mean": 0.4924329501915709,
+   "sd": 0.0037418821746366703,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5736214271773667,
+    0.568288787349534,
+    0.5877452535864496,
+    0.5891715566449136,
+    0.5667072442195606
+   ],
+   "mean": 0.5771068537955649,
+   "sd": 0.010686334484337427,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "mlp_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.927313291140592,
+    0.9187413053038285,
+    0.922692802974504,
+    0.9250476231966174,
+    0.9217302740648042
+   ],
+   "mean": 0.9231050593360692,
+   "sd": 0.003262863327529233,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9692289272030651,
+    0.9721024904214559,
+    0.9651580459770115,
+    0.9682710727969349,
+    0.9711446360153256
+   ],
+   "mean": 0.9691810344827587,
+   "sd": 0.0027113371369191707,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9988603302627095,
+    0.9989618469829186,
+    0.9994518455782613,
+    0.9996532270586409,
+    0.9991290114765657
+   ],
+   "mean": 0.9992112522718191,
+   "sd": 0.0003336688681552231,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.491139846743295,
+    0.49149904214559387,
+    0.4873084291187739,
+    0.49580938697318006,
+    0.4964080459770115
+   ],
+   "mean": 0.4924329501915709,
+   "sd": 0.0037418821746366703,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5736071970459089,
+    0.5683110611359996,
+    0.5879808883021655,
+    0.5891527179040545,
+    0.5666908884028039
+   ],
+   "mean": 0.5771485505581865,
+   "sd": 0.010740631690100276,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9692289272030651,
+    0.9721024904214559,
+    0.9651580459770115,
+    0.9682710727969349,
+    0.9711446360153256
+   ],
+   "mean": 0.9691810344827587,
+   "sd": 0.0027113371369191707,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_swiltra_de_fr_it_e5-small.json@4bd57c6f1fed",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7370312649204472,
+    0.735863024890755,
+    0.7231396769337881,
+    0.7311799113556927,
+    0.7057867586044345
+   ],
+   "mean": 0.7266001273410236,
+   "sd": 0.012852581054255813,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8127103701949924,
+    0.8092023876907171,
+    0.7839834305326745,
+    0.7935321699613064,
+    0.7839905197556056
+   ],
+   "mean": 0.796683775627059,
+   "sd": 0.013655745218151978,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7777777777777778,
+    0.7757633587786259,
+    0.7726990049751243,
+    0.7764632627646326,
+    0.7657601977750309
+   ],
+   "mean": 0.7736927204142383,
+   "sd": 0.004810497053587129,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7427009060795624,
+    0.7398320208265904,
+    0.7435487728272423,
+    0.7445236530632366,
+    0.7397981981661109
+   ],
+   "mean": 0.7420807101925486,
+   "sd": 0.002166465192572015,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8212179238517703,
+    0.8105839105197516,
+    0.8128484753112442,
+    0.8154737678102087,
+    0.8086030677508541
+   ],
+   "mean": 0.8137454290487657,
+   "sd": 0.004900738173735895,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7690025252525252,
+    0.7769083969465649,
+    0.7717661691542288,
+    0.7749688667496887,
+    0.7650185414091472
+   ],
+   "mean": 0.771532899902431,
+   "sd": 0.004732755900072532,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8931205442373228,
+    0.8723387154957069,
+    0.89210380916256,
+    0.8974538192313097,
+    0.8798673613605559
+   ],
+   "mean": 0.886976849897491,
+   "sd": 0.010471597107058755,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9198366847760846,
+    0.9082755249870068,
+    0.9191461645105194,
+    0.920932490834684,
+    0.9115544774771115
+   ],
+   "mean": 0.9159490685170812,
+   "sd": 0.0056649179535240525,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7748737373737373,
+    0.7763358778625954,
+    0.7691542288557214,
+    0.7711083437110834,
+    0.7616192830655131
+   ],
+   "mean": 0.7706182941737302,
+   "sd": 0.005791489376618412,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss",
+     "path": "per_seed[*].metrics.gauss.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8660275816902748,
+    0.8500298612259047,
+    0.8645616168450603,
+    0.870360357679718,
+    0.8527203380160794
+   ],
+   "mean": 0.8607399510914074,
+   "sd": 0.00886194967561099,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8989913979689405,
+    0.8848968187638887,
+    0.896089875870372,
+    0.8988734691278575,
+    0.8902728867849576
+   ],
+   "mean": 0.8938248897032033,
+   "sd": 0.0061163367229309954,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "gauss_matched",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7676136363636364,
+    0.773027989821883,
+    0.7664800995024876,
+    0.7658779576587795,
+    0.7609394313967862
+   ],
+   "mean": 0.7667878229487146,
+   "sd": 0.004322842893025009,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "gauss_matched",
+     "path": "per_seed[*].metrics.gauss_matched.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8595865846252779,
+    0.8599212958900836,
+    0.8602652884292823,
+    0.8717075505130882,
+    0.8599028112305132
+   ],
+   "mean": 0.8622767061376491,
+   "sd": 0.0052774689730747905,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9045817862412908,
+    0.8943844075255466,
+    0.8893959805762087,
+    0.9013284467348021,
+    0.891893708201207
+   ],
+   "mean": 0.8963168658558109,
+   "sd": 0.006415259616221601,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "activations",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7702020202020202,
+    0.7709923664122137,
+    0.7692786069651741,
+    0.7646326276463262,
+    0.7669962917181706
+   ],
+   "mean": 0.768420382588781,
+   "sd": 0.002593308927075117,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "activations",
+     "path": "per_seed[*].metrics.activations.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9959665777592583,
+    0.9951009056714424,
+    0.9936055081769997,
+    0.9965249881459719,
+    0.9944905416107123
+   ],
+   "mean": 0.9951377042728771,
+   "sd": 0.0011596752051290695,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9964708893479723,
+    0.9959181867132445,
+    0.9949719899116193,
+    0.997193047356193,
+    0.9950704476318861
+   ],
+   "mean": 0.995924912192183,
+   "sd": 0.0009413386264394237,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7380050505050505,
+    0.7560432569974554,
+    0.7531094527363185,
+    0.7391033623910336,
+    0.7413473423980222
+   ],
+   "mean": 0.745521693005576,
+   "sd": 0.00841720695836443,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth",
+     "path": "per_seed[*].metrics.directions_orth.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9959665777592583,
+    0.9951009056714424,
+    0.9936055081769997,
+    0.9965249881459719,
+    0.9944905416107123
+   ],
+   "mean": 0.9951377042728771,
+   "sd": 0.0011596752051290695,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9964661705111915,
+    0.9959181867132445,
+    0.994971524388278,
+    0.997193047356193,
+    0.9950727079469435
+   ],
+   "mean": 0.9959243273831702,
+   "sd": 0.0009402620996818704,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "directions_orth_centered",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7380050505050505,
+    0.7560432569974554,
+    0.7531094527363185,
+    0.7391033623910336,
+    0.7413473423980222
+   ],
+   "mean": 0.745521693005576,
+   "sd": 0.00841720695836443,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "directions_orth_centered",
+     "path": "per_seed[*].metrics.directions_orth_centered.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7370863402934699,
+    0.7358454336026591,
+    0.7231517898135023,
+    0.7311676245191131,
+    0.7057873336613565
+   ],
+   "mean": 0.7266077043780201,
+   "sd": 0.012858474888434463,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8109116853819314,
+    0.805734741201815,
+    0.787069789615065,
+    0.7920736751925215,
+    0.7859626494010564
+   ],
+   "mean": 0.7963505081584779,
+   "sd": 0.011318373982261732,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sigma_orth_centered",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7780934343434344,
+    0.7754452926208651,
+    0.7726990049751243,
+    0.7764632627646326,
+    0.7657601977750309
+   ],
+   "mean": 0.7736922384958175,
+   "sd": 0.004848352348366251,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sigma_orth_centered",
+     "path": "per_seed[*].metrics.sigma_orth_centered.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.678425158934237,
+    0.673191595330214,
+    0.6787782766050856,
+    0.6806742555066787,
+    0.6754694805986133
+   ],
+   "mean": 0.6773077533949657,
+   "sd": 0.002960843385198438,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7641930536256696,
+    0.7555801474893954,
+    0.749307829597327,
+    0.7523966151467326,
+    0.7562340550352337
+   ],
+   "mean": 0.7555423401788717,
+   "sd": 0.005569547785571775,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7771464646464646,
+    0.7767175572519084,
+    0.7786069651741293,
+    0.773972602739726,
+    0.7657601977750309
+   ],
+   "mean": 0.7744407575174518,
+   "sd": 0.005134034492361163,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9986234499716463,
+    0.9990050556388557,
+    0.9988954640315134,
+    0.9987568688906865,
+    0.9992726895974592
+   ],
+   "mean": 0.9989107056260323,
+   "sd": 0.0002481673723577521,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.99872406790774,
+    0.9987374932825418,
+    0.9988142850163918,
+    0.9985430801252543,
+    0.9990250473158568
+   ],
+   "mean": 0.9987687947295569,
+   "sd": 0.0001744004773160718,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6316287878787878,
+    0.6281806615776081,
+    0.628731343283582,
+    0.6217310087173101,
+    0.6211372064276885
+   ],
+   "mean": 0.6262818015769953,
+   "sd": 0.004619869080607814,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.619876040206848,
+    0.614704758967348,
+    0.6165947879401112,
+    0.6082913769484043,
+    0.6147651346326188
+   ],
+   "mean": 0.6148464197390661,
+   "sd": 0.004223420842354487,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "mlp_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8750721512065937,
+    0.8925866735799154,
+    0.8795287264879713,
+    0.8719503282901652,
+    0.8778614109077338
+   ],
+   "mean": 0.879399858094476,
+   "sd": 0.007913597011931438,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8083964646464646,
+    0.8037531806615776,
+    0.8006840796019901,
+    0.7991905354919053,
+    0.7880098887515451
+   ],
+   "mean": 0.8000068298306966,
+   "sd": 0.007574178434769063,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7313677064186629,
+    0.7438791426272158,
+    0.7276041715922194,
+    0.7447599668479105,
+    0.7380040587191783
+   ],
+   "mean": 0.7371230092410374,
+   "sd": 0.007557719377658359,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.816496490537444,
+    0.8130370066228958,
+    0.8050861660291462,
+    0.8042382623173647,
+    0.814360877228145
+   ],
+   "mean": 0.8106437605469992,
+   "sd": 0.005606163927696439,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "mi",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7765151515151515,
+    0.7694020356234097,
+    0.7689676616915423,
+    0.772104607721046,
+    0.7710135970333746
+   ],
+   "mean": 0.7716006107169049,
+   "sd": 0.003021484002703005,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "mi_n32",
+     "path": "per_seed[*].metrics.mi_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7535089621871801,
+    0.7599600756262292,
+    0.7431369206679233,
+    0.7505027920455454,
+    0.753101266979601
+   ],
+   "mean": 0.7520420035012959,
+   "sd": 0.0060753507152457985,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8289912172682914,
+    0.8258367613514661,
+    0.8132694816009739,
+    0.8173295933632578,
+    0.8106290498046421
+   ],
+   "mean": 0.8192112206777262,
+   "sd": 0.007937955719711785,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "entropy",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7654671717171717,
+    0.7684478371501272,
+    0.7667910447761194,
+    0.7736612702366127,
+    0.7676143386897404
+   ],
+   "mean": 0.7683963325139542,
+   "sd": 0.003142080043012052,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "entropy_n32",
+     "path": "per_seed[*].metrics.entropy_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7607331478266455,
+    0.7423438119307997,
+    0.7569308334737308,
+    0.7472516411374432,
+    0.7705984217378348
+   ],
+   "mean": 0.7555715712212907,
+   "sd": 0.011163451032473072,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8357827181823161,
+    0.8203508395331909,
+    0.819584166112015,
+    0.8123351371622546,
+    0.841542945818658
+   ],
+   "mean": 0.8259191613616869,
+   "sd": 0.01221736960398498,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "dip",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.77114898989899,
+    0.7684478371501272,
+    0.7720771144278606,
+    0.7714819427148194,
+    0.7620519159456118
+   ],
+   "mean": 0.7690415600274819,
+   "sd": 0.004147859390334831,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "dip_n32",
+     "path": "per_seed[*].metrics.dip_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7495377998373243,
+    0.7679871071832738,
+    0.7310852547355433,
+    0.761003806938879,
+    0.7474454577155927
+   ],
+   "mean": 0.7514118852821225,
+   "sd": 0.014134705474591775,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8201180274621851,
+    0.821979273035236,
+    0.8139795966380726,
+    0.8141930839853231,
+    0.8050135607675492
+   ],
+   "mean": 0.8150567083776732,
+   "sd": 0.0066390828248857085,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7702020202020202,
+    0.7748091603053435,
+    0.7639925373134329,
+    0.7705479452054794,
+    0.7666872682323856
+   ],
+   "mean": 0.7692477862517324,
+   "sd": 0.004114114456112255,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_n32",
+     "path": "per_seed[*].metrics.cofire_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7387068246298003,
+    0.7526909869405066,
+    0.7323674774868671,
+    0.754283891420028,
+    0.7489749670546167
+   ],
+   "mean": 0.7454048295063638,
+   "sd": 0.009480341894441165,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8107784659332232,
+    0.8246928457868968,
+    0.8058539974187295,
+    0.8088394156472847,
+    0.8058360656651169
+   ],
+   "mean": 0.8112001580902503,
+   "sd": 0.007828768611787601,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "cofire_neg",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7724116161616161,
+    0.7732188295165394,
+    0.7649253731343284,
+    0.7696139476961394,
+    0.7642150803461063
+   ],
+   "mean": 0.768876969370946,
+   "sd": 0.004160436774175979,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "cofire_neg_n32",
+     "path": "per_seed[*].metrics.cofire_neg_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7289765273170783,
+    0.736551804577548,
+    0.729483902963403,
+    0.7313560590000612,
+    0.7336005770953684
+   ],
+   "mean": 0.7319937741906918,
+   "sd": 0.003129191969192888,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "mlp_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8109814304250079,
+    0.8100630560866409,
+    0.805869369634632,
+    0.8005486178892915,
+    0.8028310031773623
+   ],
+   "mean": 0.806058695442587,
+   "sd": 0.004502305524358536,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "oracle",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7787247474747475,
+    0.7690839694656488,
+    0.7689676616915423,
+    0.775840597758406,
+    0.7703955500618047
+   ],
+   "mean": 0.7726025052904298,
+   "sd": 0.0044280335905004025,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "oracle_n32",
+     "path": "per_seed[*].metrics.oracle_n32.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9986234499716463,
+    0.9990050556388557,
+    0.9988954640315134,
+    0.9987568688906865,
+    0.9992726895974592
+   ],
+   "mean": 0.9989107056260323,
+   "sd": 0.0002481673723577521,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "mlp_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.99872406790774,
+    0.9987374932825418,
+    0.9988142850163918,
+    0.9985430801252543,
+    0.9990250473158568
+   ],
+   "mean": 0.9987687947295569,
+   "sd": 0.0001744004773160718,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6316287878787878,
+    0.6281806615776081,
+    0.628731343283582,
+    0.6217310087173101,
+    0.6211372064276885
+   ],
+   "mean": 0.6262818015769953,
+   "sd": 0.004619869080607814,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6199877594107469,
+    0.6147018512418166,
+    0.6174185485394724,
+    0.6083335387713119,
+    0.6148423735424399
+   ],
+   "mean": 0.6150568143011576,
+   "sd": 0.004337811249608759,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "mlp_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.874987107793161,
+    0.8932003612790755,
+    0.8795891716419788,
+    0.8729540022604991,
+    0.8793119052465792
+   ],
+   "mean": 0.8800085096442588,
+   "sd": 0.007900420915681767,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.mlp_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8083964646464646,
+    0.8037531806615776,
+    0.8006840796019901,
+    0.7991905354919053,
+    0.7880098887515451
+   ],
+   "mean": 0.8000068298306966,
+   "sd": 0.007574178434769063,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9986234499716463,
+    0.9990050556388557,
+    0.9988954640315134,
+    0.9987568688906865,
+    0.9992726895974592
+   ],
+   "mean": 0.9989107056260323,
+   "sd": 0.0002481673723577521,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "raw",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6316287878787878,
+    0.6281806615776081,
+    0.628731343283582,
+    0.6217310087173101,
+    0.6211372064276885
+   ],
+   "mean": 0.6262818015769953,
+   "sd": 0.004619869080607814,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "raw",
+     "path": "per_seed[*].metrics.raw.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "linear_auc",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6198191646577025,
+    0.6147049872571634,
+    0.6169583264134607,
+    0.6083122355959543,
+    0.6147414552154096
+   ],
+   "mean": 0.6149072338279382,
+   "sd": 0.004239588222174636,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "metadata_leace",
+   "metric": "recall@10",
+   "cohort": "latent_selectors",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8083964646464646,
+    0.8037531806615776,
+    0.8006840796019901,
+    0.7991905354919053,
+    0.7880098887515451
+   ],
+   "mean": 0.8000068298306966,
+   "sd": 0.007574178434769063,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/selectors/raw/selectors/selectors_scotus_oyez_lexis_wiki_e5-small.json@493aaca25e5b",
+     "condition": "metadata_leace",
+     "path": "per_seed[*].metrics.metadata_leace.recall@10"
+    }
+   ]
+  }
+ ],
+ "outputs": [
+  "data/table3_mechanism_controls_per_seed.csv",
+  "data/table3_mechanism_controls_summary.csv",
+  "reports/previews/table3_mechanism_controls.pdf",
+  "reports/previews/table3_mechanism_controls.png",
+  "tables/table3_mechanism_controls.include.tex",
+  "tables/table3_mechanism_controls.md",
+  "tables/table3_mechanism_controls.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1820
+ }
+}

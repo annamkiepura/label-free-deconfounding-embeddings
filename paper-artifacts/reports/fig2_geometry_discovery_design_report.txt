@@ -1,0 +1,58 @@
+Figure 2 - design report (three independent panels + composite)
+================================================================
+
+Built by `python -m paper_assets build fig2_geometry_discovery` (no model was fitted or rerun).
+
+How it was built
+- One drawing function renders each panel at fixed physical sizes: figure height 2.74 in,
+  bottom band 0.25 in, top band 0.67 in, so the six rows sit at identical heights in
+  every panel (row pitch 0.30 in). The fonts are label 8 pt, tick 8 pt, annot 8 pt, title 9 pt, subtitle 7.5 pt, legend 8 pt.
+- The standalone panels A, B and C each carry the six setting labels. Every rendered panel is
+  checked for: smallest text >= 7.5 pt, no clipping, no overlapping value
+  annotations, and no annotation covering its marker.
+- Composite: A (with labels) and label-less re-renders of B and C from the same function,
+  placed side by side as finished vector PDFs with LaTeX (standalone + includegraphics).
+  Nothing is redrawn in a shared axes system, and each panel keeps its own x scale.
+
+Deviations from the specification
+1. Width shares. The composite is the full text width (6.30 in). The label column
+   (1.78 in) lives inside A, as asked, so shares are given for the plotting areas:
+   A 27%, B 29%, C 44%. As fractions of the whole figure (labels included in
+   A) they are A 47%, B 22%, C 31%. Holding A to 27% of the total would leave
+   under 0.1 in to plot once the longest label ("MiniLM · SCOTUS Oyez–Lexis", 8 pt) is in.
+2. Panel A: the optional "[90%: n PCs]" annotation is omitted. On the low-value rows it runs
+   past the panel ("0.27  [90%: 17–19 PCs]"), so those values are in the caption and the data files.
+3. Panel B: K is annotated as the silhouette K of the geometry run's seeds (0-2), the seeds
+   the ARI is computed on. Where they differ it is shown as a range ("K=4–5" for MiniLM ·
+   SCOTUS 3 sources: seeds 5/4/4). The performance cohort's seeds 3-4 of that row chose
+   K = 3 and 2. That is recorded in the data files, not in the panel.
+4. Panel C: numeric annotations are omitted (18 values would crowd the panel). The three
+   markers per row are offset vertically by ±0.22 of a row so near-equal gaps (PC-1 ≈ k-means
+   on MiniLM · SCOTUS Oyez–Lexis) stay distinguishable. The method key (one entry per line) sits at
+   the top left of the composite, over the setting labels, where the header band is otherwise empty;
+   it also explains A's and B's markers (PC-1's square, k-means LEACE's cross). The standalone C
+   panel carries the same key over its own label column. The k-means entry reads "k-means LEACE";
+   the caption states that K is the silhouette K.
+7. Compact headers (2026-09-30, to save vertical space): a bold title and a grey subtitle stating
+   what the x axis measures, so there is no x label below the tick labels; C's subtitle also carries
+   "lower is better". The earlier grey reading cues ("higher → ...") are dropped: they repeated the
+   axis descriptions. Every header starts at its plot's left edge. A and B have two-line titles (their
+   titles cannot fit 1.1-1.2 in on one line); A's subtitle also takes two lines, so the header band is
+   sized for A's four lines (B and C use three). The setting labels sit 6 pt from panel A.
+   Checks: the key overlaps no header text and every header ends above its plot.
+5. No error bars: the figure shows seed means; SDs are in every CSV.
+6. The separator after row 2 is drawn per panel; in the composite it also crosses A's label column.
+
+8. A and B use plain points (no lollipop stems). With the value printed beside each point
+   and the axes starting at 0, the stems added nothing, and near 1.0 they showed as fragments
+   on both sides of the label.
+
+9. Row tracing. Settings 2, 4 and 6 sit on a light grey band drawn edge to edge in every
+   panel. Because the panels share one row geometry, the bands join into continuous stripes in
+   the composite, carrying each setting label across to its points in B and C. Panel C's
+   markers sit within ±0.17 of the row centre, clearly inside their row. The near-equal PC-1
+   and k-means gaps of MiniLM · SCOTUS Oyez–Lexis (0.355 vs 0.356) overlap by design: they
+   are equal to two decimals.
+
+Unavailable quantities: none. Every requested field is present in
+data/fig2_geometry_discovery_combined.csv.

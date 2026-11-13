@@ -1,0 +1,2967 @@
+{
+ "five_seeds": true,
+ "n_boot": 10000,
+ "seeds": {
+  "e5-small/cap": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "e5-small/scotus_oyez_lexis_wiki": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "e5-small/swiltra_de_fr_it": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "mini/cap": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "mini/scotus_oyez_lexis_wiki": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "matched": {
+  "e5-small/cap": [
+   {
+    "seed": 0,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.3319443651834003
+   },
+   {
+    "seed": 1,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.32896559961427013
+   },
+   {
+    "seed": 2,
+    "matched_rank": 21,
+    "sae_removed_variance": 0.3331053775804596
+   },
+   {
+    "seed": 3,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.33021742116277836
+   },
+   {
+    "seed": 4,
+    "matched_rank": 21,
+    "sae_removed_variance": 0.33694791191737333
+   }
+  ],
+  "e5-small/scotus_oyez_lexis_wiki": [
+   {
+    "seed": 0,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.2984353551232084
+   },
+   {
+    "seed": 1,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.2971287942663595
+   },
+   {
+    "seed": 2,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.30245886027978636
+   },
+   {
+    "seed": 3,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.2997987996872446
+   },
+   {
+    "seed": 4,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.2978688660089986
+   }
+  ],
+  "e5-small/swiltra_de_fr_it": [
+   {
+    "seed": 0,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.3568494116061858
+   },
+   {
+    "seed": 1,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.35683250623969875
+   },
+   {
+    "seed": 2,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.3530669195001737
+   },
+   {
+    "seed": 3,
+    "matched_rank": 23,
+    "sae_removed_variance": 0.357579942558211
+   },
+   {
+    "seed": 4,
+    "matched_rank": 22,
+    "sae_removed_variance": 0.35467292574228554
+   }
+  ],
+  "mini/cap": [
+   {
+    "seed": 0,
+    "matched_rank": 19,
+    "sae_removed_variance": 0.39580318932597897
+   },
+   {
+    "seed": 1,
+    "matched_rank": 19,
+    "sae_removed_variance": 0.39763295981097885
+   },
+   {
+    "seed": 2,
+    "matched_rank": 18,
+    "sae_removed_variance": 0.3882935745512761
+   },
+   {
+    "seed": 3,
+    "matched_rank": 19,
+    "sae_removed_variance": 0.39225630563844943
+   },
+   {
+    "seed": 4,
+    "matched_rank": 19,
+    "sae_removed_variance": 0.3917083584305823
+   }
+  ],
+  "mini/scotus_oyez_lexis_wiki": [
+   {
+    "seed": 0,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.36307842626946646
+   },
+   {
+    "seed": 1,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.36081019600259856
+   },
+   {
+    "seed": 2,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.36104419171508884
+   },
+   {
+    "seed": 3,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.36090506723740384
+   },
+   {
+    "seed": 4,
+    "matched_rank": 20,
+    "sae_removed_variance": 0.36272085877640803
+   }
+  ]
+ },
+ "variability": [
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0018885329835894638,
+    0.0011455355875546747,
+    0.0007406385272677784,
+    0.0027054234234667462,
+    0.0025163162957679785
+   ],
+   "n": 5,
+   "mean": 0.0017992893635293283,
+   "sd": 0.0008501921213134818,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.000743636414937889,
+    0.0028549423121207677
+   ],
+   "boot_delta": 0.001799289363529303,
+   "boot_ci": [
+    -0.0016759153525536894,
+    0.005686402301083964
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00022194513062134824,
+    0.00019484825739402023,
+    0.00020950883636572382,
+    0.00021363212420144606,
+    0.00019321726798338101
+   ],
+   "n": 5,
+   "mean": 0.00020663032331318386,
+   "sd": 1.2354973761228583e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.00019128959719511414,
+    0.00022197104943125358
+   ],
+   "boot_delta": 0.0002066303233133615,
+   "boot_ci": [
+    -0.00015258060850088784,
+    0.0005736486726735518
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0017562055414683364,
+    0.0016716580134188475,
+    0.0009914625751191453,
+    0.002140508277479097,
+    0.0021801311300118143
+   ],
+   "n": 5,
+   "mean": 0.001747993107499448,
+   "sd": 0.0004793340083513434,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0011528213262148811,
+    0.0023431648887840147
+   ],
+   "boot_delta": 0.0017479931074994444,
+   "boot_ci": [
+    -0.0016132518200961104,
+    0.005619402941986338
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.000247990565450551,
+    0.00025511927197552353,
+    0.0002426692334269731,
+    0.0002746132605768725,
+    0.0002584980772852852
+   ],
+   "n": 5,
+   "mean": 0.00025577808174304106,
+   "sd": 1.2197168543779873e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.00024063329668220614,
+    0.000270922866803876
+   ],
+   "boot_delta": 0.00025577808174304106,
+   "boot_ci": [
+    -0.00011146799379050103,
+    0.0006480772808255736
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.015234160204595958,
+    -0.012295183507700614,
+    -0.0023165776345039912,
+    -0.010790731406779507,
+    -0.0060673770028825125
+   ],
+   "n": 5,
+   "mean": -0.009340805951292516,
+   "sd": 0.005138515725719568,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.015721115932122404,
+    -0.0029604959704626274
+   ],
+   "boot_delta": -0.009340805951292544,
+   "boot_ci": [
+    -0.016353500684780524,
+    -0.0025564134827250726
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.005769437201286087,
+    -0.004274763686548333,
+    -0.005083981831469853,
+    -0.006019645179305977,
+    -0.00441511353233115
+   ],
+   "n": 5,
+   "mean": -0.00511258828618828,
+   "sd": 0.0007815756722638818,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.006083042660310248,
+    -0.004142133912066312
+   ],
+   "boot_delta": -0.005112588286188324,
+   "boot_ci": [
+    -0.008044337692512905,
+    -0.002402316196744748
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.003778087364561222,
+    0.0037745313643640366,
+    0.004239761466222564,
+    0.003963319463086851,
+    0.004330029107459754
+   ],
+   "n": 5,
+   "mean": 0.004017145753138886,
+   "sd": 0.0002580511932802971,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0036967328767492195,
+    0.004337558629528553
+   ],
+   "boot_delta": 0.004017145753138845,
+   "boot_ci": [
+    -0.0003653780230796381,
+    0.008671437007942932
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0007624875494496308,
+    0.00077317831852175,
+    0.0007944590651850492,
+    0.0008780633074859656,
+    0.0007972606101979141
+   ],
+   "n": 5,
+   "mean": 0.000801089770168062,
+   "sd": 4.542228180991771e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0007446905581284213,
+    0.0008574889822077026
+   ],
+   "boot_delta": 0.0008010897701680175,
+   "boot_ci": [
+    0.00025819339341673635,
+    0.0013671949746935639
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.010310700909955861,
+    -0.005363369627077929,
+    -0.006174273557317866,
+    -0.0016289678783641902,
+    -0.005026407281111039
+   ],
+   "n": 5,
+   "mean": -0.005700743850765378,
+   "sd": 0.0031074042710908,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.00955909586204344,
+    -0.0018423918394873144
+   ],
+   "boot_delta": -0.005700743850765392,
+   "boot_ci": [
+    -0.014138122103758715,
+    0.0026118577341703096
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.004525374830490203,
+    -0.004686041031725652,
+    -0.004713202044986042,
+    -0.0051424775415666035,
+    -0.005203955763197765
+   ],
+   "n": 5,
+   "mean": -0.004854210242393253,
+   "sd": 0.00030071451925770096,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0052275966346926935,
+    -0.004480823850093813
+   ],
+   "boot_delta": -0.004854210242393298,
+   "boot_ci": [
+    -0.008081804762921316,
+    -0.001830051076643688
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0001833815233018954,
+    -0.0003122220658723585,
+    -0.0003825787801223224,
+    -0.0002581503444387623,
+    -0.00033922266976199047
+   ],
+   "n": 5,
+   "mean": -0.00029511107669946576,
+   "sd": 7.70370147505817e-05,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.00039076516444435554,
+    -0.00019945698895457596
+   ],
+   "boot_delta": -0.00029511107669949916,
+   "boot_ci": [
+    -0.0050764767538662645,
+    0.0039140110062208565
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0011534920627680467,
+    0.0011303466737165868,
+    0.0011443521080656271,
+    0.001167470008531346,
+    0.0011948898726390489
+   ],
+   "n": 5,
+   "mean": 0.001158110145144131,
+   "sd": 2.4605771741715386e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0011275580442244235,
+    0.0011886622460638386
+   ],
+   "boot_delta": 0.00115811014514422,
+   "boot_ci": [
+    0.0006895329484865875,
+    0.0016552044758896987
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0008817378944649234,
+    0.0013265005723227473,
+    0.00019206807503219792,
+    0.00018243821910443047,
+    0.000252401203159891
+   ],
+   "n": 5,
+   "mean": 0.0005670291928168379,
+   "sd": 0.0005155907223681806,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    -7.316124495560525e-05,
+    0.0012072196305892811
+   ],
+   "boot_delta": 0.0005670291928168075,
+   "boot_ci": [
+    -0.004699490326779524,
+    0.005311688274253122
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0011192733551621536,
+    0.0010322857261204632,
+    0.001122292518144108,
+    0.0010989821975792013,
+    0.001082823490694107
+   ],
+   "n": 5,
+   "mean": 0.0010911314575400067,
+   "sd": 3.6593901945284884e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0010456941269407476,
+    0.0011365687881392658
+   ],
+   "boot_delta": 0.0010911314575400288,
+   "boot_ci": [
+    0.0005329910599333772,
+    0.0016790909588125012
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.01522719409049031,
+    -0.006260121724726004,
+    -0.010249342028896491,
+    -0.0064865950291404075,
+    -0.009000011292649579
+   ],
+   "n": 5,
+   "mean": -0.009444652833180559,
+   "sd": 0.003646037525400513,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.013971806364570325,
+    -0.004917499301790792
+   ],
+   "boot_delta": -0.009444652833180574,
+   "boot_ci": [
+    -0.017040851627598875,
+    -0.0022132121583800205
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002294488272678419,
+    -0.002832588788821755,
+    -0.0035174646076252536,
+    -0.0031854322732201013,
+    -0.002833990706685996
+   ],
+   "n": 5,
+   "mean": -0.002932792929806305,
+   "sd": 0.0004563176506446178,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0034993861283566506,
+    -0.0023661997312559593
+   ],
+   "boot_delta": -0.002932792929806305,
+   "boot_ci": [
+    -0.004838632860395705,
+    -0.0010679744441542166
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.00025652372244848177,
+    -0.00015264757447570055,
+    -8.104507945612683e-05,
+    -0.00023567390396608823,
+    0.00010225694860038214
+   ],
+   "n": 5,
+   "mean": -0.00012472666634920305,
+   "sd": 0.00014481796602195223,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.00030454192105175746,
+    5.508858835335135e-05
+   ],
+   "boot_delta": -0.0001247266663492265,
+   "boot_ci": [
+    -0.005622412171517748,
+    0.004887098001105819
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0010965219691706496,
+    0.001047869463424167,
+    0.0010663692815140458,
+    0.0011585522532285841,
+    0.001110316657696675
+   ],
+   "n": 5,
+   "mean": 0.0010959259250068244,
+   "sd": 4.2756648947678847e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0010428365333246545,
+    0.0011490153166889942
+   ],
+   "boot_delta": 0.0010959259250067355,
+   "boot_ci": [
+    0.0004973800197715707,
+    0.001727787694837246
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.013349117269667855,
+    -0.009714879790542658,
+    -0.013007167172784278,
+    -0.01083236555090199,
+    -0.013182619684115621
+   ],
+   "n": 5,
+   "mean": -0.01201722989360248,
+   "sd": 0.0016444415975287075,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.014059073822402563,
+    -0.009975385964802396
+   ],
+   "boot_delta": -0.012017229893602478,
+   "boot_ci": [
+    -0.020936301792871977,
+    -0.0033325358556522662
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0033390430708256646,
+    -0.002556328503826144,
+    -0.0031838379352570056,
+    -0.0032086532558817105,
+    -0.0034388220550199966
+   ],
+   "n": 5,
+   "mean": -0.003145336964162104,
+   "sd": 0.00034499195578822233,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0035737010553342453,
+    -0.002716972872989963
+   ],
+   "boot_delta": -0.003145336964161971,
+   "boot_ci": [
+    -0.005665944414603563,
+    -0.000720593133416431
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0008301073315960695,
+    -0.0007730056664325413,
+    -0.0012989456054099513,
+    -0.0007435817823728319,
+    -0.0008346639065235862
+   ],
+   "n": 5,
+   "mean": -0.000896060858466996,
+   "sd": 0.00022848852359971548,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0011797668322234944,
+    -0.0006123548847104976
+   ],
+   "boot_delta": -0.0008960608584670116,
+   "boot_ci": [
+    -0.0035384124021277906,
+    0.0014097432355413215
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00015942921488487638,
+    0.0001620681190998008,
+    0.00014936839256574075,
+    0.00014395085049245804,
+    0.00014253060690472275
+   ],
+   "n": 5,
+   "mean": 0.00015146943678951975,
+   "sd": 8.895734096851743e-06,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.00014042392402386524,
+    0.00016251494955517426
+   ],
+   "boot_delta": 0.00015146943678945313,
+   "boot_ci": [
+    -0.00014200808087901358,
+    0.0004477926667831338
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0003886823849994614,
+    -0.0004982764005369955,
+    -0.0005132612926168845,
+    9.013480406463992e-05,
+    -0.00029280951800532694
+   ],
+   "n": 5,
+   "mean": -0.00032057895841880566,
+   "sd": 0.00024637262229881607,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.0006264909736703,
+    -1.4666943167311272e-05
+   ],
+   "boot_delta": -0.0003205789584188316,
+   "boot_ci": [
+    -0.0027598320034703046,
+    0.0018761478548865004
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0003857473213275675,
+    0.0003630784010928423,
+    0.0003691991928134186,
+    0.000389632374755311,
+    0.0003633830662495008
+   ],
+   "n": 5,
+   "mean": 0.00037420807124772805,
+   "sd": 1.2621435984437355e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.00035853648858021867,
+    0.00038987965391523743
+   ],
+   "boot_delta": 0.0003742080712476614,
+   "boot_ci": [
+    -1.81980393741203e-05,
+    0.000766982916563169
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.009104818112248964,
+    -0.0009822144951375455,
+    -0.0031645592040717265,
+    -0.011280766981727513,
+    -0.012447040746464882
+   ],
+   "n": 5,
+   "mean": -0.007395879907930126,
+   "sd": 0.005063749157127509,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.013683354932270022,
+    -0.0011084048835902308
+   ],
+   "boot_delta": -0.0073958799079301306,
+   "boot_ci": [
+    -0.014572201820722904,
+    -0.0004709449843498762
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0021397733502188654,
+    -0.002462523705562658,
+    -0.0014422069677431093,
+    -0.0002268380988533769,
+    -0.00206089714463642
+   ],
+   "n": 5,
+   "mean": -0.0016664478534028858,
+   "sd": 0.0008854552856974509,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.002765885803672641,
+    -0.0005670099031331306
+   ],
+   "boot_delta": -0.0016664478534027527,
+   "boot_ci": [
+    -0.003217328438373001,
+    -9.905403698555765e-05
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0003886823849994614,
+    -0.0004982764005369955,
+    -0.0005132612926168845,
+    9.013480406463992e-05,
+    -0.00029280951800532694
+   ],
+   "n": 5,
+   "mean": -0.00032057895841880566,
+   "sd": 0.00024637262229881607,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.0006264909736703,
+    -1.4666943167311272e-05
+   ],
+   "boot_delta": -0.0003205789584188316,
+   "boot_ci": [
+    -0.0027598320034703046,
+    0.0018761478548865004
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0003924522454916701,
+    0.00035687972504638843,
+    0.0003736592158225527,
+    0.00038694078408463284,
+    0.0003647093905033705
+   ],
+   "n": 5,
+   "mean": 0.0003749282721897229,
+   "sd": 1.4859140144037633e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0003564782128286071,
+    0.00039337833155083876
+   ],
+   "boot_delta": 0.0003749282721897673,
+   "boot_ci": [
+    -1.7957997797851553e-05,
+    0.0007685748704907456
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.006615787502540949,
+    -0.007369130718950789,
+    -0.007966084447216009,
+    -0.008527118354975266,
+    -0.008368693553526757
+   ],
+   "n": 5,
+   "mean": -0.007769362915441953,
+   "sd": 0.0007846992935690172,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.00874369577768253,
+    -0.006795030053201376
+   ],
+   "boot_delta": -0.00776936291544199,
+   "boot_ci": [
+    -0.015703545700281988,
+    -0.00015645311818654153
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002709930138570016,
+    -0.00219389150306315,
+    -0.0019194065225524026,
+    -0.0025757858409799494,
+    -0.0020639896105132394
+   ],
+   "n": 5,
+   "mean": -0.0022926007231357515,
+   "sd": 0.00033750485709320763,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0027116683534072943,
+    -0.0018735330928642084
+   ],
+   "boot_delta": -0.0022926007231357515,
+   "boot_ci": [
+    -0.004444120690110689,
+    -0.00019179675215100236
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0018939822121808892,
+    -0.0015271527077371394,
+    -0.001221536003683421,
+    -0.0016045927832652018,
+    -0.0013468400021025783
+   ],
+   "n": 5,
+   "mean": -0.0015188207417938461,
+   "sd": 0.0002579379692657481,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0018390930320009151,
+    -0.001198548451586777
+   ],
+   "boot_delta": -0.001518820741793819,
+   "boot_ci": [
+    -0.006399029108802348,
+    0.00321205235502318
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -8.589037633432994e-05,
+    -8.92027508956339e-05,
+    -8.734727136949783e-05,
+    -9.488143453173503e-05,
+    -4.560356346339223e-05
+   ],
+   "n": 5,
+   "mean": -8.058507931891778e-05,
+   "sd": 1.98508809947836e-05,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.00010523320358276795,
+    -5.593695505506762e-05
+   ],
+   "boot_delta": -8.058507931885117e-05,
+   "boot_ci": [
+    -0.0005826738676901282,
+    0.00038832673858242843
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -7.390174125652127e-05,
+    0.001120006079029956,
+    -0.0018551085840629144,
+    0.0010713763741986015,
+    -0.002145914413889083
+   ],
+   "n": 5,
+   "mean": -0.00037670845719599223,
+   "sd": 0.0015608133009269284,
+   "n_pos": 2,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0023147141408745406,
+    0.001561297226482556
+   ],
+   "boot_delta": -0.0003767084571959598,
+   "boot_ci": [
+    -0.005642370677685402,
+    0.004742900182672217
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -2.8938608460649107e-05,
+    -0.0004573138538636057,
+    -0.0012412814422223528,
+    0.0008071152681253801,
+    -0.0005911695213051127
+   ],
+   "n": 5,
+   "mean": -0.00030231763154526804,
+   "sd": 0.0007574116664744385,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.001242768429626097,
+    0.0006381331665355609
+   ],
+   "boot_delta": -0.0003023176315452014,
+   "boot_ci": [
+    -0.0013290280604120795,
+    0.0007210474755897388
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.020526886028056256,
+    -0.023301710470582902,
+    -0.012098200479858073,
+    -0.01740803127689272,
+    -0.023954215309408815
+   ],
+   "n": 5,
+   "mean": -0.019457808712959754,
+   "sd": 0.004860596676094677,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.025493036615455406,
+    -0.0134225808104641
+   ],
+   "boot_delta": -0.019457808712959747,
+   "boot_ci": [
+    -0.028197539697015588,
+    -0.011024100061758203
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0028529120164211275,
+    -0.0005639260422879433,
+    -0.0015851224148458742,
+    -0.0007326257826569815,
+    -0.0005508643827104587
+   ],
+   "n": 5,
+   "mean": -0.001257090127784477,
+   "sd": 0.0009885022487764238,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0024844777822336257,
+    -2.9702473335328338e-05
+   ],
+   "boot_delta": -0.0012570901277844104,
+   "boot_ci": [
+    -0.004075214904218208,
+    0.0014614296091753508
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0025936732948322163,
+    -0.0026535968880526117,
+    -0.003299948559412813,
+    -0.0011946231894769232,
+    -0.0024951719492812994
+   ],
+   "n": 5,
+   "mean": -0.002447402776211172,
+   "sd": 0.0007685187010841843,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0034016447792937256,
+    -0.0014931607731286187
+   ],
+   "boot_delta": -0.002447402776211157,
+   "boot_ci": [
+    -0.007888865426965765,
+    0.0026473864814526345
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.001970106927924098,
+    -0.0016432561918990896,
+    -0.0025518157943614783,
+    -0.0019018023742092272,
+    -0.003020965775029194
+   ],
+   "n": 5,
+   "mean": -0.0022175894126846172,
+   "sd": 0.0005585580847622268,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.002911130877439522,
+    -0.0015240479479297123
+   ],
+   "boot_delta": -0.002217589412684684,
+   "boot_ci": [
+    -0.003548029342806469,
+    -0.0009224813902929731
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.01320875882298772,
+    -0.020556796997036685,
+    -0.01574479170757192,
+    -0.01849022688083577,
+    -0.0171478692766869
+   ],
+   "n": 5,
+   "mean": -0.0170296887370238,
+   "sd": 0.0027766029951906126,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.02047729671345673,
+    -0.013582080760590871
+   ],
+   "boot_delta": -0.017029688737023797,
+   "boot_ci": [
+    -0.02627979363102547,
+    -0.007597135445218475
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00030989944158898997,
+    0.0002570595079738336,
+    0.00024068089240403268,
+    0.00016308519676599964,
+    8.143264404070205e-05
+   ],
+   "n": 5,
+   "mean": 0.0002104315365547116,
+   "sd": 8.925447543554705e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    9.960746772783038e-05,
+    0.00032125560538159284
+   ],
+   "boot_delta": 0.000210431536554756,
+   "boot_ci": [
+    -0.002626010982664877,
+    0.002989502786791003
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0026205665330225948,
+    -0.0033965583639310737,
+    -0.0036457775966906693,
+    -0.0024321592056738618,
+    -0.002884372735827334
+   ],
+   "n": 5,
+   "mean": -0.002995886887029107,
+   "sd": 0.0005133189163870739,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0036332565051039063,
+    -0.0023585172689543077
+   ],
+   "boot_delta": -0.0029958868870290567,
+   "boot_ci": [
+    -0.009159613022060416,
+    0.0028377153373014556
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00013830423687311022,
+    0.00019574392714072353,
+    9.09780553804973e-05,
+    0.00017695776961779153,
+    0.00018059313505969232
+   ],
+   "n": 5,
+   "mean": 0.00015651542481436297,
+   "sd": 4.2318125977623926e-05,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.00010397053131649577,
+    0.00020906031831223015
+   ],
+   "boot_delta": 0.0001565154248144296,
+   "boot_ci": [
+    -0.0004842123183992741,
+    0.0008195235633889347
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0048212136621868075,
+    -0.0013714203669317083,
+    -0.0005231897590488477,
+    0.0004189533435877135,
+    -0.003234535545101286
+   ],
+   "n": 5,
+   "mean": -0.001906281197936187,
+   "sd": 0.0021134583383560757,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.004530486328376481,
+    0.0007179239325041066
+   ],
+   "boot_delta": -0.0019062811979361695,
+   "boot_ci": [
+    -0.007721693114137032,
+    0.004020903533356416
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002663043774446372,
+    -0.0008375520044997531,
+    -0.0005717625798914439,
+    0.0007896737605802562,
+    0.0006911134370127803
+   ],
+   "n": 5,
+   "mean": -0.0005183142322489065,
+   "sd": 0.0014034049813607767,
+   "n_pos": 2,
+   "n_neg": 3,
+   "t_ci": [
+    -0.002260871672504411,
+    0.001224243208006598
+   ],
+   "boot_delta": -0.0005183142322489065,
+   "boot_ci": [
+    -0.001499030724200048,
+    0.0004939212242039969
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.02164590943685637,
+    -0.011842053628423471,
+    -0.017736645996728462,
+    -0.016374040262915363,
+    -0.021155641413513365
+   ],
+   "n": 5,
+   "mean": -0.017750858147687405,
+   "sd": 0.003986658185512091,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.02270094808978212,
+    -0.01280076820559269
+   ],
+   "boot_delta": -0.01775085814768739,
+   "boot_ci": [
+    -0.027091707736558366,
+    -0.00849946024716023
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.004463614850857001,
+    -0.0025900615797535,
+    0.0003242072503790716,
+    -0.004867174775635141,
+    -0.0021544133127513465
+   ],
+   "n": 5,
+   "mean": -0.0027502114537235832,
+   "sd": 0.0020766534787177424,
+   "n_pos": 1,
+   "n_neg": 4,
+   "t_ci": [
+    -0.005328717314992015,
+    -0.00017170559245515077
+   ],
+   "boot_delta": -0.002750211453723561,
+   "boot_ci": [
+    -0.005167641036950982,
+    -0.00040636910803245913
+   ],
+   "verdict": "evaluation-stable, but the fitted maps disagree in sign"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.004316095948186815,
+    0.0062885785096115756,
+    0.006455496514704428,
+    0.004030107915326253,
+    0.004565609715097169
+   ],
+   "n": 5,
+   "mean": 0.005131177720585249,
+   "sd": 0.0011499975038534933,
+   "n_pos": 5,
+   "n_neg": 0,
+   "t_ci": [
+    0.0037032672220261697,
+    0.006559088219144329
+   ],
+   "boot_delta": 0.005131177720585259,
+   "boot_ci": [
+    -0.0015093438432605489,
+    0.0123851037330204
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0006677321042686257,
+    -0.0007547128611640197,
+    -0.0005159424254570499,
+    -0.0008811763898020075,
+    -0.0005221571365118249
+   ],
+   "n": 5,
+   "mean": -0.0006683441834407055,
+   "sd": 0.00015600834891400998,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0008620541337064434,
+    -0.00047463423317496765
+   ],
+   "boot_delta": -0.000668344183440861,
+   "boot_ci": [
+    -0.0013265645148959671,
+    9.250823068451817e-06
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.016717648921828105,
+    -0.014895162985889544,
+    -0.015349786274579353,
+    -0.01692242181498175,
+    -0.016774435529388863
+   ],
+   "n": 5,
+   "mean": -0.016131891105333522,
+   "sd": 0.0009383627719435708,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.017297022376510544,
+    -0.014966759834156499
+   ],
+   "boot_delta": -0.01613189110533351,
+   "boot_ci": [
+    -0.02663378742672936,
+    -0.0055582710761315456
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.001113033446237477,
+    -0.0013589463327619011,
+    -0.0012919635218701098,
+    -0.0017917678568810658,
+    -0.0014607090765482722
+   ],
+   "n": 5,
+   "mean": -0.001403284046859765,
+   "sd": 0.0002514064478192571,
+   "n_pos": 0,
+   "n_neg": 5,
+   "t_ci": [
+    -0.0017154463820332304,
+    -0.0010911217116862998
+   ],
+   "boot_delta": -0.001403284046859854,
+   "boot_ci": [
+    -0.0037717488192545523,
+    0.0009331356868384807
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  }
+ ],
+ "changes": {
+  "e5-small/cap": {
+   "pca_top1": {
+    "AILACasedocs": {
+     "delta": 0.001444971637163834,
+     "ci": [
+      -0.003670121406510335,
+      0.006634350411075864
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.005728062169374394,
+     "ci": [
+      -0.005214407416077959,
+      0.021030958402601614
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.008897312697238074,
+     "ci": [
+      -0.01627974895340313,
+      -0.0017747788519124105
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.000777397188294323,
+     "ci": [
+      -0.004984742511482549,
+      0.003494473400632866
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.011498122896640683,
+     "ci": [
+      0.004700608537157216,
+      0.019281627987836242
+     ]
+    },
+    "legal_macro": {
+     "delta": 0.001799289363529303,
+     "ci": [
+      -0.0016759153525536894,
+      0.005686402301083964
+     ]
+    },
+    "worst_task": {
+     "task": "LegalBenchConsumerContractsQA",
+     "delta": -0.008897312697238074
+    },
+    "STSBenchmark": {
+     "delta": 0.0002066303233133615,
+     "ci": [
+      -0.00015258060850088784,
+      0.0005736486726735518
+     ]
+    }
+   },
+   "kmeans_leace": {
+    "AILACasedocs": {
+     "delta": 0.0014670254787557072,
+     "ci": [
+      -0.0036855936328428953,
+      0.006736643720036553
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.008077286699354822,
+     "ci": [
+      -0.002702098670679332,
+      0.023598223839536935
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.009664964814793845,
+     "ci": [
+      -0.016856860152184776,
+      -0.002796517926759707
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.0008559369563456774,
+     "ci": [
+      -0.005092134983035304,
+      0.00347159194334673
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.009716555130526217,
+     "ci": [
+      0.003527268163376535,
+      0.016820417654818367
+     ]
+    },
+    "legal_macro": {
+     "delta": 0.0017479931074994444,
+     "ci": [
+      -0.0016132518200961104,
+      0.005619402941986338
+     ]
+    },
+    "worst_task": {
+     "task": "LegalBenchConsumerContractsQA",
+     "delta": -0.009664964814793845
+    },
+    "STSBenchmark": {
+     "delta": 0.00025577808174304106,
+     "ci": [
+      -0.00011146799379050103,
+      0.0006480772808255736
+     ]
+    }
+   },
+   "sae_leace": {
+    "AILACasedocs": {
+     "delta": -0.020957150682487338,
+     "ci": [
+      -0.03992833425378442,
+      -0.0030172121317025846
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.009132456624761875,
+     "ci": [
+      -0.030817789779312113,
+      0.01248253937689787
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.0013046344820116672,
+     "ci": [
+      -0.0105921034751822,
+      0.013081995409907076
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.016934640776835888,
+     "ci": [
+      -0.028382996403573835,
+      -0.005504322342013801
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.0009844161543892832,
+     "ci": [
+      -0.016794813310089543,
+      0.014348712123911951
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.009340805951292544,
+     "ci": [
+      -0.016353500684780524,
+      -0.0025564134827250726
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.020957150682487338
+    },
+    "STSBenchmark": {
+     "delta": -0.005112588286188324,
+     "ci": [
+      -0.008044337692512905,
+      -0.002402316196744748
+     ]
+    }
+   },
+   "metadata_leace": {
+    "AILACasedocs": {
+     "delta": 0.0026986439143930883,
+     "ci": [
+      -0.008221026203762388,
+      0.012916440387173869
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.006506061412117827,
+     "ci": [
+      -0.0039671970845094285,
+      0.021487580506007846
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.00578244990608409,
+     "ci": [
+      -0.013802428041418374,
+      0.0019941298513684487
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.0008231224035221993,
+     "ci": [
+      -0.006848257550655213,
+      0.008662837406572541
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.015840350941745202,
+     "ci": [
+      0.0056575600386660945,
+      0.026846229077086916
+     ]
+    },
+    "legal_macro": {
+     "delta": 0.004017145753138845,
+     "ci": [
+      -0.0003653780230796381,
+      0.008671437007942932
+     ]
+    },
+    "worst_task": {
+     "task": "LegalBenchConsumerContractsQA",
+     "delta": -0.00578244990608409
+    },
+    "STSBenchmark": {
+     "delta": 0.0008010897701680175,
+     "ci": [
+      0.00025819339341673635,
+      0.0013671949746935639
+     ]
+    }
+   },
+   "pca_matched_var": {
+    "AILACasedocs": {
+     "delta": -0.017248907970015822,
+     "ci": [
+      -0.04183166952881189,
+      0.007901609316695465
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.00443188558749305,
+     "ci": [
+      -0.019365576944562545,
+      0.0280574875776034
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.006584227047557368,
+     "ci": [
+      -0.0073830843979356756,
+      0.02062908070759021
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.01657074655224064,
+     "ci": [
+      -0.030679226709880762,
+      -0.002900265101618311
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.005700177366620914,
+     "ci": [
+      -0.022682624933955352,
+      0.011070125733708155
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.005700743850765392,
+     "ci": [
+      -0.014138122103758715,
+      0.0026118577341703096
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.017248907970015822
+    },
+    "STSBenchmark": {
+     "delta": -0.004854210242393298,
+     "ci": [
+      -0.008081804762921316,
+      -0.001830051076643688
+     ]
+    }
+   }
+  },
+  "e5-small/scotus_oyez_lexis_wiki": {
+   "pca_top1": {
+    "AILACasedocs": {
+     "delta": -0.00993151071703436,
+     "ci": [
+      -0.03143764274967644,
+      0.006567632485379711
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.0013145971500602544,
+     "ci": [
+      -0.0057776185070758535,
+      0.0013149818114233174
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.0003884201583907478,
+     "ci": [
+      -0.0063670808134389375,
+      0.005456626358983116
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.004101911596721257,
+     "ci": [
+      -0.003502960572419396,
+      0.011949776979433141
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.006057061045266609,
+     "ci": [
+      -0.0001263032062444421,
+      0.01257912972500294
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.00029511107669949916,
+     "ci": [
+      -0.0050764767538662645,
+      0.0039140110062208565
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.00993151071703436
+    },
+    "STSBenchmark": {
+     "delta": 0.00115811014514422,
+     "ci": [
+      0.0006895329484865875,
+      0.0016552044758896987
+     ]
+    }
+   },
+   "kmeans_leace": {
+    "AILACasedocs": {
+     "delta": -0.007716738238930334,
+     "ci": [
+      -0.02910551185852462,
+      0.008015600848805482
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.000267894006891044,
+     "ci": [
+      -0.010585677085997324,
+      0.009518894867009025
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.00010403162447269249,
+     "ci": [
+      -0.005460103605201508,
+      0.005209910876677496
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.004074634128735543,
+     "ci": [
+      -0.0029678542336139526,
+      0.011594510918977431
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.006849175705642565,
+     "ci": [
+      0.0005959225582623681,
+      0.013385152826253069
+     ]
+    },
+    "legal_macro": {
+     "delta": 0.0005670291928168075,
+     "ci": [
+      -0.004699490326779524,
+      0.005311688274253122
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.007716738238930334
+    },
+    "STSBenchmark": {
+     "delta": 0.0010911314575400288,
+     "ci": [
+      0.0005329910599333772,
+      0.0016790909588125012
+     ]
+    }
+   },
+   "sae_leace": {
+    "AILACasedocs": {
+     "delta": -0.020084546605449276,
+     "ci": [
+      -0.0423072426952739,
+      0.0003842266964619064
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.01608503889183969,
+     "ci": [
+      -0.040403253388958234,
+      0.00822776047701453
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.006361202368236206,
+     "ci": [
+      -0.01756736844058689,
+      0.004518804003714406
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.008143495761965542,
+     "ci": [
+      -0.017622030494563803,
+      0.0009175051327284666
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.0034510194615878457,
+     "ci": [
+      -0.008490266640135807,
+      0.015264015767648801
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.009444652833180574,
+     "ci": [
+      -0.017040851627598875,
+      -0.0022132121583800205
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.020084546605449276
+    },
+    "STSBenchmark": {
+     "delta": -0.002932792929806305,
+     "ci": [
+      -0.004838632860395705,
+      -0.0010679744441542166
+     ]
+    }
+   },
+   "metadata_leace": {
+    "AILACasedocs": {
+     "delta": -0.0079134379339926,
+     "ci": [
+      -0.03125448249151687,
+      0.009226877512383986
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.0015985033894258304,
+     "ci": [
+      -0.012271524763211746,
+      0.008399300385748877
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.0012951164315490762,
+     "ci": [
+      -0.006733230429483888,
+      0.004156611759440138
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.004319373207804398,
+     "ci": [
+      -0.002445857042435915,
+      0.011691432141073573
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.005864051215416976,
+     "ci": [
+      -0.0007871548952426995,
+      0.012928996369764611
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0001247266663492265,
+     "ci": [
+      -0.005622412171517748,
+      0.004887098001105819
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.0079134379339926
+    },
+    "STSBenchmark": {
+     "delta": 0.0010959259250067355,
+     "ci": [
+      0.0004973800197715707,
+      0.001727787694837246
+     ]
+    }
+   },
+   "pca_matched_var": {
+    "AILACasedocs": {
+     "delta": -0.027236527883817155,
+     "ci": [
+      -0.05000767405890698,
+      -0.005366223995909653
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.02512139006131039,
+     "ci": [
+      -0.05639954153771964,
+      0.005816775397750858
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.0024566710499861885,
+     "ci": [
+      -0.011250828230049394,
+      0.016221381524599565
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.011930869577141859,
+     "ci": [
+      -0.023304306901708306,
+      -0.0010206299215386834
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.0017459670042708295,
+     "ci": [
+      -0.012772097987278462,
+      0.016052092471918595
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.012017229893602478,
+     "ci": [
+      -0.020936301792871977,
+      -0.0033325358556522662
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.027236527883817155
+    },
+    "STSBenchmark": {
+     "delta": -0.003145336964161971,
+     "ci": [
+      -0.005665944414603563,
+      -0.000720593133416431
+     ]
+    }
+   }
+  },
+  "e5-small/swiltra_de_fr_it": {
+   "pca_top1": {
+    "AILACasedocs": {
+     "delta": -0.004293032871281419,
+     "ci": [
+      -0.016137105809671305,
+      0.004362378729474028
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.0016099108040312957,
+     "ci": [
+      -0.0014980945724549655,
+      0.0063278510333162055
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.001141706955809432,
+     "ci": [
+      -0.003489982822890382,
+      0.0006626348525016862
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.00014894997395935533,
+     "ci": [
+      -0.0004416226567558247,
+      0.000978606755476595
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.0008044252432348582,
+     "ci": [
+      -0.005297895835607636,
+      0.003756716717575215
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0008960608584670116,
+     "ci": [
+      -0.0035384124021277906,
+      0.0014097432355413215
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.004293032871281419
+    },
+    "STSBenchmark": {
+     "delta": 0.00015146943678945313,
+     "ci": [
+      -0.00014200808087901358,
+      0.0004477926667831338
+     ]
+    }
+   },
+   "kmeans_leace": {
+    "AILACasedocs": {
+     "delta": -0.0034445404354649174,
+     "ci": [
+      -0.011330644297630492,
+      0.0012860009285292132
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.00043796413574166275,
+     "ci": [
+      -0.005742555356274491,
+      0.003803964106132353
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.000295292123375953,
+     "ci": [
+      -0.002721269943042278,
+      0.003123604496053332
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.0020367466028749287,
+     "ci": [
+      -0.0012308837976768886,
+      0.005922945346572388
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -5.24289471384599e-05,
+     "ci": [
+      -0.006306057984282597,
+      0.0061867498683683495
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0003205789584188316,
+     "ci": [
+      -0.0027598320034703046,
+      0.0018761478548865004
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.0034445404354649174
+    },
+    "STSBenchmark": {
+     "delta": 0.0003742080712476614,
+     "ci": [
+      -1.81980393741203e-05,
+      0.000766982916563169
+     ]
+    }
+   },
+   "sae_leace": {
+    "AILACasedocs": {
+     "delta": -0.015309498453127483,
+     "ci": [
+      -0.036039891264885035,
+      0.005961904997421512
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.013275458235395854,
+     "ci": [
+      -0.03508963544142423,
+      0.006274285326865418
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.001906487203311609,
+     "ci": [
+      -0.009212153598291974,
+      0.01285799232103002
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.007587012021411819,
+     "ci": [
+      -0.01584883516185413,
+      0.00045458321166330623
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.0027139180330271024,
+     "ci": [
+      -0.015260535157850249,
+      0.009335752488642214
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0073958799079301306,
+     "ci": [
+      -0.014572201820722904,
+      -0.0004709449843498762
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.015309498453127483
+    },
+    "STSBenchmark": {
+     "delta": -0.0016664478534027527,
+     "ci": [
+      -0.003217328438373001,
+      -9.905403698555765e-05
+     ]
+    }
+   },
+   "metadata_leace": {
+    "AILACasedocs": {
+     "delta": -0.0034445404354649174,
+     "ci": [
+      -0.011330644297630492,
+      0.0012860009285292132
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.00043796413574166275,
+     "ci": [
+      -0.005742555356274491,
+      0.003803964106132353
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.000295292123375953,
+     "ci": [
+      -0.002721269943042278,
+      0.003123604496053332
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.0020367466028749287,
+     "ci": [
+      -0.0012308837976768886,
+      0.005922945346572388
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -5.24289471384599e-05,
+     "ci": [
+      -0.006306057984282597,
+      0.0061867498683683495
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0003205789584188316,
+     "ci": [
+      -0.0027598320034703046,
+      0.0018761478548865004
+     ]
+    },
+    "worst_task": {
+     "task": "AILACasedocs",
+     "delta": -0.0034445404354649174
+    },
+    "STSBenchmark": {
+     "delta": 0.0003749282721897673,
+     "ci": [
+      -1.7957997797851553e-05,
+      0.0007685748704907456
+     ]
+    }
+   },
+   "pca_matched_var": {
+    "AILACasedocs": {
+     "delta": -0.02082659470857575,
+     "ci": [
+      -0.04006215700582669,
+      -0.003382618594717597
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.022046872077217828,
+     "ci": [
+      -0.04924441844242257,
+      0.003932113114943382
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.00897939676982403,
+     "ci": [
+      -0.004791131149509674,
+      0.022802772606526626
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.005097870253664418,
+     "ci": [
+      -0.014518123473760474,
+      0.0036861935166422758
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.00014512569242402368,
+     "ci": [
+      -0.014436200073943714,
+      0.014355219656968966
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.00776936291544199,
+     "ci": [
+      -0.015703545700281988,
+      -0.00015645311818654153
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.022046872077217828
+    },
+    "STSBenchmark": {
+     "delta": -0.0022926007231357515,
+     "ci": [
+      -0.004444120690110689,
+      -0.00019179675215100236
+     ]
+    }
+   }
+  },
+  "mini/cap": {
+   "pca_top1": {
+    "AILACasedocs": {
+     "delta": 0.0035776591371312594,
+     "ci": [
+      -0.009087521046322255,
+      0.019226268187714637
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.009101218643137126,
+     "ci": [
+      -0.027432707696877803,
+      0.005321333694210983
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -3.534065866740976e-05,
+     "ci": [
+      -0.005733302235533649,
+      0.005204616401930572
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.0014562033988659133,
+     "ci": [
+      -0.00864496301198055,
+      0.005909308448166981
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.0005790001454299055,
+     "ci": [
+      -0.00750998916491271,
+      0.006282959457748579
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.001518820741793819,
+     "ci": [
+      -0.006399029108802348,
+      0.00321205235502318
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.009101218643137126
+    },
+    "STSBenchmark": {
+     "delta": -8.058507931885117e-05,
+     "ci": [
+      -0.0005826738676901282,
+      0.00038832673858242843
+     ]
+    }
+   },
+   "kmeans_leace": {
+    "AILACasedocs": {
+     "delta": 0.007347912514495287,
+     "ci": [
+      -0.006986814481095273,
+      0.0252440430497831
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.016649508193600435,
+     "ci": [
+      -0.033809931201126874,
+      -0.003716202408925757
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.002002333765609186,
+     "ci": [
+      -0.0037980170767872054,
+      0.0081596794516753
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": 0.0024325573052420744,
+     "ci": [
+      -0.00387630859539209,
+      0.009226625162373821
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.002983162322274087,
+     "ci": [
+      -0.0041349260070438435,
+      0.010493766471714695
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0003767084571959598,
+     "ci": [
+      -0.005642370677685402,
+      0.004742900182672217
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.016649508193600435
+    },
+    "STSBenchmark": {
+     "delta": -0.0003023176315452014,
+     "ci": [
+      -0.0013290280604120795,
+      0.0007210474755897388
+     ]
+    }
+   },
+   "sae_leace": {
+    "AILACasedocs": {
+     "delta": 0.0036702534847240864,
+     "ci": [
+      -0.023936900591000974,
+      0.030722427438742116
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.042512267872958504,
+     "ci": [
+      -0.07397574946085693,
+      -0.013234472635385843
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.012293461302187388,
+     "ci": [
+      -0.023849703360586658,
+      -0.0009978924804667161
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.03355916771090094,
+     "ci": [
+      -0.05003231586755872,
+      -0.017500066325284256
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.012594400163475981,
+     "ci": [
+      -0.023618745802145444,
+      -0.0015317889987159828
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.019457808712959747,
+     "ci": [
+      -0.028197539697015588,
+      -0.011024100061758203
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.042512267872958504
+    },
+    "STSBenchmark": {
+     "delta": -0.0012570901277844104,
+     "ci": [
+      -0.004075214904218208,
+      0.0014614296091753508
+     ]
+    }
+   },
+   "metadata_leace": {
+    "AILACasedocs": {
+     "delta": 0.003595575807285986,
+     "ci": [
+      -0.012312789226965487,
+      0.02174193557901504
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.01366967072964113,
+     "ci": [
+      -0.035975559205137876,
+      0.004191972465407177
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.0015415254934606837,
+     "ci": [
+      -0.005636736842314561,
+      0.008937261898290062
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.004587057738046586,
+     "ci": [
+      -0.01253282908529658,
+      0.003403132014055631
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.0008826132858852611,
+     "ci": [
+      -0.008308619664048299,
+      0.010311834777173479
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.002447402776211157,
+     "ci": [
+      -0.007888865426965765,
+      0.0026473864814526345
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.01366967072964113
+    },
+    "STSBenchmark": {
+     "delta": -0.002217589412684684,
+     "ci": [
+      -0.003548029342806469,
+      -0.0009224813902929731
+     ]
+    }
+   },
+   "pca_matched_var": {
+    "AILACasedocs": {
+     "delta": 0.007685171247290742,
+     "ci": [
+      -0.017254944968045978,
+      0.032046532145591396
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.04087396430974083,
+     "ci": [
+      -0.0761014742260327,
+      -0.007196253594607849
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.01030502804321679,
+     "ci": [
+      -0.022650071962760688,
+      0.0020679204414183446
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.02791541437028756,
+     "ci": [
+      -0.044681055255903976,
+      -0.011768861553577408
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.013739208209164546,
+     "ci": [
+      -0.02632876793290485,
+      -0.001136495298584392
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.017029688737023797,
+     "ci": [
+      -0.02627979363102547,
+      -0.007597135445218475
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.04087396430974083
+    },
+    "STSBenchmark": {
+     "delta": 0.000210431536554756,
+     "ci": [
+      -0.002626010982664877,
+      0.002989502786791003
+     ]
+    }
+   }
+  },
+  "mini/scotus_oyez_lexis_wiki": {
+   "pca_top1": {
+    "AILACasedocs": {
+     "delta": -0.003311862732310099,
+     "ci": [
+      -0.023547322182627378,
+      0.014332093388806573
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.016574861844412016,
+     "ci": [
+      -0.039443027493528,
+      0.004280373411468984
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.007831770484020752,
+     "ci": [
+      0.002077471586198677,
+      0.014054708694786143
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.004022491391425404,
+     "ci": [
+      -0.009107405213952369,
+      0.00042133928583791027
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.0010980110489814854,
+     "ci": [
+      -0.003943813532845057,
+      0.005638897188841378
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0029958868870290567,
+     "ci": [
+      -0.009159613022060416,
+      0.0028377153373014556
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.016574861844412016
+    },
+    "STSBenchmark": {
+     "delta": 0.0001565154248144296,
+     "ci": [
+      -0.0004842123183992741,
+      0.0008195235633889347
+     ]
+    }
+   },
+   "kmeans_leace": {
+    "AILACasedocs": {
+     "delta": 0.014839697193036119,
+     "ci": [
+      -0.007572815310154878,
+      0.03892690119304145
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.023556615327307434,
+     "ci": [
+      -0.04471457225307603,
+      -0.004251169756356744
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.005572664379583963,
+     "ci": [
+      -0.00033647988817557794,
+      0.01211678860342536
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.0032858387855263425,
+     "ci": [
+      -0.008445377783927586,
+      0.0017198228761448361
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.0031013134494671515,
+     "ci": [
+      -0.009764795565538643,
+      0.0034498654712552266
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.0019062811979361695,
+     "ci": [
+      -0.007721693114137032,
+      0.004020903533356416
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.023556615327307434
+    },
+    "STSBenchmark": {
+     "delta": -0.0005183142322489065,
+     "ci": [
+      -0.001499030724200048,
+      0.0004939212242039969
+     ]
+    }
+   },
+   "sae_leace": {
+    "AILACasedocs": {
+     "delta": 0.0026465920777165846,
+     "ci": [
+      -0.024373240001560735,
+      0.03035312608861405
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.03699176426374577,
+     "ci": [
+      -0.07283921048328092,
+      -0.0016668548853479152
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.006961421271846219,
+     "ci": [
+      -0.017446536271203943,
+      0.003836094747749775
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.03122239421262615,
+     "ci": [
+      -0.04295142939555087,
+      -0.02013154636391009
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.016225303067935397,
+     "ci": [
+      -0.0284766406988575,
+      -0.004317676685183829
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.01775085814768739,
+     "ci": [
+      -0.027091707736558366,
+      -0.00849946024716023
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.03699176426374577
+    },
+    "STSBenchmark": {
+     "delta": -0.002750211453723561,
+     "ci": [
+      -0.005167641036950982,
+      -0.00040636910803245913
+     ]
+    }
+   },
+   "metadata_leace": {
+    "AILACasedocs": {
+     "delta": 0.021947755478147063,
+     "ci": [
+      -0.004532942553191429,
+      0.05224885986084236
+     ]
+    },
+    "AILAStatutes": {
+     "delta": 0.0022173573925147456,
+     "ci": [
+      -0.012710780512050332,
+      0.01725810494004644
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": 0.0037210080251396244,
+     "ci": [
+      -0.0027776497228594044,
+      0.010469233967292295
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.006294729283311671,
+     "ci": [
+      -0.012318423715255851,
+      -0.0005546013041295042
+     ]
+    },
+    "LegalSummarization": {
+     "delta": 0.004064496990436531,
+     "ci": [
+      -0.0018175503447823262,
+      0.010543214559388952
+     ]
+    },
+    "legal_macro": {
+     "delta": 0.005131177720585259,
+     "ci": [
+      -0.0015093438432605489,
+      0.0123851037330204
+     ]
+    },
+    "worst_task": {
+     "task": "LegalBenchCorporateLobbying",
+     "delta": -0.006294729283311671
+    },
+    "STSBenchmark": {
+     "delta": -0.000668344183440861,
+     "ci": [
+      -0.0013265645148959671,
+      9.250823068451817e-06
+     ]
+    }
+   },
+   "pca_matched_var": {
+    "AILACasedocs": {
+     "delta": 0.006362544506053206,
+     "ci": [
+      -0.023273542165808684,
+      0.038124164197080486
+     ]
+    },
+    "AILAStatutes": {
+     "delta": -0.03474589036874775,
+     "ci": [
+      -0.07250405363457268,
+      0.002608341208797126
+     ]
+    },
+    "LegalBenchConsumerContractsQA": {
+     "delta": -0.002444952950609501,
+     "ci": [
+      -0.01461193342530075,
+      0.009910695840351584
+     ]
+    },
+    "LegalBenchCorporateLobbying": {
+     "delta": -0.03344764163102941,
+     "ci": [
+      -0.047599376265395156,
+      -0.01972441755344713
+     ]
+    },
+    "LegalSummarization": {
+     "delta": -0.016383515082334106,
+     "ci": [
+      -0.030099327785545846,
+      -0.003031443432997284
+     ]
+    },
+    "legal_macro": {
+     "delta": -0.01613189110533351,
+     "ci": [
+      -0.02663378742672936,
+      -0.0055582710761315456
+     ]
+    },
+    "worst_task": {
+     "task": "AILAStatutes",
+     "delta": -0.03474589036874775
+    },
+    "STSBenchmark": {
+     "delta": -0.001403284046859854,
+     "ci": [
+      -0.0037717488192545523,
+      0.0009331356868384807
+     ]
+    }
+   }
+  }
+ }
+}

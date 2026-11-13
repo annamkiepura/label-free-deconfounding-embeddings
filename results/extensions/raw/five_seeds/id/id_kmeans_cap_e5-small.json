@@ -1,0 +1,672 @@
+{
+ "experiment": "revised_id_kmeans",
+ "corpus": "cap",
+ "label": "CAP (bills/orders/news)",
+ "encoder": "e5-small",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "conditions": [
+  "kmeans_leace"
+ ],
+ "labels": {
+  "kmeans_leace": "k-means LEACE"
+ },
+ "per_seed": [
+  {
+   "seed": 0,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8677854920749247,
+     "gb_auc": 0.9801276046838663,
+     "mlp_auc": 0.9896038851962121,
+     "topic_purity": 0.3206487835308796,
+     "topic_ari": 0.11338751453654246,
+     "linear_auc_per_class": {
+      "bill": 0.9793472242830192,
+      "newspaper": 0.6240092519417549,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8677854920749247
+     ],
+     "gb_auc": [
+      0.9801276046838663
+     ],
+     "mlp_auc": [
+      0.9896038851962121
+     ],
+     "topic_purity": [
+      0.3206487835308796
+     ],
+     "topic_ari": [
+      0.11338751453654246
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.01,
+      1.0,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.0728507861495018,
+      "3": 0.026395710185170174,
+      "4": 0.029479604214429855,
+      "5": 0.029813624918460846,
+      "6": 0.035350192338228226,
+      "8": 0.0384034663438797
+     }
+    }
+   ],
+   "seconds": 32.8
+  },
+  {
+   "seed": 1,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8686163772367305,
+     "gb_auc": 0.9829467306394879,
+     "mlp_auc": 0.9921407002209378,
+     "topic_purity": 0.3125389893948846,
+     "topic_ari": 0.10440936771250264,
+     "linear_auc_per_class": {
+      "bill": 0.9780553659622274,
+      "newspaper": 0.6277937657479642,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8686163772367305
+     ],
+     "gb_auc": [
+      0.9829467306394879
+     ],
+     "mlp_auc": [
+      0.9921407002209378
+     ],
+     "topic_purity": [
+      0.3125389893948846
+     ],
+     "topic_ari": [
+      0.10440936771250264
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.0705813392996788,
+      "3": 0.027020076289772987,
+      "4": 0.02946801856160164,
+      "5": 0.030724450945854187,
+      "6": 0.03188871592283249,
+      "8": 0.009280111640691757
+     }
+    }
+   ],
+   "seconds": 38.0
+  },
+  {
+   "seed": 2,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8779332854253864,
+     "gb_auc": 0.9838698698394281,
+     "mlp_auc": 0.9918897959410662,
+     "topic_purity": 0.33499688084840923,
+     "topic_ari": 0.1294098716738446,
+     "linear_auc_per_class": {
+      "bill": 0.9827615999321703,
+      "newspaper": 0.6510382563439892,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8779332854253864
+     ],
+     "gb_auc": [
+      0.9838698698394281
+     ],
+     "mlp_auc": [
+      0.9918897959410662
+     ],
+     "topic_purity": [
+      0.33499688084840923
+     ],
+     "topic_ari": [
+      0.1294098716738446
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07119064033031464,
+      "3": 0.06500925868749619,
+      "4": 0.028837833553552628,
+      "5": 0.03127085790038109,
+      "6": 0.03212631121277809,
+      "8": 0.012388346716761589
+     }
+    }
+   ],
+   "seconds": 31.1
+  },
+  {
+   "seed": 3,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8822559265802488,
+     "gb_auc": 0.9786442913854725,
+     "mlp_auc": 0.9881697314799538,
+     "topic_purity": 0.314410480349345,
+     "topic_ari": 0.10672410403970366,
+     "linear_auc_per_class": {
+      "bill": 0.977206223371558,
+      "newspaper": 0.6695741667096676,
+      "order": 0.9999873896595208
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8822559265802488
+     ],
+     "gb_auc": [
+      0.9786442913854725
+     ],
+     "mlp_auc": [
+      0.9881697314799538
+     ],
+     "topic_purity": [
+      0.314410480349345
+     ],
+     "topic_ari": [
+      0.10672410403970366
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.1,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07318780571222305,
+      "3": 0.02701530046761036,
+      "4": 0.029929829761385918,
+      "5": 0.034209102392196655,
+      "6": 0.005900538060814142,
+      "8": 0.03272730112075806
+     }
+    }
+   ],
+   "seconds": 34.4
+  },
+  {
+   "seed": 4,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.896519053852742,
+     "gb_auc": 0.9817688089383431,
+     "mlp_auc": 0.990594534802501,
+     "topic_purity": 0.3156581409856519,
+     "topic_ari": 0.10757234529485887,
+     "linear_auc_per_class": {
+      "bill": 0.981466986031329,
+      "newspaper": 0.7080901755268971,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.896519053852742
+     ],
+     "gb_auc": [
+      0.9817688089383431
+     ],
+     "mlp_auc": [
+      0.990594534802501
+     ],
+     "topic_purity": [
+      0.3156581409856519
+     ],
+     "topic_ari": [
+      0.10757234529485887
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07128610461950302,
+      "3": 0.02650570496916771,
+      "4": 0.029327934607863426,
+      "5": 0.03106015734374523,
+      "6": 0.031459640711545944,
+      "8": 0.033914025872945786
+     }
+    }
+   ],
+   "seconds": 30.5
+  }
+ ],
+ "agg": {
+  "kmeans_leace": {
+   "linear_auc": {
+    "mean": 0.8786220270340065,
+    "std": 0.011742302560095416,
+    "values": [
+     0.8677854920749247,
+     0.8686163772367305,
+     0.8779332854253864,
+     0.8822559265802488,
+     0.896519053852742
+    ],
+    "n": 5
+   },
+   "gb_auc": {
+    "mean": 0.9814714610973194,
+    "std": 0.0021104525044643137,
+    "values": [
+     0.9801276046838663,
+     0.9829467306394879,
+     0.9838698698394281,
+     0.9786442913854725,
+     0.9817688089383431
+    ],
+    "n": 5
+   },
+   "mlp_auc": {
+    "mean": 0.9904797295281341,
+    "std": 0.0016479900984692803,
+    "values": [
+     0.9896038851962121,
+     0.9921407002209378,
+     0.9918897959410662,
+     0.9881697314799538,
+     0.990594534802501
+    ],
+    "n": 5
+   },
+   "topic_purity": {
+    "mean": 0.31965065502183404,
+    "std": 0.009089530991168545,
+    "values": [
+     0.3206487835308796,
+     0.3125389893948846,
+     0.33499688084840923,
+     0.314410480349345,
+     0.3156581409856519
+    ],
+    "n": 5
+   },
+   "topic_ari": {
+    "mean": 0.11230064065149045,
+    "std": 0.010119706112062213,
+    "values": [
+     0.11338751453654246,
+     0.10440936771250264,
+     0.1294098716738446,
+     0.10672410403970366,
+     0.10757234529485887
+    ],
+    "n": 5
+   },
+   "linear_auc_per_class": {
+    "bill": {
+     "mean": 0.9797674799160607,
+     "std": 0.002319539813275127,
+     "values": [
+      0.9793472242830192,
+      0.9780553659622274,
+      0.9827615999321703,
+      0.977206223371558,
+      0.981466986031329
+     ],
+     "n": 5
+    },
+    "newspaper": {
+     "mean": 0.6561011232540546,
+     "std": 0.03442822886396075,
+     "values": [
+      0.6240092519417549,
+      0.6277937657479642,
+      0.6510382563439892,
+      0.6695741667096676,
+      0.7080901755268971
+     ],
+     "n": 5
+    },
+    "order": {
+     "mean": 0.9999974779319041,
+     "std": 5.639515706167773e-06,
+     "values": [
+      1.0,
+      1.0,
+      1.0,
+      0.9999873896595208,
+      1.0
+     ],
+     "n": 5
+    }
+   },
+   "audit_folds": {
+    "mean": 5.0,
+    "std": 0.0,
+    "values": [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ],
+    "n": 5
+   },
+   "n_constant_coords": {
+    "mean": 0.0,
+    "std": 0.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 5
+   }
+  }
+ },
+ "checks": [
+  {
+   "seed": 0,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 1,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 2,
+   "alternatives_linear_auc_diff": 0.0
+  }
+ ],
+ "corpus_stats": {
+  "n_docs": 3208,
+  "n_pairs": 0,
+  "n_unpaired": 3208,
+  "classes": [
+   "bill",
+   "newspaper",
+   "order"
+  ],
+  "class_counts": [
+   1301,
+   1309,
+   598
+  ],
+  "confounder": "source",
+  "n_topics": 21
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "nonlinear": [
+   "gb",
+   "mlp"
+  ],
+  "sae": null
+ },
+ "merged": {
+  "seed_batches": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "config_differences": [],
+  "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+ }
+}

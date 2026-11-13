@@ -1,0 +1,1304 @@
+{
+ "rows": [
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0018885329835894638,
+    0.0011455355875546747,
+    0.0007406385272677784
+   ],
+   "n": 3,
+   "mean": 0.001258235699470639,
+   "sd": 0.0005821867459268697,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    -0.0001879963513495837,
+    0.002704467750290862
+   ],
+   "boot_delta": 0.0012582356994706087,
+   "boot_ci": [
+    -0.002224841388660596,
+    0.0052040615518367936
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00022194513062134824,
+    0.00019484825739402023,
+    0.00020950883636572382
+   ],
+   "n": 3,
+   "mean": 0.00020876740812703076,
+   "sd": 1.356364337297763e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.00017507345011590213,
+    0.0002424613661381594
+   ],
+   "boot_delta": 0.00020876740812714178,
+   "boot_ci": [
+    -0.00015122641834439663,
+    0.0005825923039657038
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0017562055414683364,
+    0.0016716580134188475,
+    0.0009914625751191453
+   ],
+   "n": 3,
+   "mean": 0.0014731087100021097,
+   "sd": 0.0004192544818610695,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.00043162284080358864,
+    0.002514594579200631
+   ],
+   "boot_delta": 0.0014731087100021216,
+   "boot_ci": [
+    -0.0019284551650616548,
+    0.005351862467181343
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.000247990565450551,
+    0.00025511927197552353,
+    0.0002426692334269731
+   ],
+   "n": 3,
+   "mean": 0.00024859302361768254,
+   "sd": 6.2468457518539326e-06,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.00023307499850620713,
+    0.00026411104872915795
+   ],
+   "boot_delta": 0.00024859302361779356,
+   "boot_ci": [
+    -0.00012413891876709158,
+    0.0006445456986379326
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.015234160204595958,
+    -0.012295183507700614,
+    -0.0023165776345039912
+   ],
+   "n": 3,
+   "mean": -0.009948640448933522,
+   "sd": 0.006770944033794103,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.026768597867223916,
+    0.006871316969356873
+   ],
+   "boot_delta": -0.009948640448933548,
+   "boot_ci": [
+    -0.017483927483578025,
+    -0.0026310273856667774
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.005769437201286087,
+    -0.004274763686548333,
+    -0.005083981831469853
+   ],
+   "n": 3,
+   "mean": -0.005042727573101424,
+   "sd": 0.0007481902594192033,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.006901335212065898,
+    -0.0031841199341369514
+   ],
+   "boot_delta": -0.005042727573101313,
+   "boot_ci": [
+    -0.00793998717182802,
+    -0.0023355882844029517
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.003778087364561222,
+    0.0037745313643640366,
+    0.004239761466222564
+   ],
+   "n": 3,
+   "mean": 0.003930793398382607,
+   "sd": 0.0002675801029466083,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.003266087573747139,
+    0.004595499223018076
+   ],
+   "boot_delta": 0.003930793398382573,
+   "boot_ci": [
+    -0.000453669275617915,
+    0.008553193784147973
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0007624875494496308,
+    0.00077317831852175,
+    0.0007944590651850492
+   ],
+   "n": 3,
+   "mean": 0.0007767083110521433,
+   "sd": 1.627544438881778e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.0007362778658708868,
+    0.0008171387562333998
+   ],
+   "boot_delta": 0.0007767083110521433,
+   "boot_ci": [
+    0.0002337674381380772,
+    0.001347778918350298
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.010310700909955861,
+    -0.005363369627077929,
+    -0.006174273557317866
+   ],
+   "n": 3,
+   "mean": -0.007282781364783886,
+   "sd": 0.0026534155111941084,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.013874230901002767,
+    -0.0006913318285650047
+   ],
+   "boot_delta": -0.0072827813647839,
+   "boot_ci": [
+    -0.015823530932958216,
+    0.001164655284178387
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.004525374830490203,
+    -0.004686041031725652,
+    -0.004713202044986042
+   ],
+   "n": 3,
+   "mean": -0.004641539302400632,
+   "sd": 0.00010151388358744075,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.004893713768883302,
+    -0.004389364835917963
+   ],
+   "boot_delta": -0.004641539302400632,
+   "boot_ci": [
+    -0.007867615406034804,
+    -0.001615525059758527
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0001833815233018954,
+    -0.0003122220658723585,
+    -0.0003825787801223224
+   ],
+   "n": 3,
+   "mean": -0.0002927274564321921,
+   "sd": 0.00010101938739229344,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0005436735262681943,
+    -4.178138659618997e-05
+   ],
+   "boot_delta": -0.0002927274564322178,
+   "boot_ci": [
+    -0.005058033372816977,
+    0.003918531168786905
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0011534920627680467,
+    0.0011303466737165868,
+    0.0011443521080656271
+   ],
+   "n": 3,
+   "mean": 0.0011427302815167535,
+   "sd": 1.1657615519557739e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.0011137711591758931,
+    0.0011716894038576139
+   ],
+   "boot_delta": 0.0011427302815167906,
+   "boot_ci": [
+    0.0006729419006346383,
+    0.001639250633162037
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.0008817378944649234,
+    0.0013265005723227473,
+    0.00019206807503219792
+   ],
+   "n": 3,
+   "mean": 0.0008001021806066229,
+   "sd": 0.0005716052528275819,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    -0.0006198439841593586,
+    0.0022200483453726043
+   ],
+   "boot_delta": 0.0008001021806065713,
+   "boot_ci": [
+    -0.004929100771325808,
+    0.0059799847864061935
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0011192733551621536,
+    0.0010322857261204632,
+    0.001122292518144108
+   ],
+   "n": 3,
+   "mean": 0.0010912838664755749,
+   "sd": 5.111618393717392e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.0009643042262780482,
+    0.0012182635066731015
+   ],
+   "boot_delta": 0.001091283866475612,
+   "boot_ci": [
+    0.00048666627458685837,
+    0.0017259737996660168
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.01522719409049031,
+    -0.006260121724726004,
+    -0.010249342028896491
+   ],
+   "n": 3,
+   "mean": -0.010578885948037601,
+   "sd": 0.00449261016550464,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.021739148284222267,
+    0.0005813763881470646
+   ],
+   "boot_delta": -0.010578885948037626,
+   "boot_ci": [
+    -0.018715291719348357,
+    -0.002775776399571925
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002294488272678419,
+    -0.002832588788821755,
+    -0.0035174646076252536
+   ],
+   "n": 3,
+   "mean": -0.0028815138897084758,
+   "sd": 0.0006129543442072827,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.00440417689171611,
+    -0.0013588508877008419
+   ],
+   "boot_delta": -0.0028815138897084758,
+   "boot_ci": [
+    -0.004830950374016948,
+    -0.0009372944017290729
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.00025652372244848177,
+    -0.00015264757447570055,
+    -8.104507945612683e-05
+   ],
+   "n": 3,
+   "mean": -0.0001634054587934364,
+   "sd": 8.823257670982374e-05,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.00038258733000049724,
+    5.577641241362441e-05
+   ],
+   "boot_delta": -0.00016340545879346552,
+   "boot_ci": [
+    -0.0057079804697395915,
+    0.004881082555297252
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0010965219691706496,
+    0.001047869463424167,
+    0.0010663692815140458
+   ],
+   "n": 3,
+   "mean": 0.0010702535713696208,
+   "sd": 2.4557735229749365e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.0010092487751709768,
+    0.0011312583675682649
+   ],
+   "boot_delta": 0.0010702535713696948,
+   "boot_ci": [
+    0.0004709718084094151,
+    0.0016964007350917937
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.013349117269667855,
+    -0.009714879790542658,
+    -0.013007167172784278
+   ],
+   "n": 3,
+   "mean": -0.012023721410998264,
+   "sd": 0.0020068120710347347,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.017008918956989652,
+    -0.007038523865006876
+   ],
+   "boot_delta": -0.012023721410998254,
+   "boot_ci": [
+    -0.02104352755383388,
+    -0.0031559281229133446
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0033390430708256646,
+    -0.002556328503826144,
+    -0.0031838379352570056
+   ],
+   "n": 3,
+   "mean": -0.003026403169969605,
+   "sd": 0.000414427077227268,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.00405589710126757,
+    -0.0019969092386716396
+   ],
+   "boot_delta": -0.003026403169969605,
+   "boot_ci": [
+    -0.005564929917483213,
+    -0.0006012522076681238
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0008301073315960695,
+    -0.0007730056664325413,
+    -0.0012989456054099513
+   ],
+   "n": 3,
+   "mean": -0.000967352867812854,
+   "sd": 0.0002885835368857083,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0016842341147720505,
+    -0.0002504716208536575
+   ],
+   "boot_delta": -0.0009673528678128714,
+   "boot_ci": [
+    -0.003570329893452012,
+    0.0012765448541644212
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00015942921488487638,
+    0.0001620681190998008,
+    0.00014936839256574075
+   ],
+   "n": 3,
+   "mean": 0.00015695524218347265,
+   "sd": 6.701579605245718e-06,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.00014030759555799118,
+    0.0001736028888089541
+   ],
+   "boot_delta": 0.00015695524218339862,
+   "boot_ci": [
+    -0.00013634630220248078,
+    0.00045426456699452746
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0003886823849994614,
+    -0.0004982764005369955,
+    -0.0005132612926168845
+   ],
+   "n": 3,
+   "mean": -0.00046674002605111373,
+   "sd": 6.801384596222254e-05,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0006356957857249549,
+    -0.00029778426637727256
+   ],
+   "boot_delta": -0.00046674002605112935,
+   "boot_ci": [
+    -0.0028831472419932748,
+    0.0017211390232858247
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0003857473213275675,
+    0.0003630784010928423,
+    0.0003691991928134186
+   ],
+   "n": 3,
+   "mean": 0.00037267497174460945,
+   "sd": 1.1727351173046976e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.000343542616437065,
+    0.0004018073270521539
+   ],
+   "boot_delta": 0.00037267497174453545,
+   "boot_ci": [
+    -1.9726568916270102e-05,
+    0.0007685848292137004
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.009104818112248964,
+    -0.0009822144951375455,
+    -0.0031645592040717265
+   ],
+   "n": 3,
+   "mean": -0.004417197270486079,
+   "sd": 0.0042036887342250485,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.014859738983505125,
+    0.006025344442532967
+   ],
+   "boot_delta": -0.004417197270486075,
+   "boot_ci": [
+    -0.012157126881664433,
+    0.003340733360214019
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0021397733502188654,
+    -0.002462523705562658,
+    -0.0014422069677431093
+   ],
+   "n": 3,
+   "mean": -0.002014834674508211,
+   "sd": 0.0005215062951536928,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0033103281291986435,
+    -0.0007193412198177789
+   ],
+   "boot_delta": -0.002014834674508137,
+   "boot_ci": [
+    -0.0036738230644452197,
+    -0.00036733560136430036
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0003886823849994614,
+    -0.0004982764005369955,
+    -0.0005132612926168845
+   ],
+   "n": 3,
+   "mean": -0.00046674002605111373,
+   "sd": 6.801384596222254e-05,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0006356957857249549,
+    -0.00029778426637727256
+   ],
+   "boot_delta": -0.00046674002605112935,
+   "boot_ci": [
+    -0.0028831472419932748,
+    0.0017211390232858247
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.0003924522454916701,
+    0.00035687972504638843,
+    0.0003736592158225527
+   ],
+   "n": 3,
+   "mean": 0.0003743303954535371,
+   "sd": 1.7795755513050923e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.0003301232880750263,
+    0.0004185375028320479
+   ],
+   "boot_delta": 0.0003743303954535371,
+   "boot_ci": [
+    -1.7567277120292195e-05,
+    0.0007687414290707628
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.006615787502540949,
+    -0.007369130718950789,
+    -0.007966084447216009
+   ],
+   "n": 3,
+   "mean": -0.007317000889569249,
+   "sd": 0.0006766561896807065,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.008997908048223546,
+    -0.005636093730914952
+   ],
+   "boot_delta": -0.007317000889569279,
+   "boot_ci": [
+    -0.015094413321571944,
+    0.00017595587903675812
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002709930138570016,
+    -0.00219389150306315,
+    -0.0019194065225524026
+   ],
+   "n": 3,
+   "mean": -0.0022744093880618563,
+   "sd": 0.00040136547462865977,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0032714564997691244,
+    -0.001277362276354588
+   ],
+   "boot_delta": -0.002274409388061893,
+   "boot_ci": [
+    -0.0044292331094349865,
+    -0.00019073147472077904
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0018939822121808892,
+    -0.0015271527077371394,
+    -0.001221536003683421
+   ],
+   "n": 3,
+   "mean": -0.0015475569745338166,
+   "sd": 0.00033668713430763523,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.002383934181918197,
+    -0.0007111797671494361
+   ],
+   "boot_delta": -0.0015475569745337925,
+   "boot_ci": [
+    -0.0063922474390429645,
+    0.003170892789652065
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -8.589037633432994e-05,
+    -8.92027508956339e-05,
+    -8.734727136949783e-05
+   ],
+   "n": 3,
+   "mean": -8.748013286648722e-05,
+   "sd": 1.6601793402009582e-06,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -9.16042469736981e-05,
+    -8.335601875927634e-05
+   ],
+   "boot_delta": -8.748013286641321e-05,
+   "boot_ci": [
+    -0.0005923111534234884,
+    0.00038585199095832163
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -7.390174125652127e-05,
+    0.001120006079029956,
+    -0.0018551085840629144
+   ],
+   "n": 3,
+   "mean": -0.00026966808209649327,
+   "sd": 0.0014971874163884611,
+   "n_pos": 1,
+   "n_neg": 2,
+   "t_ci": [
+    -0.003988887804659024,
+    0.0034495516404660373
+   ],
+   "boot_delta": -0.0002696680820964534,
+   "boot_ci": [
+    -0.005537413448303877,
+    0.004792217453395219
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -2.8938608460649107e-05,
+    -0.0004573138538636057,
+    -0.0012412814422223528
+   ],
+   "n": 3,
+   "mean": -0.0005758446348488692,
+   "sd": 0.0006148015502372062,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0021030963510167517,
+    0.0009514070813190135
+   ],
+   "boot_delta": -0.0005758446348489432,
+   "boot_ci": [
+    -0.001640004233106229,
+    0.0004796895357161322
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.020526886028056256,
+    -0.023301710470582902,
+    -0.012098200479858073
+   ],
+   "n": 3,
+   "mean": -0.018642265659499075,
+   "sd": 0.0058346811805147685,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.03313641721587613,
+    -0.004148114103122021
+   ],
+   "boot_delta": -0.01864226565949908,
+   "boot_ci": [
+    -0.02806603180972653,
+    -0.009320435445050113
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0028529120164211275,
+    -0.0005639260422879433,
+    -0.0015851224148458742
+   ],
+   "n": 3,
+   "mean": -0.0016673201578516483,
+   "sd": 0.0011467046477454616,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.004515892417520227,
+    0.0011812521018169301
+   ],
+   "boot_delta": -0.0016673201578517594,
+   "boot_ci": [
+    -0.004564044485334886,
+    0.0011153254190731114
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0025936732948322163,
+    -0.0026535968880526117,
+    -0.003299948559412813
+   ],
+   "n": 3,
+   "mean": -0.0028490729140992137,
+   "sd": 0.0003916176003563002,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.003821904963717413,
+    -0.0018762408644810145
+   ],
+   "boot_delta": -0.0028490729140991993,
+   "boot_ci": [
+    -0.008434141630723762,
+    0.002414097948576704
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.001970106927924098,
+    -0.0016432561918990896,
+    -0.0025518157943614783
+   ],
+   "n": 3,
+   "mean": -0.002055059638061555,
+   "sd": 0.0004601987179756454,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0031982566282698433,
+    -0.0009118626478532667
+   ],
+   "boot_delta": -0.0020550596380616293,
+   "boot_ci": [
+    -0.0033891374668498556,
+    -0.0007602923386900773
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.01320875882298772,
+    -0.020556796997036685,
+    -0.01574479170757192
+   ],
+   "n": 3,
+   "mean": -0.01650344917586544,
+   "sd": 0.0037323031920609507,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.02577500428683529,
+    -0.007231894064895593
+   ],
+   "boot_delta": -0.016503449175865433,
+   "boot_ci": [
+    -0.026203441375106017,
+    -0.006839642384572042
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "cap",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00030989944158898997,
+    0.0002570595079738336,
+    0.00024068089240403268
+   ],
+   "n": 3,
+   "mean": 0.0002692132806556187,
+   "sd": 3.617440435747309e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.00017935107859222795,
+    0.0003590754827190095
+   ],
+   "boot_delta": 0.0002692132806557668,
+   "boot_ci": [
+    -0.002552273747910879,
+    0.0030662209774103832
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0026205665330225948,
+    -0.0033965583639310737,
+    -0.0036457775966906693
+   ],
+   "n": 3,
+   "mean": -0.003220967497881446,
+   "sd": 0.0005346854640317987,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.004549199822991102,
+    -0.0018927351727717901
+   ],
+   "boot_delta": -0.003220967497881395,
+   "boot_ci": [
+    -0.009329640861176412,
+    0.0024470098893407915
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_top1",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    0.00013830423687311022,
+    0.00019574392714072353,
+    9.09780553804973e-05
+   ],
+   "n": 3,
+   "mean": 0.00014167540646477703,
+   "sd": 5.246423124121687e-05,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    1.1347031122095445e-05,
+    0.0002720037818074586
+   ],
+   "boot_delta": 0.00014167540646481402,
+   "boot_ci": [
+    -0.0005048683495710249,
+    0.0008012761757332503
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.0048212136621868075,
+    -0.0013714203669317083,
+    -0.0005231897590488477
+   ],
+   "n": 3,
+   "mean": -0.002238607929389121,
+   "sd": 0.0022764584488514034,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.007893644211343472,
+    0.003416428352565231
+   ],
+   "boot_delta": -0.0022386079293891118,
+   "boot_ci": [
+    -0.008763768442590246,
+    0.00455970727746203
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "kmeans_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.002663043774446372,
+    -0.0008375520044997531,
+    -0.0005717625798914439
+   ],
+   "n": 3,
+   "mean": -0.0013574527862791896,
+   "sd": 0.0011384581133471374,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.004185539518857899,
+    0.0014706339462995195
+   ],
+   "boot_delta": -0.0013574527862790786,
+   "boot_ci": [
+    -0.0025815073718589653,
+    -0.00014001696661322154
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.02164590943685637,
+    -0.011842053628423471,
+    -0.017736645996728462
+   ],
+   "n": 3,
+   "mean": -0.0170748696873361,
+   "sd": 0.00493531742554525,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.02933487782343968,
+    -0.004814861551232523
+   ],
+   "boot_delta": -0.017074869687336094,
+   "boot_ci": [
+    -0.026474896084855336,
+    -0.007547665345897049
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "sae_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.004463614850857001,
+    -0.0025900615797535,
+    0.0003242072503790716
+   ],
+   "n": 3,
+   "mean": -0.002243156393410476,
+   "sd": 0.0024126888577901866,
+   "n_pos": 1,
+   "n_neg": 2,
+   "t_ci": [
+    -0.008236607771692635,
+    0.0037502949848716824
+   ],
+   "boot_delta": -0.0022431563934104393,
+   "boot_ci": [
+    -0.004717131869163327,
+    0.00017462047685911232
+   ],
+   "verdict": "not distinguishable from 0"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    0.004316095948186815,
+    0.0062885785096115756,
+    0.006455496514704428
+   ],
+   "n": 3,
+   "mean": 0.00568672365750094,
+   "sd": 0.001189928839578572,
+   "n_pos": 3,
+   "n_neg": 0,
+   "t_ci": [
+    0.002730776552841132,
+    0.00864267076216075
+   ],
+   "boot_delta": 0.005686723657500957,
+   "boot_ci": [
+    -0.0013805608711648927,
+    0.013528741484861448
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "metadata_leace",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.0006677321042686257,
+    -0.0007547128611640197,
+    -0.0005159424254570499
+   ],
+   "n": 3,
+   "mean": -0.0006461291302965652,
+   "sd": 0.00012084223849818486,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0009463178921185137,
+    -0.0003459403684746166
+   ],
+   "boot_delta": -0.0006461291302966021,
+   "boot_ci": [
+    -0.001342337804268595,
+    5.269756766894024e-05
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "legal macro nDCG@10",
+   "per_seed": [
+    -0.016717648921828105,
+    -0.014895162985889544,
+    -0.015349786274579353
+   ],
+   "n": 3,
+   "mean": -0.015654199394099,
+   "sd": 0.0009486117526023099,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.01801068162251877,
+    -0.013297717165679231
+   ],
+   "boot_delta": -0.015654199394099004,
+   "boot_ci": [
+    -0.02609044355593488,
+    -0.005090759394239012
+   ],
+   "verdict": "stable: every fitted map, and the evaluation bootstrap"
+  },
+  {
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "transform": "pca_matched_var",
+   "target": "STSBenchmark Spearman",
+   "per_seed": [
+    -0.001113033446237477,
+    -0.0013589463327619011,
+    -0.0012919635218701098
+   ],
+   "n": 3,
+   "mean": -0.001254647766956496,
+   "sd": 0.00012713235667316663,
+   "n_pos": 0,
+   "n_neg": 3,
+   "t_ci": [
+    -0.0015704620485480893,
+    -0.0009388334853649026
+   ],
+   "boot_delta": -0.001254647766956496,
+   "boot_ci": [
+    -0.003669218024927384,
+    0.001128375551860438
+   ],
+   "verdict": "same sign in every fitted map, within evaluation noise"
+  }
+ ]
+}

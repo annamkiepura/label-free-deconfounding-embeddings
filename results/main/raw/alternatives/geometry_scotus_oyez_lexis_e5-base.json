@@ -1,0 +1,188 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis",
+ "label": "SCOTUS (Oyez/Lexis)",
+ "encoder": "e5-base",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.061691755841434756,
+     "nuisance_var_share": 0.06074340704331602,
+     "capture": {
+      "1": 0.9796523712413095,
+      "2": 0.9826314030219359,
+      "3": 0.9882808958980478,
+      "4": 0.9882887787516461,
+      "8": 0.9917563890372693,
+      "16": 0.993114089759223,
+      "32": 0.9951609525800116
+     },
+     "rank_90": 1,
+     "rank_99": 7,
+     "ari": {
+      "auto": 0.882736798907407,
+      "count": 0.882736798907407,
+      "generous": 0.23177217164364478
+     }
+    }
+   ],
+   "seconds": 3.1
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.060058765403333846,
+     "nuisance_var_share": 0.05917400058964426,
+     "capture": {
+      "1": 0.9811579621659693,
+      "2": 0.9823355593035015,
+      "3": 0.9883844433159039,
+      "4": 0.9883999604105257,
+      "8": 0.9906707236390699,
+      "16": 0.9934196471483826,
+      "32": 0.9948695616615589
+     },
+     "rank_90": 1,
+     "rank_99": 7,
+     "ari": {
+      "auto": 0.8754223347070096,
+      "count": 0.8754223347070096,
+      "generous": 0.23193186112999242
+     }
+    }
+   ],
+   "seconds": 4.2
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06092178929595623,
+     "nuisance_var_share": 0.06001027076989482,
+     "capture": {
+      "1": 0.981209550586255,
+      "2": 0.9816481993242623,
+      "3": 0.9867598526149061,
+      "4": 0.9872186864395464,
+      "8": 0.9913374915282732,
+      "16": 0.9928738895945906,
+      "32": 0.9945812784269531
+     },
+     "rank_90": 1,
+     "rank_99": 7,
+     "ari": {
+      "auto": 0.8956102626262074,
+      "count": 0.8956102626262074,
+      "generous": 0.2392756504727874
+     }
+    }
+   ],
+   "seconds": 2.5
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.06089077018024161,
+  "nuisance_var_share": 0.0599758928009517,
+  "rank_90": 1.0,
+  "rank_99": 7.0,
+  "capture": {
+   "1": 0.9806732946645113,
+   "2": 0.9822050538832331,
+   "3": 0.9878083972762859,
+   "4": 0.9879691418672394,
+   "8": 0.9912548680682042,
+   "16": 0.993135875500732,
+   "32": 0.9948705975561746
+  },
+  "ari": {
+   "auto": 0.8845897987468746,
+   "count": 0.8845897987468746,
+   "generous": 0.23432656108214153
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 4101,
+  "n_pairs": 1017,
+  "n_unpaired": 2067,
+  "classes": [
+   "lexis",
+   "oyez"
+  ],
+  "class_counts": [
+   2034,
+   2067
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

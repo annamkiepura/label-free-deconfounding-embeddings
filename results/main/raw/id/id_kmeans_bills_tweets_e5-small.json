@@ -1,0 +1,579 @@
+{
+ "experiment": "revised_id_kmeans",
+ "corpus": "bills_tweets",
+ "label": "Bills--Tweets",
+ "encoder": "e5-small",
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "conditions": [
+  "kmeans_leace"
+ ],
+ "labels": {
+  "kmeans_leace": "k-means LEACE"
+ },
+ "per_seed": [
+  {
+   "seed": 0,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.6158470652283772,
+     "gb_auc": 0.970015057163506,
+     "mlp_auc": 0.9955569364526632,
+     "linear_auc_per_class": {
+      "bill": 0.6158470652283772,
+      "tweet": 0.6158470652283772
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.6158470652283772
+     ],
+     "gb_auc": [
+      0.970015057163506
+     ],
+     "mlp_auc": [
+      0.9955569364526632
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      1.0,
+      0.01,
+      0.01,
+      100.0,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4966
+    ],
+    "n_test_docs": [
+     4967
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.0791519284248352,
+      "3": 0.03794766962528229,
+      "4": 0.03551523759961128,
+      "5": 0.030940765514969826,
+      "6": 0.02880687825381756,
+      "8": 0.021183179691433907
+     }
+    }
+   ],
+   "seconds": 59.0
+  },
+  {
+   "seed": 1,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.6100556622553563,
+     "gb_auc": 0.9709390195588556,
+     "mlp_auc": 0.9971209238820744,
+     "linear_auc_per_class": {
+      "bill": 0.6100556622553563,
+      "tweet": 0.6100556622553563
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.6100556622553563
+     ],
+     "gb_auc": [
+      0.9709390195588556
+     ],
+     "mlp_auc": [
+      0.9971209238820744
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4966
+    ],
+    "n_test_docs": [
+     4967
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07885784655809402,
+      "3": 0.03808344155550003,
+      "4": 0.03639410436153412,
+      "5": 0.031648337841033936,
+      "6": 0.030423903837800026,
+      "8": 0.022535137832164764
+     }
+    }
+   ],
+   "seconds": 54.9
+  },
+  {
+   "seed": 2,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.5966355025808241,
+     "gb_auc": 0.9705062325585712,
+     "mlp_auc": 0.9959437770812256,
+     "linear_auc_per_class": {
+      "bill": 0.5966355025808241,
+      "tweet": 0.5966355025808241
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.5966355025808241
+     ],
+     "gb_auc": [
+      0.9705062325585712
+     ],
+     "mlp_auc": [
+      0.9959437770812256
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4966
+    ],
+    "n_test_docs": [
+     4967
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.08065272867679596,
+      "3": 0.06913821399211884,
+      "4": 0.035351596772670746,
+      "5": 0.0309013482183218,
+      "6": 0.03023136593401432,
+      "8": 0.02478635497391224
+     }
+    }
+   ],
+   "seconds": 54.3
+  },
+  {
+   "seed": 3,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.626086404294334,
+     "gb_auc": 0.9748507644848852,
+     "mlp_auc": 0.9961723634902654,
+     "linear_auc_per_class": {
+      "bill": 0.626086404294334,
+      "tweet": 0.626086404294334
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.626086404294334
+     ],
+     "gb_auc": [
+      0.9748507644848852
+     ],
+     "mlp_auc": [
+      0.9961723634902654
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4966
+    ],
+    "n_test_docs": [
+     4967
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.08007897436618805,
+      "3": 0.03847305476665497,
+      "4": 0.030899057164788246,
+      "5": 0.030349748209118843,
+      "6": 0.02946576289832592,
+      "8": 0.024280795827507973
+     }
+    }
+   ],
+   "seconds": 52.1
+  },
+  {
+   "seed": 4,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.6096334227413858,
+     "gb_auc": 0.9713121674247478,
+     "mlp_auc": 0.9964000322034219,
+     "linear_auc_per_class": {
+      "bill": 0.6096334227413858,
+      "tweet": 0.6096334227413858
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.6096334227413858
+     ],
+     "gb_auc": [
+      0.9713121674247478
+     ],
+     "mlp_auc": [
+      0.9964000322034219
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4966
+    ],
+    "n_test_docs": [
+     4967
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07824389636516571,
+      "3": 0.06750019639730453,
+      "4": 0.03491954132914543,
+      "5": 0.02859354205429554,
+      "6": 0.028388621285557747,
+      "8": 0.02714965119957924
+     }
+    }
+   ],
+   "seconds": 52.4
+  }
+ ],
+ "agg": {
+  "kmeans_leace": {
+   "linear_auc": {
+    "mean": 0.6116516114200555,
+    "std": 0.010701270274268163,
+    "values": [
+     0.6158470652283772,
+     0.6100556622553563,
+     0.5966355025808241,
+     0.626086404294334,
+     0.6096334227413858
+    ],
+    "n": 5
+   },
+   "gb_auc": {
+    "mean": 0.9715246482381131,
+    "std": 0.0019214053477811896,
+    "values": [
+     0.970015057163506,
+     0.9709390195588556,
+     0.9705062325585712,
+     0.9748507644848852,
+     0.9713121674247478
+    ],
+    "n": 5
+   },
+   "mlp_auc": {
+    "mean": 0.9962388066219301,
+    "std": 0.0005832084953388587,
+    "values": [
+     0.9955569364526632,
+     0.9971209238820744,
+     0.9959437770812256,
+     0.9961723634902654,
+     0.9964000322034219
+    ],
+    "n": 5
+   },
+   "linear_auc_per_class": {
+    "bill": {
+     "mean": 0.6116516114200555,
+     "std": 0.010701270274268163,
+     "values": [
+      0.6158470652283772,
+      0.6100556622553563,
+      0.5966355025808241,
+      0.626086404294334,
+      0.6096334227413858
+     ],
+     "n": 5
+    },
+    "tweet": {
+     "mean": 0.6116516114200555,
+     "std": 0.010701270274268163,
+     "values": [
+      0.6158470652283772,
+      0.6100556622553563,
+      0.5966355025808241,
+      0.626086404294334,
+      0.6096334227413858
+     ],
+     "n": 5
+    }
+   },
+   "audit_folds": {
+    "mean": 5.0,
+    "std": 0.0,
+    "values": [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ],
+    "n": 5
+   },
+   "n_constant_coords": {
+    "mean": 0.0,
+    "std": 0.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 5
+   }
+  }
+ },
+ "checks": [
+  {
+   "seed": 0,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 1,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 2,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 3
+  },
+  {
+   "seed": 4
+  }
+ ],
+ "corpus_stats": {
+  "n_docs": 9933,
+  "n_pairs": 0,
+  "n_unpaired": 9933,
+  "classes": [
+   "bill",
+   "tweet"
+  ],
+  "class_counts": [
+   4935,
+   4998
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "nonlinear": [
+   "gb",
+   "mlp"
+  ],
+  "sae": null
+ }
+}

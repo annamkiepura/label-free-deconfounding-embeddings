@@ -1,0 +1,250 @@
+{
+ "experiment": "dataset_inventory",
+ "corpora": {
+  "semeval": {
+   "label": "SemEval",
+   "confounder": "language",
+   "classes": [
+    "de",
+    "en",
+    "es",
+    "zh"
+   ],
+   "class_counts": [
+    173,
+    428,
+    189,
+    66
+   ],
+   "n_docs": 856,
+   "n_pairs": 428,
+   "n_unpaired": 0,
+   "paired": true,
+   "has_gold": true,
+   "n_topics": null
+  },
+  "swiltra": {
+   "label": "SwiLTra (de/fr)",
+   "confounder": "language",
+   "classes": [
+    "de",
+    "fr"
+   ],
+   "class_counts": [
+    2784,
+    2784
+   ],
+   "n_docs": 5568,
+   "n_pairs": 2784,
+   "n_unpaired": 0,
+   "paired": true,
+   "has_gold": false,
+   "n_topics": null
+  },
+  "bills_tweets": {
+   "label": "Bills--Tweets",
+   "confounder": "source",
+   "classes": [
+    "bill",
+    "tweet"
+   ],
+   "class_counts": [
+    4935,
+    4998
+   ],
+   "n_docs": 9933,
+   "n_pairs": 0,
+   "n_unpaired": 9933,
+   "paired": false,
+   "has_gold": false,
+   "n_topics": null
+  },
+  "scotus_oyez_lexis": {
+   "label": "SCOTUS (Oyez/Lexis)",
+   "confounder": "source",
+   "classes": [
+    "lexis",
+    "oyez"
+   ],
+   "class_counts": [
+    2034,
+    2067
+   ],
+   "n_docs": 4101,
+   "n_pairs": 1017,
+   "n_unpaired": 2067,
+   "paired": true,
+   "has_gold": false,
+   "n_topics": null
+  },
+  "cap": {
+   "label": "CAP (bills/orders/news)",
+   "confounder": "source",
+   "classes": [
+    "bill",
+    "newspaper",
+    "order"
+   ],
+   "class_counts": [
+    1301,
+    1309,
+    598
+   ],
+   "n_docs": 3208,
+   "n_pairs": 0,
+   "n_unpaired": 3208,
+   "paired": false,
+   "has_gold": false,
+   "n_topics": 21
+  }
+ },
+ "cap_composition": [
+  {
+   "topic_id": 1,
+   "topic": "Macroeconomics",
+   "bill": 64,
+   "order": 11,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 2,
+   "topic": "Civil Rights",
+   "bill": 64,
+   "order": 26,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 3,
+   "topic": "Health",
+   "bill": 64,
+   "order": 50,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 4,
+   "topic": "Agriculture",
+   "bill": 64,
+   "order": 5,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 5,
+   "topic": "Labor",
+   "bill": 64,
+   "order": 13,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 6,
+   "topic": "Education",
+   "bill": 64,
+   "order": 16,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 7,
+   "topic": "Environment",
+   "bill": 64,
+   "order": 34,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 8,
+   "topic": "Energy",
+   "bill": 64,
+   "order": 17,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 9,
+   "topic": "Immigration",
+   "bill": 64,
+   "order": 9,
+   "newspaper": 29
+  },
+  {
+   "topic_id": 10,
+   "topic": "Transportation",
+   "bill": 64,
+   "order": 40,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 12,
+   "topic": "Law and Crime",
+   "bill": 64,
+   "order": 37,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 13,
+   "topic": "Social Welfare",
+   "bill": 64,
+   "order": 15,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 14,
+   "topic": "Housing",
+   "bill": 64,
+   "order": 11,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 15,
+   "topic": "Domestic Commerce",
+   "bill": 64,
+   "order": 27,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 16,
+   "topic": "Defense",
+   "bill": 64,
+   "order": 64,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 17,
+   "topic": "Technology",
+   "bill": 64,
+   "order": 36,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 18,
+   "topic": "Foreign Trade",
+   "bill": 64,
+   "order": 32,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 19,
+   "topic": "International Affairs",
+   "bill": 64,
+   "order": 64,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 20,
+   "topic": "Government Operations",
+   "bill": 64,
+   "order": 64,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 21,
+   "topic": "Public Lands",
+   "bill": 64,
+   "order": 27,
+   "newspaper": 64
+  },
+  {
+   "topic_id": 23,
+   "topic": "Culture",
+   "bill": 21,
+   "order": 0,
+   "newspaper": 64
+  }
+ ]
+}

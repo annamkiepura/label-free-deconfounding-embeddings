@@ -1,0 +1,243 @@
+{
+ "experiment": "fedlex_dataset",
+ "hf": {
+  "repo": "joelniklaus/SwissLawTranslations",
+  "config": "article_level",
+  "revision": "03080f362948f9695475a1ece4bb17e33f5c2af6",
+  "last_modified": "2025-03-04 08:44:30+00:00",
+  "huggingface_hub": "1.31.0",
+  "pyarrow": "23.0.1",
+  "files": {
+   "train": {
+    "path": "article_level/train.parquet",
+    "rows": 129070,
+    "bytes": 318101107,
+    "sha256": "35b8990a163eca74f7943c820b779db25b51c6336a101030008367cfc27c05fe"
+   },
+   "validation": {
+    "path": "article_level/val.parquet",
+    "rows": 789,
+    "bytes": 3113169,
+    "sha256": "aa0ca03b357de17d013a912b747e4b4a43ea45a09c0a88d8e67e42e91d297ce3"
+   },
+   "test": {
+    "path": "article_level/test.parquet",
+    "rows": 740,
+    "bytes": 2565519,
+    "sha256": "19961bcf80a5593e57cfae49237338d6ca801d90901ceffcd40c7a793080be55"
+   }
+  }
+ },
+ "schema_columns": [
+  "rsNr",
+  "artNr",
+  "de_abbreviation",
+  "de_artHtml",
+  "de_artText",
+  "de_artTitle",
+  "de_dateApplicability",
+  "de_lawTitle",
+  "de_url",
+  "fr_abbreviation",
+  "fr_artHtml",
+  "fr_artText",
+  "fr_artTitle",
+  "fr_dateApplicability",
+  "fr_lawTitle",
+  "fr_url",
+  "it_abbreviation",
+  "it_artHtml",
+  "it_artText",
+  "it_artTitle",
+  "it_dateApplicability",
+  "it_lawTitle",
+  "it_url",
+  "rm_abbreviation",
+  "rm_artHtml",
+  "rm_artText",
+  "rm_artTitle",
+  "rm_dateApplicability",
+  "rm_lawTitle",
+  "rm_url",
+  "en_abbreviation",
+  "en_artHtml",
+  "en_artText",
+  "en_artTitle",
+  "en_dateApplicability",
+  "en_lawTitle",
+  "en_url"
+ ],
+ "card_vs_parquet": {
+  "in_parquet_not_on_card": [
+   "rsNr",
+   "de_abbreviation",
+   "de_dateApplicability",
+   "de_lawTitle",
+   "de_url",
+   "fr_abbreviation",
+   "fr_dateApplicability",
+   "fr_lawTitle",
+   "fr_url",
+   "it_abbreviation",
+   "it_dateApplicability",
+   "it_lawTitle",
+   "it_url",
+   "rm_abbreviation",
+   "rm_dateApplicability",
+   "rm_lawTitle",
+   "rm_url",
+   "en_abbreviation",
+   "en_dateApplicability",
+   "en_lawTitle",
+   "en_url"
+  ],
+  "on_card_not_in_parquet": [
+   "abbreviation",
+   "lawTitle"
+  ]
+ },
+ "cleaning": {
+  "strip_changed_texts": {
+   "de": 0,
+   "fr": 0,
+   "it": 0
+  },
+  "rule": "triple-level exact-duplicate removal, first occurrence kept in file order; pooled across languages"
+ },
+ "scope": {
+  "label": "domestic federal law",
+  "rule": "international law = SR 0.*; cantonal constitutions = SR 131.2; domestic federal law = everything else (kept)"
+ },
+ "article_id": "\"<rsNr>:<artNr>\", unique over all source rows",
+ "duplicates": {
+  "DE": {
+   "records whose text occurs more than once": 5575,
+   "occurrences beyond the first": 4353,
+   "distinct duplicated texts": 1222
+  },
+  "FR": {
+   "records whose text occurs more than once": 5196,
+   "occurrences beyond the first": 4044,
+   "distinct duplicated texts": 1152
+  },
+  "IT": {
+   "records whose text occurs more than once": 4893,
+   "occurrences beyond the first": 3827,
+   "distinct duplicated texts": 1066
+  },
+  "cross_language": {
+   "texts found in two or more language columns": 0
+  }
+ },
+ "dropped": {
+  "re-uses a text of an earlier record": 4654
+ },
+ "ledger": [
+  {
+   "step": "source rows (train + validation + test)",
+   "count": 130599
+  },
+  {
+   "step": "  out of scope: international law (SR 0.*)",
+   "count": 55287
+  },
+  {
+   "step": "  out of scope: cantonal constitutions (SR 131.2)",
+   "count": 3381
+  },
+  {
+   "step": "in scope: domestic federal law",
+   "count": 71931
+  },
+  {
+   "step": "  with a non-empty DE text",
+   "count": 71737
+  },
+  {
+   "step": "  with a non-empty FR text",
+   "count": 71727
+  },
+  {
+   "step": "  with a non-empty IT text",
+   "count": 71706
+  },
+  {
+   "step": "complete DE/FR/IT records",
+   "count": 71564
+  },
+  {
+   "step": "  dropped: re-uses a text of an earlier record",
+   "count": 4654
+  },
+  {
+   "step": "clean triples",
+   "count": 66910
+  },
+  {
+   "step": "  laws among the clean triples",
+   "count": 2042
+  },
+  {
+   "step": "cohort: seeded sample (N_TRIPLES = 2,784, DATASET_SEED = 42)",
+   "count": 2784
+  },
+  {
+   "step": "  documents (3 per triple)",
+   "count": 8352
+  },
+  {
+   "step": "  laws in the cohort",
+   "count": 1107
+  }
+ ],
+ "cohort": "seeded sample of 2784 clean triples (DATASET_SEED = 42), file order",
+ "n_triples": 2784,
+ "n_clean_triples": 66910,
+ "manifest": "data/fedlex_domestic_n2784_manifest.csv.gz",
+ "quick_subsample": null,
+ "cohort_sha256": "1b7952b99dc57bcc36fdda1479efa2d501e7d9656981970f97755c689118d786",
+ "cohort_stats": {
+  "scope_label": "domestic federal law",
+  "downsampled": true,
+  "quick_subsample": false,
+  "triples": 2784,
+  "documents": 8352,
+  "retrieval_pairs": 8352,
+  "laws": 1107,
+  "articles_per_law": {
+   "median": 2.0,
+   "mean": 2.5149051490514904,
+   "max": 77
+  },
+  "laws_with_one_article": 538,
+  "international_law_articles": 0,
+  "international_law_laws": 0,
+  "cantonal_constitution_articles": 0,
+  "domestic_federal_articles": 2784,
+  "hf_split": {
+   "train": 2728,
+   "validation": 31,
+   "test": 25
+  },
+  "chars": {
+   "DE": {
+    "median": 512.0,
+    "mean": 697.8045977011494,
+    "p95": 1930.5499999999997,
+    "max": 10288
+   },
+   "FR": {
+    "median": 533.0,
+    "mean": 736.8681752873563,
+    "p95": 2011.5499999999997,
+    "max": 11720
+   },
+   "IT": {
+    "median": 523.0,
+    "mean": 719.451867816092,
+    "p95": 1973.85,
+    "max": 11537
+   }
+  }
+ }
+}

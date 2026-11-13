@@ -1,0 +1,87 @@
+{
+ "merged": [
+  "alternatives/alternatives_swiltra_e5-small.json",
+  "alternatives/kmeans_count_swiltra_e5-small.json",
+  "band/band_swiltra_e5-small.json",
+  "alternatives/alternatives_swiltra_de_fr_it_e5-small.json",
+  "alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json",
+  "band/band_swiltra_de_fr_it_e5-small.json",
+  "alternatives/alternatives_scotus_oyez_lexis_e5-small.json",
+  "alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json",
+  "band/band_scotus_oyez_lexis_e5-small.json",
+  "alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+  "alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json",
+  "band/band_scotus_oyez_lexis_wiki_e5-small.json",
+  "alternatives/geometry_swiltra_e5-small.json",
+  "alternatives/geometry_swiltra_de_fr_it_e5-small.json",
+  "alternatives/geometry_scotus_oyez_lexis_e5-small.json",
+  "alternatives/geometry_scotus_oyez_lexis_mini.json",
+  "alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json",
+  "alternatives/geometry_scotus_oyez_lexis_wiki_mini.json",
+  "id/id_cap_e5-small.json",
+  "id/id_kmeans_cap_e5-small.json",
+  "id/id_cap_mini.json",
+  "id/id_semeval_e5-small.json",
+  "id/id_kmeans_semeval_e5-small.json",
+  "ood/ood_e5-small_cap.json",
+  "alternatives/ood_kmeans_e5-small_cap.json",
+  "alternatives/ood_ranks_e5-small_cap.json",
+  "ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+  "alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json",
+  "alternatives/ood_ranks_e5-small_scotus_oyez_lexis_wiki.json",
+  "ood/ood_e5-small_swiltra_de_fr_it.json",
+  "alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json",
+  "alternatives/ood_ranks_e5-small_swiltra_de_fr_it.json",
+  "ood/ood_mini_cap.json",
+  "alternatives/ood_kmeans_mini_cap.json",
+  "alternatives/ood_ranks_mini_cap.json",
+  "ood/ood_mini_scotus_oyez_lexis_wiki.json",
+  "alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json",
+  "alternatives/ood_ranks_mini_scotus_oyez_lexis_wiki.json"
+ ],
+ "compared": {
+  "id/id_scotus_oyez_lexis_wiki_e5-small.json": {
+   "3": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   },
+   "4": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   }
+  },
+  "id/id_scotus_oyez_lexis_wiki_mini.json": {
+   "3": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   },
+   "4": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   }
+  },
+  "id/id_swiltra_de_fr_it_e5-small.json": {
+   "3": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   },
+   "4": {
+    "raw": 0.0,
+    "pca_top1": 0.0,
+    "metadata_leace": 0.0,
+    "sae_leace": 0.0
+   }
+  }
+ },
+ "missing": []
+}

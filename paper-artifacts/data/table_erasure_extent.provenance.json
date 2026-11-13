@@ -1,0 +1,2418 @@
+{
+ "exhibit": "table_erasure_extent",
+ "kind": "table",
+ "title": "Table 4: SAE-LEACE against displacement-matched PCA",
+ "build_command": "python paper-artifacts/build.py table_erasure_extent",
+ "generated_utc": "2026-10-26T18:48:38+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "\\textbf{Erasure extent: SAE-LEACE against PCA matched in displacement.}\nPer setting (E5-small unless marked; seeds 0--4), SAE-LEACE at $N{=}32$ and PCA removal at the smallest rank $r^{*}$ whose normalized squared training displacement reaches SAE-LEACE's (Displ.: that displacement, mean over fits). PCA $-$ SAE is the per-seed paired difference with its 95\\% $t$-interval over seeds. Utility is R@10, and topic purity for CAP. Both maps of a seed are fitted on the same split and audited on the same held-out documents. The first two rows are rows A1 and C1 of Table~\\ref{tab:mechanism-controls}. As there, the SAEs are fitted separately from those of Table~\\ref{tab:primary-id} (same recipe, seeds and splits), so the SAE column differs from that table's SAE-LEACE by .021 on SCOTUS (3 sources) with MiniLM and by at most .003 elsewhere.",
+ "settings_and_seeds": {
+  "cap/e5-small": {
+   "cohorts": [
+    "id5",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "fedlex_domestic/e5-small": {
+   "cohorts": [
+    "fedlex",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "scotus_oyez_lexis_wiki/e5-small": {
+   "cohorts": [
+    "coverage",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "scotus_oyez_lexis_wiki/mini": {
+   "cohorts": [
+    "id",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "semeval/e5-small": {
+   "cohorts": [
+    "id5",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  },
+  "swiltra_de_fr_it/e5-small": {
+   "cohorts": [
+    "id",
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   ],
+   "dataset_version": null
+  }
+ },
+ "sources": {
+  "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "45b57ae5e31f4a1500f58178873234c27c1cddbab7880b56870864e30db2f8f3",
+   "bytes": 299497,
+   "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_cap_e5-small.json": {
+   "sha256": "101138c626da814692beb9a39105fe379adcb025c428f5f6bb16c4c1ee505df1",
+   "bytes": 31893,
+   "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+   "experiment": "revised_id",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "CAP (bills/orders/news)",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json": {
+   "sha256": "bdb8b7475c8f107a11b3df9ce249aacdc3563fa488ccf555a2c3e83562ccc08c",
+   "bytes": 138135,
+   "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+   "experiment": "revised_id",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SemEval",
+   "merged_note": {
+    "seed_batches": [
+     [
+      0,
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "config_differences": [],
+    "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+   }
+  },
+  "results/extensions/raw/table3x/table3x_cap_e5-small.json": {
+   "sha256": "0f1d3c4621f093da65d7edca572926c3c542a6151d7d6c357021fe907fc177c9",
+   "bytes": 236546,
+   "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+   "experiment": "table3x",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json": {
+   "sha256": "889e2110d1918b59ae80d3017f3ec19ea04b5b2048ebe8b13ffb7607da5f237c",
+   "bytes": 6122577,
+   "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+   "experiment": "table3x",
+   "corpus": "fedlex_domestic",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Fedlex DE/FR/IT"
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "6d7e6eceab26177978a8b4ad39457fad35f4cb1648d236f74b8922604edfcab3",
+   "bytes": 2523620,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "ac7e8f57984e402ef74fd9ca6497c27442f2062ce02c62435283f7614498f81c",
+   "bytes": 553184,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_semeval_e5-small.json": {
+   "sha256": "0c2e332bc6a6a2bdd3f1b0a5ec9277e3442d227767cbd944c1fb3492c2019edb",
+   "bytes": 1101735,
+   "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+   "experiment": "table3x",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SemEval"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "b89724d1f15d502ffd6230cad102f2716d8f156fbd0cac0648982c1965af6173",
+   "bytes": 6125276,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json": {
+   "sha256": "f8efb32e2cbc66c5ecab643071922fd6f505b8d8ba74a30d4bfaa3279e81af18",
+   "bytes": 174852,
+   "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+   "experiment": "fedlex_id",
+   "corpus": "fedlex_domestic",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Fedlex, domestic federal law (de/fr/it)"
+  },
+  "results/main/raw/id/id_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "8e072e36da63b5a5e9232ddaa33877039fac7cee28503c800261db288e506cf1",
+   "bytes": 355856,
+   "run_id": "results/main/raw/id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9dfe0c6ffb1f3ea24b4c6dd5103cec559573deaa85dae1881469202df68a3ae3",
+   "bytes": 875976,
+   "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  }
+ },
+ "notes": [
+  "SAE column minus Table 2's SAE-LEACE linear AUC: swiltra_de_fr_it/e5-small +0.0010; scotus_oyez_lexis_wiki/e5-small -0.0001; semeval/e5-small +0.0031; cap/e5-small +0.0005; fedlex_domestic/e5-small +0.0022; scotus_oyez_lexis_wiki/mini -0.0207"
+ ],
+ "checks_passed": 46,
+ "checks": [
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "swiltra_de_fr_it/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 2.4e-05), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small recall@10: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: the Table 3 run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "scotus_oyez_lexis_wiki/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 6.4e-05), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small recall@10: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_semeval_e5-small.json: the Table 3 run of semeval/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_semeval_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "semeval/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "semeval/e5-small: within each seed every row is audited with the same number of probe folds ([4, 5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "semeval/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "semeval/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "semeval/e5-small recall@10: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_cap_e5-small.json: the Table 3 run of cap/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_cap_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "cap/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "cap/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "cap/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 5.4e-06), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "cap/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "cap/e5-small topic_purity: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json: the Table 3 run of fedlex_domestic/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "fedlex_domestic/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "fedlex_domestic/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "fedlex_domestic/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 5 seeds that have them (largest linear-AUC difference 2.6e-06), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "fedlex_domestic/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "fedlex_domestic/e5-small recall@10: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json: the Table 3 run of scotus_oyez_lexis_wiki/mini, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json: arms 'extent', N = 32, five draws per random arm",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/mini: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/mini: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 5 seeds that have them (largest linear-AUC difference 9.2e-07), so splits and audit are the published ones",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/mini linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/mini recall@10: pca_matched_var and sae_mi are paired on seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "extent_refit_gap",
+   "message": "the SAE column is furthest from Table 2 on MiniLM SCOTUS (-0.0207; elsewhere at most 0.0031), as the caption states",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "latex_ref_other_exhibit",
+   "message": "table_erasure_extent: \\ref{tab:primary-id} points to another exhibit or its text (shown as 2 in the preview; the manuscript resolves it)",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "table_erasure_extent: every citation and reference resolves",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "table_erasure_extent: the float fits the TACL text block",
+   "exhibit": "table_erasure_extent"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "table_erasure_extent: no overfull boxes in the TACL preview",
+   "exhibit": "table_erasure_extent"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "table_erasure_extent"
+  }
+ ],
+ "cells": [
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6037093410265465,
+    0.6080796139718395,
+    0.622311250090409,
+    0.6296428687202626,
+    0.6149889819381357
+   ],
+   "mean": 0.6157464111494386,
+   "sd": 0.010493488200481672,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.5905120447846802,
+    0.5881585053151789,
+    0.6068579637443892,
+    0.6183389446238936,
+    0.5937896336250037
+   ],
+   "mean": 0.5995314184186291,
+   "sd": 0.012757954912483402,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.013197296241866274,
+    -0.019921108656660635,
+    -0.015453286346019834,
+    -0.011303924096369045,
+    -0.02119934831313197
+   ],
+   "mean": -0.016214992730809553,
+   "sd": 0.0042539505073246634,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9170258620689655,
+    0.9185823754789272,
+    0.9098419540229885,
+    0.9140325670498084,
+    0.9119971264367817
+   ],
+   "mean": 0.9142959770114942,
+   "sd": 0.0035713409177620427,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8863745210727969,
+    0.8867337164750958,
+    0.8825431034482759,
+    0.8748802681992337,
+    0.881345785440613
+   ],
+   "mean": 0.882375478927203,
+   "sd": 0.004802424468931181,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.03065134099616862,
+    -0.03184865900383138,
+    -0.027298850574712596,
+    -0.039152298850574696,
+    -0.03065134099616862
+   ],
+   "mean": -0.031920498084291184,
+   "sd": 0.004384211682507973,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6037093410265465,
+    0.6080796139718395,
+    0.622311250090409,
+    0.6296428687202626,
+    0.6149889819381357
+   ],
+   "mean": 0.6157464111494386,
+   "sd": 0.010493488200481672,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6031441309550578,
+    0.6099767143599601,
+    0.6252587738309413,
+    0.6257176748308513,
+    0.6095173478574936
+   ],
+   "mean": 0.6147229283668608,
+   "sd": 0.010192909972044249,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/main/raw/id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+     "condition": "sae_leace",
+     "path": "per_seed[*].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7370312649204472,
+    0.735863024890755,
+    0.7231396769337881,
+    0.7311799113556927,
+    0.7057867586044345
+   ],
+   "mean": 0.7266001273410236,
+   "sd": 0.012852581054255813,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.678425158934237,
+    0.673191595330214,
+    0.6787782766050856,
+    0.6806742555066787,
+    0.6754694805986133
+   ],
+   "mean": 0.6773077533949657,
+   "sd": 0.002960843385198438,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.05860610598621019,
+    -0.06267142956054095,
+    -0.044361400328702505,
+    -0.05050565584901401,
+    -0.03031727800582118
+   ],
+   "mean": -0.04929237394605777,
+   "sd": 0.01276308694422585,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7777777777777778,
+    0.7757633587786259,
+    0.7726990049751243,
+    0.7764632627646326,
+    0.7657601977750309
+   ],
+   "mean": 0.7736927204142383,
+   "sd": 0.004810497053587129,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7771464646464646,
+    0.7767175572519084,
+    0.7786069651741293,
+    0.773972602739726,
+    0.7657601977750309
+   ],
+   "mean": 0.7744407575174518,
+   "sd": 0.005134034492361163,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.0006313131313131493,
+    0.000954198473282486,
+    0.005907960199004969,
+    -0.00249066002490661,
+    0.0
+   ],
+   "mean": 0.0007480371032135391,
+   "sd": 0.0031471667627390337,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7370312649204472,
+    0.735863024890755,
+    0.7231396769337881,
+    0.7311799113556927,
+    0.7057867586044345
+   ],
+   "mean": 0.7266001273410236,
+   "sd": 0.012852581054255813,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "coverage",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.72202216107084,
+    0.7341645922508607,
+    0.7289693186929067,
+    0.7356086530975554,
+    0.7127055922982258
+   ],
+   "mean": 0.7266940634820778,
+   "sd": 0.009459908728069006,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6815117159168956,
+    0.6989435074378751,
+    0.7311238023517547,
+    0.7165201663837718,
+    0.6822959689850145
+   ],
+   "mean": 0.7020790322150623,
+   "sd": 0.0216584892967701,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6700173758865346,
+    0.6959724670543413,
+    0.690543499759141,
+    0.7026219230561151,
+    0.662878962042384
+   ],
+   "mean": 0.6844068455597033,
+   "sd": 0.017129782395956684,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.011494340030360983,
+    -0.002971040383533796,
+    -0.04058030259261369,
+    -0.013898243327656656,
+    -0.0194170069426306
+   ],
+   "mean": -0.017672186655359145,
+   "sd": 0.014109910634886083,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8049065420560748,
+    0.8002336448598131,
+    0.8072429906542056,
+    0.8119158878504673,
+    0.8130841121495327
+   ],
+   "mean": 0.8074766355140188,
+   "sd": 0.005250515199589771,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8095794392523364,
+    0.8165887850467289,
+    0.8165887850467289,
+    0.8165887850467289,
+    0.8119158878504673
+   ],
+   "mean": 0.8142523364485982,
+   "sd": 0.0033042372952642217,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.004672897196261627,
+    0.016355140186915862,
+    0.009345794392523366,
+    0.004672897196261627,
+    -0.001168224299065379
+   ],
+   "mean": 0.006775700934579421,
+   "sd": 0.006525345814845286,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6815117159168956,
+    0.6989435074378751,
+    0.7311238023517547,
+    0.7165201663837718,
+    0.6822959689850145
+   ],
+   "mean": 0.7020790322150623,
+   "sd": 0.0216584892967701,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_semeval_e5-small.json@0c2e332bc6a6",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "semeval",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6854368271920959,
+    0.6916591592446681,
+    0.7146809565790919,
+    0.7199445893361206,
+    0.6830834884316012
+   ],
+   "mean": 0.6989610041567156,
+   "sd": 0.017144558600575874,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_semeval_e5-small.json@bdb8b7475c8f",
+     "condition": "sae_leace",
+     "path": "per_seed[*].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7023594286646044,
+    0.6953540579533954,
+    0.7258303746566125,
+    0.7030071913197362,
+    0.7397173637105751
+   ],
+   "mean": 0.7132536832609848,
+   "sd": 0.018725460714384315,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6734108689754306,
+    0.6595163379890815,
+    0.6977010335934082,
+    0.6850816011892982,
+    0.7197263720119083
+   ],
+   "mean": 0.6870872427518254,
+   "sd": 0.023071551216111125,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.02894855968917387,
+    -0.03583771996431395,
+    -0.028129341063204305,
+    -0.01792559013043804,
+    -0.019990991698666805
+   ],
+   "mean": -0.026166440509159394,
+   "sd": 0.007265923805546943,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "topic_purity",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.3038053649407361,
+    0.31503431066749843,
+    0.23393636930754835,
+    0.24017467248908297,
+    0.3256394260761073
+   ],
+   "mean": 0.2837180286961946,
+   "sd": 0.04334700576008287,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "topic_purity",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.2114784778540237,
+    0.2214597629444791,
+    0.22769806612601373,
+    0.2195882719900187,
+    0.19401122894572675
+   ],
+   "mean": 0.21484716157205241,
+   "sd": 0.013008021478705797,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "topic_purity",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.09232688708671241,
+    -0.09357454772301932,
+    -0.006238303181534621,
+    -0.020586400499064267,
+    -0.13162819713038054
+   ],
+   "mean": -0.06887086712414223,
+   "sd": 0.05327562050417814,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.topic_purity"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.topic_purity"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7023594286646044,
+    0.6953540579533954,
+    0.7258303746566125,
+    0.7030071913197362,
+    0.7397173637105751
+   ],
+   "mean": 0.7132536832609848,
+   "sd": 0.018725460714384315,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_cap_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_cap_e5-small.json@0f1d3c4621f0",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "cap",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id5",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6999655047712132,
+    0.6853495722957365,
+    0.7271661320855056,
+    0.7111246457398679,
+    0.7401167027414747
+   ],
+   "mean": 0.7127445115267595,
+   "sd": 0.0216427220199578,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json",
+     "run_id": "results/extensions/raw/five_seeds/id/id_cap_e5-small.json@101138c626da",
+     "condition": "sae_leace",
+     "path": "per_seed[*].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6720991321931103,
+    0.6594208098625534,
+    0.681762790867889,
+    0.6612078452707304,
+    0.6965269167418344
+   ],
+   "mean": 0.6742034989872235,
+   "sd": 0.015389291299989923,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6589702584064152,
+    0.6506390463225828,
+    0.6677436846313926,
+    0.6540783703060595,
+    0.6953503032883247
+   ],
+   "mean": 0.6653563325909551,
+   "sd": 0.01795766284803537,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.013128873786695139,
+    -0.00878176353997051,
+    -0.014019106236496492,
+    -0.007129474964670868,
+    -0.0011766134535097228
+   ],
+   "mean": -0.008847166396268546,
+   "sd": 0.005168996607747795,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.9327801827801828,
+    0.9417324718832256,
+    0.9370662837999522,
+    0.9371408045977011,
+    0.9481188593338126
+   ],
+   "mean": 0.939367720478975,
+   "sd": 0.005827218429992623,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.918951418951419,
+    0.9254606365159129,
+    0.931323283082077,
+    0.9201388888888888,
+    0.9335010783608915
+   ],
+   "mean": 0.9258750611598379,
+   "sd": 0.006497143641678804,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.013828763828763857,
+    -0.016271835367312693,
+    -0.005743000717875146,
+    -0.017001915708812265,
+    -0.014617780972921102
+   ],
+   "mean": -0.013492659319137013,
+   "sd": 0.004513168879195287,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6720991321931103,
+    0.6594208098625534,
+    0.681762790867889,
+    0.6612078452707304,
+    0.6965269167418344
+   ],
+   "mean": 0.6742034989872235,
+   "sd": 0.015389291299989923,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_fedlex_domestic_e5-small.json@889e2110d191",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "fedlex_domestic",
+   "encoder": "e5-small",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "fedlex",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.6706092312017379,
+    0.6593622960327091,
+    0.6825046588604274,
+    0.6540190100862706,
+    0.6935330237614777
+   ],
+   "mean": 0.6720056439885246,
+   "sd": 0.01627099112305414,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json",
+     "run_id": "results/fedlex/raw/id/id_fedlex_domestic_e5-small.json@f8efb32e2cbc",
+     "condition": "sae_leace",
+     "path": "per_seed[*].metrics.sae_leace.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8336795356868236,
+    0.8456102119013998,
+    0.8227676204869718,
+    0.8727480577690885,
+    0.8235446040654111
+   ],
+   "mean": 0.839670005981939,
+   "sd": 0.020682411084939054,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.798712093259568,
+    0.7890704546215892,
+    0.7809521277416718,
+    0.7857243804880383,
+    0.7907842722549333
+   ],
+   "mean": 0.7890486656731601,
+   "sd": 0.006576462501808398,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    -0.03496744242725558,
+    -0.05653975727981064,
+    -0.041815492745300054,
+    -0.0870236772810502,
+    -0.03276033181047777
+   ],
+   "mean": -0.05062134030877885,
+   "sd": 0.02237052129063245,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7212752525252525,
+    0.7092875318066157,
+    0.7241915422885572,
+    0.7017434620174346,
+    0.7088998763906057
+   ],
+   "mean": 0.7130795330056932,
+   "sd": 0.009367522040412121,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_matched_var",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.7402146464646465,
+    0.732824427480916,
+    0.7409825870646766,
+    0.7356787048567871,
+    0.7234239802224969
+   ],
+   "mean": 0.7346248692179047,
+   "sd": 0.0070971518966567075,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "recall@10",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.018939393939394034,
+    0.023536895674300284,
+    0.016791044776119368,
+    0.03393524283935245,
+    0.014524103831891177
+   ],
+   "mean": 0.021545336212211462,
+   "sd": 0.007683879580773655,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.recall@10"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.recall@10"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8336795356868236,
+    0.8456102119013998,
+    0.8227676204869718,
+    0.8727480577690885,
+    0.8235446040654111
+   ],
+   "mean": 0.839670005981939,
+   "sd": 0.020682411084939054,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_mini.json@ac7e8f57984e",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "method": "sae_leace",
+   "metric": "linear_auc",
+   "cohort": "id",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "n": 5,
+   "values": [
+    0.8355145154997243,
+    0.875772447704937,
+    0.8577307377828305,
+    0.8757767513011638,
+    0.856826723629173
+   ],
+   "mean": 0.8603242351835657,
+   "sd": 0.016672646243935003,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/main/raw/id/id_scotus_oyez_lexis_wiki_mini.json",
+     "run_id": "results/main/raw/id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+     "condition": "sae_leace",
+     "path": "per_seed[*].metrics.sae_leace.linear_auc"
+    }
+   ]
+  }
+ ],
+ "outputs": [
+  "data/table_erasure_extent_per_seed.csv",
+  "data/table_erasure_extent_summary.csv",
+  "reports/previews/table_erasure_extent.pdf",
+  "reports/previews/table_erasure_extent.png",
+  "tables/table_erasure_extent.include.tex",
+  "tables/table_erasure_extent.md",
+  "tables/table_erasure_extent.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1820
+ }
+}

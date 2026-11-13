@@ -1,0 +1,162 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis_wiki",
+ "label": "SCOTUS (Oyez/Lexis/Wiki)",
+ "encoder": "e5-small",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  3,
+  4
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 3,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.05064328006905814,
+     "nuisance_var_share": 0.08071466869531513,
+     "capture": {
+      "1": 0.4924844468146484,
+      "2": 0.9192786904192565,
+      "3": 0.9591170195073805,
+      "4": 0.9619353972913003,
+      "8": 0.9825767043110704,
+      "16": 0.9926390365447999,
+      "32": 0.9944869041949921
+     },
+     "rank_90": 2,
+     "rank_99": 13,
+     "ari": {
+      "auto": 0.4478995786347511,
+      "count": 0.4478995786347511,
+      "generous": 0.3213164216930557
+     }
+    }
+   ],
+   "seconds": 2.1
+  },
+  {
+   "seed": 4,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.0509717281766207,
+     "nuisance_var_share": 0.08021151983192915,
+     "capture": {
+      "1": 0.4942423271876879,
+      "2": 0.8537706797989109,
+      "3": 0.9529450611667376,
+      "4": 0.9550818185585349,
+      "8": 0.9842423460849745,
+      "16": 0.9908479033380989,
+      "32": 0.9937150455813207
+     },
+     "rank_90": 3,
+     "rank_99": 14,
+     "ari": {
+      "auto": 0.8159920560971992,
+      "count": 0.8159920560971992,
+      "generous": 0.3154166086559195
+     }
+    }
+   ],
+   "seconds": 2.7
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.05080750412283942,
+  "nuisance_var_share": 0.08046309426362214,
+  "rank_90": 2.5,
+  "rank_99": 13.5,
+  "capture": {
+   "1": 0.49336338700116816,
+   "2": 0.8865246851090837,
+   "3": 0.9560310403370591,
+   "4": 0.9585086079249177,
+   "8": 0.9834095251980224,
+   "16": 0.9917434699414494,
+   "32": 0.9941009748881564
+  },
+  "ari": {
+   "auto": 0.6319458173659751,
+   "count": 0.6319458173659751,
+   "generous": 0.31836651517448755
+  },
+  "k_auto": [
+   3
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 7506,
+  "n_pairs": 3185,
+  "n_unpaired": 3035,
+  "classes": [
+   "lexis",
+   "oyez",
+   "wiki"
+  ],
+  "class_counts": [
+   3519,
+   2490,
+   1497
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

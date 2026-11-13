@@ -1,0 +1,20 @@
+__pycache__/
+.DS_Store
+.ipynb_checkpoints/
+
+# Rebuilt by the notebooks: embeddings and the frozen maps of the transfer runs
+embedding_cache/
+# Hugging Face download metadata (code/fedlex.py downloads into data/raw/fedlex/ if a file is missing)
+data/raw/fedlex/.cache/
+
+# QUICK smoke runs
+results/*_quick/
+
+# Compiled previews of the exhibits (paper-artifacts/build.py)
+paper-artifacts/reports/previews/
+.venv/
+
+# Large raw files, downloaded on first use (see the README, "Data")
+data/raw/fedlex/article_level/train.parquet
+data/raw/cap/bills_train.metadata.jsonl
+data/raw/cap/bills_test.metadata.jsonl

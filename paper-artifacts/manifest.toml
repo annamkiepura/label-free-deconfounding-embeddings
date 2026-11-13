@@ -1,0 +1,281 @@
+# Result-selection manifest for the paper's tables and figures (paper-artifacts/build.py).
+#
+# The cohorts point at the five-seed files that focused_extensions.merge_five_seeds writes
+# (results/extensions/raw/five_seeds/: seeds 0-2 from results/main, seeds 3-4 from the seed
+# extension), so the exhibit code builds the main tables and figures on seeds 0-4:
+#   * cohort `coverage`: the merged alternatives and k-means-count runs, seeds 0-4;
+#   * cohort `id5`: the merged run_id / run_id_kmeans files of the three cells that were run
+#     with seeds 0-2 first (SemEval, CAP with E5-small and with MiniLM);
+#   * SCOTUS Oyez-Wikipedia and Lexis-Wikipedia (E5-small) use their run_id cohort (seeds 0-4).
+#
+# This file is the single place that decides WHICH saved run feeds WHICH exhibit.
+# The code in paper_assets/lib reads it; exhibits never hard-code result paths.
+# Every path is relative to `results_root`, or to a cohort's own `root` (one of
+# `extra_roots`). Nothing here is estimated: each
+# selected cell is read seed by seed from the saved per_seed records.
+#
+# Edit this file (not the exhibit code) to change a result-selection decision,
+# then rebuild:  python paper-artifacts/build.py
+
+schema_version = 1
+results_root = "results/main/raw"
+# Result trees outside `results_root`, as repository-relative paths. A cohort with
+# `root = "<one of these>"` reads its files there, and their run IDs carry the full
+# path (results/fedlex/raw/...): the Fedlex notebook writes its own results tree.
+extra_roots = ["results/fedlex/raw", "results/extensions/raw/five_seeds", "paper-artifacts/derived"]
+# Official TACL style used for the compiled previews (unchanged copy).
+tacl_style_dir = "writing/tacl_analysis_draft"
+# Project code, imported only by the optional split re-derivation check
+# (`python -m paper_assets validate --splits`); it loads data/ and rebuilds
+# splits deterministically. No encoder, SAE, eraser, clustering or probe runs.
+code_dir = "code"
+# The manuscript's bibliography: dataset citation keys below must exist in it.
+bibliography = "writing/tacl_analysis_draft/references.bib"
+bibliography_style = "writing/tacl_analysis_draft/acl_natbib.bst"
+
+[conventions]
+# Project convention, verified against every saved aggregate on load
+# (revised._stat, ood.summarize, protocols.aggregate all use ddof=1).
+sd_ddof = 1
+# audit.PROTOCOL["flip_adjustment"] is null in every run: AUCs are reported as
+# computed (one-vs-rest mean for C > 2), never max(AUC, 1 - AUC).
+auc_flip = false
+# Seeds are the unit of replication. Under SemEval's 5 outer folds the
+# evaluator (revised.evaluate_fits) averages fold-level AUC/purity within the
+# seed and concatenates the held-out retrieval hits (and pair cosines) across
+# folds, so each pair is a query once per seed. per_seed[*].metrics already
+# holds that within-seed combination; folds are never treated as seeds.
+fold_combination = "within-seed: mean of fold AUCs; retrieval hits pooled over folds"
+# Method differences are computed per matched seed before any rounding.
+difference = "paired by seed, then mean and sample SD of the per-seed differences"
+display_digits = 3
+# OOD intervals are the saved paired query-bootstrap intervals (conditional on the
+# fitted maps). No new tests; overlapping or zero-containing intervals are never
+# reported as equivalence.
+ood_interval = "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+
+# --------------------------------------------------------------------------- #
+# Dataset settings. `version` names the registry key AND its class composition,
+# so a binary subset can never be printed under a three-class name.
+# --------------------------------------------------------------------------- #
+[settings.semeval]
+label = "SemEval"
+long = "SemEval-2022 Task 8 (4 languages)"
+dataset = "semeval"
+role = "primary"
+nuisance = "language"
+classes = ["de", "en", "es", "zh"]
+utility = "recall@10"
+citation = "chen2022semeval"
+data_files = ["data/semeval_en_vs_non_en.csv"]   # processed inputs read by corpora.load (hashed for provenance)
+
+[settings.swiltra_de_fr_it]
+label = "SwiLTra"
+long = "SwiLTra DE/FR/IT (3 languages)"
+dataset = "swiltra"
+role = "primary"
+nuisance = "language"
+classes = ["de", "fr", "it"]
+utility = "recall@10"
+citation = "niklaus2025swiltra"
+data_files = ["data/swiltra_bench_decision_summaries.csv"]   # processed inputs read by corpora.load (hashed for provenance)
+
+[settings.bills_tweets]
+label = "Bills--Tweets"
+long = "Bills--Tweets (2 sources)"
+dataset = "bills_tweets"
+role = "primary"
+nuisance = "source"
+classes = ["bill", "tweet"]
+utility = ""          # unpaired, no topics: leakage only
+citation = ""
+citation_needed = "source of the congressional bill summaries and senators' tweets sample (data/bill_tweets_sample.jsonl)"
+data_files = ["data/bill_tweets_sample.jsonl"]   # processed inputs read by corpora.load (hashed for provenance)
+
+[settings.scotus_oyez_lexis_wiki]
+label = "SCOTUS"
+long = "SCOTUS Oyez/Lexis/Wikipedia (3 sources)"
+dataset = "scotus"
+role = "primary"
+nuisance = "source"
+classes = ["oyez", "lexis", "wiki"]
+utility = "recall@10"
+citation = "fang2023superscotus"
+data_files = ["data/case_summaries_oyez_vs_lexisnexis.csv", "data/case_summaries_oyez_vs_wikipedia.csv", "data/case_summaries_wikipedia_vs_lexisnexis.csv"]   # processed inputs read by corpora.load (hashed for provenance)
+
+[settings.cap]
+label = "CAP"
+long = "CAP bills/orders/newspapers (3 sources)"
+dataset = "cap"
+role = "primary"
+nuisance = "source"
+classes = ["bill", "order", "newspaper"]
+utility = "topic_purity"
+citation = ""
+citation_needed = "Comparative Agendas Project (newspaper clips, executive orders) and Hoyle et al. (2022) bill summaries"
+data_files = ["data/cap_sample.jsonl"]   # processed inputs read by corpora.load (hashed for provenance)
+
+# Fedlex is built by notebooks/03_fedlex.ipynb (code/fedlex.py) from a pinned Hugging
+# Face revision, not by corpora.py's registry. Its role is therefore not "primary": the
+# exhibits that iterate that role (Table 1, tab_headline, tab_datasets, fig_coverage)
+# load every corpus through the registry. Table 2 and Table B1 name it explicitly, and
+# its dataset version is checked against `cohort_manifest` (ids and text hashes).
+[settings.fedlex_domestic]
+label = "Fedlex"
+long = "Fedlex DE/FR/IT (3 languages; Swiss domestic federal law)"
+dataset = "fedlex"
+role = "notebook"
+nuisance = "language"
+classes = ["de", "fr", "it"]
+utility = "recall@10"
+citation = "niklaus2025swiltra"      # SwissLawTranslations is part of SwiLTra-Bench
+cohort_manifest = "data/fedlex_domestic_n2784_manifest.csv.gz"
+data_files = ["data/fedlex_domestic_n2784_manifest.csv.gz"]
+
+# Binary composition settings. `swiltra` and `scotus_oyez_lexis` are ALSO the
+# original binary versions used by the older ten-encoder and OOD rank runs.
+[settings.swiltra]
+label = "SwiLTra DE--FR"
+long = "SwiLTra DE/FR (binary subset)"
+dataset = "swiltra"
+role = "composition"
+nuisance = "language"
+classes = ["de", "fr"]
+utility = "recall@10"
+pair_kind = "de|fr"
+
+[settings.swiltra_de_it]
+label = "SwiLTra DE--IT"
+long = "SwiLTra DE/IT (binary subset)"
+dataset = "swiltra"
+role = "composition"
+nuisance = "language"
+classes = ["de", "it"]
+utility = "recall@10"
+pair_kind = "de|it"
+
+[settings.swiltra_fr_it]
+label = "SwiLTra FR--IT"
+long = "SwiLTra FR/IT (binary subset)"
+dataset = "swiltra"
+role = "composition"
+nuisance = "language"
+classes = ["fr", "it"]
+utility = "recall@10"
+pair_kind = "fr|it"
+
+[settings.scotus_oyez_lexis]
+label = "SCOTUS Oyez--Lexis"
+long = "SCOTUS Oyez/Lexis (binary subset)"
+dataset = "scotus"
+role = "composition"
+nuisance = "source"
+classes = ["oyez", "lexis"]
+utility = "recall@10"
+pair_kind = "lexis|oyez"
+
+[settings.scotus_oyez_wiki]
+label = "SCOTUS Oyez--Wikipedia"
+long = "SCOTUS Oyez/Wikipedia (binary subset)"
+dataset = "scotus"
+role = "composition"
+nuisance = "source"
+classes = ["oyez", "wiki"]
+utility = "recall@10"
+pair_kind = "oyez|wiki"
+
+[settings.scotus_wiki_lexis]
+label = "SCOTUS Lexis--Wikipedia"
+long = "SCOTUS Lexis/Wikipedia (binary subset)"
+dataset = "scotus"
+role = "composition"
+nuisance = "source"
+classes = ["lexis", "wiki"]
+utility = "recall@10"
+pair_kind = "lexis|wiki"
+
+# --------------------------------------------------------------------------- #
+# Cohorts: a family of saved runs on identical splits, plus the seeds it
+# contributes. `files` are patterns over {setting} and {encoder}; `methods` map
+# a canonical method (lib/methods.py) to "<file role>:<saved condition key>".
+# `patterns` resolve parameterised conditions (ranks, budgets, group counts).
+# seeds = "saved" takes every seed a run saved; a list pins them (and every
+# listed seed must exist, or the cell is reported missing).
+# --------------------------------------------------------------------------- #
+[cohorts.id]
+description = "revised.run_id + revised.run_id_kmeans on the same splits (every registry seed the run saved)"
+seeds = "saved"
+files = { main = "id/id_{setting}_{encoder}.json", kmeans = "id/id_kmeans_{setting}_{encoder}.json" }
+methods = { raw = "main:raw", pca_top1 = "main:pca_top1", kmeans_auto = "kmeans:kmeans_leace", sae_leace = "main:sae_leace", metadata_leace = "main:metadata_leace" }
+
+[cohorts.coverage]
+description = "coverage experiment at five seeds: alternatives.run_alternatives + run_kmeans_count, seeds 0-2 as published and seeds 3-4 from the seed extension (notebooks/04_extensions.ipynb Section 7), merged by focused_extensions.merge_five_seeds"
+root = "results/extensions/raw/five_seeds"
+seeds = [0, 1, 2, 3, 4]
+files = { main = "alternatives/alternatives_{setting}_{encoder}.json", kcount = "alternatives/kmeans_count_{setting}_{encoder}.json" }
+methods = { raw = "main:raw", pca_top1 = "main:pca_top1", kmeans_auto = "main:kmeans_leace", sae_leace = "main:sae_mi", metadata_leace = "main:metadata_leace", sae_random = "main:sae_random", pca_matched_var = "main:pca_matched_var", sae_recon = "main:sae_recon", sae_recon_suppressed = "main:sae_recon_suppressed" }
+patterns = { "pca_top(\\d+)" = "main", "sae_mi_n(\\d+)" = "main", "sae_random_n(\\d+)" = "main", "kmeans_k(\\d+)" = "kcount" }
+
+[cohorts.id5]
+description = "revised.run_id + revised.run_id_kmeans at five seeds for the cells published with seeds 0-2: seeds 3-4 from the seed extension, merged by focused_extensions.merge_five_seeds"
+root = "results/extensions/raw/five_seeds"
+seeds = "saved"
+files = { main = "id/id_{setting}_{encoder}.json", kmeans = "id/id_kmeans_{setting}_{encoder}.json" }
+methods = { raw = "main:raw", pca_top1 = "main:pca_top1", kmeans_auto = "kmeans:kmeans_leace", sae_leace = "main:sae_leace", metadata_leace = "main:metadata_leace" }
+
+[cohorts.encoder_study]
+description = "ten-encoder study on the ORIGINAL binary SwiLTra DE/FR and SCOTUS Oyez/Lexis versions (revised.run_encoder_cell + alternatives.run_generous_k, seeds 0-2)"
+seeds = [0, 1, 2]
+files = { main = "encoders/encoder_{setting}_{encoder}.json", gk = "alternatives/generous_k_{setting}_{encoder}.json" }
+methods = { raw = "main:raw", pca_top1 = "main:pca_top1", kmeans_auto = "gk:kmeans_auto", sae_leace = "main:sae_leace", metadata_leace = "main:metadata_leace" }
+patterns = { "pca_top(\\d+)" = "main" }
+
+[cohorts.fedlex]
+description = "Fedlex notebook (notebooks/03_fedlex.ipynb, fedlex.run_primary): revised.fit_seed + evaluate_fits on outer splits by whole law, all five methods (and PCA-2) in one run, every seed it saved (0-4)"
+root = "results/fedlex/raw"
+seeds = "saved"
+files = { main = "id/id_{setting}_{encoder}.json" }
+methods = { raw = "main:raw", pca_top1 = "main:pca_top1", kmeans_auto = "main:kmeans_leace", sae_leace = "main:sae_leace", metadata_leace = "main:metadata_leace" }
+patterns = { "pca_top(\\d+)" = "main" }
+
+# --------------------------------------------------------------------------- #
+# Which cohort feeds the ID exhibits (headline, composition, pair-specific
+# retrieval, geometry gaps) for each setting/encoder. Unlisted -> `default`.
+#
+# SCOTUS / E5-small: every SCOTUS E5-small setting is covered by the final
+# three-seed coverage experiment, so that cohort (seeds 0-2) is authoritative
+# for all overlapping metrics. Its Raw, PCA-1, Metadata-LEACE and SAE-LEACE
+# values equal run_id's seeds 0-2 exactly, and its k-means arm equals
+# run_id_kmeans (checked on every build); seeds 3-4 of run_id are not used.
+# The seeds were fixed by the notebooks (SWEEP_SEEDS = (0, 1, 2)) before any
+# result, not chosen on results.
+#
+# SwiLTra and MiniLM keep the cohorts they have (not moved to three seeds):
+# SwiLTra (all four settings) run_id seeds 0-4; SCOTUS/MiniLM run_id seeds 0-4;
+# CAP/MiniLM run_id seeds 0-2. SemEval, CAP and Bills--Tweets E5-small use their
+# run_id cohorts (SemEval/CAP 0-2, Bills--Tweets 0-4). Fedlex/E5-small uses its
+# notebook's run (cohort `fedlex`, seeds 0-4), from results/fedlex/raw/.
+# --------------------------------------------------------------------------- #
+[assignments]
+default = "id"
+"semeval/e5-small" = "id5"
+"cap/e5-small" = "id5"
+"cap/mini" = "id5"
+"scotus_oyez_lexis_wiki/e5-small" = "coverage"
+"scotus_oyez_lexis/e5-small" = "coverage"
+"fedlex_domestic/e5-small" = "fedlex"
+
+# --------------------------------------------------------------------------- #
+# Planned controls. Only these may render as "Pending": a cell is filled from `result_file`
+# where that file exists (and passes the compatibility checks), and is Pending elsewhere.
+# --------------------------------------------------------------------------- #
+[pending.random_nonsae_directions]
+label = "Random dir., no SAE"
+status = "pending"
+reason = "SAE-free random-direction control (R1): run for Main Table 3's settings by notebooks/04_extensions.ipynb Section 1 (files present); not run for other settings"
+exhibits = ["tab_mechanisms", "table3_mechanism_controls"]
+# Loader slot: when a run writes this file (same schema as the coverage run: per_seed[*].metrics
+# [<condition>][<metric>], config.split/audit, per-seed split summaries), the row fills in from
+# it, after the same seed/split/audit compatibility checks; until then it renders "Pending".
+result_file = "random_directions/random_directions_{setting}_{encoder}.json"
+condition = "random_dirs_n32"

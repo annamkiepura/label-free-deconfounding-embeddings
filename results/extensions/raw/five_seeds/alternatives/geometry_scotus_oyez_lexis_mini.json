@@ -1,0 +1,259 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis",
+ "label": "SCOTUS (Oyez/Lexis)",
+ "encoder": "mini",
+ "n_classes": 2,
+ "class_rank": 1,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06135803629278567,
+     "nuisance_var_share": 0.02367729305732081,
+     "capture": {
+      "1": 0.061953378832931276,
+      "2": 0.26748976266699115,
+      "3": 0.3682695477878949,
+      "4": 0.3683090835520256,
+      "8": 0.662879122133449,
+      "16": 0.8781265461359502,
+      "32": 0.9244374520242353
+     },
+     "rank_90": 23,
+     "rank_99": 96,
+     "ari": {
+      "auto": 0.00380136951635871,
+      "count": 0.00380136951635871,
+      "generous": 0.009089902156097913
+     }
+    }
+   ],
+   "seconds": 1.5
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.05960583804399864,
+     "nuisance_var_share": 0.022727776468178192,
+     "capture": {
+      "1": 0.056139769303460936,
+      "2": 0.2539765906474669,
+      "3": 0.3131822083133309,
+      "4": 0.3155476508965034,
+      "8": 0.6187354440222266,
+      "16": 0.8817135912433142,
+      "32": 0.9207865839395785
+     },
+     "rank_90": 29,
+     "rank_99": 108,
+     "ari": {
+      "auto": 0.0014661373385175614,
+      "count": 0.0014661373385175614,
+      "generous": 0.005760414417331489
+     }
+    }
+   ],
+   "seconds": 1.5
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.06116482728746291,
+     "nuisance_var_share": 0.022912846391619064,
+     "capture": {
+      "1": 0.042044794744044156,
+      "2": 0.23801276683481515,
+      "3": 0.3105392089861042,
+      "4": 0.31076210653379216,
+      "8": 0.6832725702561483,
+      "16": 0.889771071994747,
+      "32": 0.9328795156076761
+     },
+     "rank_90": 23,
+     "rank_99": 103,
+     "ari": {
+      "auto": 0.0023122901900162985,
+      "count": 0.0023122901900162985,
+      "generous": 0.007635878813831243
+     }
+    }
+   ],
+   "seconds": 1.5
+  },
+  {
+   "seed": 3,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.058609537752215814,
+     "nuisance_var_share": 0.02244552895428179,
+     "capture": {
+      "1": 0.04872525098205773,
+      "2": 0.2931304563623535,
+      "3": 0.3092757719515096,
+      "4": 0.30993715805544375,
+      "8": 0.5497517196222996,
+      "16": 0.8734040865905791,
+      "32": 0.9411711446432941
+     },
+     "rank_90": 22,
+     "rank_99": 102,
+     "ari": {
+      "auto": 0.0020081769525567964,
+      "count": 0.0020081769525567964,
+      "generous": 0.004110297571594857
+     }
+    }
+   ],
+   "seconds": 1.4
+  },
+  {
+   "seed": 4,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.05920105678570751,
+     "nuisance_var_share": 0.023136188021159975,
+     "capture": {
+      "1": 0.034499734680841804,
+      "2": 0.30585486534525275,
+      "3": 0.31093236522161666,
+      "4": 0.3186658833444155,
+      "8": 0.7096522081176183,
+      "16": 0.8743617739995962,
+      "32": 0.9340466164580653
+     },
+     "rank_90": 26,
+     "rank_99": 104,
+     "ari": {
+      "auto": 0.0017219543896851257,
+      "count": 0.0017219543896851257,
+      "generous": 0.006031850782687783
+     }
+    }
+   ],
+   "seconds": 1.4
+  }
+ ],
+ "corpus_stats": {
+  "n_docs": 4101,
+  "n_pairs": 1017,
+  "n_unpaired": 2067,
+  "classes": [
+   "lexis",
+   "oyez"
+  ],
+  "class_counts": [
+   2034,
+   2067
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ },
+ "merged": {
+  "seed_batches": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "config_differences": [],
+  "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+ },
+ "agg": {
+  "pc1_var_share": 0.059987859232434104,
+  "nuisance_var_share": 0.022979926578511965,
+  "rank_90": 24.6,
+  "rank_99": 102.6,
+  "capture": {
+   "1": 0.048672585708667185,
+   "2": 0.27169288837137595,
+   "3": 0.32243982045209124,
+   "4": 0.32464437647643607,
+   "8": 0.6448582128303484,
+   "16": 0.8794754139928374,
+   "32": 0.9306642625345697
+  },
+  "ari": {
+   "auto": 0.002261985677426898,
+   "count": 0.002261985677426898,
+   "generous": 0.0065256687483086565
+  },
+  "k_auto": [
+   2
+  ]
+ }
+}

@@ -1,0 +1,491 @@
+{
+ "exhibit": "tableA1_dataset_composition",
+ "kind": "table",
+ "title": "Dataset composition and linked-group construction",
+ "build_command": "python paper-artifacts/build.py tableA1_dataset_composition",
+ "generated_utc": "2026-10-26T18:48:30+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "Setting composition after exact-duplicate removal. SCOTUS sources: Oyez (O), LexisNexis (L), Wikipedia (W); -- marks an absent class. \\emph{Pairs}: linked document pairs (held-out retrieval targets); \\emph{Unpaired}: documents without a recorded link, used for fitting and as distractors. Linked groups, never split between training and evaluation, are single pairs in the binary settings, 2{,}784 triples (one per decision) in DE--FR--IT, and 1{,}286 pairs plus 633 triples in O--L--W (O--L 1{,}285, O--W 768, L--W 1{,}132 pairs). SCOTUS files have no case IDs: as in \\citet{fan2025medium}, row $i$ of one source block is linked to row $i$ of the other for $i<1{,}024$ (780 for O--W), and deduplication breaks 7, 8 and 7 of these links. O--L--W merges the three files on (source, text) and joins links transitively (391 pairs); 4 components with two summaries of one source (16 documents) stay unpaired.",
+ "settings_and_seeds": {},
+ "sources": {},
+ "notes": [],
+ "checks_passed": 87,
+ "checks": [
+  {
+   "code": "a1_class_totals",
+   "message": "swiltra: class counts {'de': 2784, 'fr': 2784} sum to the 5568 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "swiltra: every linked document belongs to exactly one linked group (5568 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "swiltra: no linked group holds two documents of one language class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "swiltra: group sizes {2: 2784} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "swiltra: 2784 retrieval pairs = sum over groups of C(size, 2) = 2784; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "swiltra: 0 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "swiltra: classes ['de', 'fr'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "swiltra: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "swiltra: 5568 documents = registry size 5568",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "swiltra_de_it: class counts {'de': 2784, 'it': 2784} sum to the 5568 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "swiltra_de_it: every linked document belongs to exactly one linked group (5568 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "swiltra_de_it: no linked group holds two documents of one language class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "swiltra_de_it: group sizes {2: 2784} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "swiltra_de_it: 2784 retrieval pairs = sum over groups of C(size, 2) = 2784; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "swiltra_de_it: 0 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "swiltra_de_it: classes ['de', 'it'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "swiltra_de_it: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "swiltra_de_it: 5568 documents = registry size 5568",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "swiltra_fr_it: class counts {'fr': 2784, 'it': 2784} sum to the 5568 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "swiltra_fr_it: every linked document belongs to exactly one linked group (5568 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "swiltra_fr_it: no linked group holds two documents of one language class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "swiltra_fr_it: group sizes {2: 2784} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "swiltra_fr_it: 2784 retrieval pairs = sum over groups of C(size, 2) = 2784; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "swiltra_fr_it: 0 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "swiltra_fr_it: classes ['fr', 'it'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "swiltra_fr_it: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "swiltra_fr_it: 5568 documents = registry size 5568",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "swiltra_de_fr_it: class counts {'de': 2784, 'fr': 2784, 'it': 2784} sum to the 8352 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "swiltra_de_fr_it: every linked document belongs to exactly one linked group (8352 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "swiltra_de_fr_it: no linked group holds two documents of one language class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "swiltra_de_fr_it: group sizes {3: 2784} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "swiltra_de_fr_it: 8352 retrieval pairs = sum over groups of C(size, 2) = 8352; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "swiltra_de_fr_it: 0 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "swiltra_de_fr_it: classes ['de', 'fr', 'it'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "swiltra_de_fr_it: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "swiltra_de_fr_it: 8352 documents = registry size 8352",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "scotus_oyez_lexis: class counts {'oyez': 2067, 'lexis': 2034} sum to the 4101 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "scotus_oyez_lexis: every linked document belongs to exactly one linked group (2034 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "scotus_oyez_lexis: no linked group holds two documents of one source class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "scotus_oyez_lexis: group sizes {2: 1017} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "scotus_oyez_lexis: 1017 retrieval pairs = sum over groups of C(size, 2) = 1017; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "scotus_oyez_lexis: 2067 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "scotus_oyez_lexis: classes ['oyez', 'lexis'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "scotus_oyez_lexis: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "scotus_oyez_lexis: 4101 documents = registry size 4101",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "scotus_oyez_wiki: class counts {'oyez': 1800, 'wiki': 1497} sum to the 3297 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "scotus_oyez_wiki: every linked document belongs to exactly one linked group (1544 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "scotus_oyez_wiki: no linked group holds two documents of one source class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "scotus_oyez_wiki: group sizes {2: 772} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "scotus_oyez_wiki: 772 retrieval pairs = sum over groups of C(size, 2) = 772; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "scotus_oyez_wiki: 1753 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "scotus_oyez_wiki: classes ['oyez', 'wiki'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "scotus_oyez_wiki: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "scotus_oyez_wiki: 3297 documents = registry size 3297",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "scotus_wiki_lexis: class counts {'lexis': 2039, 'wiki': 1497} sum to the 3536 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "scotus_wiki_lexis: every linked document belongs to exactly one linked group (2034 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "scotus_wiki_lexis: no linked group holds two documents of one source class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "scotus_wiki_lexis: group sizes {2: 1017} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "scotus_wiki_lexis: 1017 retrieval pairs = sum over groups of C(size, 2) = 1017; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "scotus_wiki_lexis: 1502 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "scotus_wiki_lexis: classes ['lexis', 'wiki'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "scotus_wiki_lexis: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "scotus_wiki_lexis: 3536 documents = registry size 3536",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_class_totals",
+   "message": "scotus_oyez_lexis_wiki: class counts {'oyez': 2490, 'lexis': 3519, 'wiki': 1497} sum to the 7506 documents",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_membership",
+   "message": "scotus_oyez_lexis_wiki: every linked document belongs to exactly one linked group (4471 documents)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_class_unique",
+   "message": "scotus_oyez_lexis_wiki: no linked group holds two documents of one source class",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_group_sizes",
+   "message": "scotus_oyez_lexis_wiki: group sizes {3: 633, 2: 1286} (pairs and triples only)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_pairs_implied",
+   "message": "scotus_oyez_lexis_wiki: 3185 retrieval pairs = sum over groups of C(size, 2) = 3185; every group is fully linked, no pair repeated",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_unpaired",
+   "message": "scotus_oyez_lexis_wiki: 3035 unpaired documents (no link) = the loader's n_unpaired; pairs = loader n_pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_union_rebuilt",
+   "message": "scotus_oyez_lexis_wiki: the step-by-step re-derivation of the pooled corpus equals corpora.load exactly (documents, sources, pairs)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_union_pairs",
+   "message": "scotus_oyez_lexis_wiki: 2794 pairs recorded in a file + 391 by transitivity = 3185 retrieval pairs",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_registry_classes",
+   "message": "scotus_oyez_lexis_wiki: classes ['oyez', 'lexis', 'wiki'] = manifest",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_matches_shared_counts",
+   "message": "scotus_oyez_lexis_wiki: documents, retrieval pairs, group sizes and unpaired counts equal lib.datasets.processed (used by Tables 1 and 2)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_known_size",
+   "message": "scotus_oyez_lexis_wiki: 7506 documents = registry size 7506",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_three_class_columns",
+   "message": "SwiLTra: its settings draw on exactly three classes (['de', 'fr', 'it']), one column each",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "swiltra: every linked group is one pair, so groups = retrieval pairs (2784); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "swiltra_de_it: every linked group is one pair, so groups = retrieval pairs (2784); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "swiltra_fr_it: every linked group is one pair, so groups = retrieval pairs (2784); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "swiltra_de_fr_it: every linked group is one pair, so groups = retrieval pairs (8352); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_three_class_columns",
+   "message": "SCOTUS: its settings draw on exactly three classes (['oyez', 'lexis', 'wiki']), one column each",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "scotus_oyez_lexis: every linked group is one pair, so groups = retrieval pairs (1017); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "scotus_oyez_wiki: every linked group is one pair, so groups = retrieval pairs (772); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "scotus_wiki_lexis: every linked group is one pair, so groups = retrieval pairs (1017); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "a1_binary_groups_are_pairs",
+   "message": "scotus_oyez_lexis_wiki: every linked group is one pair, so groups = retrieval pairs (3185); the caption states this instead of a column",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "tableA1_dataset_composition: every citation and reference resolves",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "tableA1_dataset_composition: the float fits the TACL text block",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "tableA1_dataset_composition: no overfull boxes in the TACL preview",
+   "exhibit": "tableA1_dataset_composition"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "tableA1_dataset_composition"
+  },
+  {
+   "level": "warning",
+   "code": "no_bibliography",
+   "message": "tableA1_dataset_composition: writing/tacl_analysis_draft/references.bib not found; the preview shows citation keys",
+   "exhibit": "tableA1_dataset_composition"
+  }
+ ],
+ "cells": [],
+ "outputs": [
+  "data/tableA1_dataset_composition.csv",
+  "reports/previews/tableA1_dataset_composition.pdf",
+  "reports/previews/tableA1_dataset_composition.png",
+  "reports/tableA1_dataset_composition_provenance.md",
+  "tables/tableA1_dataset_composition.include.tex",
+  "tables/tableA1_dataset_composition.md",
+  "tables/tableA1_dataset_composition.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1818
+ }
+}

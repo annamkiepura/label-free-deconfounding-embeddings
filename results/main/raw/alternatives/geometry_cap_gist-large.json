@@ -1,0 +1,191 @@
+{
+ "experiment": "geometry",
+ "corpus": "cap",
+ "label": "CAP (bills/orders/news)",
+ "encoder": "gist-large",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.09068857223198262,
+     "nuisance_var_share": 0.13423934097398257,
+     "capture": {
+      "1": 0.4924789749952482,
+      "2": 0.9660586561363045,
+      "3": 0.9717506634939135,
+      "4": 0.9750226191282487,
+      "8": 0.9876877946897359,
+      "16": 0.9922636782204686,
+      "32": 0.9958841386403559
+     },
+     "rank_90": 2,
+     "rank_99": 12,
+     "ari": {
+      "auto": 0.6060281917253403,
+      "count": 0.5076266337044745,
+      "generous": 0.4531616128947803
+     }
+    }
+   ],
+   "seconds": 5.9
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.0879428277241964,
+     "nuisance_var_share": 0.13131966076846516,
+     "capture": {
+      "1": 0.49181460292930784,
+      "2": 0.9617393377749802,
+      "3": 0.9692401936347367,
+      "4": 0.9731919637166005,
+      "8": 0.9866833134942206,
+      "16": 0.9918102136493985,
+      "32": 0.9955861530618575
+     },
+     "rank_90": 2,
+     "rank_99": 9,
+     "ari": {
+      "auto": 0.6329183405347999,
+      "count": 0.9219425012430127,
+      "generous": 0.4622699373780317
+     }
+    }
+   ],
+   "seconds": 2.8
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 2,
+     "pc1_var_share": 0.08675277013183887,
+     "nuisance_var_share": 0.12995771218553875,
+     "capture": {
+      "1": 0.49006845273445776,
+      "2": 0.9669346859616443,
+      "3": 0.971331715786111,
+      "4": 0.9736433332973957,
+      "8": 0.9879054093919505,
+      "16": 0.9916172522587658,
+      "32": 0.9949029035090048
+     },
+     "rank_90": 2,
+     "rank_99": 11,
+     "ari": {
+      "auto": 0.6259700721810222,
+      "count": 0.9323762559166945,
+      "generous": 0.43334704226291026
+     }
+    }
+   ],
+   "seconds": 2.9
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.0884613900293393,
+  "nuisance_var_share": 0.13183890464266215,
+  "rank_90": 2.0,
+  "rank_99": 10.666666666666666,
+  "capture": {
+   "1": 0.4914540102196712,
+   "2": 0.9649108932909763,
+   "3": 0.970774190971587,
+   "4": 0.9739526387140817,
+   "8": 0.9874255058586358,
+   "16": 0.9918970480428776,
+   "32": 0.9954577317370727
+  },
+  "ari": {
+   "auto": 0.6216388681470542,
+   "count": 0.7873151302880607,
+   "generous": 0.4495928641785741
+  },
+  "k_auto": [
+   2
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 3208,
+  "n_pairs": 0,
+  "n_unpaired": 3208,
+  "classes": [
+   "bill",
+   "newspaper",
+   "order"
+  ],
+  "class_counts": [
+   1301,
+   1309,
+   598
+  ],
+  "confounder": "source",
+  "n_topics": 21
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

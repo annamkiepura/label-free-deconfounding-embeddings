@@ -1,0 +1,155 @@
+{
+ "experiment": "encoder_inventory",
+ "encoders": {
+  "mini": {
+   "model": "sentence-transformers/all-MiniLM-L6-v2",
+   "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+   "revision_source": "model-cache snapshot used by these runs",
+   "dim": 384,
+   "prompt": "none",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "CAP/SCOTUS ID + OOD; encoder study"
+  },
+  "gist-small": {
+   "model": "avsolatorio/GIST-small-Embedding-v0",
+   "revision": "75e62fd210b9fde790430e0b2f040b0b00a021b1",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 384,
+   "prompt": "none",
+   "pooling": "cls_token",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "gist-base": {
+   "model": "avsolatorio/GIST-Embedding-v0",
+   "revision": "bf6b2e55e92f510a570ad4d7d2da2ec8cd22590c",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 768,
+   "prompt": "none",
+   "pooling": "cls_token",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "gist-large": {
+   "model": "avsolatorio/GIST-large-Embedding-v0",
+   "revision": "7831200e2f7819b994490c091cf3258a2b821f0c",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 1024,
+   "prompt": "none",
+   "pooling": "cls_token",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "e5-small": {
+   "model": "intfloat/multilingual-e5-small",
+   "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+   "revision_source": "model-cache snapshot used by these runs",
+   "dim": 384,
+   "prompt": "\"query: \" on every document",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "primary ID + OOD; encoder study"
+  },
+  "e5-base": {
+   "model": "intfloat/multilingual-e5-base",
+   "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 768,
+   "prompt": "\"query: \" on every document",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "e5-large": {
+   "model": "intfloat/multilingual-e5-large",
+   "revision": "3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 1024,
+   "prompt": "\"query: \" on every document",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "mpnet": {
+   "model": "sentence-transformers/all-mpnet-base-v2",
+   "revision": "e8c3b32edf5434bc2275fc9bab85f82640a19130",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 768,
+   "prompt": "none",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "nomic-v2": {
+   "model": "nomic-ai/nomic-embed-text-v2-moe",
+   "revision": "1066b6599d099fbb93dfcb64f9c37a7c9e503e85",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 768,
+   "prompt": "prompt_name=\"passage\"",
+   "pooling": "mean",
+   "normalize": true,
+   "modules": [
+    "Transformer",
+    "Pooling",
+    "Normalize"
+   ],
+   "coverage": "encoder study"
+  },
+  "mxb": {
+   "model": "mixedbread-ai/mxbai-embed-large-v1",
+   "revision": "b33106f585b9ce46904ad7443a3b52b7a63e231c",
+   "revision_source": "current Hub revision (model not in this environment's cache)",
+   "dim": 1024,
+   "prompt": "none",
+   "pooling": "cls_token",
+   "normalize": false,
+   "modules": [
+    "Transformer",
+    "Pooling"
+   ],
+   "coverage": "encoder study"
+  }
+ },
+ "ood_target_prompts": "parent"
+}

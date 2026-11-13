@@ -1,0 +1,190 @@
+{
+ "experiment": "geometry",
+ "corpus": "swiltra_de_fr_it",
+ "label": "SwiLTra (de/fr/it)",
+ "encoder": "mxb",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.10187538981083345,
+     "nuisance_var_share": 0.1660476826889192,
+     "capture": {
+      "1": 0.4977022163516813,
+      "2": 0.9934937194838518,
+      "3": 0.9940562288610595,
+      "4": 0.9959947662396729,
+      "8": 0.9983146925327994,
+      "16": 0.9990747912440827,
+      "32": 0.9994780653531605
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.9971291902261792,
+      "count": 0.9971291902261792,
+      "generous": 0.4657833177542321
+     }
+    }
+   ],
+   "seconds": 4.9
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.10188451100673206,
+     "nuisance_var_share": 0.1660461171274093,
+     "capture": {
+      "1": 0.49779129193731547,
+      "2": 0.9921503706351587,
+      "3": 0.99262875164935,
+      "4": 0.9957587252739774,
+      "8": 0.9983496888023284,
+      "16": 0.9990992413055131,
+      "32": 0.9995040948660918
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.9964127789234526,
+      "count": 0.9964127789234526,
+      "generous": 0.47048700442634384
+     }
+    }
+   ],
+   "seconds": 8.0
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.10123019792355709,
+     "nuisance_var_share": 0.1649875057373177,
+     "capture": {
+      "1": 0.49784349176025433,
+      "2": 0.9929311654552557,
+      "3": 0.9933406089010001,
+      "4": 0.9957504523088873,
+      "8": 0.9983186380281923,
+      "16": 0.9990812613843563,
+      "32": 0.9994857103166614
+     },
+     "rank_90": 2,
+     "rank_99": 2,
+     "ari": {
+      "auto": 0.9971276412280998,
+      "count": 0.9971276412280998,
+      "generous": 0.46036117441542895
+     }
+    }
+   ],
+   "seconds": 5.0
+  }
+ ],
+ "agg": {
+  "pc1_var_share": 0.10166336624704086,
+  "nuisance_var_share": 0.16569376851788206,
+  "rank_90": 2.0,
+  "rank_99": 2.0,
+  "capture": {
+   "1": 0.49777900001641706,
+   "2": 0.9928584185247553,
+   "3": 0.9933418631371366,
+   "4": 0.9958346479408459,
+   "8": 0.9983276731211067,
+   "16": 0.999085097977984,
+   "32": 0.999489290178638
+  },
+  "ari": {
+   "auto": 0.9968898701259105,
+   "count": 0.9968898701259105,
+   "generous": 0.4655438321986683
+  },
+  "k_auto": [
+   3
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 8352,
+  "n_pairs": 8352,
+  "n_unpaired": 0,
+  "classes": [
+   "de",
+   "fr",
+   "it"
+  ],
+  "class_counts": [
+   2784,
+   2784,
+   2784
+  ],
+  "confounder": "language"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ }
+}

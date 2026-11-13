@@ -1,0 +1,1660 @@
+{
+ "exhibit": "table_SAE_construction_block",
+ "kind": "table",
+ "title": "SAE construction: other TopK dictionaries",
+ "build_command": "python paper-artifacts/build.py table_SAE_construction_block",
+ "generated_utc": "2026-10-26T18:48:39+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "\\textbf{SAE construction.}\nTable~\\ref{tab:mechanism-controls}'s core comparisons with other TopK dictionaries (latents as a multiple of the embedding dimension $d$, and $k$ active latents; E5-small, seeds 0--2, $N{=}32$). Eligible: latents per fit with a training firing rate in $[0.02, 0.98]$, the set MI scores. Displ.: normalized squared training displacement of MI-selected SAE-LEACE, and $r^{*}$ the rank of the PCA matched to it. Linear AUC of MI-selected SAE-LEACE (mean $\\pm$ sample SD), and the per-seed paired differences to it of random SAE directions (five draws per seed) and of the matched PCA, with 95\\% $t$-intervals over seeds. A construction with fewer than 32 eligible latents in some fit cannot be compared at $N{=}32$.",
+ "settings_and_seeds": {
+  "scotus_oyez_lexis_wiki/e5-small": {
+   "cohorts": [
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2
+    ]
+   ],
+   "dataset_version": null
+  },
+  "swiltra_de_fr_it/e5-small": {
+   "cohorts": [
+    "table3x"
+   ],
+   "seed_sets": [
+    [
+     0,
+     1,
+     2
+    ]
+   ],
+   "dataset_version": null
+  }
+ },
+ "sources": {
+  "results/extensions/raw/table3x/sae_configs_skipped.json": {
+   "sha256": "7005d510f184b5fb7e31dda842202131f545d7b8ce50553f256bfcbb416c8055",
+   "bytes": 221,
+   "run_id": "results/extensions/raw/table3x/sae_configs_skipped.json@7005d510f184"
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "6d7e6eceab26177978a8b4ad39457fad35f4cb1648d236f74b8922604edfcab3",
+   "bytes": 2523620,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json": {
+   "sha256": "baf0b20d7f12ae637a8dd55148a4432df3e08781fb5da2779309be448b992ecb",
+   "bytes": 553428,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json": {
+   "sha256": "b6c4febddd8acc3625bbbc891e685a5a338ca49e5e8c78f1d5f08c50e016fb52",
+   "bytes": 553470,
+   "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+   "experiment": "table3x",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "b89724d1f15d502ffd6230cad102f2716d8f156fbd0cac0648982c1965af6173",
+   "bytes": 6125276,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json": {
+   "sha256": "3b85b5cac21200499c0a8e3a7f0036b63fc40a85b490975ca43a0c3c2ea6882c",
+   "bytes": 1327884,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json": {
+   "sha256": "9279286d0c4469d13fc9775edefb40c62a538a26bb8631e291ad1ec07ed09ca7",
+   "bytes": 1327980,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json": {
+   "sha256": "e659a860b18af7f26a2e949a5e7823fb52aed66d2ff10519a89bba5ead530805",
+   "bytes": 1327625,
+   "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+   "experiment": "table3x",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  }
+ },
+ "notes": [],
+ "checks_passed": 54,
+ "checks": [
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "swiltra_de_fr_it/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 2.4e-05), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "swiltra_de_fr_it 8d k=32: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json: arms 'core', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "swiltra_de_fr_it 16d k=64: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json: arms 'core', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "swiltra_de_fr_it 8d k=64: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json: the Table 3 run of swiltra_de_fr_it/e5-small, seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json: arms 'core', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "swiltra_de_fr_it/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "swiltra_de_fr_it/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "swiltra_de_fr_it/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "swiltra_de_fr_it 4d k=16: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: the Table 3 run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2, 3, 4]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json: arms 'full', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_same_set",
+   "message": "scotus_oyez_lexis_wiki/e5-small: rows A1 and B1-B4 use one MI-selected set of 32 latents in every fit",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 6.4e-05), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "scotus_oyez_lexis_wiki 8d k=32: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json: the Table 3 run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json: arms 'core', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "scotus_oyez_lexis_wiki 16d k=64: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_identity",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json: the Table 3 run of scotus_oyez_lexis_wiki/e5-small, seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_design",
+   "message": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json: arms 'core', N = 32, five draws per random arm",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_audit_folds",
+   "message": "scotus_oyez_lexis_wiki/e5-small: within each seed every row is audited with the same number of probe folds ([5] over seeds)",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "t3x_sae_free_rows",
+   "message": "scotus_oyez_lexis_wiki/e5-small: the rows that use no SAE (Raw, PCA-1, k-means LEACE, the Gaussian draw) equal the published values on the 3 seeds that have them (largest linear-AUC difference 0.0e+00), so splits and audit are the published ones",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: sae_random_band and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "paired_same_seeds",
+   "message": "scotus_oyez_lexis_wiki/e5-small linear_auc: pca_matched_var and sae_mi are paired on seeds [0, 1, 2]",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "sae_cfg_seeds",
+   "message": "scotus_oyez_lexis_wiki 8d k=64: seeds 0-2, as the caption states",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "table_SAE_construction_block: every citation and reference resolves",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "table_SAE_construction_block: the float fits the TACL text block",
+   "exhibit": "table_SAE_construction_block"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "table_SAE_construction_block: no overfull boxes in the TACL preview",
+   "exhibit": "table_SAE_construction_block"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "table_SAE_construction_block"
+  }
+ ],
+ "cells": [
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6037093410265465,
+    0.6080796139718395,
+    0.622311250090409
+   ],
+   "mean": 0.6113667350295984,
+   "sd": 0.009726850921101008,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6183240918531222,
+    0.626232992095402,
+    0.634784118201418
+   ],
+   "mean": 0.626447067383314,
+   "sd": 0.00823210106949125,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.5905120447846802,
+    0.5881585053151789,
+    0.6068579637443892
+   ],
+   "mean": 0.5951761712814161,
+   "sd": 0.0101849395368655,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.014614750826575706,
+    0.018153378123562436,
+    0.012472868111009006
+   ],
+   "mean": 0.015080332353715717,
+   "sd": 0.0028687319706606367,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.013197296241866274,
+    -0.019921108656660635,
+    -0.015453286346019834
+   ],
+   "mean": -0.016190563748182247,
+   "sd": 0.003422001873631897,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small.json@b89724d1f15d",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6008682457918121,
+    0.6000998356205482,
+    0.6107483419245197
+   ],
+   "mean": 0.6039054744456267,
+   "sd": 0.005938538544801569,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6553191439472567,
+    0.6463798695208635,
+    0.6450128080691316
+   ],
+   "mean": 0.6489039405124172,
+   "sd": 0.005597619189082466,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.5905120447846802,
+    0.5881585053151789,
+    0.6068579637443892
+   ],
+   "mean": 0.5951761712814161,
+   "sd": 0.0101849395368655,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.05445089815544457,
+    0.04628003390031521,
+    0.03426446614461198
+   ],
+   "mean": 0.04499846606679059,
+   "sd": 0.010154054432389823,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.01035620100713186,
+    -0.011941330305369369,
+    -0.0038903781801304937
+   ],
+   "mean": -0.008729303164210575,
+   "sd": 0.004264921449944716,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e16_k64.json@3b85b5cac212",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6049153113058165,
+    0.6033339495463045,
+    0.6235281612810828
+   ],
+   "mean": 0.6105924740444013,
+   "sd": 0.011230502191244416,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6785689571168426,
+    0.663402649935373,
+    0.6774024206710976
+   ],
+   "mean": 0.6731246759077711,
+   "sd": 0.008439700443487295,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.5905120447846802,
+    0.5886111381601496,
+    0.6064192269419764
+   ],
+   "mean": 0.5951808032956021,
+   "sd": 0.009779058545705438,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.07365364581102607,
+    0.06006870038906853,
+    0.05387425939001478
+   ],
+   "mean": 0.06253220186336979,
+   "sd": 0.01011719632276328,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.014403266521136326,
+    -0.014722811386154833,
+    -0.01710893433910643
+   ],
+   "mean": -0.015411670748799197,
+   "sd": 0.001478531366399399,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e8_k64.json@e659a860b18a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.60613326025269,
+    0.5921064536867755,
+    0.6137957342872336
+   ],
+   "mean": 0.6040118160755663,
+   "sd": 0.010999164390481686,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6117463881750712,
+    0.5997637159544288,
+    0.6168679318334652
+   ],
+   "mean": 0.6094593453209884,
+   "sd": 0.00877846649315693,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.5898558368757745,
+    0.5884648084520933,
+    0.6071507350203031
+   ],
+   "mean": 0.5951571267827237,
+   "sd": 0.010410029727924592,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.0056131279223812225,
+    0.0076572622676532864,
+    0.0030721975462316697
+   ],
+   "mean": 0.00544752924542206,
+   "sd": 0.0022970136735039784,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.016277423376915512,
+    -0.0036416452346822448,
+    -0.006644999266930407
+   ],
+   "mean": -0.008854689292842721,
+   "sd": 0.006601346061440597,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json",
+     "run_id": "results/extensions/raw/table3x/table3x_swiltra_de_fr_it_e5-small_sae_e4_k16.json@9279286d0c44",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7370312649204472,
+    0.735863024890755,
+    0.7231396769337881
+   ],
+   "mean": 0.7320113222483302,
+   "sd": 0.007705242639399486,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7427009060795624,
+    0.7398320208265904,
+    0.7435487728272423
+   ],
+   "mean": 0.742027233244465,
+   "sd": 0.0019478032947781458,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.678425158934237,
+    0.673191595330214,
+    0.6787782766050856
+   ],
+   "mean": 0.6767983436231789,
+   "sd": 0.0031285216890682118,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.0056696411591151685,
+    0.00396899593583544,
+    0.020409095893454188
+   ],
+   "mean": 0.010015910996134933,
+   "sd": 0.00904083888675519,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.05860610598621019,
+    -0.06267142956054095,
+    -0.044361400328702505
+   ],
+   "mean": -0.05521297862515121,
+   "sd": 0.009615054736400092,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small.json@6d7e6eceab26",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7120847430641519,
+    0.7171541178779665,
+    0.7142658105900712
+   ],
+   "mean": 0.7145015571773965,
+   "sd": 0.0025428964962835054,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7437737384634726,
+    0.7622318083325011,
+    0.7380769180111267
+   ],
+   "mean": 0.7480274882690335,
+   "sd": 0.012626776000453909,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.678425158934237,
+    0.673191595330214,
+    0.6787782766050856
+   ],
+   "mean": 0.6767983436231789,
+   "sd": 0.0031285216890682118,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.031688995399320685,
+    0.04507769045453469,
+    0.023811107421055522
+   ],
+   "mean": 0.033525931091636964,
+   "sd": 0.010751634202912837,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.03365958412991488,
+    -0.04396252254775246,
+    -0.03548753398498561
+   ],
+   "mean": -0.03770321355421765,
+   "sd": 0.00549723221044669,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e16_k64.json@baf0b20d7f12",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7111278234562699,
+    0.7390624517536637,
+    0.7118538869616453
+   ],
+   "mean": 0.7206813873905263,
+   "sd": 0.015922607744801386,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.7737423014620134,
+    0.7837131974480698,
+    0.7813696322824467
+   ],
+   "mean": 0.7796083770641765,
+   "sd": 0.005213559882565993,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.6781752969606757,
+    0.6732975203627697,
+    0.6789916860607993
+   ],
+   "mean": 0.6768215011280816,
+   "sd": 0.00307903444547413,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "sae_random_band-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    0.06261447800574349,
+    0.04465074569440608,
+    0.0695157453208014
+   ],
+   "mean": 0.05892698967365032,
+   "sd": 0.01283609088681801,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "sae_random_band",
+     "path": "per_seed[*].metrics.sae_random_band.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  },
+  {
+   "setting": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "method": "pca_matched_var-sae_mi",
+   "metric": "linear_auc",
+   "cohort": "table3x",
+   "status": "ok",
+   "reason": "",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "n": 3,
+   "values": [
+    -0.032952526495594214,
+    -0.06576493139089401,
+    -0.03286220090084602
+   ],
+   "mean": -0.04385988626244475,
+   "sd": 0.01897037931191192,
+   "sd_ddof": 1,
+   "dataset_version": null,
+   "sources": [
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "pca_matched_var",
+     "path": "per_seed[*].metrics.pca_matched_var.linear_auc"
+    },
+    {
+     "file": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json",
+     "run_id": "results/extensions/raw/table3x/table3x_scotus_oyez_lexis_wiki_e5-small_sae_e8_k64.json@b6c4febddd8a",
+     "condition": "sae_mi",
+     "path": "per_seed[*].metrics.sae_mi.linear_auc"
+    }
+   ]
+  }
+ ],
+ "outputs": [
+  "data/table_SAE_construction_block_per_seed.csv",
+  "data/table_SAE_construction_block_summary.csv",
+  "reports/previews/table_SAE_construction_block.pdf",
+  "reports/previews/table_SAE_construction_block.png",
+  "tables/table_SAE_construction_block.include.tex",
+  "tables/table_SAE_construction_block.md",
+  "tables/table_SAE_construction_block.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1820
+ }
+}

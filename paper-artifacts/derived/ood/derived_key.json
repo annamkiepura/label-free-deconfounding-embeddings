@@ -1,0 +1,31 @@
+{
+ "key": "f2618788160155c9d95d42253c379db5974394951e8322a4e4def1a0cfa1dcac",
+ "inputs": [
+  "results/main/raw/alternatives/ood_ranks_e5-small_cap.json",
+  "results/main/raw/alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json",
+  "results/main/raw/alternatives/ood_ranks_e5-small_swiltra.json",
+  "results/main/raw/alternatives/ood_ranks_mini_cap.json",
+  "results/main/raw/alternatives/ood_ranks_mini_scotus_oyez_lexis.json",
+  "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_cap.json",
+  "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json",
+  "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_e5-small_swiltra.json",
+  "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_mini_cap.json",
+  "results/extensions/rank_sweep_seeds_3_4/raw/alternatives/ood_ranks_mini_scotus_oyez_lexis.json",
+  "results/extensions/raw/five_seeds/ood/ood_e5-small_cap.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_cap.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_cap.json",
+  "results/extensions/raw/five_seeds/ood/ood_e5-small_scotus_oyez_lexis_wiki.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_scotus_oyez_lexis_wiki.json",
+  "results/extensions/raw/five_seeds/ood/ood_e5-small_swiltra_de_fr_it.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_ranks_e5-small_swiltra_de_fr_it.json",
+  "results/extensions/raw/five_seeds/ood/ood_mini_cap.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_cap.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_ranks_mini_cap.json",
+  "results/extensions/raw/five_seeds/ood/ood_mini_scotus_oyez_lexis_wiki.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json",
+  "results/extensions/raw/five_seeds/alternatives/ood_ranks_mini_scotus_oyez_lexis_wiki.json",
+  "code/ood.py"
+ ]
+}

@@ -1,0 +1,261 @@
+{
+ "experiment": "geometry",
+ "corpus": "scotus_oyez_lexis_wiki",
+ "label": "SCOTUS (Oyez/Lexis/Wiki)",
+ "encoder": "e5-small",
+ "n_classes": 3,
+ "class_rank": 2,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "k_generous": 8,
+ "ranks": [
+  1,
+  2,
+  3,
+  4,
+  8,
+  16,
+  32
+ ],
+ "per_seed": [
+  {
+   "seed": 0,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.050436895888763884,
+     "nuisance_var_share": 0.08004384835760589,
+     "capture": {
+      "1": 0.49247289639060693,
+      "2": 0.9167614739998335,
+      "3": 0.9585124868991312,
+      "4": 0.9595230077732635,
+      "8": 0.9879218664501408,
+      "16": 0.9922593291601576,
+      "32": 0.9942386039685
+     },
+     "rank_90": 2,
+     "rank_99": 14,
+     "ari": {
+      "auto": 0.8205124146123693,
+      "count": 0.8205124146123693,
+      "generous": 0.33808195729044194
+     }
+    }
+   ],
+   "seconds": 2.1
+  },
+  {
+   "seed": 1,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.05046459173012499,
+     "nuisance_var_share": 0.08003189641814382,
+     "capture": {
+      "1": 0.4929843050700239,
+      "2": 0.8280788267617014,
+      "3": 0.9575984469333249,
+      "4": 0.9588614889260636,
+      "8": 0.9871957897798654,
+      "16": 0.9910458223958213,
+      "32": 0.9935375401196834
+     },
+     "rank_90": 3,
+     "rank_99": 13,
+     "ari": {
+      "auto": 0.8149225875944583,
+      "count": 0.8149225875944583,
+      "generous": 0.3531226752689127
+     }
+    }
+   ],
+   "seconds": 2.1
+  },
+  {
+   "seed": 2,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.05047664352786595,
+     "nuisance_var_share": 0.07963293458546579,
+     "capture": {
+      "1": 0.49246729083440416,
+      "2": 0.8310416116381856,
+      "3": 0.9550307601235528,
+      "4": 0.9562351134589653,
+      "8": 0.9859410457363792,
+      "16": 0.9920211711301006,
+      "32": 0.9941655462388302
+     },
+     "rank_90": 3,
+     "rank_99": 12,
+     "ari": {
+      "auto": 0.8170162838444455,
+      "count": 0.8170162838444455,
+      "generous": 0.3484515615723458
+     }
+    }
+   ],
+   "seconds": 2.0
+  },
+  {
+   "seed": 3,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.05064328006905814,
+     "nuisance_var_share": 0.08071466869531513,
+     "capture": {
+      "1": 0.4924844468146484,
+      "2": 0.9192786904192565,
+      "3": 0.9591170195073805,
+      "4": 0.9619353972913003,
+      "8": 0.9825767043110704,
+      "16": 0.9926390365447999,
+      "32": 0.9944869041949921
+     },
+     "rank_90": 2,
+     "rank_99": 13,
+     "ari": {
+      "auto": 0.4478995786347511,
+      "count": 0.4478995786347511,
+      "generous": 0.3213164216930557
+     }
+    }
+   ],
+   "seconds": 2.1
+  },
+  {
+   "seed": 4,
+   "folds": [
+    {
+     "k_auto": 3,
+     "pc1_var_share": 0.0509717281766207,
+     "nuisance_var_share": 0.08021151983192915,
+     "capture": {
+      "1": 0.4942423271876879,
+      "2": 0.8537706797989109,
+      "3": 0.9529450611667376,
+      "4": 0.9550818185585349,
+      "8": 0.9842423460849745,
+      "16": 0.9908479033380989,
+      "32": 0.9937150455813207
+     },
+     "rank_90": 3,
+     "rank_99": 14,
+     "ari": {
+      "auto": 0.8159920560971992,
+      "count": 0.8159920560971992,
+      "generous": 0.3154166086559195
+     }
+    }
+   ],
+   "seconds": 2.7
+  }
+ ],
+ "corpus_stats": {
+  "n_docs": 7506,
+  "n_pairs": 3185,
+  "n_unpaired": 3035,
+  "classes": [
+   "lexis",
+   "oyez",
+   "wiki"
+  ],
+  "class_counts": [
+   3519,
+   2490,
+   1497
+  ],
+  "confounder": "source"
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "sae": null
+ },
+ "merged": {
+  "seed_batches": [
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "config_differences": [],
+  "note": "seeds 0-2 published, seeds 3-4 from focused_extensions.run_seed_extension"
+ },
+ "agg": {
+  "pc1_var_share": 0.05059862787848672,
+  "nuisance_var_share": 0.08012697357769195,
+  "rank_90": 2.6,
+  "rank_99": 13.2,
+  "capture": {
+   "1": 0.49293025325947426,
+   "2": 0.8697862565235777,
+   "3": 0.9566407549260255,
+   "4": 0.9583273652016254,
+   "8": 0.9855755504724861,
+   "16": 0.9917626525137957,
+   "32": 0.9940287280206652
+  },
+  "ari": {
+   "auto": 0.7432685841566448,
+   "count": 0.7432685841566448,
+   "generous": 0.33527784489613516
+  },
+  "k_auto": [
+   3
+  ]
+ }
+}

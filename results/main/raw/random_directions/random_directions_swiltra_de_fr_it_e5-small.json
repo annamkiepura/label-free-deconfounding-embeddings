@@ -1,0 +1,300 @@
+{
+ "experiment": "random_directions",
+ "corpus": "swiltra_de_fr_it",
+ "encoder": "e5-small",
+ "label": "SwiLTra (de/fr/it)",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "condition": "random_dirs_n32",
+ "definition": "LEACE on X R^T for N = 32 unit-norm Gaussian directions (Directions-LEACE operator); one independent draw per seed",
+ "per_seed": [
+  {
+   "seed": 0,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4176
+    ],
+    "n_test_docs": [
+     4176
+    ],
+    "n_test_pairs": [
+     4176
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.8674341767012017,
+     "mlp_auc": 0.9373805039638571,
+     "linear_auc_per_class": {
+      "de": 0.8268284310591522,
+      "fr": 0.9406308108757788,
+      "it": 0.8348432881686743
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.6809147509578544,
+     "recall@10": 0.928639846743295,
+     "recall@1_by_pair": {
+      "de|fr": 0.5391522988505747,
+      "de|it": 0.5398706896551724,
+      "fr|it": 0.9637212643678161
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8936781609195402,
+      "de|it": 0.8922413793103449,
+      "fr|it": 1.0
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.8674341767012017,
+     "mlp_auc": 0.9373805039638571,
+     "linear_auc_per_class": {
+      "de": 0.8268284310591522,
+      "fr": 0.9406308108757788,
+      "it": 0.8348432881686743
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.6809147509578544,
+     "recall@10": 0.928639846743295,
+     "recall@1_by_pair": {
+      "de|fr": 0.5391522988505747,
+      "de|it": 0.5398706896551724,
+      "fr|it": 0.9637212643678161
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8936781609195402,
+      "de|it": 0.8922413793103449,
+      "fr|it": 1.0
+     }
+    }
+   }
+  },
+  {
+   "seed": 1,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4176
+    ],
+    "n_test_docs": [
+     4176
+    ],
+    "n_test_pairs": [
+     4176
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.8040870550105932,
+     "mlp_auc": 0.9092717889200508,
+     "linear_auc_per_class": {
+      "de": 0.7756844491509074,
+      "fr": 0.8034847500614409,
+      "it": 0.8330919658194311
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.6913314176245211,
+     "recall@10": 0.9230124521072797,
+     "recall@1_by_pair": {
+      "de|fr": 0.5650143678160919,
+      "de|it": 0.5445402298850575,
+      "fr|it": 0.9644396551724138
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8900862068965517,
+      "de|it": 0.8789511494252874,
+      "fr|it": 1.0
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.8040870550105932,
+     "mlp_auc": 0.9092717889200508,
+     "linear_auc_per_class": {
+      "de": 0.7756844491509074,
+      "fr": 0.8034847500614409,
+      "it": 0.8330919658194311
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.6913314176245211,
+     "recall@10": 0.9230124521072797,
+     "recall@1_by_pair": {
+      "de|fr": 0.5650143678160919,
+      "de|it": 0.5445402298850575,
+      "fr|it": 0.9644396551724138
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8900862068965517,
+      "de|it": 0.8789511494252874,
+      "fr|it": 1.0
+     }
+    }
+   }
+  },
+  {
+   "seed": 2,
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     4176
+    ],
+    "n_test_docs": [
+     4176
+    ],
+    "n_test_pairs": [
+     4176
+    ]
+   },
+   "metrics": {
+    "random_dirs_n32": {
+     "linear_auc": 0.810611528322792,
+     "mlp_auc": 0.9027843588387349,
+     "linear_auc_per_class": {
+      "de": 0.7700387712930425,
+      "fr": 0.8584322577796692,
+      "it": 0.8033635558956643
+     },
+     "audit_folds": 5.0,
+     "n_constant_coords": 0.0,
+     "recall@1": 0.6789990421455939,
+     "recall@10": 0.9256465517241379,
+     "recall@1_by_pair": {
+      "de|fr": 0.5463362068965517,
+      "de|it": 0.5294540229885057,
+      "fr|it": 0.9612068965517241
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8879310344827587,
+      "de|it": 0.889367816091954,
+      "fr|it": 0.9996408045977011
+     }
+    },
+    "random_dirs_n32_draw0": {
+     "linear_auc": 0.810611528322792,
+     "mlp_auc": 0.9027843588387349,
+     "linear_auc_per_class": {
+      "de": 0.7700387712930425,
+      "fr": 0.8584322577796692,
+      "it": 0.8033635558956643
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0,
+     "recall@1": 0.6789990421455939,
+     "recall@10": 0.9256465517241379,
+     "recall@1_by_pair": {
+      "de|fr": 0.5463362068965517,
+      "de|it": 0.5294540229885057,
+      "fr|it": 0.9612068965517241
+     },
+     "recall@10_by_pair": {
+      "de|fr": 0.8879310344827587,
+      "de|it": 0.889367816091954,
+      "fr|it": 0.9996408045977011
+     }
+    }
+   }
+  }
+ ],
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "nonlinear": [
+   "mlp"
+  ]
+ },
+ "corpus_stats": {
+  "n_docs": 8352,
+  "n_pairs": 8352,
+  "n_unpaired": 0,
+  "classes": [
+   "de",
+   "fr",
+   "it"
+  ],
+  "class_counts": [
+   2784,
+   2784,
+   2784
+  ],
+  "confounder": "language"
+ },
+ "design": {
+  "operator": "protocols._fit_leace(X_tr, X_tr @ R.T): LEACE, standardized concept columns, concept-erasure defaults",
+  "gaussian": "rows ~ N(0, I_d), unit norm, not orthogonalized, data-independent; rng default_rng([1000, seed, draw, 0]), shared by a seed's folds",
+  "random_sae": "uniform without replacement from latents with training firing rate in [0.02, 0.98]; rng default_rng([1000, seed, draw, 1, fold])",
+  "mi": "top-N of the MI ranking of the split's SAE (nested prefixes)",
+  "nesting": "budget-N sets are prefixes of one draw of max(budgets) directions",
+  "draw_mean": "<kind>_mean_n<N> averages the draws within a seed",
+  "nonlinear": "['mlp'] on the N = 32 arms"
+ },
+ "reference_check": {
+  "reference": "revised_results_2/raw/alternatives/alternatives_swiltra_de_fr_it_e5-small.json",
+  "config_split_equal": true,
+  "config_audit_equal": true,
+  "seeds": {
+   "0": {
+    "in_reference": true,
+    "split_equal": true
+   },
+   "1": {
+    "in_reference": true,
+    "split_equal": true
+   },
+   "2": {
+    "in_reference": true,
+    "split_equal": true
+   }
+  },
+  "splits_match": true
+ },
+ "source": "focused_additions/raw/r1/r1_swiltra_de_fr_it_e5-small.json"
+}

@@ -1,0 +1,821 @@
+# Figure 1 (erasure rank across compositions): provenance and validation
+
+Build: `python paper-artifacts/build.py fig1_rank_composition`. Cohort: `coverage` (manifest), E5-small, seeds [0, 1, 2, 3, 4], for every curve and reference.
+
+## Sources
+
+- `paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json@8914e6092b88`: random_band scotus_oyez_lexis seeds [0, 1, 2, 3, 4]
+- `paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json@87aaef258dd9`: random_band scotus_oyez_lexis_wiki seeds [0, 1, 2, 3, 4]
+- `paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json@3695e9a28771`: random_band swiltra_de_fr_it seeds [0, 1, 2, 3, 4]
+- `paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json@d32e02557a45`: random_band swiltra seeds [0, 1, 2, 3, 4]
+- `results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json@d0b81f52af18`: alternatives scotus_oyez_lexis seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@45b57ae5e31f`: alternatives scotus_oyez_lexis_wiki seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json@3b975a694713`: alternatives swiltra_de_fr_it seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json@03dcfa1c443e`: alternatives swiltra seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json@0d0031030e83`: kmeans_count scotus_oyez_lexis seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json@d42d80888548`: kmeans_count scotus_oyez_lexis_wiki seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json@08cab8d0c005`: kmeans_count swiltra_de_fr_it seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+- `results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json@e51f9c6ae941`: kmeans_count swiltra seeds [0, 1, 2, 3, 4] (documented Colab merge note)
+
+## Evaluated grids and silhouette choices
+
+Every seed evaluated PCA r in {1,2,3,4,8,16,32,64}, SAE-LEACE N (MI and random) in {1,2,4,8,12,16,24,32,48,64} and fixed K in {2,3,4,5,6,8} (checked per seed). The x positions are the saved nominal values; nothing is interpolated.
+
+## Random-latent curve
+
+The random SAE-LEACE curve is read from `paper-artifacts/derived/random_band/random_band_{setting}_{encoder}.json` (checked against the coverage run: `random_band_compatible`, `random_band_design`): per seed the mean of 5 draws from the latents MI scores (training firing rate in [0.02, 0.98]), nested across N, on the published SAEs (the rerun reproduced every fit's MI selection, and its MI top-32 scores equal the published ones) and the coverage splits and audit. It replaces the alternatives run's `sae_random_n<N>` (one draw per budget from firing rate >= 0.02). In every fit of these settings no latent fired on more than 98% of the training documents (check `f1_random_pools_coincide`; per setting the count per fit: swiltra [0, 0, 0, 0, 0]; swiltra_de_fr_it [0, 0, 0, 0, 0]; scotus_oyez_lexis [0, 0, 0, 0, 0]; scotus_oyez_lexis_wiki [0, 0, 0, 0, 0]), so the two pools coincide and only the number of draws (and nesting) differs. Per-draw values are kept in the band files (`sae_random_band_n<N>_draw<j>`).
+
+- swiltra: silhouette K per seed {0: [2], 1: [2], 2: [2], 3: [2], 4: [2]} (not plotted)
+- swiltra_de_fr_it: silhouette K per seed {0: [3], 1: [3], 2: [3], 3: [3], 4: [3]} (not plotted)
+- scotus_oyez_lexis: silhouette K per seed {0: [2], 1: [2], 2: [2], 3: [2], 4: [2]} (not plotted)
+- scotus_oyez_lexis_wiki: silhouette K per seed {0: [3], 1: [3], 2: [3], 3: [3], 4: [3]} (not plotted)
+
+## Notes
+
+- The saved runs record no effective rank for these arms (the `matched_rank` diagnostic is the variance-matched PCA rank, not an effective rank), so the axis is a rank budget ("Erasure rank budget"), described in the caption as nominal.
+- The two AUC panels of each corpus share a y-axis; each R@10 panel has its own. Every panel has five ticks at two decimals, and its range spans the plotted means and the Metadata-LEACE line. Raw is never drawn; its value is printed in every panel, on the side where it lies beyond every plotted mean of that panel (arrow):
+  - swiltra linear_auc: Raw above
+  - swiltra_de_fr_it linear_auc: Raw above
+  - scotus_oyez_lexis linear_auc: Raw above
+  - scotus_oyez_lexis_wiki linear_auc: Raw above
+  - swiltra recall@10: Raw below
+  - swiltra_de_fr_it recall@10: Raw below
+  - scotus_oyez_lexis recall@10: Raw below
+  - scotus_oyez_lexis_wiki recall@10: Raw below
+- No SD bands are drawn for any curve; per-seed values and SDs are in the CSVs.
+- The coverage and group-count runs share splits, audit and recipe, and hold identical values for the conditions they share. Checked by `Cohort.compatibility`.
+- Five-seed run_id estimates exist for SwiLTra but are not used here. For seeds 0-2 they equal these values (see reports/validation_report.md, cohort agreement).
+
+## Checks (767 passed)
+
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: coverage cohort, seeds [0, 1, 2, 3, 4], C=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- coverage:swiltra/e5-small main~kcount: config.split identical
+- coverage:swiltra/e5-small main~kcount: config.audit identical
+- coverage:swiltra/e5-small main~kcount: config.selection identical
+- coverage:swiltra/e5-small main~kcount: config.pseudo_groups identical
+- coverage:swiltra/e5-small main~kcount: SAE/eraser recipe identical
+- coverage:swiltra/e5-small main~kcount: corpus statistics identical
+- coverage:swiltra/e5-small main~kcount: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json: seeds field equals per-seed records
+- paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json: no duplicated seed
+- paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json: same setting, seeds [0, 1, 2, 3, 4], split policy, audit, recipe, corpus and per-seed splits as results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json
+- paper-artifacts/derived/random_band/random_band_swiltra_e5-small.json: 5 draws per seed from the MI band [0.02, 0.98], on the published SAEs (MI selection reproduced in every fit)
+- swiltra: no latent of the single-draw pool fired above 0.98 in any fit, so the single-draw and 5-draw curves sample the same latents ([0, 0, 0, 0, 0])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: pca_top(\d+) grid evaluated in every seed (['pca_top1', 'pca_top16', 'pca_top2', 'pca_top3', 'pca_top32', 'pca_top4', 'pca_top64', 'pca_top8'])
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: kmeans_k(\d+) grid evaluated in every seed (['kmeans_k2', 'kmeans_k3', 'kmeans_k4', 'kmeans_k5', 'kmeans_k6', 'kmeans_k8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: sae_mi_n(\d+) grid evaluated in every seed (['sae_mi_n1', 'sae_mi_n12', 'sae_mi_n16', 'sae_mi_n2', 'sae_mi_n24', 'sae_mi_n32', 'sae_mi_n4', 'sae_mi_n48', 'sae_mi_n64', 'sae_mi_n8'])
+- swiltra: sae_random_band_n(\d+) grid evaluated in every seed (['sae_random_band_n1', 'sae_random_band_n12', 'sae_random_band_n16', 'sae_random_band_n2', 'sae_random_band_n24', 'sae_random_band_n32', 'sae_random_band_n4', 'sae_random_band_n48', 'sae_random_band_n64', 'sae_random_band_n8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra: sae_random_n(\d+) grid evaluated in every seed (['sae_random_n1', 'sae_random_n12', 'sae_random_n16', 'sae_random_n2', 'sae_random_n24', 'sae_random_n32', 'sae_random_n4', 'sae_random_n48', 'sae_random_n64', 'sae_random_n8'])
+- swiltra: the 5-draw random curve covers the single-draw curve's budgets [1, 2, 4, 8, 12, 16, 24, 32, 48, 64]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra raw linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra metadata_leace linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k5 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k6 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra linear_auc: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 0 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 1 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 2 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 3 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 4 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra raw recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra metadata_leace recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra pca_top64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k5 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k6 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra kmeans_k8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra sae_mi_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra sae_random_band_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra recall@10: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 0 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 1 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 2 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 3 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_e5-small.json: corpus/encoder fields are swiltra/e5-small
+- swiltra seed 4 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: coverage cohort, seeds [0, 1, 2, 3, 4], C=3
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- coverage:swiltra_de_fr_it/e5-small main~kcount: config.split identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: config.audit identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: config.selection identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: config.pseudo_groups identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: SAE/eraser recipe identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: corpus statistics identical
+- coverage:swiltra_de_fr_it/e5-small main~kcount: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json: seeds field equals per-seed records
+- paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json: no duplicated seed
+- paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json: same setting, seeds [0, 1, 2, 3, 4], split policy, audit, recipe, corpus and per-seed splits as results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json
+- paper-artifacts/derived/random_band/random_band_swiltra_de_fr_it_e5-small.json: 5 draws per seed from the MI band [0.02, 0.98], on the published SAEs (MI selection reproduced in every fit)
+- swiltra_de_fr_it: no latent of the single-draw pool fired above 0.98 in any fit, so the single-draw and 5-draw curves sample the same latents ([0, 0, 0, 0, 0])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: pca_top(\d+) grid evaluated in every seed (['pca_top1', 'pca_top16', 'pca_top2', 'pca_top3', 'pca_top32', 'pca_top4', 'pca_top64', 'pca_top8'])
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: kmeans_k(\d+) grid evaluated in every seed (['kmeans_k2', 'kmeans_k3', 'kmeans_k4', 'kmeans_k5', 'kmeans_k6', 'kmeans_k8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: sae_mi_n(\d+) grid evaluated in every seed (['sae_mi_n1', 'sae_mi_n12', 'sae_mi_n16', 'sae_mi_n2', 'sae_mi_n24', 'sae_mi_n32', 'sae_mi_n4', 'sae_mi_n48', 'sae_mi_n64', 'sae_mi_n8'])
+- swiltra_de_fr_it: sae_random_band_n(\d+) grid evaluated in every seed (['sae_random_band_n1', 'sae_random_band_n12', 'sae_random_band_n16', 'sae_random_band_n2', 'sae_random_band_n24', 'sae_random_band_n32', 'sae_random_band_n4', 'sae_random_band_n48', 'sae_random_band_n64', 'sae_random_band_n8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it: sae_random_n(\d+) grid evaluated in every seed (['sae_random_n1', 'sae_random_n12', 'sae_random_n16', 'sae_random_n2', 'sae_random_n24', 'sae_random_n32', 'sae_random_n4', 'sae_random_n48', 'sae_random_n64', 'sae_random_n8'])
+- swiltra_de_fr_it: the 5-draw random curve covers the single-draw curve's budgets [1, 2, 4, 8, 12, 16, 24, 32, 48, 64]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it raw linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it metadata_leace linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k5 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k6 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it linear_auc: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 0 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 1 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 2 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 3 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 4 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it raw recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it metadata_leace recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it pca_top64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k5 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k6 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it kmeans_k8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it sae_mi_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- swiltra_de_fr_it sae_random_band_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it recall@10: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 0 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 1 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 2 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 3 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json: corpus/encoder fields are swiltra_de_fr_it/e5-small
+- swiltra_de_fr_it seed 4 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: seeds field equals per-seed records
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: no duplicated seed
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: saved aggregates equal per-seed values, mean and SD (ddof=1)
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: each seed's AUC/purity equals the mean of its saved fold values
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: coverage cohort, seeds [0, 1, 2, 3, 4], C=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- coverage:scotus_oyez_lexis/e5-small main~kcount: config.split identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: config.audit identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: config.selection identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: config.pseudo_groups identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: SAE/eraser recipe identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: corpus statistics identical
+- coverage:scotus_oyez_lexis/e5-small main~kcount: per-seed split summaries identical on seeds [0, 1, 2, 3, 4]
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json: seeds field equals per-seed records
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json: no duplicated seed
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json: same setting, seeds [0, 1, 2, 3, 4], split policy, audit, recipe, corpus and per-seed splits as results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_e5-small.json: 5 draws per seed from the MI band [0.02, 0.98], on the published SAEs (MI selection reproduced in every fit)
+- scotus_oyez_lexis: no latent of the single-draw pool fired above 0.98 in any fit, so the single-draw and 5-draw curves sample the same latents ([0, 0, 0, 0, 0])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: pca_top(\d+) grid evaluated in every seed (['pca_top1', 'pca_top16', 'pca_top2', 'pca_top3', 'pca_top32', 'pca_top4', 'pca_top64', 'pca_top8'])
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: kmeans_k(\d+) grid evaluated in every seed (['kmeans_k2', 'kmeans_k3', 'kmeans_k4', 'kmeans_k5', 'kmeans_k6', 'kmeans_k8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: sae_mi_n(\d+) grid evaluated in every seed (['sae_mi_n1', 'sae_mi_n12', 'sae_mi_n16', 'sae_mi_n2', 'sae_mi_n24', 'sae_mi_n32', 'sae_mi_n4', 'sae_mi_n48', 'sae_mi_n64', 'sae_mi_n8'])
+- scotus_oyez_lexis: sae_random_band_n(\d+) grid evaluated in every seed (['sae_random_band_n1', 'sae_random_band_n12', 'sae_random_band_n16', 'sae_random_band_n2', 'sae_random_band_n24', 'sae_random_band_n32', 'sae_random_band_n4', 'sae_random_band_n48', 'sae_random_band_n64', 'sae_random_band_n8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis: sae_random_n(\d+) grid evaluated in every seed (['sae_random_n1', 'sae_random_n12', 'sae_random_n16', 'sae_random_n2', 'sae_random_n24', 'sae_random_n32', 'sae_random_n4', 'sae_random_n48', 'sae_random_n64', 'sae_random_n8'])
+- scotus_oyez_lexis: the 5-draw random curve covers the single-draw curve's budgets [1, 2, 4, 8, 12, 16, 24, 32, 48, 64]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis raw linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis metadata_leace linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k5 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k6 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis linear_auc: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 0 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 1 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 2 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 3 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 4 linear_auc: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis raw recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis metadata_leace recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis pca_top64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k5 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k6 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis kmeans_k8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis sae_mi_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis sae_random_band_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis recall@10: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 0 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 1 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 2 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 3 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json: corpus/encoder fields are scotus_oyez_lexis/e5-small
+- scotus_oyez_lexis seed 4 recall@10: silhouette arm equals fixed K=2
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: coverage cohort, seeds [0, 1, 2, 3, 4], C=3
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json: seeds field equals per-seed records
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json: no duplicated seed
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json: AUCs saved without flip adjustment
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json: same setting, seeds [0, 1, 2, 3, 4], split policy, audit, recipe, corpus and per-seed splits as results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json
+- paper-artifacts/derived/random_band/random_band_scotus_oyez_lexis_wiki_e5-small.json: 5 draws per seed from the MI band [0.02, 0.98], on the published SAEs (MI selection reproduced in every fit)
+- scotus_oyez_lexis_wiki: no latent of the single-draw pool fired above 0.98 in any fit, so the single-draw and 5-draw curves sample the same latents ([0, 0, 0, 0, 0])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: pca_top(\d+) grid evaluated in every seed (['pca_top1', 'pca_top16', 'pca_top2', 'pca_top3', 'pca_top32', 'pca_top4', 'pca_top64', 'pca_top8'])
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: kmeans_k(\d+) grid evaluated in every seed (['kmeans_k2', 'kmeans_k3', 'kmeans_k4', 'kmeans_k5', 'kmeans_k6', 'kmeans_k8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: sae_mi_n(\d+) grid evaluated in every seed (['sae_mi_n1', 'sae_mi_n12', 'sae_mi_n16', 'sae_mi_n2', 'sae_mi_n24', 'sae_mi_n32', 'sae_mi_n4', 'sae_mi_n48', 'sae_mi_n64', 'sae_mi_n8'])
+- scotus_oyez_lexis_wiki: sae_random_band_n(\d+) grid evaluated in every seed (['sae_random_band_n1', 'sae_random_band_n12', 'sae_random_band_n16', 'sae_random_band_n2', 'sae_random_band_n24', 'sae_random_band_n32', 'sae_random_band_n4', 'sae_random_band_n48', 'sae_random_band_n64', 'sae_random_band_n8'])
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki: sae_random_n(\d+) grid evaluated in every seed (['sae_random_n1', 'sae_random_n12', 'sae_random_n16', 'sae_random_n2', 'sae_random_n24', 'sae_random_n32', 'sae_random_n4', 'sae_random_n48', 'sae_random_n64', 'sae_random_n8'])
+- scotus_oyez_lexis_wiki: the 5-draw random curve covers the single-draw curve's budgets [1, 2, 4, 8, 12, 16, 24, 32, 48, 64]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki raw linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki metadata_leace linear_auc: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k3 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k5 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k6 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n1 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n2 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n4 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n8 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n12 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n16 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n24 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n32 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n48 linear_auc: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n64 linear_auc: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki linear_auc: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 0 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 1 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 2 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 3 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 4 linear_auc: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki raw recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki metadata_leace recall@10: reference from seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki pca_top64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k3 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k5 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k6 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki kmeans_k8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki sae_mi_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n1 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n2 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n4 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n8 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n12 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n16 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n24 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n32 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n48 recall@10: seeds [0, 1, 2, 3, 4]
+- scotus_oyez_lexis_wiki sae_random_band_n64 recall@10: seeds [0, 1, 2, 3, 4]
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki recall@10: SAE-LEACE default (sae_mi) equals the N=32 budget point
+- results/extensions/raw/five_seeds/alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 0 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 1 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 2 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 3 recall@10: silhouette arm equals fixed K=3
+- results/extensions/raw/five_seeds/alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json: corpus/encoder fields are scotus_oyez_lexis_wiki/e5-small
+- scotus_oyez_lexis_wiki seed 4 recall@10: silhouette arm equals fixed K=3
+- SwiLTra linear_auc: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.60', '0.70', '0.80', '0.90', '1.00']
+- SwiLTra linear_auc: every plotted mean and Metadata-LEACE line lies inside [0.553, 1.050]
+- swiltra linear_auc: Raw (0.999) lies above every plotted mean of its panel, printed at that edge
+- swiltra_de_fr_it linear_auc: Raw (0.999) lies above every plotted mean of its panel, printed at that edge
+- SCOTUS linear_auc: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.64', '0.72', '0.80', '0.88', '0.96']
+- SCOTUS linear_auc: every plotted mean and Metadata-LEACE line lies inside [0.593, 1.065]
+- scotus_oyez_lexis linear_auc: Raw (1.000) lies above every plotted mean of its panel, printed at that edge
+- scotus_oyez_lexis_wiki linear_auc: Raw (0.999) lies above every plotted mean of its panel, printed at that edge
+- SwiLTra DE–FR recall@10: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.72', '0.78', '0.84', '0.90', '0.96']
+- SwiLTra DE–FR recall@10: every plotted mean and Metadata-LEACE line lies inside [0.681, 0.978]
+- swiltra recall@10: Raw (0.324) lies below every plotted mean of its panel, printed at that edge
+- SwiLTra DE–FR–IT recall@10: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.64', '0.72', '0.80', '0.88', '0.96']
+- SwiLTra DE–FR–IT recall@10: every plotted mean and Metadata-LEACE line lies inside [0.616, 0.987]
+- swiltra_de_fr_it recall@10: Raw (0.492) lies below every plotted mean of its panel, printed at that edge
+- SCOTUS Oyez–Lexis recall@10: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.88', '0.90', '0.92', '0.94', '0.96']
+- SCOTUS Oyez–Lexis recall@10: every plotted mean and Metadata-LEACE line lies inside [0.869, 0.961]
+- scotus_oyez_lexis recall@10: Raw (0.811) lies below every plotted mean of its panel, printed at that edge
+- SCOTUS Oyez–Lexis–Wikipedia recall@10: 5 ticks, exact at 2 decimals, within [0, 1]: ['0.66', '0.69', '0.72', '0.75', '0.78']
+- SCOTUS Oyez–Lexis–Wikipedia recall@10: every plotted mean and Metadata-LEACE line lies inside [0.654, 0.808]
+- scotus_oyez_lexis_wiki recall@10: Raw (0.626) lies below every plotted mean of its panel, printed at that edge
+- fig1_rank_composition: smallest font 7.0 pt >= 6.5 pt
+- fig1_rank_composition: no text outside the canvas
+
+## Issues
+
+None.

@@ -1,0 +1,463 @@
+{
+ "experiment": "revised_id_kmeans",
+ "corpus": "cap",
+ "label": "CAP (bills/orders/news)",
+ "encoder": "e5-small",
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "conditions": [
+  "kmeans_leace"
+ ],
+ "labels": {
+  "kmeans_leace": "k-means LEACE"
+ },
+ "per_seed": [
+  {
+   "seed": 0,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8677854920749247,
+     "gb_auc": 0.9801276046838663,
+     "mlp_auc": 0.9896038851962121,
+     "topic_purity": 0.3206487835308796,
+     "topic_ari": 0.11338751453654246,
+     "linear_auc_per_class": {
+      "bill": 0.9793472242830192,
+      "newspaper": 0.6240092519417549,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8677854920749247
+     ],
+     "gb_auc": [
+      0.9801276046838663
+     ],
+     "mlp_auc": [
+      0.9896038851962121
+     ],
+     "topic_purity": [
+      0.3206487835308796
+     ],
+     "topic_ari": [
+      0.11338751453654246
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.01,
+      1.0,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.0728507861495018,
+      "3": 0.026395710185170174,
+      "4": 0.029479604214429855,
+      "5": 0.029813624918460846,
+      "6": 0.035350192338228226,
+      "8": 0.0384034663438797
+     }
+    }
+   ],
+   "seconds": 32.8
+  },
+  {
+   "seed": 1,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8686163772367305,
+     "gb_auc": 0.9829467306394879,
+     "mlp_auc": 0.9921407002209378,
+     "topic_purity": 0.3125389893948846,
+     "topic_ari": 0.10440936771250264,
+     "linear_auc_per_class": {
+      "bill": 0.9780553659622274,
+      "newspaper": 0.6277937657479642,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8686163772367305
+     ],
+     "gb_auc": [
+      0.9829467306394879
+     ],
+     "mlp_auc": [
+      0.9921407002209378
+     ],
+     "topic_purity": [
+      0.3125389893948846
+     ],
+     "topic_ari": [
+      0.10440936771250264
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.0705813392996788,
+      "3": 0.027020076289772987,
+      "4": 0.02946801856160164,
+      "5": 0.030724450945854187,
+      "6": 0.03188871592283249,
+      "8": 0.009280111640691757
+     }
+    }
+   ],
+   "seconds": 38.0
+  },
+  {
+   "seed": 2,
+   "metrics": {
+    "kmeans_leace": {
+     "linear_auc": 0.8779332854253864,
+     "gb_auc": 0.9838698698394281,
+     "mlp_auc": 0.9918897959410662,
+     "topic_purity": 0.33499688084840923,
+     "topic_ari": 0.1294098716738446,
+     "linear_auc_per_class": {
+      "bill": 0.9827615999321703,
+      "newspaper": 0.6510382563439892,
+      "order": 1.0
+     },
+     "audit_folds": 5,
+     "n_constant_coords": 0
+    }
+   },
+   "per_fold": {
+    "kmeans_leace": {
+     "linear_auc": [
+      0.8779332854253864
+     ],
+     "gb_auc": [
+      0.9838698698394281
+     ],
+     "mlp_auc": [
+      0.9918897959410662
+     ],
+     "topic_purity": [
+      0.33499688084840923
+     ],
+     "topic_ari": [
+      0.1294098716738446
+     ]
+    }
+   },
+   "hits": {},
+   "audit_C": {
+    "kmeans_leace": [
+     [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+     ]
+    ]
+   },
+   "split": {
+    "scheme": "holdout",
+    "n_folds": 1,
+    "n_train_docs": [
+     1605
+    ],
+    "n_test_docs": [
+     1603
+    ],
+    "n_test_pairs": [
+     0
+    ]
+   },
+   "selected": [
+    []
+   ],
+   "n_selected": [
+    0
+   ],
+   "pseudo_groups_k": [
+    0
+   ],
+   "diagnostics": [
+    {
+     "k_auto": 2,
+     "silhouette": {
+      "2": 0.07119064033031464,
+      "3": 0.06500925868749619,
+      "4": 0.028837833553552628,
+      "5": 0.03127085790038109,
+      "6": 0.03212631121277809,
+      "8": 0.012388346716761589
+     }
+    }
+   ],
+   "seconds": 31.1
+  }
+ ],
+ "agg": {
+  "kmeans_leace": {
+   "linear_auc": {
+    "mean": 0.8714450515790139,
+    "std": 0.005634312413412826,
+    "values": [
+     0.8677854920749247,
+     0.8686163772367305,
+     0.8779332854253864
+    ],
+    "n": 3
+   },
+   "gb_auc": {
+    "mean": 0.9823147350542607,
+    "std": 0.0019495386475889738,
+    "values": [
+     0.9801276046838663,
+     0.9829467306394879,
+     0.9838698698394281
+    ],
+    "n": 3
+   },
+   "mlp_auc": {
+    "mean": 0.9912114604527386,
+    "std": 0.0013978418699773826,
+    "values": [
+     0.9896038851962121,
+     0.9921407002209378,
+     0.9918897959410662
+    ],
+    "n": 3
+   },
+   "topic_purity": {
+    "mean": 0.32272821792472445,
+    "std": 0.011372434114265171,
+    "values": [
+     0.3206487835308796,
+     0.3125389893948846,
+     0.33499688084840923
+    ],
+    "n": 3
+   },
+   "topic_ari": {
+    "mean": 0.11573558464096323,
+    "std": 0.012664571626854366,
+    "values": [
+     0.11338751453654246,
+     0.10440936771250264,
+     0.1294098716738446
+    ],
+    "n": 3
+   },
+   "linear_auc_per_class": {
+    "bill": {
+     "mean": 0.9800547300591389,
+     "std": 0.0024315803220114098,
+     "values": [
+      0.9793472242830192,
+      0.9780553659622274,
+      0.9827615999321703
+     ],
+     "n": 3
+    },
+    "newspaper": {
+     "mean": 0.6342804246779028,
+     "std": 0.01463555013653443,
+     "values": [
+      0.6240092519417549,
+      0.6277937657479642,
+      0.6510382563439892
+     ],
+     "n": 3
+    },
+    "order": {
+     "mean": 1.0,
+     "std": 0.0,
+     "values": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "n": 3
+    }
+   },
+   "audit_folds": {
+    "mean": 5.0,
+    "std": 0.0,
+    "values": [
+     5.0,
+     5.0,
+     5.0
+    ],
+    "n": 3
+   },
+   "n_constant_coords": {
+    "mean": 0.0,
+    "std": 0.0,
+    "values": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 3
+   }
+  }
+ },
+ "checks": [
+  {
+   "seed": 0,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 1,
+   "alternatives_linear_auc_diff": 0.0
+  },
+  {
+   "seed": 2,
+   "alternatives_linear_auc_diff": 0.0
+  }
+ ],
+ "corpus_stats": {
+  "n_docs": 3208,
+  "n_pairs": 0,
+  "n_unpaired": 3208,
+  "classes": [
+   "bill",
+   "newspaper",
+   "order"
+  ],
+  "class_counts": [
+   1301,
+   1309,
+   598
+  ],
+  "confounder": "source",
+  "n_topics": 21
+ },
+ "config": {
+  "recipe": {
+   "expansion_factor": 8,
+   "k": 32,
+   "n_epochs": 200,
+   "erase": "directions_leace",
+   "greedy_lambda": 1.0,
+   "greedy_budget": 64,
+   "greedy_pool": 80,
+   "recall_k": 10,
+   "top_features": 32
+  },
+  "selection": "topn",
+  "pseudo_groups": "auto",
+  "split": {
+   "scheme": "holdout",
+   "holdout": 0.5,
+   "folds": 5
+  },
+  "audit": {
+   "probe": "L2 logistic regression, one-vs-rest for >2 classes",
+   "standardisation": "probe-training statistics",
+   "C_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+   ],
+   "C_selection": "inner 1/5 split of the probe-training data, mean one-vs-rest AUC",
+   "audit_folds": 5,
+   "fold_aggregation": "AUC per test fold, then mean",
+   "pairs": "matched pairs kept in one fold",
+   "flip_adjustment": null,
+   "nonlinear": {
+    "gb": "HistGradientBoostingClassifier (defaults)",
+    "mlp": "StandardScaler + MLP(256, 128), early stopping"
+   },
+   "topic_k": 21,
+   "kmeans_n_init": 20,
+   "representation": "affine output T(x), not renormalised",
+   "constant_coordinates": "probe-training SD < 1e-06 x median SD: treated as constant (dropped from that fold's probes)"
+  },
+  "nonlinear": [
+   "gb",
+   "mlp"
+  ],
+  "sae": null
+ }
+}

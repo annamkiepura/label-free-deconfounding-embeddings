@@ -1,0 +1,2935 @@
+{
+ "exhibit": "tableA2_encoders",
+ "kind": "table",
+ "title": "Encoder configurations and evaluation coverage",
+ "build_command": "python paper-artifacts/build.py tableA2_encoders",
+ "generated_utc": "2026-10-26T18:48:31+00:00",
+ "results_root": "results/main/raw",
+ "manifest_sha256": "9f1e295e8f63590b329223dca27a5ddea2377da72a7a451e7a17ed38e1a47aa5",
+ "conventions": {
+  "sd_ddof": 1,
+  "auc_flip": false,
+  "fold_combination": "within-seed: mean of fold AUCs; retrieval hits pooled over folds",
+  "difference": "paired by seed, then mean and sample SD of the per-seed differences",
+  "display_digits": 3,
+  "ood_interval": "saved 95% paired query bootstrap, 10,000 draws, seed 0"
+ },
+ "caption": "Encoders (Sentence-Transformers, \\texttt{trust\\_remote\\_code}; cosine similarity). Above the rule: also used in the primary experiments and OOD transfer; below: ten-encoder study only. In-distribution documents (and so queries) carry $^a$the prefix \\texttt{query:\\textvisiblespace} or $^b$the named prompt \\texttt{passage}, otherwise no prompt; OOD targets never do. Maximum sequence length: model default, not recorded. Recorded model revisions are in the accompanying data file.",
+ "settings_and_seeds": {},
+ "sources": {
+  "alternatives/alternatives_cap_e5-small.json": {
+   "sha256": "25e1ebccd17c665ccc683c7d1fe3f14c2cab61903af7a31da9f1770fb5fe6817",
+   "bytes": 120240,
+   "run_id": "alternatives/alternatives_cap_e5-small.json@25e1ebccd17c",
+   "experiment": "alternatives",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/alternatives_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "f878c04bea859a7c8b1ee6edecb95f86d6d7709f1aaead2c82c89876f0cfab36",
+   "bytes": 117674,
+   "run_id": "alternatives/alternatives_scotus_oyez_lexis_e5-small.json@f878c04bea85",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "cd001e4cd5302be196c5d2a65d5305b4834ee8283f18eb72de9873eb02fd31cb",
+   "bytes": 208963,
+   "run_id": "alternatives/alternatives_scotus_oyez_lexis_wiki_e5-small.json@cd001e4cd530",
+   "experiment": "alternatives",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "alternatives/alternatives_semeval_e5-small.json": {
+   "sha256": "a9a5102c5ffc79735fa5d32700e0196f8112cdab813f50b9277f136dba0368f5",
+   "bytes": 186092,
+   "run_id": "alternatives/alternatives_semeval_e5-small.json@a9a5102c5ffc",
+   "experiment": "alternatives",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/alternatives_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "d7ccdea02eb369897f2d41c860e949e705a0dd96dd9c9514ace077fc9839fd5d",
+   "bytes": 201375,
+   "run_id": "alternatives/alternatives_swiltra_de_fr_it_e5-small.json@d7ccdea02eb3",
+   "experiment": "alternatives",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "alternatives/alternatives_swiltra_e5-small.json": {
+   "sha256": "209bdcec521e121329227c8bce0593eee3bc5850d2bf1e0e918cafc7ee680a12",
+   "bytes": 117185,
+   "run_id": "alternatives/alternatives_swiltra_e5-small.json@209bdcec521e",
+   "experiment": "alternatives",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_cap_e5-base.json": {
+   "sha256": "dc2ffc2b97d36755c3ddb752d5bdd199af947574980fb9f4cf2b0b8ee9af37e8",
+   "bytes": 27019,
+   "run_id": "alternatives/generous_k_cap_e5-base.json@dc2ffc2b97d3",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_e5-large.json": {
+   "sha256": "3ea287eef9c31888ecc1a6f557e38f1615358344492f7b564b20ce0cd8d1ba13",
+   "bytes": 26898,
+   "run_id": "alternatives/generous_k_cap_e5-large.json@3ea287eef9c3",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_e5-small.json": {
+   "sha256": "8bec3dd189b3cd04511f0b2a734afc0e2dee62128e9fc189850fb295fe7ca88f",
+   "bytes": 26960,
+   "run_id": "alternatives/generous_k_cap_e5-small.json@8bec3dd189b3",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_gist-base.json": {
+   "sha256": "83f06fcdd9e4c353b52903558b0fc56bf9fc0772a4531b1d2106602cccd508f9",
+   "bytes": 27091,
+   "run_id": "alternatives/generous_k_cap_gist-base.json@83f06fcdd9e4",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_gist-large.json": {
+   "sha256": "4bfbd7f164445cdac4e3fb4567b023c989c1509f66e6d5aca4941de6fbca168d",
+   "bytes": 27026,
+   "run_id": "alternatives/generous_k_cap_gist-large.json@4bfbd7f16444",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_gist-small.json": {
+   "sha256": "78f98339a1e6886a94a4f84ca40bb5f187ed0b4317b8874808c6662785808ab7",
+   "bytes": 27051,
+   "run_id": "alternatives/generous_k_cap_gist-small.json@78f98339a1e6",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_mini.json": {
+   "sha256": "3856b131c3502b00e3f8422bd551961e32c9f1bfd9d93756c7ac110872aeb1db",
+   "bytes": 27119,
+   "run_id": "alternatives/generous_k_cap_mini.json@3856b131c350",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_mpnet.json": {
+   "sha256": "2d69834eb4a5a2230a9ed50449e4c49368422f6715f0eb47ea31d11b7480d6cf",
+   "bytes": 27089,
+   "run_id": "alternatives/generous_k_cap_mpnet.json@2d69834eb4a5",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_mxb.json": {
+   "sha256": "479f72ed708b99cfd6084156472c5c69df6997ac984b8aca94f915f88978ac75",
+   "bytes": 27167,
+   "run_id": "alternatives/generous_k_cap_mxb.json@479f72ed708b",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_cap_nomic-v2.json": {
+   "sha256": "3e039b492f1dfd5efbc4d56b253052dab7feea489531fb46ccb3e02a6681d98c",
+   "bytes": 27024,
+   "run_id": "alternatives/generous_k_cap_nomic-v2.json@3e039b492f1d",
+   "experiment": "generous_k",
+   "corpus": "cap",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_e5-base.json": {
+   "sha256": "686a0ad633030617615415cb1e15034a94155c5d79a62eaeb64e30d479a8fd92",
+   "bytes": 23508,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_e5-base.json@686a0ad63303",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_e5-large.json": {
+   "sha256": "57ea67a6564d382aeca73a81aea9fad070f7dfd7f5b41a8d58aa18c3f5c42f58",
+   "bytes": 23499,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_e5-large.json@57ea67a6564d",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "6fbf637abeef3b61ba216c887b1db0da8abbce149c2517d49c5d3e24afc84274",
+   "bytes": 23503,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_e5-small.json@6fbf637abeef",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_gist-base.json": {
+   "sha256": "e84199da419d3b4748c2a1b62959616d93d837ba99305805c5a5d38453dd0e4a",
+   "bytes": 23519,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_gist-base.json@e84199da419d",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_gist-large.json": {
+   "sha256": "e37b71d23c343a68cc99aa63a6ae9afe2b1cdfc29e42d705d1aefb684e8bd1c5",
+   "bytes": 23512,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_gist-large.json@e37b71d23c34",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_gist-small.json": {
+   "sha256": "ed850689340e351e2cf160f6475e2b1442438b5aadcb5841cb24c09f9e215cdc",
+   "bytes": 23545,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_gist-small.json@ed850689340e",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_mini.json": {
+   "sha256": "27ef7c457dd506c2d55b8cdd52466442129cbd602f362e4cc62986caa2da2200",
+   "bytes": 23510,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_mini.json@27ef7c457dd5",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_mpnet.json": {
+   "sha256": "4cd58d4c0ee9f0050dfbb7f9954d10ce3e1ca45697acada16869842435015296",
+   "bytes": 23466,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_mpnet.json@4cd58d4c0ee9",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_mxb.json": {
+   "sha256": "c6eedd13c5423dc2d48d985859bab35ec86079b7860744a91884a3c31e832097",
+   "bytes": 23462,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_mxb.json@c6eedd13c542",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_scotus_oyez_lexis_nomic-v2.json": {
+   "sha256": "abea2eac4bc5655a3051c1347ea5b308d3abfa1a9168fad0bbc059879224f4b3",
+   "bytes": 23489,
+   "run_id": "alternatives/generous_k_scotus_oyez_lexis_nomic-v2.json@abea2eac4bc5",
+   "experiment": "generous_k",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/generous_k_semeval_e5-base.json": {
+   "sha256": "dbaeedfbccaa7325bad121aad1854d03f51cca7fa984dee8800249eab5473322",
+   "bytes": 40367,
+   "run_id": "alternatives/generous_k_semeval_e5-base.json@dbaeedfbccaa",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_e5-large.json": {
+   "sha256": "5cc481914a769e067863a390bfd68942422e3d7be601d0da6ab1c664d4efb843",
+   "bytes": 40076,
+   "run_id": "alternatives/generous_k_semeval_e5-large.json@5cc481914a76",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_e5-small.json": {
+   "sha256": "e4c47bb482b7a8beeb5a354234d6da098ff2fae4ad530c5520f43efcd617e4e4",
+   "bytes": 40118,
+   "run_id": "alternatives/generous_k_semeval_e5-small.json@e4c47bb482b7",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_gist-base.json": {
+   "sha256": "938c778bb8d93ce46e41a04b394dcad54f4f8beebf24750d2e49ac8fefbe2405",
+   "bytes": 40873,
+   "run_id": "alternatives/generous_k_semeval_gist-base.json@938c778bb8d9",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_gist-large.json": {
+   "sha256": "edbea696b5adf83b08a8c5351782d2c02beeca737ec2b73fa84657a24ac4e906",
+   "bytes": 40925,
+   "run_id": "alternatives/generous_k_semeval_gist-large.json@edbea696b5ad",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_gist-small.json": {
+   "sha256": "35bb84de076100ae5aeeff9848d21e02e24ced21b40500a11e9835b1f229e330",
+   "bytes": 40874,
+   "run_id": "alternatives/generous_k_semeval_gist-small.json@35bb84de0761",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_mini.json": {
+   "sha256": "cd6a1c66ce903bd435184dddf7586d9107100cfc947b0f1bbaf65b8064332352",
+   "bytes": 40913,
+   "run_id": "alternatives/generous_k_semeval_mini.json@cd6a1c66ce90",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_mpnet.json": {
+   "sha256": "c22d3963c1f081887c69c6ed920109a2ed1949c81c9f3b51cd95c482d8c7a1ac",
+   "bytes": 41076,
+   "run_id": "alternatives/generous_k_semeval_mpnet.json@c22d3963c1f0",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_mxb.json": {
+   "sha256": "e94dc928b988b2316fe3cba49687b3cc5cbe3fe0f756a781a886f5b4d37132c5",
+   "bytes": 40617,
+   "run_id": "alternatives/generous_k_semeval_mxb.json@e94dc928b988",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_semeval_nomic-v2.json": {
+   "sha256": "8ede00a250d3719fc818f3186303f914b8e9641c6091dec136b9f1fd37046bec",
+   "bytes": 41329,
+   "run_id": "alternatives/generous_k_semeval_nomic-v2.json@8ede00a250d3",
+   "experiment": "generous_k",
+   "corpus": "semeval",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/generous_k_swiltra_e5-base.json": {
+   "sha256": "e248f30e0f28129ccde80592ec64818203d6cc567f8f773040724c74fb0e5163",
+   "bytes": 23368,
+   "run_id": "alternatives/generous_k_swiltra_e5-base.json@e248f30e0f28",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_e5-large.json": {
+   "sha256": "04f756358982cd86b5fb9b1973716ff2083a79dec2cd949351931f7dd58d43df",
+   "bytes": 23392,
+   "run_id": "alternatives/generous_k_swiltra_e5-large.json@04f756358982",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_e5-small.json": {
+   "sha256": "94d5205d0cef9a34be8110e1462e4f3fa3b6da4c8be50a55869dd49b28c0c907",
+   "bytes": 23415,
+   "run_id": "alternatives/generous_k_swiltra_e5-small.json@94d5205d0cef",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_gist-base.json": {
+   "sha256": "e6005d454b1f0bd14f1968e2e0db767fd37c8f65020a032cd3b17f19431f2c33",
+   "bytes": 23437,
+   "run_id": "alternatives/generous_k_swiltra_gist-base.json@e6005d454b1f",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_gist-large.json": {
+   "sha256": "948398cbda35dcb14ff1a2452f1fcadba1e075072eaad8a70a01b89dfeaaf639",
+   "bytes": 23410,
+   "run_id": "alternatives/generous_k_swiltra_gist-large.json@948398cbda35",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_gist-small.json": {
+   "sha256": "ae4f1d617fed4b5794a63fd5f6df3e7b05cd4f116b066f77280eac579e9f2eeb",
+   "bytes": 23445,
+   "run_id": "alternatives/generous_k_swiltra_gist-small.json@ae4f1d617fed",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_mini.json": {
+   "sha256": "699b94dae21b2b4c3704d8da9088b55628ff405d95bb6475c6b5fb3fd3599688",
+   "bytes": 23504,
+   "run_id": "alternatives/generous_k_swiltra_mini.json@699b94dae21b",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_mpnet.json": {
+   "sha256": "19010ff1c808abfa18b7455d97f534bb86bbe82b675f593f48aab379f1d2474e",
+   "bytes": 23422,
+   "run_id": "alternatives/generous_k_swiltra_mpnet.json@19010ff1c808",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_mxb.json": {
+   "sha256": "2e8cc18f0ad46390126ceb28e1f96de1073ee3de2d74ece6d27d08a7374394e0",
+   "bytes": 23373,
+   "run_id": "alternatives/generous_k_swiltra_mxb.json@2e8cc18f0ad4",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/generous_k_swiltra_nomic-v2.json": {
+   "sha256": "780ded2c4aeb44acd7095525deec87a5b01f001cc1f3f79dd28370f59bec04c3",
+   "bytes": 23381,
+   "run_id": "alternatives/generous_k_swiltra_nomic-v2.json@780ded2c4aeb",
+   "experiment": "generous_k",
+   "corpus": "swiltra",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_cap_e5-base.json": {
+   "sha256": "6c79cb627f22c73ef3e4d2f1fd604c0dd3cfe7e22f57f471b1b867a6f5af3ca9",
+   "bytes": 3945,
+   "run_id": "alternatives/geometry_cap_e5-base.json@6c79cb627f22",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_e5-large.json": {
+   "sha256": "b666babc66f67cada99426f3f90b6ae390092a90fc40ab11382226eea7d54fea",
+   "bytes": 3932,
+   "run_id": "alternatives/geometry_cap_e5-large.json@b666babc66f6",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_e5-small.json": {
+   "sha256": "cec5c41fde9a14dd26e6c0c128a0158537b3e805270529462d7035cd593d3f17",
+   "bytes": 3951,
+   "run_id": "alternatives/geometry_cap_e5-small.json@cec5c41fde9a",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_gist-base.json": {
+   "sha256": "6c11b62972bc5f2ceb9699bd78e88e405bdf6643de29836e16a4352b8176f674",
+   "bytes": 3953,
+   "run_id": "alternatives/geometry_cap_gist-base.json@6c11b62972bc",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_gist-large.json": {
+   "sha256": "04febae22c2cb454551f76e0a9c60317d0ef50e84b0c41f7304b0e8e0e5b9127",
+   "bytes": 3951,
+   "run_id": "alternatives/geometry_cap_gist-large.json@04febae22c2c",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_gist-small.json": {
+   "sha256": "354d7856810e50b098f5839aae54f1acbff52cf2526cf2e5c869e3be4649c758",
+   "bytes": 3937,
+   "run_id": "alternatives/geometry_cap_gist-small.json@354d7856810e",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_mini.json": {
+   "sha256": "be0c73ad7c3eb98967d254134e20a71a92b6db2f49c548bf57161d48b354297c",
+   "bytes": 3961,
+   "run_id": "alternatives/geometry_cap_mini.json@be0c73ad7c3e",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_mpnet.json": {
+   "sha256": "7022c6e4dd208f1bd2fbd1df50ef13e0afb38f061f251b90a0243cddea58545a",
+   "bytes": 3926,
+   "run_id": "alternatives/geometry_cap_mpnet.json@7022c6e4dd20",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_mxb.json": {
+   "sha256": "e0831f686017dea88cfa17b4edac0a0471d073bf4bdb7f646c8104dde8f07e51",
+   "bytes": 3945,
+   "run_id": "alternatives/geometry_cap_mxb.json@e0831f686017",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_cap_nomic-v2.json": {
+   "sha256": "f9dd9cd38ffa3063d8f9d4008d8d213a388d610cad5b78aefa6040936238170f",
+   "bytes": 3947,
+   "run_id": "alternatives/geometry_cap_nomic-v2.json@f9dd9cd38ffa",
+   "experiment": "geometry",
+   "corpus": "cap",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_e5-base.json": {
+   "sha256": "bf0c791ae6885bc205957cbbb7d1caddb3ff96304f18b187455d09f6719ec4a3",
+   "bytes": 3902,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_e5-base.json@bf0c791ae688",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_e5-large.json": {
+   "sha256": "cea7b79e746238c094859f6e69c685a4302c282852659696f752bc3dfa679e0f",
+   "bytes": 3923,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_e5-large.json@cea7b79e7462",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "1db57cd3049951f2bf898e3557bb0f051b531e8cf1bd88c98f01608d9108f0a5",
+   "bytes": 3918,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_e5-small.json@1db57cd30499",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_gist-base.json": {
+   "sha256": "a8ba4bfce624c141dcbaea0dadd42c79d4db48d6615c38e1b965085ccd6a3470",
+   "bytes": 3947,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_gist-base.json@a8ba4bfce624",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_gist-large.json": {
+   "sha256": "29bcb365efaf3451f43a6f42d5306b60c7d48d32664171eac06d2afb4ad73046",
+   "bytes": 3951,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_gist-large.json@29bcb365efaf",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_gist-small.json": {
+   "sha256": "15a872929577ffea0b753a682400917804d7bb60cda9624430776a65fbeabdd4",
+   "bytes": 3973,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_gist-small.json@15a872929577",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_mini.json": {
+   "sha256": "d6bea2e684fd20c05d3466accc1456323f1119baec9cd3158b9f02c39d640828",
+   "bytes": 3959,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_mini.json@d6bea2e684fd",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_mpnet.json": {
+   "sha256": "104abb5aae5080772098b4b1d73f95820789c29426ab8740c5eefc9332cd2082",
+   "bytes": 3966,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_mpnet.json@104abb5aae50",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_mxb.json": {
+   "sha256": "888e1b9d2d9039e6cadde6daa75ff299db121e75bd1cc6262d3c12bc57dea1c5",
+   "bytes": 3942,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_mxb.json@888e1b9d2d90",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_nomic-v2.json": {
+   "sha256": "cfddaa7c555a07f6534b55f4d1845562f9da6b1178ce6f8fac319f29ecca2c86",
+   "bytes": 3968,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_nomic-v2.json@cfddaa7c555a",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "906bec2d6e3b20262c09b961ffaa3f51971a03725e2e1e2a77bb843d20ad7574",
+   "bytes": 3954,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_wiki_e5-small.json@906bec2d6e3b",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "alternatives/geometry_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "afa7455a19969b7f2a3c5aeb80d6f2adbf9f175d77f916522eac4addd19a095e",
+   "bytes": 3983,
+   "run_id": "alternatives/geometry_scotus_oyez_lexis_wiki_mini.json@afa7455a1996",
+   "experiment": "geometry",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "alternatives/geometry_semeval_e5-base.json": {
+   "sha256": "c21ef84f7a5d9abc39d1bdfed14aeab4247bb8e69d3594d83fc41ae6c6dae0f9",
+   "bytes": 10157,
+   "run_id": "alternatives/geometry_semeval_e5-base.json@c21ef84f7a5d",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_e5-large.json": {
+   "sha256": "a4bc0ccc2da828d46846f0ce0d26982c13b9397a7f83de3a3120aa5258efb44b",
+   "bytes": 10128,
+   "run_id": "alternatives/geometry_semeval_e5-large.json@a4bc0ccc2da8",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_e5-small.json": {
+   "sha256": "c421a8318d749470b131963a005149b0196f59fee3dcc240922ee1a163fc0a11",
+   "bytes": 10160,
+   "run_id": "alternatives/geometry_semeval_e5-small.json@c421a8318d74",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_gist-base.json": {
+   "sha256": "628d700a8269a0f450d42e68d0f88e1192204698e379a931e8eebd2cac7eea99",
+   "bytes": 10342,
+   "run_id": "alternatives/geometry_semeval_gist-base.json@628d700a8269",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_gist-large.json": {
+   "sha256": "666082a50540009e05bc46ebd1c5999c627fc813e745622fdb97292ebc241758",
+   "bytes": 10341,
+   "run_id": "alternatives/geometry_semeval_gist-large.json@666082a50540",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_gist-small.json": {
+   "sha256": "7506626e1f65f56dc5e2053383e6e4a796536cf6fdffc6cd8563c41927fbf849",
+   "bytes": 10371,
+   "run_id": "alternatives/geometry_semeval_gist-small.json@7506626e1f65",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_mini.json": {
+   "sha256": "c485b85867bd22c3919bef195b22c67be423d1835aae7feafb17fd11af942229",
+   "bytes": 10291,
+   "run_id": "alternatives/geometry_semeval_mini.json@c485b85867bd",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_mpnet.json": {
+   "sha256": "f7602ccdf93d8df5b96582bb630efc7ca25473622c2ab5929889e655abd80e5d",
+   "bytes": 10342,
+   "run_id": "alternatives/geometry_semeval_mpnet.json@f7602ccdf93d",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_mxb.json": {
+   "sha256": "2bd9d07a24ec3993b94890df5ea0940c577c0f1b8d5f624d37cd16a02a4b835f",
+   "bytes": 10294,
+   "run_id": "alternatives/geometry_semeval_mxb.json@2bd9d07a24ec",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_semeval_nomic-v2.json": {
+   "sha256": "a13b242e56039a2142bc5d8956bce8a9ad5255f33b80bff278893a795ce5122c",
+   "bytes": 10507,
+   "run_id": "alternatives/geometry_semeval_nomic-v2.json@a13b242e5603",
+   "experiment": "geometry",
+   "corpus": "semeval",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "alternatives/geometry_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9bf1607d9278bd5aef24743650baef88f018ccd7b16724b4a6b2188ded3f4002",
+   "bytes": 3910,
+   "run_id": "alternatives/geometry_swiltra_de_fr_it_e5-small.json@9bf1607d9278",
+   "experiment": "geometry",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "alternatives/geometry_swiltra_e5-base.json": {
+   "sha256": "e7e5a671e531db71fa47709efd1c7f04509b4f1a8581fbea36a43c716c3a40c2",
+   "bytes": 3870,
+   "run_id": "alternatives/geometry_swiltra_e5-base.json@e7e5a671e531",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_e5-large.json": {
+   "sha256": "0872faf3b897dea7951df2ba5218954860bbd5b09f60708a198bfbbbf565eace",
+   "bytes": 3877,
+   "run_id": "alternatives/geometry_swiltra_e5-large.json@0872faf3b897",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_e5-small.json": {
+   "sha256": "35e90866a3ddab06a0c3d7cac1843805ab334e0b9c25830e142a503428b27b16",
+   "bytes": 3875,
+   "run_id": "alternatives/geometry_swiltra_e5-small.json@35e90866a3dd",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_gist-base.json": {
+   "sha256": "b4e0e68b10fefa422cc7aad5b69c9c3dc1bac5377e9fd6dee1ded755d25355e3",
+   "bytes": 3875,
+   "run_id": "alternatives/geometry_swiltra_gist-base.json@b4e0e68b10fe",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_gist-large.json": {
+   "sha256": "ecbd7b162c0ab76b6d83b6da426b2dbcf99b5435b7f6e221afd9e5de9dc70548",
+   "bytes": 3884,
+   "run_id": "alternatives/geometry_swiltra_gist-large.json@ecbd7b162c0a",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_gist-small.json": {
+   "sha256": "03cc83073ad17ddf6f78b4012ebdf2678c55f19392c46c01febe5f10ae8b6030",
+   "bytes": 3883,
+   "run_id": "alternatives/geometry_swiltra_gist-small.json@03cc83073ad1",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_mini.json": {
+   "sha256": "ab0d8f13b88bcfe430d1217e2104b50df563ed26091b3c10e94734873123da4c",
+   "bytes": 3872,
+   "run_id": "alternatives/geometry_swiltra_mini.json@ab0d8f13b88b",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_mpnet.json": {
+   "sha256": "e3ec83f02d025e01bcc4cf0ec2ffee4ba11f807f1362b85bba532dcdf943c422",
+   "bytes": 3893,
+   "run_id": "alternatives/geometry_swiltra_mpnet.json@e3ec83f02d02",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_mxb.json": {
+   "sha256": "f90acee2c3f051447cbdfba313422b547bf2b1368559ee50bd4ff63044898d66",
+   "bytes": 3878,
+   "run_id": "alternatives/geometry_swiltra_mxb.json@f90acee2c3f0",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/geometry_swiltra_nomic-v2.json": {
+   "sha256": "e51a8f75de2099f839f5c01483669d6d544df50360819b74a26f4d0542c3c50d",
+   "bytes": 3900,
+   "run_id": "alternatives/geometry_swiltra_nomic-v2.json@e51a8f75de20",
+   "experiment": "geometry",
+   "corpus": "swiltra",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "e466c6ac09a18749d95f6be04fe817139b385bceb11188fef287ba252870b72a",
+   "bytes": 25454,
+   "run_id": "alternatives/kmeans_count_scotus_oyez_lexis_e5-small.json@e466c6ac09a1",
+   "experiment": "kmeans_count",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "b233a987270e0bd6225f09fbfad6060e2fbc53579f59863270e42467eb1fbbd2",
+   "bytes": 43256,
+   "run_id": "alternatives/kmeans_count_scotus_oyez_lexis_wiki_e5-small.json@b233a987270e",
+   "experiment": "kmeans_count",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "a9b0dec81d8d610ee272ed30e5f2793c764dab48a62174275f3ab9d0e4d8cc79",
+   "bytes": 41366,
+   "run_id": "alternatives/kmeans_count_swiltra_de_fr_it_e5-small.json@a9b0dec81d8d",
+   "experiment": "kmeans_count",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "alternatives/kmeans_count_swiltra_e5-small.json": {
+   "sha256": "cd3ec12366030b5dd5603e05a7f7021e43c81ef214f94cc447a9e1605097d95f",
+   "bytes": 25357,
+   "run_id": "alternatives/kmeans_count_swiltra_e5-small.json@cd3ec1236603",
+   "experiment": "kmeans_count",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "alternatives/ood_kmeans_e5-small_cap.json": {
+   "sha256": "71c5bdf22ce0542c76926228760c37656963e6233628841e2ef89aa6947333ab",
+   "bytes": 589114,
+   "run_id": "alternatives/ood_kmeans_e5-small_cap.json@71c5bdf22ce0",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_e5-small_scotus_oyez_lexis.json": {
+   "sha256": "5dd0d1959f2ba26f5cc241132ff1a1421d4396f05e8e0f3dfae6135e9fab119f",
+   "bytes": 587692,
+   "run_id": "alternatives/ood_kmeans_e5-small_scotus_oyez_lexis.json@5dd0d1959f2b",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json": {
+   "sha256": "3e5608d82b0de76c1acc76443a7cbdef6eaa43eaa3faf1d2e6cc59a344e04239",
+   "bytes": 418225,
+   "run_id": "alternatives/ood_kmeans_e5-small_scotus_oyez_lexis_wiki.json@3e5608d82b0d",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_e5-small_swiltra.json": {
+   "sha256": "3ecb21d39113a1291e627f536872f48d8750e7d5d36b4b0d014c759f46db2511",
+   "bytes": 588411,
+   "run_id": "alternatives/ood_kmeans_e5-small_swiltra.json@3ecb21d39113",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "swiltra",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json": {
+   "sha256": "a7c80cd184a98117cfbe3432ab44d5008b80ed1dd7b8fe152dc42213bf9a2560",
+   "bytes": 419013,
+   "run_id": "alternatives/ood_kmeans_e5-small_swiltra_de_fr_it.json@a7c80cd184a9",
+   "experiment": "ood_kmeans",
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr/it)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_mini_cap.json": {
+   "sha256": "efc1c9306a8d61bb397ab5c6a9627f178604843013fe82a7d184ab688097ed4c",
+   "bytes": 594879,
+   "run_id": "alternatives/ood_kmeans_mini_cap.json@efc1c9306a8d",
+   "experiment": "ood_kmeans",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_mini_scotus_oyez_lexis.json": {
+   "sha256": "5e33660d5934bf3f5ed8b3903c84396b9acf1fe579fbbd909c603c3c6cc6e879",
+   "bytes": 596573,
+   "run_id": "alternatives/ood_kmeans_mini_scotus_oyez_lexis.json@5e33660d5934",
+   "experiment": "ood_kmeans",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json": {
+   "sha256": "8c976488d5608dda3de1072946f55bd4e1f13d25457949becb093de5b3882ed0",
+   "bytes": 424589,
+   "run_id": "alternatives/ood_kmeans_mini_scotus_oyez_lexis_wiki.json@8c976488d560",
+   "experiment": "ood_kmeans",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_ranks_e5-small_cap.json": {
+   "sha256": "e097e32f26507719116e177cc57d46706cce021e2a324ef7f553693c104386f5",
+   "bytes": 1435618,
+   "run_id": "alternatives/ood_ranks_e5-small_cap.json@e097e32f2650",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json": {
+   "sha256": "121c53d4a8f5457cc006cae842283ec28f3b42f6400dfaf79924f2b401ecdedb",
+   "bytes": 1436932,
+   "run_id": "alternatives/ood_ranks_e5-small_scotus_oyez_lexis.json@121c53d4a8f5",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_ranks_e5-small_swiltra.json": {
+   "sha256": "0a15cef15fc141d8acdcc8ee26d8a2284867c0a51da329114292f0d205e6fa5d",
+   "bytes": 1435918,
+   "run_id": "alternatives/ood_ranks_e5-small_swiltra.json@0a15cef15fc1",
+   "experiment": "ood_ranks",
+   "encoder": "e5-small",
+   "donor": "swiltra",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_ranks_mini_cap.json": {
+   "sha256": "578fb9ac408682800fa4507e282b0579f016165ff84da9a64d7301d9778078bd",
+   "bytes": 1452368,
+   "run_id": "alternatives/ood_ranks_mini_cap.json@578fb9ac4086",
+   "experiment": "ood_ranks",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "alternatives/ood_ranks_mini_scotus_oyez_lexis.json": {
+   "sha256": "c6991878dbaea4e2f11e6ca96ee31a5e13f11795e655b49a9e90962d7bf9d81e",
+   "bytes": 1454476,
+   "run_id": "alternatives/ood_ranks_mini_scotus_oyez_lexis.json@c6991878dbae",
+   "experiment": "ood_ranks",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "encoders/encoder_cap_e5-base.json": {
+   "sha256": "be19cf6b8a6717b77106f0869f7978d5647c929ccc5e7819b23bb0a8f9fe3d94",
+   "bytes": 37880,
+   "run_id": "encoders/encoder_cap_e5-base.json@be19cf6b8a67",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_e5-large.json": {
+   "sha256": "fd529ac00ce55b955d7191fec7cf4b99f547a332b057a0553e5d66703b54be03",
+   "bytes": 37865,
+   "run_id": "encoders/encoder_cap_e5-large.json@fd529ac00ce5",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_e5-small.json": {
+   "sha256": "144f54d5b9da94cb37728e880e64fe4c81a8432502de36a0ece5f91928249a36",
+   "bytes": 37932,
+   "run_id": "encoders/encoder_cap_e5-small.json@144f54d5b9da",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_gist-base.json": {
+   "sha256": "530c3559d1316f82d0c498c45a18ffc4949e858afca2771585626e331185aa4d",
+   "bytes": 37983,
+   "run_id": "encoders/encoder_cap_gist-base.json@530c3559d131",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_gist-large.json": {
+   "sha256": "8c226d5be69d3fd038c3cb7ac8a7a73b12c1d9b98b5f2b863528bcdb4d46d7bd",
+   "bytes": 37957,
+   "run_id": "encoders/encoder_cap_gist-large.json@8c226d5be69d",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_gist-small.json": {
+   "sha256": "b1102ce33d28da5513585b3324408c67cd11bfcc39710163c2a8f9c5ea57df7f",
+   "bytes": 37881,
+   "run_id": "encoders/encoder_cap_gist-small.json@b1102ce33d28",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_mini.json": {
+   "sha256": "29df5cd05c92a1ca6f10f0258b4ad06f77c3aaca16f8de20cba6318dbc95ebeb",
+   "bytes": 37943,
+   "run_id": "encoders/encoder_cap_mini.json@29df5cd05c92",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_mpnet.json": {
+   "sha256": "e3ab8d435ba09b44825cb047efed03fa646ffcdf1436c1ebfd8859c7b97cd46d",
+   "bytes": 37912,
+   "run_id": "encoders/encoder_cap_mpnet.json@e3ab8d435ba0",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_mxb.json": {
+   "sha256": "d0fb182908f044446867458746e4810e7ffe7a15b03784b7e855e7a63d6a144f",
+   "bytes": 38027,
+   "run_id": "encoders/encoder_cap_mxb.json@d0fb182908f0",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_cap_nomic-v2.json": {
+   "sha256": "d4ee971b2443488e959d8369a164a91f6ba86013f12625d5cf42dc2f7b582de1",
+   "bytes": 37917,
+   "run_id": "encoders/encoder_cap_nomic-v2.json@d4ee971b2443",
+   "experiment": "revised_encoder_cell",
+   "corpus": "cap",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_e5-base.json": {
+   "sha256": "b6fbf2eca864f985333d69c186cbd23c8d0a53ddc58bd56a38bf7c5a59440710",
+   "bytes": 31561,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_e5-base.json@b6fbf2eca864",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_e5-large.json": {
+   "sha256": "43ef343a4d8efc9d875555251f08c0e6925d27be239a24650d8d582b3abb586d",
+   "bytes": 31567,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_e5-large.json@43ef343a4d8e",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "103f8bae69b1fd99f631c4006d6274f724b1e2d6fd3c76c30dc95d66e5f49a91",
+   "bytes": 31518,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_e5-small.json@103f8bae69b1",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_gist-base.json": {
+   "sha256": "ca2dcdedda55283f6be65179971ea3dce55cf3aba18b3e0bbefc165a803b6e6a",
+   "bytes": 31586,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_gist-base.json@ca2dcdedda55",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_gist-large.json": {
+   "sha256": "8ec794c5cb463b0aa58d223502806435c1b0d1cbfe3fc1acf987123f3ba9b9c3",
+   "bytes": 31559,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_gist-large.json@8ec794c5cb46",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_gist-small.json": {
+   "sha256": "3744dafe06e52bb68ad0c841ee1571ed6e526941f5f496c7fdbe3a0c39fd50e9",
+   "bytes": 31556,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_gist-small.json@3744dafe06e5",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_mini.json": {
+   "sha256": "19f87a12b5088e1cfcbb6c7a6ecc543dea3dbb7b5410c5ac7eabe61e3b282792",
+   "bytes": 31486,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_mini.json@19f87a12b508",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_mpnet.json": {
+   "sha256": "7b1ebeb16c73d7924c947892156fe8247d210e59dd1efffe41bb54ec99317eeb",
+   "bytes": 31489,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_mpnet.json@7b1ebeb16c73",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_mxb.json": {
+   "sha256": "feb57403d3059798e0777908475c0105048567a7953a1313c1c98ca3c19855e2",
+   "bytes": 31557,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_mxb.json@feb57403d305",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_scotus_oyez_lexis_nomic-v2.json": {
+   "sha256": "3d972bfd3b2375b697eab6dd8f0cc51838d51c1aa2176717915b03d6a1bd547d",
+   "bytes": 31571,
+   "run_id": "encoders/encoder_scotus_oyez_lexis_nomic-v2.json@3d972bfd3b23",
+   "experiment": "revised_encoder_cell",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "encoders/encoder_semeval_e5-base.json": {
+   "sha256": "c4c964ef023eca85ce9b2792594f5c9fefd705d63e72650a37a4942347257f7b",
+   "bytes": 55763,
+   "run_id": "encoders/encoder_semeval_e5-base.json@c4c964ef023e",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_e5-large.json": {
+   "sha256": "693891116ade43956c88a1a87f19fc0c19f95128f0baa9450c6f9f9da881c9bb",
+   "bytes": 55592,
+   "run_id": "encoders/encoder_semeval_e5-large.json@693891116ade",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_e5-small.json": {
+   "sha256": "e15b8f24ec4ce23d1a52e1889bf5242fc1ec2a4b7907704808df509c6bc66cf4",
+   "bytes": 55498,
+   "run_id": "encoders/encoder_semeval_e5-small.json@e15b8f24ec4c",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_gist-base.json": {
+   "sha256": "585dc4c76419ee6509f66c45c62a444491dbd3773092fc02bbe63f50078ff168",
+   "bytes": 56372,
+   "run_id": "encoders/encoder_semeval_gist-base.json@585dc4c76419",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_gist-large.json": {
+   "sha256": "704aff4e2e0bbe33f9737a5cbae159be18a56e45f03600a097ab5d976ff14a81",
+   "bytes": 56577,
+   "run_id": "encoders/encoder_semeval_gist-large.json@704aff4e2e0b",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_gist-small.json": {
+   "sha256": "f4030f87d580b153785422e5f4f345487dcfaa6fd0140ce1b7b4cb6a52b9dbed",
+   "bytes": 56261,
+   "run_id": "encoders/encoder_semeval_gist-small.json@f4030f87d580",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_mini.json": {
+   "sha256": "9537543a4a47a309f486130380e6e6f9a09d98443066a3b46d6deae0efcc664c",
+   "bytes": 56370,
+   "run_id": "encoders/encoder_semeval_mini.json@9537543a4a47",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_mpnet.json": {
+   "sha256": "0a41388772fbc06c084ecc88ab58c82f2ab01ee15db4b2fa2e993d4b5eaebf44",
+   "bytes": 56645,
+   "run_id": "encoders/encoder_semeval_mpnet.json@0a41388772fb",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_mxb.json": {
+   "sha256": "e46ca7356ff88ad11c1156f037b89084a42d0336d5ac4b43da3aed037930b194",
+   "bytes": 56151,
+   "run_id": "encoders/encoder_semeval_mxb.json@e46ca7356ff8",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_semeval_nomic-v2.json": {
+   "sha256": "3f56182c573f7a2468bbdbd581c17e867f900d50506392fa34f8628c070875fc",
+   "bytes": 56963,
+   "run_id": "encoders/encoder_semeval_nomic-v2.json@3f56182c573f",
+   "experiment": "revised_encoder_cell",
+   "corpus": "semeval",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "encoders/encoder_swiltra_e5-base.json": {
+   "sha256": "2ecc3aeedb00c4dd0555b51f5bdf6ba343b16d8472a6d89872cb5e592891c140",
+   "bytes": 31290,
+   "run_id": "encoders/encoder_swiltra_e5-base.json@2ecc3aeedb00",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "e5-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_e5-large.json": {
+   "sha256": "7d3079b9303098c9af6592b972a8a95ed65fcd2dee46532ccb8cea73e3c4bdce",
+   "bytes": 31303,
+   "run_id": "encoders/encoder_swiltra_e5-large.json@7d3079b93030",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "e5-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_e5-small.json": {
+   "sha256": "eb3646e65b4bf2b209049698138a643c2752d2718a60dc94241a3849777e577d",
+   "bytes": 31367,
+   "run_id": "encoders/encoder_swiltra_e5-small.json@eb3646e65b4b",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_gist-base.json": {
+   "sha256": "aad482e1df13d7f4e33b7389721ce3063673bf5678d2b6b4ec998d3cebac7e88",
+   "bytes": 31389,
+   "run_id": "encoders/encoder_swiltra_gist-base.json@aad482e1df13",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "gist-base",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_gist-large.json": {
+   "sha256": "c5f991fc2457ada1b9132194f0a37d559efa056578aad4172623fcec7d86530e",
+   "bytes": 31367,
+   "run_id": "encoders/encoder_swiltra_gist-large.json@c5f991fc2457",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "gist-large",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_gist-small.json": {
+   "sha256": "1875c53d4ce4d8101740a2719df00f3fb9c758c369bbccbad91ccdc84707b283",
+   "bytes": 31443,
+   "run_id": "encoders/encoder_swiltra_gist-small.json@1875c53d4ce4",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "gist-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_mini.json": {
+   "sha256": "dffe826f2b022e1326bc1bf5bd01d629f4cd8e3efba1277e403ac5251b1bfb24",
+   "bytes": 31547,
+   "run_id": "encoders/encoder_swiltra_mini.json@dffe826f2b02",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_mpnet.json": {
+   "sha256": "79f3a128295b8e3dfd0c88f1b7687c00d03a9035bb8206ef8beab271e2b4c154",
+   "bytes": 31430,
+   "run_id": "encoders/encoder_swiltra_mpnet.json@79f3a128295b",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "mpnet",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_mxb.json": {
+   "sha256": "86175a5a49c90905f344260e927d2f612cffe7d2709f985ecc4555de64530bb3",
+   "bytes": 31311,
+   "run_id": "encoders/encoder_swiltra_mxb.json@86175a5a49c9",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "mxb",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "encoders/encoder_swiltra_nomic-v2.json": {
+   "sha256": "13d58bcaebe4825fb293bd0737f992b06e4e6e72aabf7e43fe0b8d8e1663df31",
+   "bytes": 31379,
+   "run_id": "encoders/encoder_swiltra_nomic-v2.json@13d58bcaebe4",
+   "experiment": "revised_encoder_cell",
+   "corpus": "swiltra",
+   "encoder": "nomic-v2",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "id/id_bills_tweets_e5-small.json": {
+   "sha256": "defab91a806f10fd756f254f2b20a77128b78b835a7104b6434242329cf4ac48",
+   "bytes": 23240,
+   "run_id": "id/id_bills_tweets_e5-small.json@defab91a806f",
+   "experiment": "revised_id",
+   "corpus": "bills_tweets",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Bills--Tweets"
+  },
+  "id/id_cap_e5-small.json": {
+   "sha256": "fda1e808c3f0725981f58ecfb132f504807cc32637fd1fed3aef8fe6c2c65ff5",
+   "bytes": 21872,
+   "run_id": "id/id_cap_e5-small.json@fda1e808c3f0",
+   "experiment": "revised_id",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "id/id_cap_mini.json": {
+   "sha256": "86843bb644d2cda964c45874a25e4f5ce29a167c49403c32815507ec6724761d",
+   "bytes": 17800,
+   "run_id": "id/id_cap_mini.json@86843bb644d2",
+   "experiment": "revised_id",
+   "corpus": "cap",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "id/id_kmeans_bills_tweets_e5-small.json": {
+   "sha256": "408f188c1d8695db94941a0830c89fe510fa0ee0d43a8ed12a70d0eefb803bf7",
+   "bytes": 9774,
+   "run_id": "id/id_kmeans_bills_tweets_e5-small.json@408f188c1d86",
+   "experiment": "revised_id_kmeans",
+   "corpus": "bills_tweets",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "Bills--Tweets"
+  },
+  "id/id_kmeans_cap_e5-small.json": {
+   "sha256": "7bfa4fa2a36e19da6d8c74e0339217de7038cf5679b0086139330486a9da7aab",
+   "bytes": 8145,
+   "run_id": "id/id_kmeans_cap_e5-small.json@7bfa4fa2a36e",
+   "experiment": "revised_id_kmeans",
+   "corpus": "cap",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "CAP (bills/orders/news)"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "075f0996e4a2d4270c36339ad91713047bc49b6ee7722b644c15535e39252466",
+   "bytes": 36071,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_e5-small.json@075f0996e4a2",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_mini.json": {
+   "sha256": "6e05d893adbfd41faf9c8901abd5dc4fdac7ff5c5fec441dc21a26d2d33be28e",
+   "bytes": 34726,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_mini.json@6e05d893adbf",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "b0a24f1184ba09da217b3fb93dd9ff051fda8c421a74f284e3ec82036bb559ec",
+   "bytes": 94148,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_e5-small.json@b0a24f1184ba",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "48886d90557d25211151a19b29dd0d517adce909be51e4bb424e2ff30fa135d7",
+   "bytes": 92731,
+   "run_id": "id/id_kmeans_scotus_oyez_lexis_wiki_mini.json@48886d90557d",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_kmeans_scotus_oyez_wiki_e5-small.json": {
+   "sha256": "ceeeb6c83eaf063bd9decb7616469d14641b978be7dd8fa4ed1cbf2f5d0faa96",
+   "bytes": 29971,
+   "run_id": "id/id_kmeans_scotus_oyez_wiki_e5-small.json@ceeeb6c83eaf",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_oyez_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Wiki)"
+  },
+  "id/id_kmeans_scotus_wiki_lexis_e5-small.json": {
+   "sha256": "fed3bce2cf73d7c432daf1af5814ec63ac57b9b7ebab10595f869e3edccea8f8",
+   "bytes": 36111,
+   "run_id": "id/id_kmeans_scotus_wiki_lexis_e5-small.json@fed3bce2cf73",
+   "experiment": "revised_id_kmeans",
+   "corpus": "scotus_wiki_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Wiki/Lexis)"
+  },
+  "id/id_kmeans_semeval_e5-small.json": {
+   "sha256": "82195d2b250813599f128caa86885dc47ce6a4df3d108c79651661132c67198b",
+   "bytes": 26742,
+   "run_id": "id/id_kmeans_semeval_e5-small.json@82195d2b2508",
+   "experiment": "revised_id_kmeans",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "id/id_kmeans_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "c6cbc49b5dfdf00f00ab0087612ba5ac3c7f83b4852cdb2f9bf3991f58b50061",
+   "bytes": 222705,
+   "run_id": "id/id_kmeans_swiltra_de_fr_it_e5-small.json@c6cbc49b5dfd",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "id/id_kmeans_swiltra_de_it_e5-small.json": {
+   "sha256": "0eec7df6e31337d9e5fffb1df56bb430356ce7b8e21cc862896b3cee5fd67bbc",
+   "bytes": 80254,
+   "run_id": "id/id_kmeans_swiltra_de_it_e5-small.json@0eec7df6e313",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra_de_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/it)"
+  },
+  "id/id_kmeans_swiltra_e5-small.json": {
+   "sha256": "7dc74fb3dfcfb0642e009da9e86c4101f0fd6b8d0dfaf7cb95af54dd50b1b2b4",
+   "bytes": 80270,
+   "run_id": "id/id_kmeans_swiltra_e5-small.json@7dc74fb3dfcf",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "id/id_kmeans_swiltra_fr_it_e5-small.json": {
+   "sha256": "cb5f1fdc784668aa0f59fd20810c1d3ef77a47c7e807c95b315c8efe1e28a3a1",
+   "bytes": 80259,
+   "run_id": "id/id_kmeans_swiltra_fr_it_e5-small.json@cb5f1fdc7846",
+   "experiment": "revised_id_kmeans",
+   "corpus": "swiltra_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (fr/it)"
+  },
+  "id/id_scotus_oyez_lexis_e5-small.json": {
+   "sha256": "019aa95905db602d4f7f5f420e6a8ae66c05bc3b6590cc23f15beca019bc1806",
+   "bytes": 129191,
+   "run_id": "id/id_scotus_oyez_lexis_e5-small.json@019aa95905db",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_scotus_oyez_lexis_mini.json": {
+   "sha256": "22f8574e72e230ec6f98d5dd6301735d0dbf954938522747b02910c84862df95",
+   "bytes": 123730,
+   "run_id": "id/id_scotus_oyez_lexis_mini.json@22f8574e72e2",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis)"
+  },
+  "id/id_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "640167d23e06488e71693bdfaa76d264d82dd20c1fee305529af4a3c223f5203",
+   "bytes": 361404,
+   "run_id": "id/id_scotus_oyez_lexis_wiki_e5-small.json@640167d23e06",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_scotus_oyez_lexis_wiki_mini.json": {
+   "sha256": "8e072e36da63b5a5e9232ddaa33877039fac7cee28503c800261db288e506cf1",
+   "bytes": 355856,
+   "run_id": "id/id_scotus_oyez_lexis_wiki_mini.json@8e072e36da63",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "mini",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "id/id_scotus_oyez_wiki_e5-small.json": {
+   "sha256": "2649dfa86950fc4f89e526bcfc9d0643b936ecc32be233fd2bde183339ff6e5f",
+   "bytes": 104778,
+   "run_id": "id/id_scotus_oyez_wiki_e5-small.json@2649dfa86950",
+   "experiment": "revised_id",
+   "corpus": "scotus_oyez_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Oyez/Wiki)"
+  },
+  "id/id_scotus_wiki_lexis_e5-small.json": {
+   "sha256": "e6a1512951e282fe0348f6942e6a5f6e92aacf9dcb46f351b9f609e343970c2c",
+   "bytes": 129199,
+   "run_id": "id/id_scotus_wiki_lexis_e5-small.json@e6a1512951e2",
+   "experiment": "revised_id",
+   "corpus": "scotus_wiki_lexis",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SCOTUS (Wiki/Lexis)"
+  },
+  "id/id_semeval_e5-small.json": {
+   "sha256": "5b759170246659cab4fa46f54dc77266c7c8ccdb594027f8c966399b5a89041f",
+   "bytes": 84294,
+   "run_id": "id/id_semeval_e5-small.json@5b7591702466",
+   "experiment": "revised_id",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "id/id_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "9dfe0c6ffb1f3ea24b4c6dd5103cec559573deaa85dae1881469202df68a3ae3",
+   "bytes": 875976,
+   "run_id": "id/id_swiltra_de_fr_it_e5-small.json@9dfe0c6ffb1f",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "id/id_swiltra_de_it_e5-small.json": {
+   "sha256": "fddb308902bad260222867b25e2f23850c22af61d42c06537abd58bd7e7256f7",
+   "bytes": 305316,
+   "run_id": "id/id_swiltra_de_it_e5-small.json@fddb308902ba",
+   "experiment": "revised_id",
+   "corpus": "swiltra_de_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/it)"
+  },
+  "id/id_swiltra_e5-small.json": {
+   "sha256": "539061857e6dce16930786f7c5338d00bcf70dfe0cbf7d1993b317f344a226b5",
+   "bytes": 305856,
+   "run_id": "id/id_swiltra_e5-small.json@539061857e6d",
+   "experiment": "revised_id",
+   "corpus": "swiltra",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (de/fr)"
+  },
+  "id/id_swiltra_fr_it_e5-small.json": {
+   "sha256": "c373cfda1f5ad2407211cf99b6c1bd5af1e045216da07352aa62f4ec022ef5d1",
+   "bytes": 305504,
+   "run_id": "id/id_swiltra_fr_it_e5-small.json@c373cfda1f5a",
+   "experiment": "revised_id",
+   "corpus": "swiltra_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "label": "SwiLTra (fr/it)"
+  },
+  "inventory/encoder_inventory.json": {
+   "sha256": "7f9709829af90124655d7bdc80c478c74f75c0ad54f6bc71354f961a053395c3",
+   "bytes": 4160,
+   "run_id": "inventory/encoder_inventory.json@7f9709829af9",
+   "experiment": "encoder_inventory"
+  },
+  "mechanism/mechanism_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "a1c2c5748fb936b121d8b799fda8b817c7ce486df905c3b96b63f80c0551d368",
+   "bytes": 15162,
+   "run_id": "mechanism/mechanism_scotus_oyez_lexis_wiki_e5-small.json@a1c2c5748fb9",
+   "experiment": "revised_mechanism",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "mechanism/mechanism_semeval_e5-small.json": {
+   "sha256": "cbeef28aba40ea48a7fc3251f2401ad5b03203402332dfef7faf9ba5f6e8b55a",
+   "bytes": 30049,
+   "run_id": "mechanism/mechanism_semeval_e5-small.json@cbeef28aba40",
+   "experiment": "revised_mechanism",
+   "corpus": "semeval",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SemEval"
+  },
+  "mechanism/mechanism_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "008e3ac45e622627278de1346484dc75a8bcb9224a582a9a95d58b23047ad60c",
+   "bytes": 14776,
+   "run_id": "mechanism/mechanism_swiltra_de_fr_it_e5-small.json@008e3ac45e62",
+   "experiment": "revised_mechanism",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  },
+  "ood/ood_e5-small_cap.json": {
+   "sha256": "ed5186373151868b72c4cb322b6709626d98395bf328c784fd40c6d6d84d1edf",
+   "bytes": 588393,
+   "run_id": "ood/ood_e5-small_cap.json@ed5186373151",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_scotus_oyez_lexis.json": {
+   "sha256": "9d4af1052978b187cddcf3b3fc24f8342bc4102cab6396a9c8fd24aae0ade42b",
+   "bytes": 587733,
+   "run_id": "ood/ood_e5-small_scotus_oyez_lexis.json@9d4af1052978",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_scotus_oyez_lexis_wiki.json": {
+   "sha256": "a828cc98034b51b597873f2d909deb68507375b0bd0006d6e1a7d150d3a66abd",
+   "bytes": 588128,
+   "run_id": "ood/ood_e5-small_scotus_oyez_lexis_wiki.json@a828cc98034b",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_swiltra.json": {
+   "sha256": "63d3d726ecfbec34c2e97ae6f7b584390ba4fcf2e1c9f884136792675d1a93ba",
+   "bytes": 588513,
+   "run_id": "ood/ood_e5-small_swiltra.json@63d3d726ecfb",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "swiltra",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr)",
+   "fit_on": "train"
+  },
+  "ood/ood_e5-small_swiltra_de_fr_it.json": {
+   "sha256": "816e622be73c5058a96180c884bf7b86f7f5c82bbde0046c0904ef9df3d66a19",
+   "bytes": 588280,
+   "run_id": "ood/ood_e5-small_swiltra_de_fr_it.json@816e622be73c",
+   "experiment": "ood",
+   "encoder": "e5-small",
+   "donor": "swiltra_de_fr_it",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SwiLTra (de/fr/it)",
+   "fit_on": "train"
+  },
+  "ood/ood_mini_cap.json": {
+   "sha256": "edb3d5f966185502cbddedb55085ddaf8baa198a046cdad3cc193f49bfda0f38",
+   "bytes": 594257,
+   "run_id": "ood/ood_mini_cap.json@edb3d5f96618",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "cap",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "CAP (bills/orders/news)",
+   "fit_on": "train"
+  },
+  "ood/ood_mini_scotus_oyez_lexis.json": {
+   "sha256": "9600062c4d06bc9376163d47ba60c4924db4a4e1c57a885b2de20941db721fe7",
+   "bytes": 595870,
+   "run_id": "ood/ood_mini_scotus_oyez_lexis.json@9600062c4d06",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis)",
+   "fit_on": "train"
+  },
+  "ood/ood_mini_scotus_oyez_lexis_wiki.json": {
+   "sha256": "2fa727cbd1f70b0926546df3b2fd094a83dc553f62a678e01bad3b9627770901",
+   "bytes": 596062,
+   "run_id": "ood/ood_mini_scotus_oyez_lexis_wiki.json@2fa727cbd1f7",
+   "experiment": "ood",
+   "encoder": "mini",
+   "donor": "scotus_oyez_lexis_wiki",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "donor_label": "SCOTUS (Oyez/Lexis/Wiki)",
+   "fit_on": "train"
+  },
+  "random_directions/random_directions_scotus_oyez_lexis_wiki_e5-small.json": {
+   "sha256": "e8c80c10ac4351372f58e365edac9d9bf3147ea996e69f3dea68bb008d452f24",
+   "bytes": 7733,
+   "run_id": "random_directions/random_directions_scotus_oyez_lexis_wiki_e5-small.json@e8c80c10ac43",
+   "experiment": "random_directions",
+   "corpus": "scotus_oyez_lexis_wiki",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SCOTUS (Oyez/Lexis/Wiki)"
+  },
+  "random_directions/random_directions_swiltra_de_fr_it_e5-small.json": {
+   "sha256": "15bfb249f913517455fe0a84b0642ad6d175955cd476f9591d404a354a871540",
+   "bytes": 7435,
+   "run_id": "random_directions/random_directions_swiltra_de_fr_it_e5-small.json@15bfb249f913",
+   "experiment": "random_directions",
+   "corpus": "swiltra_de_fr_it",
+   "encoder": "e5-small",
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "label": "SwiLTra (de/fr/it)"
+  }
+ },
+ "notes": [],
+ "checks_passed": 32,
+ "checks": [
+  {
+   "code": "a2_encoders_in_runs",
+   "message": "the saved runs use exactly the ten registry encoders (['e5-base', 'e5-large', 'e5-small', 'gist-base', 'gist-large', 'gist-small', 'mini', 'mpnet', 'mxb', 'nomic-v2'])",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "mini: inventory model id sentence-transformers/all-MiniLM-L6-v2 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "mini: every result file that saves `dim` has 384 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_consistent",
+   "message": "mini: all 8 OOD files record one model revision and one target-prompt setting",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_model",
+   "message": "mini: OOD runs record model sentence-transformers/all-MiniLM-L6-v2",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_revision_matches_cache",
+   "message": "mini: OOD-recorded revision 1110a243fdf4 = the inventory's cache snapshot",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "gist-small: inventory model id avsolatorio/GIST-small-Embedding-v0 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "gist-small: every result file that saves `dim` has 384 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "gist-base: inventory model id avsolatorio/GIST-Embedding-v0 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "gist-base: every result file that saves `dim` has 768 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "gist-large: inventory model id avsolatorio/GIST-large-Embedding-v0 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "gist-large: every result file that saves `dim` has 1024 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "e5-small: inventory model id intfloat/multilingual-e5-small = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "e5-small: every result file that saves `dim` has 384 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_consistent",
+   "message": "e5-small: all 13 OOD files record one model revision and one target-prompt setting",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_model",
+   "message": "e5-small: OOD runs record model intfloat/multilingual-e5-small",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_revision_matches_cache",
+   "message": "e5-small: OOD-recorded revision 614241f622f5 = the inventory's cache snapshot",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "e5-base: inventory model id intfloat/multilingual-e5-base = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "e5-base: every result file that saves `dim` has 768 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "e5-large: inventory model id intfloat/multilingual-e5-large = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "e5-large: every result file that saves `dim` has 1024 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "mpnet: inventory model id sentence-transformers/all-mpnet-base-v2 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "mpnet: every result file that saves `dim` has 768 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "nomic-v2: inventory model id nomic-ai/nomic-embed-text-v2-moe = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "nomic-v2: every result file that saves `dim` has 768 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_model_id",
+   "message": "mxb: inventory model id mixedbread-ai/mxbai-embed-large-v1 = code MODEL_MAP",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_dim",
+   "message": "mxb: every result file that saves `dim` has 1024 (4 files)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_ood_targets_unprompted",
+   "message": "OOD targets are encoded without any prompt for every OOD encoder (['E5-small', 'MiniLM']), as the caption states",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "a2_prompt_marks",
+   "message": "every in-distribution document prompt has a caption mark (['\"query: \" on every document', 'none', 'prompt_name=\"passage\"'])",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "latex_citations_resolved",
+   "message": "tableA2_encoders: every citation and reference resolves",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "latex_float_fits",
+   "message": "tableA2_encoders: the float fits the TACL text block",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "code": "latex_no_overfull",
+   "message": "tableA2_encoders: no overfull boxes in the TACL preview",
+   "exhibit": "tableA2_encoders"
+  }
+ ],
+ "issues": [
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "gist-small: model revision not recorded by any run (inventory fallback 75e62fd210b9 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "gist-base: model revision not recorded by any run (inventory fallback bf6b2e55e92f is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "gist-large: model revision not recorded by any run (inventory fallback 7831200e2f78 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "e5-base: model revision not recorded by any run (inventory fallback d12875059715 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "e5-large: model revision not recorded by any run (inventory fallback 3d7cfbdacd47 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "mpnet: model revision not recorded by any run (inventory fallback e8c3b32edf54 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "nomic-v2: model revision not recorded by any run (inventory fallback 1066b6599d09 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "a2_revision_not_recorded",
+   "message": "mxb: model revision not recorded by any run (inventory fallback b33106f585b9 is the current Hub revision)",
+   "exhibit": "tableA2_encoders"
+  },
+  {
+   "level": "warning",
+   "code": "tacl_style_standin",
+   "message": "writing/tacl_analysis_draft/tacl2021v1.sty not found: measured on a stand-in page with the TACL geometry (455.24pt x 702.8pt text, 219.09pt columns, Times)",
+   "exhibit": "tableA2_encoders"
+  }
+ ],
+ "cells": [],
+ "outputs": [
+  "data/tableA2_encoders.csv",
+  "data/tableA2_encoders.json",
+  "reports/previews/tableA2_encoders.pdf",
+  "reports/previews/tableA2_encoders.png",
+  "reports/tableA2_encoders_provenance.md",
+  "tables/tableA2_encoders.include.tex",
+  "tables/tableA2_encoders.md",
+  "tables/tableA2_encoders.tex"
+ ],
+ "environment": {
+  "python": "3.12.4",
+  "numpy": "2.2.6",
+  "matplotlib": "3.11.1",
+  "platform": "macOS-14.6-arm64-arm-64bit",
+  "git_head": "5422ea0a427c30d69e4bd36613091e1cdb0119f6",
+  "git_dirty_paths": 1818
+ }
+}
